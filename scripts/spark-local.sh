@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Linux/macOS: build và chạy các job Spark Java (package vn.edu.bigdata.revenue.spark) trên host, HDFS trong Docker.
 # Windows: dùng scripts/spark-local.ps1.
-#   bash scripts/spark-local.sh build                 # ./mvnw -Pspark package (gồm test Spark + MR) với JDK 17/21
+#   bash scripts/spark-local.sh build                 # ./mvnw -pl bigdata -Pspark package (gồm test Spark + MR) với JDK 17/21
 #   bash scripts/spark-local.sh submit JOB [--name value ...]
-#     JOB: revenue | etl | metrics | features   (xem SparkTool)
+#     JOB: revenue | etl | metrics | features | labels | publish   (xem SparkTool)
 # Cấu hình máy: config/spark-local.env (JAVA_HOME, HDFS_URI, ...).
-# Runtime Spark: spark-submit của PySpark trong .venv (cùng phiên bản với spark.version trong pom.xml).
+# Runtime Spark: spark-submit của PySpark trong .venv (cùng phiên bản với spark.version trong bigdata/pom.xml).
 set -euo pipefail
 if [[ "$(uname -s)" == MINGW* || "$(uname -s)" == MSYS* ]]; then
   echo "Trên Windows dùng PowerShell: .\scripts\spark-local.ps1 (Git Bash hỏng khi gọi .cmd trong đường dẫn có dấu cách)" >&2; exit 2
@@ -24,10 +24,10 @@ export PTIT_GIT_SHA="$(git rev-parse --short HEAD 2>/dev/null || echo nogit)"
 command="${1:-}"; shift || true
 case "$command" in
   build)
-    REVENUE_JAVA_HOME="$JAVA_HOME" ./mvnw -B -Pspark package "$@"
+    REVENUE_JAVA_HOME="$JAVA_HOME" ./mvnw -B -pl bigdata -Pspark package "$@"
     ;;
   submit)
-    jar="target/revenue-aggregation-spark.jar"
+    jar="bigdata/target/revenue-aggregation-spark.jar"
     if [[ ! -f "$jar" ]]; then echo "Chưa có $jar: chạy 'bash scripts/spark-local.sh build' trước" >&2; exit 2; fi
     submit=".venv/bin/spark-submit"
     exec "$submit" \

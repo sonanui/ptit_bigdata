@@ -22,7 +22,7 @@ mkdir -p "$meta"
 # FsShell.main bật strict mode nên cần một core-site.xml trên classpath; cấu hình thật truyền bằng -D.
 shell_conf="$(mktemp -d)"; trap 'rm -rf "$shell_conf"' EXIT
 echo '<configuration/>' > "$shell_conf/core-site.xml"
-fs_shell() { "$JAVA_BIN" -cp "$shell_conf:target/revenue-aggregation.jar:$(cat .build-cache/classpath.txt)" org.apache.hadoop.fs.FsShell -Dfs.defaultFS="$hdfs" "${client_opts[@]}" "$@"; }
+fs_shell() { "$JAVA_BIN" -cp "$shell_conf:bigdata/target/revenue-aggregation.jar:$(cat .build-cache/classpath.txt)" org.apache.hadoop.fs.FsShell -Dfs.defaultFS="$hdfs" "${client_opts[@]}" "$@"; }
 millis() { date +%s%3N; }
 step() { local label="$1"; shift; local t0; t0=$(millis); "$@"; echo -e "$label\t$(( $(millis) - t0 ))" >> "$meta/timings.tsv"; }
 

@@ -1,8 +1,8 @@
 ﻿# Build và chạy các job Spark Java (package vn.edu.bigdata.revenue.spark) trên Windows, HDFS trong Docker.
-#   .\scripts\spark-local.ps1 build [mvn args]            # mvn -Pspark package (test Spark + MR) với JDK 17/21
-#   .\scripts\spark-local.ps1 submit JOB [--name value]   # JOB: revenue | etl | metrics | features (xem SparkTool)
+#   .\scripts\spark-local.ps1 build [mvn args]            # mvn -pl bigdata -Pspark package (test Spark + MR) với JDK 17/21
+#   .\scripts\spark-local.ps1 submit JOB [--name value]   # JOB: revenue | etl | metrics | features | labels | publish (xem SparkTool)
 # Cấu hình máy: config\spark-local.env (JAVA_HOME, HADOOP_HOME có bin\winutils.exe, HDFS_URI, ...).
-# Runtime Spark: spark-submit của PySpark trong .venv (cùng phiên bản với spark.version trong pom.xml).
+# Runtime Spark: spark-submit của PySpark trong .venv (cùng phiên bản với spark.version trong bigdata/pom.xml).
 param([Parameter(Mandatory = $true)][ValidateSet("build", "submit")][string]$Command,
       [Parameter(ValueFromRemainingArguments = $true)][string[]]$Rest)
 $ErrorActionPreference = "Stop"
@@ -35,11 +35,11 @@ $ErrorActionPreference = "Continue"
 if ($Command -eq "build") {
   $mvn = Join-Path $root ".tools\apache-maven-3.9.11\bin\mvn.cmd"
   if (-not (Test-Path $mvn)) { $mvn = "mvn" }
-  & $mvn "-Dmaven.repo.local=$root\.build-cache\m2" -B -Pspark package @Rest
+  & $mvn "-Dmaven.repo.local=$root\.build-cache\m2" -B -pl bigdata -Pspark package @Rest
   exit $LASTEXITCODE
 }
 
-$jar = Join-Path $root "target\revenue-aggregation-spark.jar"
+$jar = Join-Path $root "bigdata\target\revenue-aggregation-spark.jar"
 if (-not (Test-Path $jar)) { Write-Error "Chưa có ${jar}: chạy '.\scripts\spark-local.ps1 build' trước"; exit 2 }
 $master = if ($env:SPARK_MASTER) { $env:SPARK_MASTER } else { "local[2]" }
 $memory = if ($env:SPARK_DRIVER_MEMORY) { $env:SPARK_DRIVER_MEMORY } else { "1g" }

@@ -21,3 +21,6 @@ derby.log
 node_modules/
 webapp/frontend/dist/
 *.tsbuildinfo
+# Ghi chú làm việc và chỉ dẫn agent cục bộ: không đưa lên repo.
+/CLAUDE.md
+/temp.md

@@ -9,5 +9,5 @@ cd "$PROJECT_ROOT"
 # FsShell.main bật strict mode nên cần một core-site.xml trên classpath; cấu hình thật truyền bằng -D.
 shell_conf="$(mktemp -d)"; trap 'rm -rf "$shell_conf"' EXIT
 echo '<configuration/>' > "$shell_conf/core-site.xml"
-"$JAVA_BIN" -cp "$shell_conf:target/revenue-aggregation.jar:$(cat .build-cache/classpath.txt)" org.apache.hadoop.fs.FsShell \
+"$JAVA_BIN" -cp "$shell_conf:bigdata/target/revenue-aggregation.jar:$(cat .build-cache/classpath.txt)" org.apache.hadoop.fs.FsShell \
   -Dfs.defaultFS="${HDFS_URI:-hdfs://namenode:8020}" -Ddfs.replication=1 "$@"
