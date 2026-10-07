@@ -38,11 +38,11 @@ public final class ProductFeatures {
   public static List<String> domainWarnings(Raw raw, long minViews) {
     List<String> out = new java.util.ArrayList<>();
     if (raw.views() < minViews)
-      out.add("views < " + minViews + " (ngưỡng lọc lúc huấn luyện)");
+      out.add("lượt xem dưới " + minViews + ", trong khi mô hình chỉ học từ sản phẩm có từ " + minViews + " lượt xem trở lên");
     if (raw.carts() > raw.views() || raw.purchases() > raw.views())
-      out.add("carts hoặc purchases lớn hơn views: tỷ lệ > 1, hiếm gặp trong dữ liệu huấn luyện");
+      out.add("lượt thêm giỏ hoặc lượt mua nhiều hơn lượt xem, trường hợp rất hiếm trong dữ liệu huấn luyện");
     if (raw.recentViews() != null && raw.recentViews() > raw.views())
-      out.add("recent_views lớn hơn views");
+      out.add("lượt xem 7 ngày gần nhất nhiều hơn tổng lượt xem");
     return out;
   }
 

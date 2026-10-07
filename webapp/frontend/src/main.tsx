@@ -13,14 +13,15 @@ import Benchmarks from "./pages/Benchmarks";
 import KMeansPage from "./pages/KMeansPage";
 import KnnPage from "./pages/KnnPage";
 import { RunProvider, useRun } from "./run";
+import { datasetName } from "./labels";
 
 // Thứ tự trạm = thứ tự dữ liệu đi qua pipeline: tổng quan luồng → Group By → so sánh engine → hai mô hình ML.
 const STATIONS = [
-  { to: "/", title: "Pipeline", hint: "HDFS, MapReduce, Spark, serving" },
-  { to: "/groupby", title: "Group By", hint: "Doanh thu, funnel, xu hướng" },
-  { to: "/benchmarks", title: "MapReduce và Spark", hint: "Tính đúng và hiệu năng" },
-  { to: "/ml/kmeans", title: "K-Means", hint: "Phân cụm sản phẩm" },
-  { to: "/ml/knn", title: "KNN", hint: "Dự đoán lượt mua 7 ngày tới" },
+  { to: "/", title: "Tổng quan", hint: "Dữ liệu đi qua những bước nào" },
+  { to: "/groupby", title: "Group By", hint: "Doanh thu, hành vi mua theo danh mục" },
+  { to: "/benchmarks", title: "MapReduce và Spark", hint: "Có khớp không, chạy nhanh chậm ra sao" },
+  { to: "/ml/kmeans", title: "K-Means", hint: "Gom sản phẩm giống nhau" },
+  { to: "/ml/knn", title: "KNN", hint: "Đoán sản phẩm có được mua không" },
 ];
 
 function RunPicker() {
@@ -30,7 +31,7 @@ function RunPicker() {
   return (
     <div className="rail-run">
       <label>
-        Serving run
+        Bộ kết quả đang xem
         <select value={runId ?? ""} onChange={(e) => setRunId(e.target.value)}>
           {runs.map((r) => (
             <option key={r.runId} value={r.runId}>
@@ -40,7 +41,7 @@ function RunPicker() {
           ))}
         </select>
       </label>
-      {current && <p>Dữ liệu {current.dataset?.tag?.toUpperCase()}, publish {current.createdAt?.slice(0, 16).replace("T", " ")} UTC</p>}
+      {current && <p>{datasetName(current.dataset?.tag)}, xuất lúc {current.createdAt?.slice(0, 16).replace("T", " ")} (giờ UTC)</p>}
     </div>
   );
 }

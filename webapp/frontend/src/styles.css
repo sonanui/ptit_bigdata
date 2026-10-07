@@ -204,3 +204,15 @@ table.confusion td { min-width: 110px; font-size: 0.95rem; }
 .notes { margin: 14px 0 0; padding-left: 18px; color: var(--ink-soft); font-size: 0.84rem; max-width: 80ch; }
 .notes li + li { margin-top: 4px; }
 section > label > select { max-width: 420px; }
+
+/* ---------- câu chữ giải thích ---------- */
+.glossary { margin: 10px 0 14px; padding-left: 18px; color: var(--ink-soft); font-size: 0.86rem; max-width: 90ch; }
+.glossary li + li { margin-top: 4px; }
+.cluster-list { margin: 8px 0 16px; padding-left: 18px; max-width: 95ch; }
+.cluster-list li + li { margin-top: 6px; }
+.result { margin-top: 18px; padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--paper); }
+.result-head { font-size: 1.05rem; font-weight: 600; margin: 0 0 8px; }
+.result-head .badge { font-size: 0.9rem; margin-left: 4px; }
+details.tech { margin-top: 14px; font-size: 0.84rem; color: var(--ink-soft); }
+details.tech summary { cursor: pointer; color: var(--navy); font-weight: 500; }
+.question { margin: 2px 0 6px; font-weight: 500; color: var(--navy); }

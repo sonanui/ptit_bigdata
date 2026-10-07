@@ -39,7 +39,7 @@ describe("KMeansPage", () => {
   it("chưa có mô hình thì nói rõ, không hiển thị số liệu", async () => {
     fakeApi({ "GET /api/ml/kmeans/models": [200, []] });
     render(<KMeansPage />);
-    expect(await screen.findByText("Chưa publish mô hình K-Means nào.")).toBeTruthy();
+    expect(await screen.findByText("Chưa có mô hình K-Means nào được xuất ra cho web.")).toBeTruthy();
     expect(screen.queryByText("Silhouette")).toBeNull();
   });
 
@@ -65,11 +65,12 @@ describe("KnnPage", () => {
     });
     render(<KnnPage />);
     fireEvent.click(await screen.findByRole("button", { name: "Chọn" }));
-    expect(await screen.findByText("có purchase")).toBeTruthy();
+    expect(await screen.findByText("CÓ được mua trong 7 ngày tới")).toBeTruthy();
+    expect(screen.getByText(/2\/3 sản phẩm giống nhất đã được mua/)).toBeTruthy();
     expect(screen.getByText("n3")).toBeTruthy();
     expect(calls.find((c) => c.method === "POST")?.body).toEqual({ runId: KNN_RUN, productId: "p1" });
     // Confusion matrix lấy đúng từ metrics test của dòng KNN.
-    expect(screen.getByText("Confusion matrix KNN")).toBeTruthy();
+    expect(screen.getByText("KNN đoán đúng và sai bao nhiêu sản phẩm")).toBeTruthy();
     // F1 phải giữ 4 chữ số thập phân (lỗi cũ: bị làm tròn thành 1 vì nhầm là cột đếm).
     expect(screen.getByText("0,6214")).toBeTruthy();
   });
@@ -82,11 +83,11 @@ describe("KnnPage", () => {
       "POST /api/ml/knn/predict": [422, { status: 422, detail: "views phải > 0 (tỷ lệ chia cho views)" }],
     });
     const { container } = render(<KnnPage />);
-    await screen.findByRole("button", { name: "Predict" });
+    await screen.findByRole("button", { name: "Dự đoán" });
     const inputs = container.querySelectorAll<HTMLInputElement>('form input[type="number"]');
     expect(inputs.length).toBe(6);
     inputs.forEach((input) => fireEvent.change(input, { target: { value: "0" } }));
-    fireEvent.click(screen.getByRole("button", { name: "Predict" }));
+    fireEvent.click(screen.getByRole("button", { name: "Dự đoán" }));
     await waitFor(() => expect(screen.getByText("422: views phải > 0 (tỷ lệ chia cho views)")).toBeTruthy());
     expect(calls.find((c) => c.method === "POST")?.body).toEqual({
       runId: KNN_RUN,
@@ -101,5 +102,14 @@ describe("when", () => {
     expect(when("2026-10-06T17:01:39.415664+00:00")).toBe("2026-10-06 17:01 UTC");
     expect(when("t")).toBe("t");
     expect(when(undefined)).toBe("—");
+  });
+});
+
+describe("modelRowName", () => {
+  it("đổi tên dòng kỹ thuật sang lời thường, ngưỡng thành phần trăm", async () => {
+    const { modelRowName } = await import("../labels");
+    expect(modelRowName("KNN (K=15, ngưỡng 0.400)")).toBe("KNN (mô hình của nhóm) (K=15, ngưỡng 40%)");
+    expect(modelRowName("Baseline lớp đa số")).toBe("Mốc so sánh 1: luôn đoán “không được mua”");
+    expect(modelRowName("Tên lạ")).toBe("Tên lạ");
   });
 });

@@ -155,7 +155,7 @@ class MlController {
     Entry e = registry.find(ModelRegistry.KNN, req.runId());
     KnnModel model = registry.knn(e);
     if (req.raw() != null && req.raw().recentViews() == null)
-      throw new IllegalArgumentException("KNN cần raw.recentViews (số view trong 7 ngày trước t0)");
+      throw new IllegalArgumentException("Thiếu lượt xem trong 7 ngày gần nhất (raw.recentViews), KNN cần thông tin này");
     Input input = input(e, req, model.features(), minViews(e));
     KnnModel.Prediction p = model.predict(input.vector);
     Map<String, Object> out = response(e, input);
@@ -185,7 +185,7 @@ class MlController {
       return new Input(ProductFeatures.vector(f, order), row, f, List.of());
     }
     ProductFeatures.Raw raw = req.raw().toRaw();
-    if (raw.views() <= 0) throw new IllegalArgumentException("views phải > 0 (tỷ lệ chia cho views)");
+    if (raw.views() <= 0) throw new IllegalArgumentException("Lượt xem phải lớn hơn 0 (các tỷ lệ được tính trên lượt xem)");
     Map<String, Double> f = ProductFeatures.transform(raw);
     return new Input(ProductFeatures.vector(f, order), null, f, ProductFeatures.domainWarnings(raw, minViews));
   }

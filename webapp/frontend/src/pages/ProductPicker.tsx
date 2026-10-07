@@ -10,12 +10,12 @@ export default function ProductPicker({ type, runId, onPick }: { type: "kmeans" 
   return (
     <div>
       <form onSubmit={(e) => { e.preventDefault(); setSearch(q); }}>
-        <label>Tìm sản phẩm<input value={q} placeholder="product_id, brand hoặc danh mục" onChange={(e) => setQ(e.target.value)} /></label>
+        <label>Tìm sản phẩm<input value={q} placeholder="mã sản phẩm, thương hiệu hoặc danh mục" onChange={(e) => setQ(e.target.value)} /></label>
         <button type="submit" className="secondary">Tìm</button>
       </form>
       {found.error && <p className="error">{found.error}</p>}
       <div className="table-wrap"><table>
-        <thead><tr><th>product_id</th><th>Brand</th><th>Danh mục</th><th className="num">Lượt xem</th><th className="num">Lượt mua</th><th></th></tr></thead>
+        <thead><tr><th>product_id</th><th>Thương hiệu</th><th>Danh mục</th><th className="num">Lượt xem</th><th className="num">Lượt mua</th><th></th></tr></thead>
         <tbody>
           {found.data?.map((p) => (
             <tr key={p.product_id}>

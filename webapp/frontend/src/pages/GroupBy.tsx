@@ -12,8 +12,9 @@ interface Column {
   numeric?: boolean;
 }
 const count = (v: string) => num(v, 0);
-const money = (v: string) => num(v, 2);
-const minorMoney = (v: string) => (v === "" ? "—" : num(Number(v) / 100, 2));
+const money = (v: string) => (v === "" ? "—" : Number(v).toLocaleString("vi-VN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+const minorMoney = (v: string) => (v === "" ? "—" : money(String(Number(v) / 100)));
+const named = (v: string) => v || "(chưa có tên)";
 const pct = (v: string) => (v === "" ? "—" : `${num(Number(v) * 100, 2)}%`);
 
 /** Bảng có tìm kiếm/sắp xếp/phân trang phía backend. */
@@ -32,7 +33,7 @@ function DataTable({ table, columns, defaultSort }: { table: string; columns: Co
   return (
     <>
       <div className="toolbar">
-        <label>Tìm<input value={q} placeholder="mã, danh mục, brand" onChange={(e) => { setQ(e.target.value); setOffset(0); }} /></label>
+        <label>Tìm<input value={q} placeholder="mã, danh mục hoặc thương hiệu" onChange={(e) => { setQ(e.target.value); setOffset(0); }} /></label>
         <label>
           Sắp xếp giảm dần theo
           <select value={sort} onChange={(e) => { setSort(e.target.value); setOffset(0); }}>
@@ -61,15 +62,15 @@ function DataTable({ table, columns, defaultSort }: { table: string; columns: Co
 }
 
 const REVENUE: Column[] = [
-  { key: "group_key", label: "category_id" },
-  { key: "category_code", label: "Danh mục" },
+  { key: "group_key", label: "Mã danh mục" },
+  { key: "category_code", label: "Tên danh mục", format: named },
   { key: "total_revenue", label: "Doanh thu", format: money, numeric: true },
   { key: "purchase_count", label: "Lượt mua", format: count, numeric: true },
   { key: "average_revenue", label: "Giá trị TB", format: money, numeric: true },
 ];
 const FUNNEL: Column[] = [
-  { key: "category_id", label: "category_id" },
-  { key: "category_code", label: "Danh mục" },
+  { key: "category_id", label: "Mã danh mục" },
+  { key: "category_code", label: "Tên danh mục", format: named },
   { key: "views", label: "Xem", format: count, numeric: true },
   { key: "carts", label: "Thêm giỏ", format: count, numeric: true },
   { key: "purchases", label: "Mua", format: count, numeric: true },
@@ -78,7 +79,7 @@ const FUNNEL: Column[] = [
   { key: "cart_to_purchase", label: "Mua / giỏ", format: (v) => num(v, 3), numeric: true },
 ];
 const BRAND: Column[] = [
-  { key: "brand", label: "Brand" },
+  { key: "brand", label: "Thương hiệu" },
   { key: "views", label: "Xem", format: count, numeric: true },
   { key: "carts", label: "Thêm giỏ", format: count, numeric: true },
   { key: "purchases", label: "Mua", format: count, numeric: true },
@@ -97,14 +98,14 @@ export default function GroupBy() {
     <>
       <header className="page-head">
         <h1>Group By Aggregation</h1>
-        <p className="lead">Các phép tổng hợp trên toàn bộ sự kiện của serving run, tính bằng Spark trên HDFS. Doanh thu chỉ tính từ purchase hợp lệ.</p>
+        <p className="lead">Group By là gom các sự kiện theo một tiêu chí (danh mục, thương hiệu, giờ) rồi đếm hoặc cộng lại. Các bảng dưới đây do Spark tính trên toàn bộ dữ liệu; doanh thu chỉ cộng từ các lượt mua hợp lệ.</p>
       </header>
       <section>
         <div className="section-head">
           <h2>Doanh thu theo danh mục</h2>
           <span className="tag" title="Mã phép tổng hợp trong plan">A1</span>
         </div>
-        <p className="note">15 category_id có doanh thu cao nhất. Danh mục trống là sản phẩm không có category_code trong dữ liệu gốc.</p>
+        <p className="note">15 danh mục có doanh thu cao nhất. “(chưa có tên)” là danh mục có mã nhưng dữ liệu gốc không ghi tên.</p>
         {top.error && <p className="error">{top.error}</p>}
         {top.data && (
           <ReactECharts
@@ -113,7 +114,7 @@ export default function GroupBy() {
               tooltip: { trigger: "axis", valueFormatter: (v: number) => num(v, 2) },
               grid: { left: 200, right: 32, top: 16, bottom: 32 },
               xAxis: { type: "value", axisLabel: { formatter: (v: number) => (v >= 1e6 ? `${num(v / 1e6, 0)} tr` : num(v, 0)) } },
-              yAxis: { type: "category", inverse: true, data: top.data.rows.map((r) => r.category_code || `(trống) ${r.group_key}`) },
+              yAxis: { type: "category", inverse: true, data: top.data.rows.map((r) => r.category_code || `(chưa có tên) ${r.group_key}`) },
               series: [{ type: "bar", barWidth: "60%", data: top.data.rows.map((r) => Number(r.total_revenue)) }],
             }}
           />
@@ -126,7 +127,7 @@ export default function GroupBy() {
           <h2>Sự kiện và lượt mua theo giờ</h2>
           <span className="tag">A4</span>
         </div>
-        <p className="note">Giờ theo UTC như trong dữ liệu gốc. Kéo thanh dưới biểu đồ để phóng to một khoảng thời gian.</p>
+        <p className="note">Giờ theo múi giờ UTC như trong dữ liệu gốc (giờ Việt Nam = UTC + 7). Kéo thanh dưới biểu đồ để phóng to một khoảng thời gian.</p>
         {trend.error && <p className="error">{trend.error}</p>}
         {trend.data && (
           <ReactECharts
@@ -149,21 +150,22 @@ export default function GroupBy() {
       </section>
       <section>
         <div className="section-head">
-          <h2>Funnel xem, thêm giỏ, mua theo danh mục</h2>
+          <h2>Từ xem đến mua: mỗi danh mục chuyển đổi thế nào</h2>
           <span className="tag">A2, A3</span>
         </div>
         <p className="note">
-          Mua / giỏ có thể lớn hơn 1 vì trong dữ liệu một lượt mua không bắt buộc đi qua sự kiện thêm giỏ; đây là tỷ số, không phải xác suất.
+          “Mua / xem”: cứ 100 lượt xem thì có bao nhiêu lượt mua. “Mua / giỏ”: số lượt mua chia số lượt thêm giỏ; có thể lớn hơn 1 vì trong
+          dữ liệu nhiều lượt mua không đi qua bước thêm giỏ.
         </p>
         <DataTable table="funnel_by_category" columns={FUNNEL} defaultSort="purchases" />
         <Source text="Spark A2/A3, analytics/funnel_by_category.csv" />
       </section>
       <section>
         <div className="section-head">
-          <h2>Theo brand</h2>
+          <h2>Theo thương hiệu</h2>
           <span className="tag">A5</span>
         </div>
-        <p className="note">__UNKNOWN__ gom các sự kiện không có brand.</p>
+        <p className="note">“__UNKNOWN__” là các sự kiện không ghi thương hiệu.</p>
         <DataTable table="funnel_by_brand" columns={BRAND} defaultSort="revenue_minor" />
         <Source text="Spark A5, analytics/funnel_by_brand.csv" />
       </section>

@@ -25,7 +25,7 @@ class InferenceTest {
     assertEquals(StrictMath.log1p(10.0), f.get("log_median_price"));
     assertEquals(0.5, f.get("recent_view_share"));
     assertEquals(
-        List.of("views < 20 (ngưỡng lọc lúc huấn luyện)"),
+        List.of("lượt xem dưới 20, trong khi mô hình chỉ học từ sản phẩm có từ 20 lượt xem trở lên"),
         ProductFeatures.domainWarnings(new ProductFeatures.Raw(2, 1, 1, 10, 2, null), 20));
   }
 

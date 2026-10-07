@@ -96,6 +96,15 @@ POST đúng body → hiển thị nhãn/láng giềng; form số đếm thô g�
 - Build toàn dự án từ `pom.xml` gốc (`mvn -B clean package`, JDK 21): `bigdata` 25 test, `webapp/backend` 7 test (parity K-Means 92 592/92 592,
   KNN 64 254/64 254) đều pass.
 
+## Viết lại câu chữ giao diện theo góp ý nhóm trưởng (2026-10-07)
+
+Góp ý: câu chữ trên web trừu tượng, khó hiểu. Đã sửa: bỏ thuật ngữ nội bộ khỏi giao diện (serving run, publish, artifact, manifest,
+A1–A8, parity, vote_share, t0) hoặc giải thích ngay tại chỗ; đổi tên cột/chỉ số kỹ thuật sang tiếng Việt (`src/labels.ts`); mỗi chỉ số
+có câu "cách đọc" (silhouette, inertia, Precision, Recall, F1, PR-AUC, accuracy); mô tả từng cụm K-Means được ghép từ số liệu của
+bảng hồ sơ cụm (không đặt tên tùy ý); kết quả dự đoán thành câu ("4/15 sản phẩm giống nhất đã được mua…"); trang benchmark có câu hỏi
+cho từng thí nghiệm, chú giải D1–D3, V1–V5, cách đọc biểu đồ, ghi chú kỹ thuật thu gọn; cảnh báo ngoài miền của backend viết lại.
+Kiểm tra: 8 test Vitest, 4 test `InferenceTest`, build image và ảnh chụp các trang trên dữ liệu D3.
+
 ## Chưa làm
 
 - Training API (P2), lịch sử dự đoán, tách chunk bundle JS. Danh sách đầy đủ: plan §19.

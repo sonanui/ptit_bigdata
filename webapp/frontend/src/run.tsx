@@ -20,7 +20,7 @@ export function RunProvider({ children }: { children: ReactNode }) {
       .then(([health, list]) => {
         setRuns(list);
         setRunId(health.defaultRun);
-        if (health.status === "NO_DATA") setError(`Backend chưa có serving run nào trong ${health.servingDir}`);
+        if (health.status === "NO_DATA") setError(`Chưa có bộ kết quả nào để hiển thị (thư mục ${health.servingDir} trống). Xem docs/HUONG_DAN_CHAY.md.`);
       })
       .catch((e) => setError(String(e.message ?? e)));
   }, []);
@@ -32,5 +32,5 @@ export const useRun = () => useContext(RunContext);
 /** Chân biểu đồ: nguồn dữ liệu, theo quy tắc hiển thị của plan §18.7. */
 export function Source({ text }: { text: string }) {
   const { runId } = useRun();
-  return <p className="source">Nguồn: {text}. Serving run <code>{runId}</code></p>;
+  return <p className="source">Nguồn: {text}. Bộ kết quả <code>{runId}</code>.</p>;
 }
