@@ -1,4 +1,10 @@
-# Sửa chuỗi tối ưu cho cùng một bài toán
+# Thiết kế bài toán Group By và 5 biến thể MapReduce
+
+Phạm vi tài liệu: hợp đồng dữ liệu và thiết kế tối ưu của module MapReduce (`bigdata/`, package `hadoop/v1..v5`).
+Kiến trúc toàn hệ thống (HDFS, Spark, ML, web): `docs/END_TO_END.md`; phần Spark và so sánh với MapReduce: `docs/algorithms.md`.
+(Tài liệu này gộp `optimization-redesign.md` cũ, vốn trùng nguyên văn phần đầu.)
+
+## Chuỗi tối ưu cho cùng một bài toán
 
 Yêu cầu: cùng CSV, cùng filter purchase, cùng group, cùng SUM/AVG, cùng số reducer và **một job** cho mọi variant. Tối ưu bằng giảm records/allocations/sort; không thêm salting/job thứ hai.
 

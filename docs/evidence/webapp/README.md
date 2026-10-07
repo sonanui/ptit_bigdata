@@ -83,6 +83,19 @@ POST đúng body → hiển thị nhãn/láng giềng; form số đếm thô g�
   nên commit `5ab0f9b` thiếu 3 file backend; đã thêm ở `b4aa7df`.
 - Giới hạn: kiểm tra trên cùng máy (Docker đã có base image); chưa thử trên máy thành viên khác.
 
+## Tách 2 container và nạp sẵn mô hình (2026-10-07)
+
+- `docker compose --profile web build` (backend: Maven/JDK 21 → JRE 21; frontend: Node 24 `npm ci`, `npm test`, `npm run build` → Nginx 1.27):
+  thành công trong 1 phút 52 giây (log `docker-build.log`). `docker compose --profile web up -d` chỉ khởi động `web-backend` (healthy qua
+  `/api/health`) và `web-frontend`; HDFS/MapReduce đã gắn profile `bigdata` nên không bị bật theo.
+- Qua Nginx cổng 8080: `/`, `/ml/knn`, `/groupby` trả `index.html` (200), asset không tồn tại trả 404, `index.html` có `Cache-Control: no-cache`;
+  `/api/...` được chuyển sang backend. Backend thử trực tiếp ở 8081: `/api/health` 200.
+- `ModelWarmup`: log "Đã nạp sẵn mô hình kmeans" 6 giây và "knn" 12 giây sau khi ứng dụng sẵn sàng. Lần gọi ML đầu tiên sau đó:
+  `GET /api/ml/kmeans/{run}/products` 0,071 s, `POST /api/ml/knn/predict` 0,468 s (trước đây 6,5 s và 9,2 s).
+- Sửa kèm: `ServingRepository` cache manifest ở map riêng để tránh `computeIfAbsent` lồng nhau trên cùng `ConcurrentHashMap`.
+- Build toàn dự án từ `pom.xml` gốc (`mvn -B clean package`, JDK 21): `bigdata` 25 test, `webapp/backend` 7 test (parity K-Means 92 592/92 592,
+  KNN 64 254/64 254) đều pass.
+
 ## Chưa làm
 
-- Training API (P2), lịch sử dự đoán, nạp sẵn mô hình lúc khởi động. Danh sách đầy đủ: plan §19.
+- Training API (P2), lịch sử dự đoán, tách chunk bundle JS. Danh sách đầy đủ: plan §19.

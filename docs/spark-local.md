@@ -5,8 +5,8 @@ Bảng đầy đủ ở `docs/PROJECT_AUDIT_AND_IMPLEMENTATION_PLAN.md` §7.6.
 
 | Phần | Ngôn ngữ / vị trí |
 |---|---|
-| ETL raw → curated, Group By A1–A5, đặc trưng A7 | Java, `src/main/java/vn/edu/bigdata/revenue/spark/` (điểm chạy `SparkTool`) |
-| K-Means, KNN | Notebook Python, `notebooks/kmeans_product.ipynb`, `notebooks/knn_product.ipynb` |
+| ETL raw → curated, Group By A1–A5, đặc trưng A7, nhãn A8, publish serving | Java, module `bigdata`, `bigdata/src/main/java/vn/edu/bigdata/revenue/spark/` (điểm chạy `SparkTool`) |
+| K-Means, KNN | Notebook Python, `notebooks/kmeans_product.ipynb`, `notebooks/knn_classifier.ipynb` (KNN hướng B cũ trên D2: `knn_product.ipynb`) |
 
 ## Cài đặt một lần (Windows, PowerShell)
 
@@ -28,7 +28,7 @@ Bảng đầy đủ ở `docs/PROJECT_AUDIT_AND_IMPLEMENTATION_PLAN.md` §7.6.
 ## Build và test
 
 ```powershell
-.\scripts\spark-local.ps1 build              # mvn -Pspark package: 18 test MR + 5 test Spark, ra target\revenue-aggregation-spark.jar
+.\scripts\spark-local.ps1 build              # mvn -pl bigdata -Pspark package: 18 test MR + 7 test Spark, ra bigdata\target\revenue-aggregation-spark.jar
 .\scripts\spark-local.ps1 build -DskipTests  # chỉ build
 ```
 
@@ -42,7 +42,7 @@ không compile package `spark`.
 ```
 
 Chuỗi: `revenue` (A1, RDD `reduceByKey`) → `etl` (curated Parquet + `quality.json`) → `metrics` (A2–A5, kiểm tra A1 = A2) →
-`features` (A7). `run_id` ghi ở `docs\evidence\spark-java\<tag>-run-ids.tsv`; kết quả nhỏ ở `results\spark\<run_id>\`; output đầy đủ trên HDFS.
+`features` (A7) → `labels` (A8, nhãn KNN theo mốc t0). Bước `publish` chạy riêng sau notebook (xem `docs/END_TO_END.md`). `run_id` ghi ở `docs\evidence\spark-java\<tag>-run-ids.tsv`; kết quả nhỏ ở `results\spark\<run_id>\`; output đầy đủ trên HDFS.
 Mọi output phải mới (`errorifexists`); chạy lại sẽ tạo `run_id` mới. Chạy riêng một job:
 
 ```powershell
@@ -58,12 +58,13 @@ py -3 scripts\baseline_revenue.py <file CSV cục bộ> results\baseline\<tên>.
 
 ## Chạy notebook ML
 
-Notebook đọc `run_id` đặc trưng từ `docs\evidence\spark-java\<TAG>-run-ids.tsv` (mặc định `TAG = "d2"`). Thực thi và lưu kèm output:
+Notebook đọc `run_id` đặc trưng/nhãn từ `docs\evidence\spark-java\<TAG>-run-ids.tsv` (biến môi trường `ML_TAG`, mặc định `d3`;
+các tham số khác xem `docs/ML.md`). Thực thi và lưu kèm output:
 
 ```powershell
 cd notebooks
 ..\.venv\Scripts\jupyter-nbconvert.exe --to notebook --execute --inplace --ExecutePreprocessor.timeout=7200 kmeans_product.ipynb
-..\.venv\Scripts\jupyter-nbconvert.exe --to notebook --execute --inplace --ExecutePreprocessor.timeout=7200 knn_product.ipynb
+..\.venv\Scripts\jupyter-nbconvert.exe --to notebook --execute --inplace --ExecutePreprocessor.timeout=7200 knn_classifier.ipynb
 ```
 
 Hoặc mở bằng Jupyter/VS Code với kernel của `.venv`. Kết quả: `results\ml\<run_id>\` và HDFS `/data/ecommerce/ml/{kmeans,knn}/run_id=...`.

@@ -1,12 +1,16 @@
 # Môi trường local bằng Docker
 
-Image `ptit-bigdata:local` chứa Java 11, Maven 3.9.11, Python 3 và project đã build. MapReduce chạy bằng LocalJobRunner trong container `bigdata`. HDFS là hai container riêng (`namenode`, `datanode`, image `apache/hadoop:3.4.2`), xem mục HDFS bên dưới. Không có YARN. Phân bổ Docker/host đầy đủ: `docs/PROJECT_AUDIT_AND_IMPLEMENTATION_PLAN.md` §7.6. Java/Maven không cần cài trên host. Cần Docker Engine/Desktop và Docker Compose plugin; build cần Internet để tải base image, apt packages và Maven dependencies.
+Image `ptit-bigdata:local` chứa Java 11, Maven 3.9.11, Python 3 và module `bigdata` đã build (jar `bigdata/target/revenue-aggregation.jar`). MapReduce chạy bằng LocalJobRunner trong container `bigdata`. HDFS là hai container riêng (`namenode`, `datanode`, image `apache/hadoop:3.4.2`), xem mục HDFS bên dưới. Không có YARN. Phân bổ Docker/host đầy đủ: `docs/PROJECT_AUDIT_AND_IMPLEMENTATION_PLAN.md` §7.6. Java/Maven không cần cài trên host.
+
+`compose.yaml` chia hai profile: `bigdata` (`bigdata`, `namenode`, `datanode`) và `web` (`web-backend`, `web-frontend`).
+Gọi đích danh service thì profile tự bật (`docker compose up -d namenode datanode`, `docker compose run --rm bigdata ...`);
+`docker compose --profile web up -d` chỉ khởi động web, không bật HDFS. Cần Docker Engine/Desktop và Docker Compose plugin; build cần Internet để tải base image, apt packages và Maven dependencies.
 
 ## Build và demo
 
 ```bash
 mkdir -p data/raw data/samples results
-docker compose build
+docker compose build bigdata
 docker compose run --rm bigdata
 ```
 
@@ -21,7 +25,7 @@ Source/config/scripts nằm trong image; sửa chúng thì build lại. Chỉ da
 ## Kiểm thử
 
 ```bash
-docker compose run --rm bigdata ./mvnw -B -Pintegration verify
+docker compose run --rm bigdata ./mvnw -B -pl bigdata -Pintegration verify
 docker compose run --rm bigdata python3 -m unittest discover -s scripts -p 'test_*.py'
 ```
 
@@ -84,6 +88,21 @@ Container `bigdata` không đọc `hdfs-site.xml` của cluster, nên các scrip
 
 Tắt HDFS: `docker compose stop namenode datanode` (giữ dữ liệu). `docker compose down -v` **xóa** volume HDFS. Chỉ dùng khi chắc chắn muốn nạp lại từ đầu.
 
+## Web app (2 container, profile `web`)
+
+```bash
+docker compose --profile web up -d --build      # http://localhost:8080 (React qua Nginx), API thử trực tiếp: http://localhost:8081/api/health
+docker compose --profile web down
+```
+
+- `web-backend` (`webapp/backend/Dockerfile`): Spring Boot, JRE 21, chỉ phục vụ `/api`; mount `./serving` chỉ đọc tại `/serving`;
+  healthcheck gọi `/api/health`; nạp sẵn mô hình của serving run mặc định khi khởi động (tắt bằng `SERVING_WARMUP=false`).
+- `web-frontend` (`webapp/frontend/Dockerfile`, `nginx.conf`): build React (chạy `npm test` trong lúc build) rồi phục vụ bằng Nginx;
+  chuyển `/api/` sang `web-backend:8080`; route React được trả `index.html`. Khởi động sau khi backend healthy.
+- Không cần HDFS/Spark khi chạy web; RAM giới hạn 768 MB (backend) và 128 MB (frontend).
+
 ## Phạm vi kiểm chứng
 
 Ngày 2026-10-06, trên Windows 11 + Docker Desktop 29.8.1 (WSL2): build image, `-Pintegration verify`, test Python và demo fixture đều chạy được (`docs/evidence/windows-docker/`); HDFS lên được, nạp `2019-Oct.csv` (43 block, HEALTHY) và chạy V1–V5 trên fixture đặt trên HDFS (`docs/evidence/hdfs/`). Benchmark trong `docs/evidence/` (không thuộc thư mục con) vẫn là số đo trên macOS của tác giả, không phải trong container.
+Ngày 2026-10-07, sau khi tách module `bigdata` và web 2 container: build image, `-pl bigdata -Pintegration verify` (18 + 6 test, spotless),
+demo fixture, MR V1/V5 trên D1 qua HDFS (khớp kết quả trước refactor) và web qua Nginx đều chạy lại được.

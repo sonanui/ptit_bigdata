@@ -1,82 +1,89 @@
-# Cấu trúc và function từng file
+# Cấu trúc dự án và trách nhiệm từng file
 
-Một Maven module; package vn.edu.bigdata.revenue. Source active dưới src; các thuật toán salting cũ đã được xóa.
+Maven multi-module, `pom.xml` gốc chỉ là aggregator (không phải parent): mỗi module giữ cấu hình Java riêng.
+
+| Module / thư mục | Ngôn ngữ, build | Vai trò |
+|---|---|---|
+| `bigdata/` | Java, `bigdata/pom.xml`; Hadoop 3.4.2 (Java 11), profile `spark` (Spark 4.0.4, Java 17) tự bật trên JDK ≥ 17 | Hadoop MapReduce V1–V5 và các job Spark của pipeline; package `vn.edu.bigdata.revenue` |
+| `webapp/backend/` | Java 21, Spring Boot 3.5; module của aggregator khi JDK ≥ 17 | API chỉ đọc serving artifact, suy luận K-Means/KNN |
+| `webapp/frontend/` | TypeScript, React 18, Vite, npm | Giao diện; chạy Docker thì Nginx phục vụ và chuyển `/api` sang backend |
+| `notebooks/` | Python, PySpark MLlib, numpy | Huấn luyện và đánh giá K-Means, KNN |
+| `scripts/` | Bash, PowerShell, Python | HDFS, chạy MR/Spark, benchmark, publish/sync, công cụ kiểm tra |
+| `serving/` | Dữ liệu (JSON/CSV) | Serving run đã chốt cho web, có `manifest.json` sha256 |
 
 ```text
-bigdata/
-  src/main/java/vn/edu/bigdata/revenue/
-    cli/
-      CliArguments.java
-      DatasetTool.java
-      RevenueTool.java
-    domain/
-      AggregateState.java
-      GroupKeyResolver.java
-      GroupMode.java
-      Money.java
-      Purchase.java
-    hadoop/io/
-      AggregateBatchWritable.java
-      SumCountWritable.java
-    hadoop/shared/
-      BoundedAccumulator.java
-      DenseAggregationMapper.java
-      FinalRevenueReducer.java
-      MapperSupport.java
-      RevenueCounters.java
-    hadoop/v1/
-      DirectPurchaseMapper.java
-    hadoop/v2/
-      SumCountCombiner.java
-    hadoop/v3/
-      InMapperPurchaseMapper.java
-    hadoop/v4/
-      DensePurchaseMapper.java
-    hadoop/v5/
-      BatchPartitioner.java
-      BatchPurchaseMapper.java
-      BatchRevenueReducer.java
-    input/
-      BoundedLineReader.java
-      CsvEventParser.java
-      DatasetPreflight.java
-      EventParser.java
-      InputManifest.java
-      JsonArtifacts.java
-      ParseResult.java
-      ParsedEvent.java
-      PreflightReport.java
-      PreparationResult.java
-      ProjectedCsvEventParser.java
-      PurchasePreparation.java
-      SamplingHash.java
-    job/
-      JobExecutor.java
-      JobPlan.java
-      JobPlanFactory.java
-      RunOptions.java
-      Variant.java
-    metrics/
-      MetricsCollector.java
-      RunManifest.java
-    output/
-      CsvExporter.java
-      OutputRow.java
-      ResultValidator.java
-      RevenueFormatter.java
-      ValidationReport.java
-    profile/
-      DatasetProfiler.java
-      GroupDictionary.java
-      ProfileReport.java
-  src/test/java/ (unit và integration)
-  scripts/ (CLI wrappers, workload, benchmark, Python tests)
-  config/ (local, cluster, benchmark matrix)
-  docs/ (design, plan, runbook, evidence)
-  data/ và results/ (input/output artifacts, gitignored)
+ptit_bigdata/
+  pom.xml                          aggregator: bigdata (+ webapp/backend khi JDK >= 17)
+  mvnw                             wrapper bash: tải Maven 3.9.11 vào .tools/ nếu máy chưa có
+  Dockerfile                       image MapReduce (JDK 11): build module bigdata, chạy demo/script MR
+  compose.yaml                     profile bigdata (bigdata, namenode, datanode) và web (web-backend, web-frontend)
+  bigdata/
+    pom.xml
+    src/main/java/vn/edu/bigdata/revenue/
+      cli/          CliArguments, DatasetTool, RevenueTool
+      domain/       AggregateState, GroupKeyResolver, GroupMode, Money, Purchase
+      hadoop/io/    AggregateBatchWritable, SumCountWritable
+      hadoop/shared/ BoundedAccumulator, DenseAggregationMapper, FinalRevenueReducer, MapperSupport, RevenueCounters
+      hadoop/v1..v5/ DirectPurchaseMapper | SumCountCombiner | InMapperPurchaseMapper | DensePurchaseMapper | Batch*
+      input/        CsvEventParser, ProjectedCsvEventParser, PurchasePreparation, DatasetPreflight, InputManifest, ...
+      job/          JobExecutor, JobPlan, JobPlanFactory, RunOptions, Variant
+      metrics/      MetricsCollector, RunManifest
+      output/       CsvExporter, OutputRow, ResultValidator, RevenueFormatter, ValidationReport
+      profile/      DatasetProfiler, GroupDictionary, ProfileReport
+      spark/        SparkTool, SparkSupport, RevenueJob, EventEtlJob, MetricsJob, ProductFeaturesJob, ProductLabelJob, ServingPublishJob
+    src/main/resources/log4j.properties
+    src/test/java/  unit (MR + SparkJobsTest) và integration (*IT, profile integration)
+    src/test/resources/fixtures/  events.csv (7 dòng) + expected-category-id.tsv (oracle tính tay)
+  webapp/
+    backend/        Dockerfile, pom.xml, src/main/java/vn/edu/bigdata/webapp/{api,ml,serving}
+    frontend/       Dockerfile, nginx.conf, package.json, src/{main,run,api,hooks,chart}.tsx, src/pages/, src/test/
+  notebooks/        kmeans_product.ipynb, knn_classifier.ipynb, knn_product.ipynb (hướng B, D2), ml_common.py
+  scripts/          xem bảng "Script" bên dưới
+  config/           hadoop.env, local.properties (nạp bởi run-local.sh), cluster.properties (mẫu), bench/*.json, spark-local.env.example
+  serving/          <run_id>/{manifest.json, analytics/, benchmarks/, ml/} + _LATEST
+  docs/             tài liệu; docs/evidence/ là bằng chứng các lần chạy
+  data/, results/   dữ liệu gốc và kết quả cục bộ (không commit)
 ```
 
-## File mới và tối ưu
+## Spark (`bigdata/src/main/java/vn/edu/bigdata/revenue/spark/`)
+
+| File | Trách nhiệm |
+|---|---|
+| `SparkTool.java` | Điểm chạy `spark-submit`: chọn job `revenue | etl | metrics | features | labels | publish`, kiểm tra cờ CLI |
+| `SparkSupport.java` | SparkSession (HDFS, replication 1), `run_id`, `RunRecord` (thời gian từng bước, task metrics, `_run.json` create-only), ghi CSV/JSON |
+| `RevenueJob.java` | A1: `rdd-raw` (flatMapToPair + reduceByKey, dùng chung `CsvEventParser`/`PurchasePreparation` với MR), `df-raw`, `df-curated` cho E4 |
+| `EventEtlJob.java` | Raw CSV → curated Parquet (partition `event_date`), bảo toàn số dòng theo lý do loại, báo cáo chất lượng |
+| `MetricsJob.java` | A2–A5: funnel theo danh mục, theo brand, theo giờ; kiểm tra chéo Σpurchase A2 = A1 |
+| `ProductFeaturesJob.java` | A7: Group By `product_id` → đặc trưng log1p/tỷ lệ cho K-Means, lọc `views ≥ min-views` |
+| `ProductLabelJob.java` | A8: ảnh chụp train/test theo mốc t0, đặc trưng 14 ngày trước, nhãn purchase 7 ngày sau, kiểm tra rò rỉ thời gian |
+| `ServingPublishJob.java` | Gom kết quả MR/Spark/ML thành serving run (JSON/CSV + manifest sha256), đối chiếu MR V1 với Spark A1 |
+
+## Web
+
+| File | Trách nhiệm |
+|---|---|
+| `webapp/backend/.../serving/ServingRepository.java` | Liệt kê run có manifest, đọc file có trong manifest sau khi kiểm sha256, cache |
+| `.../ml/ModelRegistry.java`, `KMeansModel.java`, `KnnModel.java`, `ProductFeatures.java` | Danh mục mô hình; suy luận K-Means (tâm gần nhất) và KNN (k láng giềng, bỏ phiếu) giống Spark/numpy |
+| `.../ml/ModelWarmup.java` | Nạp sẵn mô hình của run mặc định ở luồng nền khi khởi động |
+| `.../api/AnalyticsController.java`, `MlController.java`, `ApiErrors.java` | `/api/analytics/*`, `/api/ml/*`, lỗi RFC 9457 |
+| `webapp/frontend/src/main.tsx`, `run.tsx`, `chart.tsx` | Khung ứng dụng (thanh pipeline), chọn serving run, theme biểu đồ |
+| `webapp/frontend/src/pages/*.tsx` | Pipeline, Group By, MapReduce và Spark, K-Means, KNN |
+
+## Script
+
+| Script | Việc |
+|---|---|
+| `run-local.sh`, `run-cluster.sh`, `demo.sh`, `prepare-input.sh`, `java-env.sh` | Chạy `RevenueTool`/`DatasetTool` (MR) |
+| `hdfs-ingest.sh`, `hdfs-sample.sh`, `hdfs-mr.sh`, `hdfs-fs.sh` | Nạp HDFS, lấy mẫu tất định, chạy MR trên HDFS, FsShell |
+| `benchmark.py`, `generate_workload.py`, `test_*.py` | Benchmark MR có lặp, sinh dữ liệu synthetic, test Python |
+| `spark-local.ps1`/`.sh`, `spark-pipeline.ps1`, `spark-bench.ps1`, `spark-bench-all.ps1` | Build/chạy Spark trên host, chuỗi A1–A8, benchmark E4/E5 |
+| `baseline_revenue.py`, `compare_revenue.py` | Baseline Python độc lập và so khớp chính xác kết quả A1 |
+| `bench_summary.py`, `api_latency.py` | Tổng hợp E2–E7 cho báo cáo/web; đo độ trễ API |
+| `serving-sync.ps1` | Kéo serving run từ HDFS về `./serving`, kiểm sha256 |
+
+Phần dưới mô tả chi tiết module MapReduce (đường dẫn tương đối với `bigdata/src/main/java/vn/edu/bigdata/revenue/`).
+
+## MapReduce: file tối ưu V3–V5
 
 | File | Function và trách nhiệm |
 |---|---|
@@ -132,8 +139,8 @@ Các API dưới đây giữ nghiệp vụ độc lập với Hadoop.
 | `CsvExporter.java` | `export(Path parts,Path csv,FileSystem): void`; header CSV, escape và sort key, kiểm tra output mới; nằm ngoài job timing. |
 | `MetricsCollector.java` | `collect(Job): Map<String,Long>` counters có qualified names; stage label riêng. Chưa tự lấy reducer p50/p95 từ JobHistory; giữ job IDs để phân tích bổ sung, không tạo số 0 giả. |
 | `RevenueTool.java` | Hadoop `Tool`/`Configured`; `run(String[]): int`, `main(String[])`. Parse CLI → options → preflight artifact check → plan → execute → validate → write manifest. Exit 0 success-valid, 2 invalid CLI/input/artifact, 1 job hoặc validation failure. |
-| `pom.xml` | Compile Java 11; Hadoop dependencies `provided`; CSV/JSON/CLI runtime đóng gói trong JAR; Surefire unit, Failsafe integration profile; formatter và compiler warnings. Không shade Hadoop classes. |
-| `.gitignore` | Bỏ IDE metadata, target, raw/sample dữ liệu, results, credentials. Giữ fixture nhỏ và docs trong git. |
+| `bigdata/pom.xml` | Compile Java 11; Hadoop dependencies `provided`; CSV/JSON/CLI runtime đóng gói trong JAR; Surefire unit, Failsafe integration profile; formatter và compiler warnings. Không shade Hadoop classes. |
+| `.gitignore` | Bỏ IDE metadata, target, raw/sample dữ liệu, results, credentials, serving run trừ run demo đã chốt. Giữ fixture nhỏ và docs trong git. |
 | `.editorconfig` | UTF-8, LF, newline cuối file, indent nhất quán. |
 | `config/cluster.properties` | Template endpoint/memory/split/compression cho cụm môn học; không chứa token hoặc password. |
 | `prepare-input.sh` | Kiểm tra file người dùng tải từ Kaggle, gọi preflight; profile là lệnh riêng. Chỉ prepare metadata local; upload HDFS theo runbook. Không hard-code credentials, không tự tải nhiều GB. |

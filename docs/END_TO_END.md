@@ -38,7 +38,7 @@ Một lần: Docker Desktop, JDK 21, `.venv` theo `docs/spark-local.md`, `config
 Không chạy MR, Spark, notebook đồng thời (RAM).
 
 ```powershell
-docker compose build                                   # image bigdata (Maven + JDK 11) cho MR
+docker compose build bigdata                           # image bigdata (Maven + JDK 11) cho MR, module bigdata
 docker compose up -d namenode datanode                 # HDFS; kiểm tra: docker compose exec namenode hdfs dfsadmin -report
 docker compose exec namenode bash /opt/bigdata/scripts/hdfs-ingest.sh 2019-Oct.csv     # ~12 phút, không ghi đè
 $env:MSYS_NO_PATHCONV = "1"   # chỉ khi dùng Git Bash
@@ -55,7 +55,7 @@ docker compose run --rm bigdata python3 scripts/benchmark.py --matrix config/ben
    --benchmarks-dir docs\evidence\bench\serving
 .\scripts\serving-sync.ps1 -RunId <SERVING_RUN> -SetLatest
 docker compose stop namenode datanode                  # web không cần HDFS
-# web: webapp/README.md (java -jar hoặc docker compose --profile web up -d --build webapp)
+docker compose --profile web up -d --build            # web: web-backend (API) + web-frontend (Nginx), http://localhost:8080
 ```
 
 Chạy lại an toàn: mọi output ghi vào thư mục mới theo `run_id` (`ErrorIfExists`/create-only); raw không bị ghi đè;
@@ -65,7 +65,7 @@ serving run bất biến (`serving-sync.ps1` từ chối run đã có). Dọn ru
 
 1. **HDFS** (1 phút): NameNode UI `http://localhost:9870` → `/data/ecommerce/raw/2019-Oct.csv` (43 block);
    `docs/evidence/hdfs/source-2019-Oct/` (fsck HEALTHY, sha256 qua HDFS trùng file gốc).
-2. **MapReduce** (2 phút): `src/main/java/vn/edu/bigdata/revenue/hadoop/v1` (Mapper/Reducer) và V2–V5; `RecordReductionIT`;
+2. **MapReduce** (2 phút): `bigdata/src/main/java/vn/edu/bigdata/revenue/hadoop/v1` (Mapper/Reducer) và V2–V5; `RecordReductionIT`;
    bảng E2/E3 ở `docs/evidence/bench/SUMMARY.md` (map output records 742 849 → 15 511 với combiner → 86 với V5).
 3. **Spark** (2 phút): `RevenueJob` (flatMapToPair + reduceByKey), lineage `revenue-rdd-lineage.txt`; parity MR V1 = Spark A1 trên cả tháng (567/567 nhóm).
 4. **Web** (4 phút), HDFS/Spark đã tắt:

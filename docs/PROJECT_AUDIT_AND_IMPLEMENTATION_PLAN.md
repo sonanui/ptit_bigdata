@@ -10,6 +10,8 @@
 > **Cập nhật 2026-10-06 — Giai đoạn 1 (T1.1–T1.6) hoàn tất, trừ T1.7 (tùy chọn):** HDFS trong Docker, nạp `2019-Oct.csv`, mẫu D1/D2 tất định, MR V1–V5 đọc/ghi HDFS trên D1, D2 đều valid và khớp nhau. Bằng chứng: `docs/evidence/hdfs/README.md`. Dòng #1, #2, #5, #8 và bảng giai đoạn 1 đã cập nhật.
 >
 > **Cập nhật 2026-10-06 — Giai đoạn 2, 4 và E1/E7 (theo chỉ đạo của nhóm):** (1) phần lõi Spark viết bằng **Java** trong package `vn.edu.bigdata.revenue.spark` (profile Maven `-Pspark`, Spark 4.0.4, chạy **local trên host**); (2) K-Means/KNN viết bằng **notebook Python** (`notebooks/`), thực thi và lưu kèm output để giữ vết. Bản PySpark cho phần lõi viết trước đó đã bị bỏ. Bằng chứng: `docs/evidence/spark-java/README.md`, `docs/evidence/ml/README.md`. D3 đổi theo §15.1; §7.6 cập nhật phân bổ local/Docker.
+>
+> **Cập nhật 2026-10-07 — tái cấu trúc.** (1) Code Hadoop/Spark chuyển vào module con `bigdata/` (`bigdata/pom.xml`, `bigdata/src/`); `pom.xml` gốc thành aggregator (module `bigdata` + `webapp/backend` khi JDK ≥ 17). (2) Web tách 2 container `web-backend` (Spring Boot, chỉ /api) và `web-frontend` (Nginx + React); `compose.yaml` có profile `bigdata` và `web`. (3) Serving run demo commit sẵn trong `serving/`. Các đường dẫn `src/...`, `target/...`, service `webapp` ở các mục cũ của tài liệu này là cấu trúc trước ngày 2026-10-07. Việc còn lại: §19.
 
 ---
 
@@ -1211,17 +1213,17 @@ Node.js chỉ cần lúc build; bản chạy là file tĩnh do FastAPI phục v�
 | U3 | Tổng duyệt demo ≤ 10 phút (T5.5) theo `docs/END_TO_END.md` §3 | Gọi trước các endpoint ML (warm-up) để tránh 6–9 s ở lần gọi đầu |
 | U4 | Runbook được thử trên **máy khác** (T5.2, §3 dòng 19) | 2026-10-07: đã thử bản clone mới **trên cùng máy** cho mức 1 của `docs/HUONG_DAN_CHAY.md` (web chạy với serving commit sẵn, `docs/evidence/webapp/README.md`). Còn lại: thành viên khác chạy mức 1 và mức 3 trên máy của mình, ghi lỗi gặp phải |
 | U5 | Biểu đồ cho báo cáo (T5.1) | Chụp từ web hoặc notebook; mỗi hình ghi `run_id`. Lưu ý: chụp màn hình Chrome bị timeout khi tab ở nền |
-| U6 | Lý thuyết Spark trong `docs/algorithms.md` | Physical plan partial/final aggregate (`revenue-df-plan.txt`), lineage RDD, phân biệt `reduceByKey` với Hadoop Reducer |
+| U6 | ~~Lý thuyết Spark trong `docs/algorithms.md`~~ | **XONG 2026-10-07**: mục 10 (RDD lineage và physical plan DataFrame thật, ánh xạ Map/Combine/Shuffle/Reduce, số đo D3, phân biệt MR và Spark) |
 | U7 | Câu hỏi còn mở §15.2: hạn nộp, giảng viên có bắt buộc YARN/web không | Quyết định mức cắt và có làm U9 không |
 
 ### 19.3 Cần để hệ thống gọn và tái lập (P1)
 
 | ID | Việc | Ghi chú |
 |---|---|---|
-| U8 | Gộp `docs/design.md` + `docs/optimization-redesign.md`; cập nhật `README.md` theo kiến trúc mới; trỏ `docs/implementation-plan.md`, `docs/progress.md` về plan này (T5.3, F10) | Tránh tài liệu mâu thuẫn |
-| U9 | F8: `config/local.properties` không được script nào nạp | Nạp bằng `-conf` hoặc xóa, ghi rõ |
-| U10 | Dọn repo: `img.png`/`img_1.png` (ảnh đen), quyết định có commit 3 PDF có bản quyền không, bản staged của `CLAUDE.md` (xem `temp.md`) | Người dùng quyết định |
-| U11 | `pom.xml`: dòng `<source>17</source><target>17</target>` trong compiler mặc định không có tác dụng (bị `release=11` và profile `spark` ghi đè) | Có thể bỏ để tránh hiểu nhầm |
+| U8 | ~~Gộp tài liệu, cập nhật README~~ | **XONG 2026-10-07**: `design.md` gộp `optimization-redesign.md`; xóa `implementation-plan.md`, `progress.md`; viết lại `README.md`, `runbook.md`, `project-structure.md`; cập nhật `docker.md`, `spark-local.md`, `benchmark-report.md` (thêm số liệu thật), thêm `docs/evidence/README.md` |
+| U9 | ~~F8: `config/local.properties` không được nạp~~ | **XONG 2026-10-07**: `scripts/run-local.sh` nạp file thành `-D` (đổi file bằng `REVENUE_CONF`, `-D` của người gọi được ưu tiên); giá trị sửa cho đúng cấu hình đã đo (mặc định Hadoop: io.sort.mb 100, speculative true); kiểm chứng qua `run-manifest.json` |
+| U10 | Dọn repo: `img.png`/`img_1.png` (ảnh đen), quyết định có commit 3 PDF có bản quyền không, bản staged của `CLAUDE.md` (xem `temp.md`) | Người dùng quyết định; 2026-10-07: `CLAUDE.md`, `temp.md` đã gỡ khỏi repo (commit thường + `.gitignore`), **còn trong lịch sử commit `d1dbd80` đã push**: muốn xóa hẳn phải viết lại lịch sử và force-push (người dùng tự thực hiện hoặc cấp quyền) |
+| U11 | ~~`pom.xml`: dòng `<source>17</source>` thừa~~ | **XONG 2026-10-07** (đã bỏ trong `bigdata/pom.xml`) |
 | U12 | Test Spark chạy trên host, không trong container; notebook không có test tự động (chỉ assert parity bên trong) | Chấp nhận được; ghi trong báo cáo |
 | U13 | Spark trên Linux/macOS (`scripts/spark-local.sh`) chưa thử | Chỉ cần nếu thành viên dùng máy khác Windows |
 | U14 | Dọn HDFS/`results/` (run thử, `bench/`) và serving run cũ `20261007-002341-b0376ef-d3` | Thao tác xóa thủ công, cần xác nhận |
@@ -1237,7 +1239,7 @@ Node.js chỉ cần lúc build; bản chạy là file tĩnh do FastAPI phục v�
 | U19 | KNN: K tốt nhất (15) nằm ở biên lưới K; KNN thua Logistic Regression | Mở rộng lưới K với quy tắc chọn cố định mới, chạy lại một lần; giữ kết quả cũ trong evidence |
 | U20 | K-Means K = 2 là phân tách thô; E7 ở quy mô nhỏ nên cache không có lợi tổng thể | Báo cáo thêm hồ sơ cụm K = 3..5 làm phân tích phụ |
 | U21 | ETL D3 không đếm bản ghi trùng (quá nặng cho RAM); D2 có 586 dòng trùng | Đếm trùng theo hash từng ngày nếu cần |
-| U22 | Web: lần gọi đầu API ML 6–9 s (nạp + kiểm sha256 CSV 11–13 MB); bundle JS 1,25 MB | Nạp sẵn mô hình lúc khởi động; tách chunk ECharts |
+| U22 | ~~Web: lần gọi đầu API ML 6–9 s~~ | **XONG 2026-10-07**: `ModelWarmup` nạp sẵn mô hình ở luồng nền khi khởi động; lần gọi đầu sau khởi động 0,07 s (K-Means) và 0,47 s (KNN). Bundle JS 1,25 MB vẫn chưa tách chunk |
 
 ### 19.5 Mở rộng, ưu tiên thấp (P2) hoặc không làm
 

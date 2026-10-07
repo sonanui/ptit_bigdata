@@ -1,284 +1,464 @@
-﻿docker :  Image ptit-bigdata-webapp:local Building 
-At line:1 char:478
-+ ... tion $root; docker compose --profile web build webapp *> docs\evidenc ...
+﻿docker :  Image ptit-bigdata:local Building 
+At line:1 char:503
++ ... StartNew(); docker compose --profile web build *> docs\evidence\webap ...
 +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: ( Image ptit-big...local Building :String) [], RemoteException
+    + CategoryInfo          : NotSpecified: ( Image ptit-bigdata:local Building :String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
  
+ Image ptit-bigdata-web-backend:local Building 
+ Image ptit-bigdata-web-frontend:local Building 
 #1 [internal] load local bake definitions
-#1 reading from stdin 599B done
+#1 reading from stdin 1.69kB 0.0s done
 #1 DONE 0.0s
 
-#2 [internal] load build definition from Dockerfile
-#2 transferring dockerfile: 878B 0.0s done
-#2 DONE 0.1s
+#2 [bigdata internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.04kB 0.1s done
+#2 DONE 0.2s
 
-#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre
-#3 ...
+#3 [web-frontend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 479B 0.0s done
+#3 DONE 0.3s
 
-#4 [auth] library/node:pull token for registry-1.docker.io
-#4 DONE 0.0s
+#4 [web-backend internal] load build definition from Dockerfile
+#4 transferring dockerfile: 878B 0.0s done
+#4 DONE 0.3s
 
-#5 [auth] library/maven:pull token for registry-1.docker.io
-#5 DONE 0.0s
+#5 [web-backend internal] load metadata for docker.io/library/eclipse-temurin:21-jre
+#5 ...
 
-#6 [auth] library/eclipse-temurin:pull token for registry-1.docker.io
+#6 [auth] library/maven:pull token for registry-1.docker.io
 #6 DONE 0.0s
 
-#7 [internal] load metadata for docker.io/library/maven:3.9.11-eclipse-temurin-21
+#7 [web-frontend internal] load metadata for docker.io/library/node:24-alpine
 #7 ...
 
-#8 [internal] load metadata for docker.io/library/node:24-alpine
-#8 DONE 2.9s
+#8 [auth] library/node:pull token for registry-1.docker.io
+#8 DONE 0.0s
 
-#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre
-#3 DONE 2.9s
-
-#7 [internal] load metadata for docker.io/library/maven:3.9.11-eclipse-temurin-21
-#7 DONE 2.9s
-
-#9 [internal] load .dockerignore
-#9 transferring context: 91B done
+#9 [auth] library/eclipse-temurin:pull token for registry-1.docker.io
 #9 DONE 0.0s
 
-#10 [internal] load build context
+#10 [auth] library/nginx:pull token for registry-1.docker.io
 #10 DONE 0.0s
 
-#11 [backend 1/7] FROM docker.io/library/maven:3.9.11-eclipse-temurin-21@sha256:6fdc855a6ed81d288ca7ca37ac6ff5e9308b612485c0801d70b25a858c83d237
-#11 resolve docker.io/library/maven:3.9.11-eclipse-temurin-21@sha256:6fdc855a6ed81d288ca7ca37ac6ff5e9308b612485c0801d70b25a858c83d237 0.1s done
-#11 DONE 0.1s
+#11 [web-frontend internal] load metadata for docker.io/library/nginx:1.27-alpine
+#11 ...
 
-#12 [frontend 1/6] FROM docker.io/library/node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1
-#12 resolve docker.io/library/node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1 0.1s done
-#12 DONE 0.1s
+#12 [bigdata internal] load metadata for docker.io/library/maven:3.9.11-eclipse-temurin-11
+#12 DONE 2.1s
 
-#13 [stage-2 1/3] FROM docker.io/library/eclipse-temurin:21-jre@sha256:cff19e6215689161eb6162c11b86b0c60ddf802164f2eaf48d570f8fb79a36c5
-#13 resolve docker.io/library/eclipse-temurin:21-jre@sha256:cff19e6215689161eb6162c11b86b0c60ddf802164f2eaf48d570f8fb79a36c5 0.1s done
-#13 DONE 0.1s
+#13 [web-backend internal] load metadata for docker.io/library/maven:3.9.11-eclipse-temurin-21
+#13 DONE 2.1s
 
-#10 [internal] load build context
-#10 transferring context: 177.04kB 0.1s done
-#10 DONE 0.1s
+#14 [bigdata internal] load .dockerignore
+#14 transferring context: 209B 0.0s done
+#14 DONE 0.1s
 
-#14 [frontend 2/6] WORKDIR /src
-#14 CACHED
+#7 [web-frontend internal] load metadata for docker.io/library/node:24-alpine
+#7 ...
 
-#15 [frontend 3/6] COPY frontend/package.json frontend/package-lock.json* ./
-#15 DONE 0.1s
+#15 [bigdata internal] load build context
+#15 DONE 0.0s
 
-#16 [frontend 4/6] RUN npm ci || npm install
-#16 3.850 npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
-#16 13.01 
-#16 13.01 added 164 packages, and audited 165 packages in 12s
-#16 13.01 
-#16 13.01 29 packages are looking for funding
-#16 13.01   run `npm fund` for details
-#16 13.03 
-#16 13.03 6 vulnerabilities (4 moderate, 2 critical)
-#16 13.03 
-#16 13.03 To address all issues (including breaking changes), run:
-#16 13.03   npm audit fix --force
-#16 13.03 
-#16 13.03 Run `npm audit` for details.
-#16 13.03 npm warn install-scripts 1 package has install scripts not yet covered by allowScripts:
-#16 13.03 npm warn install-scripts   esbuild@0.25.12 (postinstall: node install.js)
-#16 13.03 npm warn install-scripts
-#16 13.03 npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
-#16 13.04 npm notice
-#16 13.04 npm notice New major version of npm available! 11.19.0 -> 12.2.0
-#16 13.04 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
-#16 13.04 npm notice To update run: npm install -g npm@12.2.0
-#16 13.04 npm notice
-#16 DONE 13.9s
+#7 [web-frontend internal] load metadata for docker.io/library/node:24-alpine
+#7 DONE 2.4s
 
-#17 [frontend 5/6] COPY frontend/ ./
-#17 DONE 0.4s
+#16 [bigdata  1/10] FROM docker.io/library/maven:3.9.11-eclipse-temurin-11@sha256:c095e2421eaf3e5cb1573fd0474e68e17062866d454362349e17bbb75f44031e
+#16 resolve docker.io/library/maven:3.9.11-eclipse-temurin-11@sha256:c095e2421eaf3e5cb1573fd0474e68e17062866d454362349e17bbb75f44031e
+#16 resolve docker.io/library/maven:3.9.11-eclipse-temurin-11@sha256:c095e2421eaf3e5cb1573fd0474e68e17062866d454362349e17bbb75f44031e 0.2s done
+#16 DONE 0.2s
 
-#18 [frontend 6/6] RUN npm run build
-#18 1.866 
-#18 1.866 > revenue-webapp-frontend@1.0.0 build
-#18 1.866 > tsc -b && vite build
-#18 1.866 
-#18 6.420 vite v6.4.4 building for production...
-#18 6.510 transforming...
-#18 24.88 ✓ 625 modules transformed.
-#18 25.76 rendering chunks...
-#18 25.84 computing gzip size...
-#18 25.93 dist/index.html                                                      0.42 kB │ gzip:   0.30 kB
-#18 25.93 dist/assets/jetbrains-mono-greek-400-normal-C190GLew.woff2           4.23 kB
-#18 25.93 dist/assets/jetbrains-mono-cyrillic-400-normal-BEIGL1Tu.woff2        5.33 kB
-#18 25.93 dist/assets/jetbrains-mono-vietnamese-400-normal-CqNFfHCs.woff       5.37 kB
-#18 25.93 dist/assets/jetbrains-mono-greek-400-normal-B9oWc5Lo.woff            5.66 kB
-#18 25.93 dist/assets/be-vietnam-pro-vietnamese-400-normal-BuGn0gnm.woff       6.57 kB
-#18 25.93 dist/assets/be-vietnam-pro-vietnamese-600-normal-DkpCIyan.woff       6.88 kB
-#18 25.93 dist/assets/be-vietnam-pro-vietnamese-500-normal-CfdwVo8-.woff       6.88 kB
-#18 25.93 dist/assets/be-vietnam-pro-vietnamese-700-normal-By_5yT39.woff       6.89 kB
-#18 25.93 dist/assets/jetbrains-mono-cyrillic-400-normal-ugxPyKxw.woff         6.98 kB
-#18 25.93 dist/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2       7.34 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-ext-400-normal-DYBYyMQr.woff        8.90 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-ext-700-normal-4Hjo2OtD.woff        9.19 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-ext-500-normal-CK0UkkKf.woff        9.20 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-ext-600-normal-BeUwKxhG.woff        9.22 kB
-#18 25.93 dist/assets/jetbrains-mono-latin-ext-400-normal-fXTG6kC5.woff       10.13 kB
-#18 25.93 dist/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2     11.53 kB
-#18 25.93 dist/assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2     12.17 kB
-#18 25.93 dist/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2     12.18 kB
-#18 25.93 dist/assets/be-vietnam-pro-vietnamese-700-normal-Csr0PCuG.woff2     12.47 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2      13.06 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2      13.55 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-ext-600-normal-BNd8euf0.woff2      13.61 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-ext-700-normal-C8_gqRu2.woff2      13.85 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-400-normal-bXgqVju9.woff           16.43 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-700-normal-C2EtzaOi.woff           16.91 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-500-normal-BJkVuMHw.woff           17.00 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-600-normal-5IO4e7bK.woff           17.02 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2          21.17 kB
-#18 25.93 dist/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2          21.17 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2          21.89 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2          22.03 kB
-#18 25.93 dist/assets/be-vietnam-pro-latin-700-normal-DlW1Zbsh.woff2          22.15 kB
-#18 25.93 dist/assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff           27.50 kB
-#18 25.93 dist/assets/index-Ck-PjgMm.css                                      25.32 kB │ gzip:  10.78 kB
-#18 25.93 dist/assets/index-DhMRO3au.js                                    1,256.10 kB │ gzip: 415.37 kB
-#18 25.94 
-#18 25.94 (!) Some chunks are larger than 500 kB after minification. Consider:
-#18 25.94 - Using dynamic import() to code-split the application
-#18 25.94 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
-#18 25.94 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
-#18 25.94 ✓ built in 19.48s
-#18 DONE 26.9s
+#5 [web-backend internal] load metadata for docker.io/library/eclipse-temurin:21-jre
+#5 DONE 2.5s
 
-#19 [backend 3/7] COPY backend/pom.xml ./
+#15 [bigdata internal] load build context
+#15 ...
+
+#17 [web-backend internal] load .dockerignore
+#17 transferring context: 53B 0.0s done
+#17 DONE 0.2s
+
+#18 [web-backend internal] load build context
+#18 DONE 0.0s
+
+#15 [bigdata internal] load build context
+#15 transferring context: 11.03kB 0.2s done
+#15 DONE 0.2s
+
+#19 [bigdata  8/10] COPY scripts ./scripts
 #19 CACHED
 
-#20 [backend 4/7] RUN mvn -B -q dependency:go-offline
+#20 [bigdata  4/10] COPY pom.xml mvnw ./
 #20 CACHED
 
-#21 [backend 2/7] WORKDIR /src
+#21 [bigdata  7/10] COPY bigdata/src ./bigdata/src
 #21 CACHED
 
-#22 [backend 5/7] COPY backend/src ./src
+#22 [bigdata  5/10] COPY bigdata/pom.xml ./bigdata/
 #22 CACHED
 
-#23 [backend 6/7] COPY --from=frontend /src/dist ./src/main/resources/static
-#23 DONE 0.2s
+#23 [bigdata  6/10] RUN chmod +x mvnw && ./mvnw -B -pl bigdata dependency:go-offline
+#23 CACHED
 
-#24 [backend 7/7] RUN mvn -B package
-#24 4.154 [INFO] Scanning for projects...
-#24 4.905 [INFO] 
-#24 4.906 [INFO] -------------------< vn.edu.bigdata:revenue-webapp >--------------------
-#24 4.906 [INFO] Building revenue-webapp 1.0.0
-#24 4.907 [INFO]   from pom.xml
-#24 4.909 [INFO] --------------------------------[ jar ]---------------------------------
-#24 6.263 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.pom
-#24 7.307 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.pom (23 kB at 22 kB/s)
-#24 7.324 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/52/jboss-parent-52.pom
-#24 7.486 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/52/jboss-parent-52.pom (102 kB at 627 kB/s)
-#24 7.503 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.3/classmate-1.7.3.pom
-#24 7.566 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.3/classmate-1.7.3.pom (6.5 kB at 103 kB/s)
-#24 7.571 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/74/oss-parent-74.pom
-#24 7.685 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/74/oss-parent-74.pom (24 kB at 209 kB/s)
-#24 7.721 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.18.0/commons-codec-1.18.0.pom
-#24 7.775 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.18.0/commons-codec-1.18.0.pom (18 kB at 336 kB/s)
-#24 7.779 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/79/commons-parent-79.pom
-#24 7.914 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/79/commons-parent-79.pom (77 kB at 574 kB/s)
-#24 7.986 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.pom
-#24 8.094 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.pom (19 kB at 178 kB/s)
-#24 8.107 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.17.8/byte-buddy-parent-1.17.8.pom
-#24 8.214 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.17.8/byte-buddy-parent-1.17.8.pom (66 kB at 622 kB/s)
-#24 8.285 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.pom
-#24 8.398 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.pom (14 kB at 127 kB/s)
-#24 8.466 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.jar
-#24 8.644 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.jar (63 kB at 354 kB/s)
-#24 8.647 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.3/classmate-1.7.3.jar
-#24 8.652 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.18.0/commons-codec-1.18.0.jar
-#24 8.652 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18.jar
-#24 8.653 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.jar
-#24 8.654 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar
-#24 8.724 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.3/classmate-1.7.3.jar (68 kB at 853 kB/s)
-#24 8.807 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18.jar (70 kB at 443 kB/s)
-#24 9.318 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar (367 kB at 551 kB/s)
-#24 9.318 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.18.0/commons-codec-1.18.0.jar (373 kB at 555 kB/s)
-#24 10.90 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.jar (9.0 MB at 4.0 MB/s)
-#24 10.92 [INFO] 
-#24 10.92 [INFO] --- resources:3.3.1:resources (default-resources) @ revenue-webapp ---
-#24 11.11 [INFO] Copying 1 resource from src/main/resources to target/classes
-#24 11.13 [INFO] Copying 36 resources from src/main/resources to target/classes
-#24 11.15 [INFO] 
-#24 11.15 [INFO] --- compiler:3.14.1:compile (default-compile) @ revenue-webapp ---
-#24 11.31 [INFO] Recompiling the module because of changed source code.
-#24 11.32 [INFO] Compiling 13 source files with javac [debug parameters release 21] to target/classes
-#24 13.37 [INFO] 
-#24 13.37 [INFO] --- resources:3.3.1:testResources (default-testResources) @ revenue-webapp ---
-#24 13.38 [INFO] skip non existing resourceDirectory /src/src/test/resources
-#24 13.38 [INFO] 
-#24 13.38 [INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ revenue-webapp ---
-#24 13.40 [INFO] Recompiling the module because of changed dependency.
-#24 13.41 [INFO] Compiling 2 source files with javac [debug parameters release 21] to target/test-classes
-#24 14.10 [INFO] 
-#24 14.10 [INFO] --- surefire:3.5.6:test (default-test) @ revenue-webapp ---
-#24 14.58 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
-#24 14.64 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.6/surefire-junit-platform-3.5.6.pom
-#24 14.75 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.6/surefire-junit-platform-3.5.6.pom (5.2 kB at 46 kB/s)
-#24 14.76 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.6/surefire-providers-3.5.6.pom
-#24 14.85 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.6/surefire-providers-3.5.6.pom (2.5 kB at 26 kB/s)
-#24 14.88 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.6/common-java5-3.5.6.pom
-#24 14.95 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.6/common-java5-3.5.6.pom (3.1 kB at 42 kB/s)
-#24 14.97 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.pom
-#24 15.05 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.pom (3.0 kB at 40 kB/s)
-#24 15.09 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.6/surefire-junit-platform-3.5.6.jar
-#24 15.16 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.6/surefire-junit-platform-3.5.6.jar (35 kB at 493 kB/s)
-#24 15.16 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.6/common-java5-3.5.6.jar
-#24 15.16 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.jar
-#24 15.28 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.6/common-java5-3.5.6.jar (18 kB at 155 kB/s)
-#24 15.34 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.jar (208 kB at 1.1 MB/s)
-#24 15.36 [INFO] 
-#24 15.36 [INFO] -------------------------------------------------------
-#24 15.36 [INFO]  T E S T S
-#24 15.36 [INFO] -------------------------------------------------------
-#24 16.06 [INFO] Running vn.edu.bigdata.webapp.InferenceTest
-#24 16.33 [INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.249 s -- in vn.edu.bigdata.webapp.InferenceTest
-#24 16.33 [INFO] Running vn.edu.bigdata.webapp.ServingParityTest
-#24 16.36 [WARNING] Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.037 s -- in vn.edu.bigdata.webapp.ServingParityTest
-#24 16.39 [INFO] 
-#24 16.39 [INFO] Results:
-#24 16.39 [INFO] 
-#24 16.39 [INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 3
-#24 16.39 [INFO] 
-#24 16.39 [INFO] 
-#24 16.39 [INFO] --- jar:3.4.2:jar (default-jar) @ revenue-webapp ---
-#24 16.77 [INFO] Building jar: /src/target/revenue-webapp.jar
-#24 16.88 [INFO] 
-#24 16.88 [INFO] --- spring-boot:3.5.16:repackage (repackage) @ revenue-webapp ---
-#24 17.56 [INFO] Replacing main artifact /src/target/revenue-webapp.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
-#24 17.56 [INFO] The original artifact has been renamed to /src/target/revenue-webapp.jar.original
-#24 17.56 [INFO] ------------------------------------------------------------------------
-#24 17.56 [INFO] BUILD SUCCESS
-#24 17.56 [INFO] ------------------------------------------------------------------------
-#24 17.56 [INFO] Total time:  13.481 s
-#24 17.56 [INFO] Finished at: 2026-10-07T01:45:49Z
-#24 17.56 [INFO] ------------------------------------------------------------------------
-#24 DONE 18.0s
+#24 [bigdata  9/10] COPY config ./config
+#24 CACHED
 
-#25 [stage-2 2/3] WORKDIR /app
+#25 [bigdata  2/10] RUN apt-get update     && apt-get install -y --no-install-recommends python3     && rm -rf /var/lib/apt/lists/*
 #25 CACHED
 
-#26 [stage-2 3/3] COPY --from=backend /src/target/revenue-webapp.jar app.jar
-#26 DONE 0.3s
+#26 [bigdata  3/10] WORKDIR /opt/bigdata
+#26 CACHED
 
-#27 exporting to image
-#27 exporting layers
-#27 exporting layers 1.2s done
-#27 exporting manifest sha256:8634ee646a5e540d5f15cb9765d8cc995892400491cabbcdb358e6ee9aae4252 0.1s done
-#27 exporting config sha256:a0ab41f3300891adea0564eea178e98dd52c48cdfd2ed346dd9271c751786e2a 0.1s done
-#27 exporting attestation manifest sha256:a08e4bc5354894026889285100d0327a0b76bd33b2d3edc1054ced49688e8a65 0.1s done
-#27 exporting manifest list sha256:319d783d45ac5d12f07526039bc3ca3a46eadb2e59db3fd27469c5c5181e5268
-#27 exporting manifest list sha256:319d783d45ac5d12f07526039bc3ca3a46eadb2e59db3fd27469c5c5181e5268 0.1s done
-#27 naming to docker.io/library/ptit-bigdata-webapp:local done
-#27 unpacking to docker.io/library/ptit-bigdata-webapp:local
-#27 unpacking to docker.io/library/ptit-bigdata-webapp:local 0.3s done
-#27 DONE 1.9s
+#27 [bigdata 10/10] RUN chmod +x scripts/*.sh     && ./mvnw -B -pl bigdata -DskipTests package dependency:build-classpath        -DincludeScope=compile -Dmdep.outputFile=/opt/bigdata/.build-cache/classpath.txt     && mkdir -p data/raw data/samples results
+#27 CACHED
 
-#28 resolving provenance for metadata file
-#28 DONE 0.1s
- Image ptit-bigdata-webapp:local Built 
+#28 [bigdata] exporting to image
+#28 ...
+
+#29 [web-backend stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre@sha256:cff19e6215689161eb6162c11b86b0c60ddf802164f2eaf48d570f8fb79a36c5
+#29 resolve docker.io/library/eclipse-temurin:21-jre@sha256:cff19e6215689161eb6162c11b86b0c60ddf802164f2eaf48d570f8fb79a36c5 0.2s done
+#29 DONE 0.2s
+
+#30 [web-backend build 1/6] FROM docker.io/library/maven:3.9.11-eclipse-temurin-21@sha256:6fdc855a6ed81d288ca7ca37ac6ff5e9308b612485c0801d70b25a858c83d237
+#30 resolve docker.io/library/maven:3.9.11-eclipse-temurin-21@sha256:6fdc855a6ed81d288ca7ca37ac6ff5e9308b612485c0801d70b25a858c83d237 0.2s done
+#30 DONE 0.2s
+
+#28 [bigdata] exporting to image
+#28 exporting layers 0.0s done
+#28 exporting manifest sha256:9eaea7d4a524af6cdaeb7a24fd5869d5cba6ba25844582edcee5991e315fec69 0.0s done
+#28 exporting config sha256:62f6ecad4626dffbea0c90d885b0c5a261b56ee65c46b875fc53cd5e4c431454 0.0s done
+#28 ...
+
+#11 [web-frontend internal] load metadata for docker.io/library/nginx:1.27-alpine
+#11 DONE 3.0s
+
+#18 [web-backend internal] load build context
+#18 transferring context: 52.09kB 0.1s done
+#18 DONE 0.4s
+
+#28 [bigdata] exporting to image
+#28 exporting attestation manifest sha256:5f73a9812596159d7c92f8224b6e79fbe664254dcbbdb6ee63d37028aa60cd79 0.2s done
+#28 exporting manifest list sha256:787dc0d0762464bc15c8b6764e56976e81271e93eaf034067fd2d6f862c39585
+#28 ...
+
+#31 [web-backend build 3/6] COPY pom.xml ./
+#31 CACHED
+
+#32 [web-backend build 2/6] WORKDIR /src
+#32 CACHED
+
+#33 [web-backend build 4/6] RUN mvn -B -q dependency:go-offline
+#33 CACHED
+
+#34 [web-frontend internal] load .dockerignore
+#34 transferring context: 78B 0.0s done
+#34 DONE 0.5s
+
+#35 [web-frontend internal] load build context
+#35 DONE 0.0s
+
+#28 [bigdata] exporting to image
+#28 exporting manifest list sha256:787dc0d0762464bc15c8b6764e56976e81271e93eaf034067fd2d6f862c39585 0.1s done
+#28 naming to docker.io/library/ptit-bigdata:local 0.2s done
+#28 unpacking to docker.io/library/ptit-bigdata:local
+#28 unpacking to docker.io/library/ptit-bigdata:local 2.1s done
+#28 ...
+
+#36 [web-frontend stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#36 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 2.2s done
+#36 DONE 2.3s
+
+#37 [web-frontend build 1/6] FROM docker.io/library/node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1
+#37 resolve docker.io/library/node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1 2.2s done
+#37 DONE 2.3s
+
+#38 [web-frontend build 2/6] WORKDIR /src
+#38 CACHED
+
+#28 [bigdata] exporting to image
+#28 DONE 3.1s
+
+#39 [web-backend build 5/6] COPY src ./src
+#39 DONE 2.7s
+
+#35 [web-frontend internal] load build context
+#35 transferring context: 179.44kB 0.2s done
+#35 DONE 0.3s
+
+#36 [web-frontend stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#36 CACHED
+
+#40 [web-frontend build 3/6] COPY package.json package-lock.json ./
+#40 ...
+
+#41 [web-frontend stage-1 2/3] COPY nginx.conf /etc/nginx/conf.d/default.conf
+#41 DONE 0.3s
+
+#40 [web-frontend build 3/6] COPY package.json package-lock.json ./
+#40 DONE 0.4s
+
+#42 [web-frontend build 4/6] RUN npm ci
+#42 ...
+
+#43 [bigdata] resolving provenance for metadata file
+#43 DONE 0.2s
+
+#44 [web-backend build 6/6] RUN mvn -B package
+#44 6.109 [INFO] Scanning for projects...
+#44 7.351 [INFO] 
+#44 7.354 [INFO] -------------------< vn.edu.bigdata:revenue-webapp >--------------------
+#44 7.354 [INFO] Building revenue-webapp 1.0.0
+#44 7.354 [INFO]   from pom.xml
+#44 7.354 [INFO] --------------------------------[ jar ]---------------------------------
+#44 ...
+
+#42 [web-frontend build 4/6] RUN npm ci
+#42 7.824 npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+#42 ...
+
+#44 [web-backend build 6/6] RUN mvn -B package
+#44 10.33 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.pom
+#44 11.84 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.pom (23 kB at 15 kB/s)
+#44 11.88 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/52/jboss-parent-52.pom
+#44 11.97 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/52/jboss-parent-52.pom (102 kB at 1.1 MB/s)
+#44 11.99 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.3/classmate-1.7.3.pom
+#44 12.07 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.3/classmate-1.7.3.pom (6.5 kB at 81 kB/s)
+#44 12.08 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/74/oss-parent-74.pom
+#44 12.15 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/74/oss-parent-74.pom (24 kB at 321 kB/s)
+#44 12.20 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.18.0/commons-codec-1.18.0.pom
+#44 12.28 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.18.0/commons-codec-1.18.0.pom (18 kB at 234 kB/s)
+#44 12.28 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/79/commons-parent-79.pom
+#44 12.34 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/79/commons-parent-79.pom (77 kB at 1.4 MB/s)
+#44 12.42 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.pom
+#44 12.46 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.pom (19 kB at 462 kB/s)
+#44 12.47 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.17.8/byte-buddy-parent-1.17.8.pom
+#44 12.55 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.17.8/byte-buddy-parent-1.17.8.pom (66 kB at 834 kB/s)
+#44 12.63 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.pom
+#44 12.67 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.pom (14 kB at 369 kB/s)
+#44 12.78 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.jar
+#44 12.86 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.3.Final/jboss-logging-3.6.3.Final.jar (63 kB at 783 kB/s)
+#44 12.87 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.3/classmate-1.7.3.jar
+#44 12.87 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.18.0/commons-codec-1.18.0.jar
+#44 12.87 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18.jar
+#44 12.88 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.jar
+#44 12.88 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar
+#44 12.94 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.3/classmate-1.7.3.jar (68 kB at 948 kB/s)
+#44 13.07 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.18/slf4j-api-2.0.18.jar (70 kB at 359 kB/s)
+#44 13.16 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.18.0/commons-codec-1.18.0.jar (373 kB at 1.2 MB/s)
+#44 13.23 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar (367 kB at 1.0 MB/s)
+#44 14.13 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.17.8/byte-buddy-1.17.8.jar (9.0 MB at 7.2 MB/s)
+#44 14.15 [INFO] 
+#44 14.15 [INFO] --- resources:3.3.1:resources (default-resources) @ revenue-webapp ---
+#44 14.40 [INFO] Copying 1 resource from src/main/resources to target/classes
+#44 14.42 [INFO] Copying 0 resource from src/main/resources to target/classes
+#44 14.42 [INFO] 
+#44 14.42 [INFO] --- compiler:3.14.1:compile (default-compile) @ revenue-webapp ---
+#44 15.04 [INFO] Recompiling the module because of changed source code.
+#44 15.08 [INFO] Compiling 13 source files with javac [debug parameters release 21] to target/classes
+#44 18.48 [INFO] 
+#44 18.48 [INFO] --- resources:3.3.1:testResources (default-testResources) @ revenue-webapp ---
+#44 18.50 [INFO] skip non existing resourceDirectory /src/src/test/resources
+#44 18.50 [INFO] 
+#44 18.50 [INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ revenue-webapp ---
+#44 18.52 [INFO] Recompiling the module because of changed dependency.
+#44 18.53 [INFO] Compiling 2 source files with javac [debug parameters release 21] to target/test-classes
+#44 19.31 [INFO] 
+#44 19.31 [INFO] --- surefire:3.5.6:test (default-test) @ revenue-webapp ---
+#44 19.65 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+#44 19.68 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.6/surefire-junit-platform-3.5.6.pom
+#44 19.77 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.6/surefire-junit-platform-3.5.6.pom (5.2 kB at 54 kB/s)
+#44 19.78 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.6/surefire-providers-3.5.6.pom
+#44 19.87 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.6/surefire-providers-3.5.6.pom (2.5 kB at 27 kB/s)
+#44 19.89 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.6/common-java5-3.5.6.pom
+#44 19.98 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.6/common-java5-3.5.6.pom (3.1 kB at 34 kB/s)
+#44 20.00 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.pom
+#44 20.07 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.pom (3.0 kB at 42 kB/s)
+#44 20.08 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.6/surefire-junit-platform-3.5.6.jar
+#44 20.12 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.6/surefire-junit-platform-3.5.6.jar (35 kB at 887 kB/s)
+#44 20.13 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.6/common-java5-3.5.6.jar
+#44 20.13 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.jar
+#44 20.19 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.6/common-java5-3.5.6.jar (18 kB at 255 kB/s)
+#44 20.21 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.jar (208 kB at 2.4 MB/s)
+#44 20.24 [INFO] 
+#44 20.24 [INFO] -------------------------------------------------------
+#44 20.24 [INFO]  T E S T S
+#44 20.24 [INFO] -------------------------------------------------------
+#44 ...
+
+#42 [web-frontend build 4/6] RUN npm ci
+#42 21.04 
+#42 21.04 added 164 packages, and audited 165 packages in 18s
+#42 21.04 
+#42 21.04 29 packages are looking for funding
+#42 21.04   run `npm fund` for details
+#42 21.10 
+#42 21.10 6 vulnerabilities (4 moderate, 2 critical)
+#42 21.10 
+#42 21.10 To address all issues (including breaking changes), run:
+#42 21.10   npm audit fix --force
+#42 21.10 
+#42 21.10 Run `npm audit` for details.
+#42 21.10 npm warn install-scripts 1 package has install scripts not yet covered by allowScripts:
+#42 21.10 npm warn install-scripts   esbuild@0.25.12 (postinstall: node install.js)
+#42 21.10 npm warn install-scripts
+#42 21.10 npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+#42 21.11 npm notice
+#42 21.11 npm notice New major version of npm available! 11.19.0 -> 12.2.0
+#42 21.11 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+#42 21.11 npm notice To update run: npm install -g npm@12.2.0
+#42 21.11 npm notice
+#42 DONE 22.9s
+
+#44 [web-backend build 6/6] RUN mvn -B package
+#44 21.83 [INFO] Running vn.edu.bigdata.webapp.InferenceTest
+#44 22.90 [INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.026 s -- in vn.edu.bigdata.webapp.InferenceTest
+#44 22.90 [INFO] Running vn.edu.bigdata.webapp.ServingParityTest
+#44 23.01 [WARNING] Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.127 s -- in vn.edu.bigdata.webapp.ServingParityTest
+#44 23.22 [INFO] 
+#44 23.22 [INFO] Results:
+#44 23.22 [INFO] 
+#44 23.23 [INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 3
+#44 23.24 [INFO] 
+#44 23.25 [INFO] 
+#44 23.25 [INFO] --- jar:3.4.2:jar (default-jar) @ revenue-webapp ---
+#44 24.40 [INFO] Building jar: /src/target/revenue-webapp.jar
+#44 24.63 [INFO] 
+#44 24.63 [INFO] --- spring-boot:3.5.16:repackage (repackage) @ revenue-webapp ---
+#44 ...
+
+#45 [web-frontend build 5/6] COPY . .
+#45 DONE 1.4s
+
+#46 [web-frontend build 6/6] RUN npm test && npm run build
+#46 ...
+
+#44 [web-backend build 6/6] RUN mvn -B package
+#44 25.87 [INFO] Replacing main artifact /src/target/revenue-webapp.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#44 25.87 [INFO] The original artifact has been renamed to /src/target/revenue-webapp.jar.original
+#44 25.88 [INFO] ------------------------------------------------------------------------
+#44 25.88 [INFO] BUILD SUCCESS
+#44 25.88 [INFO] ------------------------------------------------------------------------
+#44 25.88 [INFO] Total time:  19.840 s
+#44 25.88 [INFO] Finished at: 2026-10-07T12:38:44Z
+#44 25.88 [INFO] ------------------------------------------------------------------------
+#44 DONE 26.3s
+
+#46 [web-frontend build 6/6] RUN npm test && npm run build
+#46 ...
+
+#47 [web-backend stage-1 2/3] WORKDIR /app
+#47 CACHED
+
+#48 [web-backend stage-1 3/3] COPY --from=build /src/target/revenue-webapp.jar app.jar
+#48 DONE 0.4s
+
+#46 [web-frontend build 6/6] RUN npm test && npm run build
+#46 2.624 
+#46 2.624 > revenue-webapp-frontend@1.0.0 test
+#46 2.624 > vitest run
+#46 2.624 
+#46 4.085 
+#46 4.094  RUN  v3.2.7 /src
+#46 4.094 
+#46 ...
+
+#49 [web-backend] exporting to image
+#49 exporting layers 4.3s done
+#49 exporting manifest sha256:83c3782437d0c447278aee10d032499874cb0e03790b7431819d3764f2278704 0.1s done
+#49 exporting config sha256:a5206a8991e186003763129875eae4289f056ba022059b4cc82eadfd53a18191 0.1s done
+#49 exporting attestation manifest sha256:e4f85237e53a9b42ede76eec1bacf545bf6df210a0fdb7c275d289093e950d4d 0.1s done
+#49 exporting manifest list sha256:f5e26d4f807dc61894559524a12b05fe41728d84de56f628ae70ce56d8b87c28 0.1s done
+#49 naming to docker.io/library/ptit-bigdata-web-backend:local 0.0s done
+#49 unpacking to docker.io/library/ptit-bigdata-web-backend:local 0.6s done
+#49 DONE 5.4s
+
+#46 [web-frontend build 6/6] RUN npm test && npm run build
+#46 ...
+
+#50 [web-backend] resolving provenance for metadata file
+#50 DONE 0.3s
+
+#46 [web-frontend build 6/6] RUN npm test && npm run build
+#46 11.70  ✓ src/test/pages.test.tsx (7 tests) 713ms
+#46 11.70    ✓ KnnPage > chọn sản phẩm -> POST predict với productId -> hiển thị nhãn, vote_share và láng giềng do backend trả  314ms
+#46 11.75 
+#46 11.75  Test Files  1 passed (1)
+#46 11.75       Tests  7 passed (7)
+#46 11.75    Start at  12:38:47
+#46 11.76    Duration  7.66s (transform 754ms, setup 550ms, collect 3.08s, tests 713ms, environment 1.56s, prepare 706ms)
+#46 11.76 
+#46 12.69 
+#46 12.69 > revenue-webapp-frontend@1.0.0 build
+#46 12.69 > tsc -b && vite build
+#46 12.69 
+#46 19.40 vite v6.4.4 building for production...
+#46 19.69 transforming...
+#46 63.07 ✓ 625 modules transformed.
+#46 65.01 rendering chunks...
+#46 65.11 computing gzip size...
+#46 65.25 dist/index.html                                                      0.42 kB │ gzip:   0.30 kB
+#46 65.25 dist/assets/jetbrains-mono-greek-400-normal-C190GLew.woff2           4.23 kB
+#46 65.26 dist/assets/jetbrains-mono-cyrillic-400-normal-BEIGL1Tu.woff2        5.33 kB
+#46 65.26 dist/assets/jetbrains-mono-vietnamese-400-normal-CqNFfHCs.woff       5.37 kB
+#46 65.26 dist/assets/jetbrains-mono-greek-400-normal-B9oWc5Lo.woff            5.66 kB
+#46 65.26 dist/assets/be-vietnam-pro-vietnamese-400-normal-BuGn0gnm.woff       6.57 kB
+#46 65.26 dist/assets/be-vietnam-pro-vietnamese-600-normal-DkpCIyan.woff       6.88 kB
+#46 65.26 dist/assets/be-vietnam-pro-vietnamese-500-normal-CfdwVo8-.woff       6.88 kB
+#46 65.26 dist/assets/be-vietnam-pro-vietnamese-700-normal-By_5yT39.woff       6.89 kB
+#46 65.26 dist/assets/jetbrains-mono-cyrillic-400-normal-ugxPyKxw.woff         6.98 kB
+#46 65.26 dist/assets/jetbrains-mono-latin-ext-400-normal-Bc8Ftmh3.woff2       7.34 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-ext-400-normal-DYBYyMQr.woff        8.90 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-ext-700-normal-4Hjo2OtD.woff        9.19 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-ext-500-normal-CK0UkkKf.woff        9.20 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-ext-600-normal-BeUwKxhG.woff        9.22 kB
+#46 65.26 dist/assets/jetbrains-mono-latin-ext-400-normal-fXTG6kC5.woff       10.13 kB
+#46 65.26 dist/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2     11.53 kB
+#46 65.26 dist/assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2     12.17 kB
+#46 65.26 dist/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2     12.18 kB
+#46 65.26 dist/assets/be-vietnam-pro-vietnamese-700-normal-Csr0PCuG.woff2     12.47 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-ext-400-normal-CiZNW1ec.woff2      13.06 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-ext-500-normal-h0Fp6aX0.woff2      13.55 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-ext-600-normal-BNd8euf0.woff2      13.61 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-ext-700-normal-C8_gqRu2.woff2      13.85 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-400-normal-bXgqVju9.woff           16.43 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-700-normal-C2EtzaOi.woff           16.91 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-500-normal-BJkVuMHw.woff           17.00 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-600-normal-5IO4e7bK.woff           17.02 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2          21.17 kB
+#46 65.26 dist/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2          21.17 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2          21.89 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2          22.03 kB
+#46 65.26 dist/assets/be-vietnam-pro-latin-700-normal-DlW1Zbsh.woff2          22.15 kB
+#46 65.26 dist/assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff           27.50 kB
+#46 65.26 dist/assets/index-Ck-PjgMm.css                                      25.32 kB │ gzip:  10.78 kB
+#46 65.26 dist/assets/index-DhMRO3au.js                                    1,256.10 kB │ gzip: 415.37 kB
+#46 65.27 ✓ built in 45.75s
+#46 65.27 
+#46 65.27 (!) Some chunks are larger than 500 kB after minification. Consider:
+#46 65.27 - Using dynamic import() to code-split the application
+#46 65.27 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+#46 65.27 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+#46 DONE 67.0s
+
+#51 [web-frontend stage-1 3/3] COPY --from=build /src/dist /usr/share/nginx/html
+#51 DONE 0.4s
+
+#52 [web-frontend] exporting to image
+#52 exporting layers
+#52 exporting layers 1.0s done
+#52 exporting manifest sha256:ba3bc3b1634898b091f3db3a30ccf3274c353fd97376a4cd34d897263753c2de 0.1s done
+#52 exporting config sha256:8e2b70cc8860f50c811d644951907a0550776585d7724938751e4c6d09fb1663
+#52 exporting config sha256:8e2b70cc8860f50c811d644951907a0550776585d7724938751e4c6d09fb1663 0.1s done
+#52 exporting attestation manifest sha256:1dd4684732208ac208a9815046eaf7bfa67609487ab80f1bcff554631eb57d24
+#52 exporting attestation manifest sha256:1dd4684732208ac208a9815046eaf7bfa67609487ab80f1bcff554631eb57d24 0.1s done
+#52 exporting manifest list sha256:4441bf2413082e64604bb44c3ff170293d85c57b76748d9ccb6ac04ece06ff7e 0.1s done
+#52 naming to docker.io/library/ptit-bigdata-web-frontend:local 0.0s done
+#52 unpacking to docker.io/library/ptit-bigdata-web-frontend:local
+#52 unpacking to docker.io/library/ptit-bigdata-web-frontend:local 0.4s done
+#52 DONE 2.1s
+
+#53 [web-frontend] resolving provenance for metadata file
+#53 DONE 0.1s
+ Image ptit-bigdata-web-frontend:local Built 
+ Image ptit-bigdata:local Built 
+ Image ptit-bigdata-web-backend:local Built 
