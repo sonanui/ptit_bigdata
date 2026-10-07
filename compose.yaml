@@ -1,5 +1,8 @@
+# Profile: bigdata (MapReduce + HDFS) và web (backend + frontend). Gọi đích danh service thì profile tự bật,
+# ví dụ: docker compose up -d namenode datanode; docker compose run --rm bigdata ...
 services:
   bigdata:
+    profiles: ["bigdata"]
     build:
       context: .
       dockerfile: Dockerfile
@@ -16,6 +19,7 @@ services:
   # HDFS pseudo-distributed: docker compose up -d namenode datanode
   # Không có depends_on từ bigdata, nên demo fixture vẫn chạy được khi HDFS tắt.
   namenode:
+    profiles: ["bigdata"]
     image: apache/hadoop:3.4.2
     hostname: namenode
     command: ["hdfs", "namenode"]
@@ -41,6 +45,7 @@ services:
       start_period: 20s
 
   datanode:
+    profiles: ["bigdata"]
     image: apache/hadoop:3.4.2
     hostname: datanode
     command: ["hdfs", "datanode"]
@@ -60,17 +65,31 @@ services:
       namenode:
         condition: service_healthy
 
-  # Web app (Spring Boot + React): chỉ đọc ./serving (đồng bộ bằng scripts/serving-sync.ps1), không cần HDFS khi chạy.
-  #   docker compose --profile web up -d --build webapp  ->  http://localhost:8080
-  webapp:
+  # Web app, 2 container (profile web), không cần HDFS/Spark khi chạy:
+  #   docker compose --profile web up -d --build   ->  http://localhost:8080 (React), API thử trực tiếp ở http://localhost:8081/api/health
+  # Backend Spring Boot: chỉ /api, đọc ./serving (serving run đã commit hoặc đồng bộ bằng scripts/serving-sync.ps1), chỉ đọc.
+  web-backend:
     build:
-      context: webapp
-    image: ptit-bigdata-webapp:local
+      context: webapp/backend
+    image: ptit-bigdata-web-backend:local
     mem_limit: 768m
     ports:
-      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:8081:8080"
     volumes:
       - ./serving:/serving:ro
+    profiles: ["web"]
+
+  # Frontend React build tĩnh trên Nginx; /api chuyển sang web-backend trong mạng compose.
+  web-frontend:
+    build:
+      context: webapp/frontend
+    image: ptit-bigdata-web-frontend:local
+    mem_limit: 128m
+    ports:
+      - "127.0.0.1:8080:80"
+    depends_on:
+      web-backend:
+        condition: service_healthy
     profiles: ["web"]
 
 volumes:

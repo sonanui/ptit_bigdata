@@ -1,4 +1,4 @@
-# Web app: Spring Boot (suy luận online) + React (trực quan hóa)
+# Web app: Spring Boot (suy luận online) + React (trực quan hóa), 2 container
 
 Tầng trình bày đặt **sau** pipeline Big Data. Web app không chạy Spark/MapReduce, không đọc CSV thô, không đọc HDFS và
 không huấn luyện mô hình. Nó chỉ đọc *serving artifacts* do pipeline publish, kiểm tra sha256 rồi trả dữ liệu hoặc suy luận.
@@ -9,7 +9,8 @@ HDFS raw ─► Spark Java (ETL, A1–A8) ─► notebook (Spark MLlib) ─►  
                       MR V1 (đối chứng) ┘        │                         │
                                   SparkTool publish ─► HDFS /data/ecommerce/serving/<run_id>/
                                                      └─ scripts/serving-sync.ps1 (hdfs -get + sha256) ┘
-React ──► Spring Boot /api/** ──► ServingRepository (manifest + sha256) ──► KMeansModel / KnnModel (Java) ──► JSON
+Trình duyệt ──► web-frontend (Nginx: React tĩnh, /api/ ──► web-backend:8080)
+                 web-backend (Spring Boot /api/**) ──► ServingRepository (manifest + sha256) ──► KMeansModel / KnnModel (Java) ──► JSON
 ```
 
 | Thành phần | Mã nguồn | Vai trò |
@@ -18,15 +19,17 @@ React ──► Spring Boot /api/** ──► ServingRepository (manifest + sha2
 | `ModelRegistry` | `backend/.../ml/ModelRegistry.java` | Danh mục mô hình theo `metadata.json`; nạp `KMeansModel`/`KnnModel` một lần rồi cache |
 | `KMeansModel` | `backend/.../ml/KMeansModel.java` | `(x − mean) · (1/std)` như `StandardScalerModel` của Spark, rồi tâm gần nhất (hòa → chỉ số nhỏ hơn) |
 | `KnnModel` | `backend/.../ml/KnnModel.java` | Chuẩn hóa như trên, k láng giềng gần nhất trên tập train đã lưu (Euclidean², hòa → dòng train nhỏ hơn), `vote_share = số láng giềng nhãn 1 / k`, nhãn = `vote_share ≥ ngưỡng` |
+| `ModelWarmup` | `backend/.../ml/ModelWarmup.java` | Nạp sẵn mô hình và bảng sản phẩm của serving run mặc định ở luồng nền khi khởi động (`SERVING_WARMUP=false` để tắt) |
 | `ProductFeatures` | `backend/.../ml/ProductFeatures.java` | Tính lại đặc trưng từ số đếm thô đúng như `ProductFeaturesJob` (A7) / `ProductLabelJob` (A8); cảnh báo ngoài miền |
-| React | `frontend/src/pages/` | Tổng quan, Group By, MapReduce vs Spark, `/ml/kmeans`, `/ml/knn`; không có số liệu cứng |
+| React | `frontend/src/pages/` | Pipeline, Group By, MapReduce và Spark, `/ml/kmeans`, `/ml/knn`; không có số liệu cứng |
+| Nginx | `frontend/nginx.conf` | Phục vụ bản build React, trả `index.html` cho route React, chuyển `/api/` sang backend |
 
 KNN là *lazy learner*: "huấn luyện" chỉ là lưu tập train đã chuẩn hóa (notebook làm, offline). Việc tìm láng giềng và bỏ phiếu
 lúc dự đoán chính là phép suy luận của KNN, không phải huấn luyện trong HTTP request. Spark MLlib không có bộ phân loại KNN.
 
 ## Hợp đồng serving artifact (`/data/ecommerce/serving/<run_id>/`)
 
-Tạo bởi `SparkTool publish` (`src/main/java/vn/edu/bigdata/revenue/spark/ServingPublishJob.java`), ghi một lần (thư mục mới,
+Tạo bởi `SparkTool publish` (`bigdata/src/main/java/vn/edu/bigdata/revenue/spark/ServingPublishJob.java`), ghi một lần (thư mục mới,
 không ghi đè), `manifest.json` ghi **cuối cùng**: run thiếu manifest là run hỏng và backend bỏ qua.
 
 | File | Nguồn | Nội dung |
@@ -79,19 +82,23 @@ Lỗi trả theo RFC 9457 (`application/problem+json`): 404 không có run/mô h
 
 ## Chạy
 
-Yêu cầu: JDK 21, Maven (dùng `..\.tools\apache-maven-3.9.11` của repo), Node 24 (chỉ để build frontend), một serving run đã sync.
+**Docker (khuyến nghị):** từ gốc repo, `docker compose --profile web up -d --build` → `http://localhost:8080`.
+`web-backend` build từ `backend/Dockerfile` (Maven + JDK 21 → JRE 21), mount `./serving` chỉ đọc, có healthcheck `/api/health`,
+publish thêm `127.0.0.1:8081` để thử API trực tiếp. `web-frontend` build từ `frontend/Dockerfile` (Node 24: `npm ci`, `npm test`,
+`npm run build` → Nginx 1.27), chỉ khởi động khi backend đã healthy. Không cần HDFS/Spark.
+
+**Không Docker (phát triển):** cần JDK 21, Maven (`./mvnw` ở gốc repo hoặc Maven cài sẵn), Node 24.
 
 ```powershell
-# 1. Publish + sync (HDFS phải chạy; xem docs/END_TO_END.md)
-.\scripts\serving-sync.ps1 -RunId <serving_run_id> -SetLatest
-# 2. Build frontend và backend; ServingParityTest đối chiếu Java với Spark/numpy trên ./serving
-cd webapp\frontend; npm install; npm run build; cd ..\backend
-$env:JAVA_HOME = "C:\Users\Hi\.jdks\ms-21.0.12"   # JDK 21 của máy
-..\..\.tools\apache-maven-3.9.11\bin\mvn.cmd -B clean package
-# 3. Chạy (không cần HDFS/Spark)
-java -Xmx512m -jar target\revenue-webapp.jar "--serving.dir=..\..\serving" "--spring.web.resources.static-locations=file:../frontend/dist/"
-# http://localhost:8080
+# Backend: build + 7 test (ServingParityTest đối chiếu Java với Spark/numpy trên ./serving), chạy API cổng 8080
+cd webapp\backend
+mvn -B clean package
+java -Xmx512m -jar target\revenue-webapp.jar "--serving.dir=..\..\serving"
+# Frontend: dev server cổng 5173, /api chuyển sang 8080
+cd ..\frontend; npm install; npm test; npm run dev
 ```
 
-Docker (một image gồm React build + Spring Boot): `docker compose --profile web up -d --build webapp` → `http://localhost:8080`,
-mount `./serving` chỉ đọc. Kết quả xác minh thật nằm ở `docs/evidence/webapp/README.md`.
+**Serving run mới:** sau khi publish trên HDFS, `.\scripts\serving-sync.ps1 -RunId <serving_run_id> -SetLatest` (xem `docs/END_TO_END.md`).
+Repo đã commit sẵn run `serving/20261007-015257-b0376ef-d3/` nên không cần bước này để xem demo.
+
+Kết quả xác minh thật: `docs/evidence/webapp/README.md`.

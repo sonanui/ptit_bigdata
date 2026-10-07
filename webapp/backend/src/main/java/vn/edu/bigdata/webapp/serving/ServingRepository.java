@@ -35,6 +35,9 @@ public class ServingRepository {
   private static final Pattern RUN_ID = Pattern.compile("[0-9A-Za-z._-]{1,128}");
   private final Path root;
   private final ObjectMapper mapper;
+  // Hai map riêng: nạp một artifact (computeIfAbsent trên cache) cần đọc manifest; dùng chung một
+  // ConcurrentHashMap sẽ thành computeIfAbsent lồng nhau, có thể ném "Recursive update".
+  private final Map<String, JsonNode> manifests = new ConcurrentHashMap<>();
   private final Map<String, Object> cache = new ConcurrentHashMap<>();
 
   public ServingRepository(@Value("${serving.dir}") String dir, ObjectMapper mapper) {
@@ -77,9 +80,8 @@ public class ServingRepository {
   }
 
   public JsonNode manifest(String runId) {
-    return (JsonNode)
-        cache.computeIfAbsent(
-            runId + "\u0000manifest",
+    return manifests.computeIfAbsent(
+            runId,
             k -> {
               try {
                 return mapper.readTree(runDir(runId).resolve("manifest.json").toFile());
