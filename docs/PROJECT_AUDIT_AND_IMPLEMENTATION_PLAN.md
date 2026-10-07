@@ -842,7 +842,7 @@ scripts/run-local.sh --tool DatasetTool sample --manifest <new>/input.json --out
 
 ## 17. Đối chiếu với tài liệu học phần và tài liệu tham khảo trong `docs/`
 
-> Ba file PDF trong `docs/` được đọc bằng trích xuất văn bản (`pdftotext`). Font tiếng Việt trong hai file slide bị mất dấu khi trích xuất, nhưng vẫn đọc được nội dung. Ba file PDF **đang được staged** trong git (`git status`: `A`), nhưng chưa có trong commit nào. Cần quyết định có commit không, vì đây là tài liệu có bản quyền (slide giảng viên, sách thương mại); nếu repo công khai, khuyến nghị **không commit** (unstage và thêm vào `.gitignore`) và chỉ trích dẫn.
+> Ba file PDF trong `docs/` được đọc bằng trích xuất văn bản (`pdftotext`). Font tiếng Việt trong hai file slide bị mất dấu khi trích xuất, nhưng vẫn đọc được nội dung. Ba file PDF **đang được staged** trong git (`git status`: `A`), nhưng chưa có trong commit nào. Cần quyết định có commit không, vì đây là tài liệu có bản quyền (slide giảng viên, sách thương mại); nếu repo công khai, khuyến nghị **không commit** (unstage và thêm vào `.gitignore`) và chỉ trích dẫn. *(Cập nhật 2026-10-07: 3 file PDF đã gỡ khỏi repo, chỉ giữ trên máy nhóm; `docs/*.pdf` trong `.gitignore`.)*
 
 ### 17.1 Slide học phần (Nguyễn Ngọc Điệp)
 
@@ -1222,7 +1222,7 @@ Node.js chỉ cần lúc build; bản chạy là file tĩnh do FastAPI phục v�
 |---|---|---|
 | U8 | ~~Gộp tài liệu, cập nhật README~~ | **XONG 2026-10-07**: `design.md` gộp `optimization-redesign.md`; xóa `implementation-plan.md`, `progress.md`; viết lại `README.md`, `runbook.md`, `project-structure.md`; cập nhật `docker.md`, `spark-local.md`, `benchmark-report.md` (thêm số liệu thật), thêm `docs/evidence/README.md` |
 | U9 | ~~F8: `config/local.properties` không được nạp~~ | **XONG 2026-10-07**: `scripts/run-local.sh` nạp file thành `-D` (đổi file bằng `REVENUE_CONF`, `-D` của người gọi được ưu tiên); giá trị sửa cho đúng cấu hình đã đo (mặc định Hadoop: io.sort.mb 100, speculative true); kiểm chứng qua `run-manifest.json` |
-| U10 | Dọn repo: `img.png`/`img_1.png` (ảnh đen), quyết định có commit 3 PDF có bản quyền không, bản staged của `CLAUDE.md` (xem `temp.md`) | Người dùng quyết định; 2026-10-07: `CLAUDE.md`, `temp.md` đã gỡ khỏi repo (commit thường + `.gitignore`), **còn trong lịch sử commit `d1dbd80` đã push**: muốn xóa hẳn phải viết lại lịch sử và force-push (người dùng tự thực hiện hoặc cấp quyền) |
+| U10 | ~~Dọn repo: ảnh đen, 3 PDF có bản quyền, `CLAUDE.md`, `temp.md`~~ | **XONG phần repo 2026-10-07**: `img.png`, `img_1.png` đã xóa; 3 PDF, `CLAUDE.md`, `temp.md` gỡ khỏi repo (giữ trên máy, có trong `.gitignore`). **Còn trong lịch sử** các commit đã push (`d1dbd80`): xóa hẳn cần viết lại lịch sử nhánh và force-push, người dùng tự thực hiện hoặc cấp quyền |
 | U11 | ~~`pom.xml`: dòng `<source>17</source>` thừa~~ | **XONG 2026-10-07** (đã bỏ trong `bigdata/pom.xml`) |
 | U12 | Test Spark chạy trên host, không trong container; notebook không có test tự động (chỉ assert parity bên trong) | Chấp nhận được; ghi trong báo cáo |
 | U13 | Spark trên Linux/macOS (`scripts/spark-local.sh`) chưa thử | Chỉ cần nếu thành viên dùng máy khác Windows |

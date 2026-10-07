@@ -24,3 +24,5 @@ webapp/frontend/dist/
 # Ghi chú làm việc và chỉ dẫn agent cục bộ: không đưa lên repo.
 /CLAUDE.md
 /temp.md
+# Tài liệu học phần có bản quyền (slide, sách): chỉ giữ trên máy, không đưa lên repo.
+docs/*.pdf
