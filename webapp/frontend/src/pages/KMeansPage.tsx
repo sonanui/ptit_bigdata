@@ -21,6 +21,21 @@ function describe(r: Row) {
     + `${num(pct, 1)}% sản phẩm có ít nhất một lượt mua; giá trung bình ${num(r.mean_median_price, 0)}.`;
 }
 
+/**
+ * Tên gọi "bán chạy" / "bình thường" chỉ khi K = 2 và một cụm vượt cụm kia ở cả TB lượt xem lẫn tỷ lệ sản phẩm có lượt mua.
+ * Tên suy ra từ bảng hồ sơ cụm sau khi huấn luyện; mô hình không biết tên này. Trường hợp khác trả về rỗng.
+ */
+//TODO:nguyennd
+export function clusterNames(profile: Row[]): Record<string, string> {
+  if (profile.length !== 2) return {};
+  const [a, b] = profile;
+  const views = Number(a.mean_views) - Number(b.mean_views);
+  const share = Number(a.share_with_purchase) - Number(b.share_with_purchase);
+  if (views === 0 || Math.sign(views) !== Math.sign(share)) return {};
+  const [hot, normal] = views > 0 ? [a, b] : [b, a];
+  return { [hot.cluster]: "nhóm bán chạy (hot)", [normal.cluster]: "nhóm bình thường" };
+}
+
 export default function KMeansPage() {
   const models = useGet<ModelEntry[]>("/api/ml/kmeans/models");
   const [runId, setRunId] = useState<string | null>(null);
@@ -37,9 +52,17 @@ export default function KMeansPage() {
     setError(null);
     post<any>("/api/ml/kmeans/predict", { runId, ...body }).then(setResult).catch((e) => { setResult(null); setError(String(e.message)); });
   };
+  // Link demo: /ml/kmeans?product=1002099 mở trang và phân cụm sẵn sản phẩm đó.
+  //TODO nguyennd
+    useEffect(() => {
+    const product = new URLSearchParams(window.location.search).get("product");
+    if (runId && product) predict({ productId: product });
+  }, [runId]);
   const meta = detail.data?.metadata;
   const metrics = detail.data?.metrics;
   const profile: Row[] = clusters.data?.profile ?? [];
+  const names = clusterNames(profile);
+  const title = (c: string | number) => `Cụm ${c}${names[c] ? ` – ${names[c]}` : ""}`;
   return (
     <>
       <header className="page-head">
@@ -111,14 +134,20 @@ export default function KMeansPage() {
           <h2>Các cụm khác nhau thế nào?</h2>
           <ul className="cluster-list">
             {profile.map((r) => (
-              <li key={r.cluster}><b>Cụm {r.cluster}:</b> {describe(r)}</li>
+              <li key={r.cluster}><b>{title(r.cluster)}:</b> {describe(r)}</li>
             ))}
           </ul>
+          {Object.keys(names).length > 0 && (
+            <p className="note">
+              Tên “bán chạy” và “bình thường” do nhóm đặt sau khi xem bảng số liệu: cụm bán chạy có trung bình lượt xem và tỷ lệ sản phẩm
+              có lượt mua đều cao hơn cụm còn lại. K-Means chỉ trả về số thứ tự cụm.
+            </p>
+          )}
           <ReactECharts
             style={{ height: 220 }}
             option={{
               tooltip: {},
-              xAxis: { type: "category", data: Object.keys(clusters.data.sizes).map((c) => `Cụm ${c}`) },
+              xAxis: { type: "category", data: Object.keys(clusters.data.sizes).map((c) => title(c)) },
               yAxis: { type: "value", name: "số sản phẩm", axisLabel: { formatter: (v: number) => num(v, 0) } },
               series: [{ type: "bar", barWidth: 56, itemStyle: { borderRadius: [3, 3, 0, 0] }, data: Object.values(clusters.data.sizes) }],
             }}
@@ -160,7 +189,7 @@ export default function KMeansPage() {
           {result && (
             <div className="result">
               <p className="result-head">
-                Sản phẩm thuộc <span className="badge ok">cụm {result.cluster}</span>
+                Sản phẩm thuộc <span className="badge ok">{title(result.cluster)}</span>
                 {result.sparkCluster !== undefined && (
                   <> {result.matchesSpark
                     ? <span className="badge ok">trùng với kết quả Spark đã tính (cụm {result.sparkCluster})</span>
@@ -168,14 +197,14 @@ export default function KMeansPage() {
                 )}
               </p>
               {profile.find((r) => Number(r.cluster) === result.cluster) && (
-                <p className="note">Cụm {result.cluster}: {describe(profile.find((r) => Number(r.cluster) === result.cluster)!)}</p>
+                <p className="note">{title(result.cluster)}: {describe(profile.find((r) => Number(r.cluster) === result.cluster)!)}</p>
               )}
               {result.outOfDomain && <p className="warn">Kết quả chỉ để tham khảo: {result.warnings.join("; ")}.</p>}
               <ReactECharts
-                style={{ height: 200 }}
+                style={{ height: 260 }}
                 option={{
                   tooltip: {},
-                  xAxis: { type: "category", data: result.squaredDistances.map((_: number, i: number) => `Cụm ${i}`) },
+                  xAxis: { type: "category", data: result.squaredDistances.map((_: number, i: number) => title(i)) },
                   yAxis: { type: "value", name: "khoảng cách tới tâm cụm" },
                   series: [{ type: "bar", barWidth: 56, data: result.squaredDistances }],
                 }}

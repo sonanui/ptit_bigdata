@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Pseudo-distributed trên một máy Windows: 1 NameNode + 1 DataNode cùng máy. -->
+<configuration>
+  <!-- Chỉ có một DataNode nên mỗi block giữ một bản sao. -->
+  <property>
+    <name>dfs.replication</name>
+    <value>1</value>
+  </property>
+  <!-- 128 MB, mặc định của Hadoop 3; ghi tường minh để báo cáo số block. -->
+  <property>
+    <name>dfs.blocksize</name>
+    <value>134217728</value>
+  </property>
+  <property>
+    <name>dfs.namenode.name.dir</name>
+    <value>file:///@NATIVE_ROOT@/data/namenode</value>
+  </property>
+  <property>
+    <name>dfs.datanode.data.dir</name>
+    <value>file:///@NATIVE_ROOT@/data/datanode</value>
+  </property>
+  <!-- Máy cá nhân, một người dùng: tắt kiểm tra quyền để Spark (HADOOP_USER_NAME=hadoop) và lệnh hdfs (user Windows)
+       cùng ghi được vào /data. Không dùng cho cụm thật. -->
+  <property>
+    <name>dfs.permissions.enabled</name>
+    <value>false</value>
+  </property>
+</configuration>

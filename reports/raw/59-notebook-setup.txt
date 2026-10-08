@@ -1,0 +1,27 @@
+PS> py -3.12 -m venv .venv
+PS> .venv\Scripts\pip install -r notebooks\requirements.txt
+    pyspark==4.0.4
+    numpy==2.2.6
+    pandas==2.3.3
+    matplotlib==3.10.7
+    ipykernel==7.1.0
+    nbconvert==7.16.6
+    pytest==8.4.2
+
+PS> cd notebooks
+PS> ..\.venv\Scripts\jupyter-nbconvert.exe --to notebook --execute --inplace --ExecutePreprocessor.timeout=7200 kmeans_product.ipynb
+[NbConvertApp] Writing 181947 bytes to kmeans_product.ipynb
+
+# Ô "SparkSession (local) đọc HDFS trong Docker" của notebook (output đã lưu):
+features run: 20261006-231209-b0376ef-d3 | kmeans run: 20261006-235739-b0376ef-d3
+{'sparkVersion': '4.0.4',
+ 'javaVersion': '21.0.12',
+ 'hadoopClientVersion': '3.4.1',
+ 'pythonVersion': '3.12.10',
+ 'master': 'local[2]',
+ 'driverMemory': '1g',
+ 'gitSha': 'b0376ef'}
+
+# Ô ghi kết quả:
+Parity numpy vs Spark trên 92592 sản phẩm: 1.000000
+Kết quả cục bộ: E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\results\ml\20261006-235739-b0376ef-d3 | HDFS: /data/ecommerce/ml/kmeans/run_id=20261006-235739-b0376ef-d3

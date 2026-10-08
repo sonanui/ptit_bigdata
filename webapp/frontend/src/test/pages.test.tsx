@@ -113,3 +113,14 @@ describe("modelRowName", () => {
     expect(modelRowName("Tên lạ")).toBe("Tên lạ");
   });
 });
+
+describe("clusterNames", () => {
+  it("chỉ đặt tên khi K = 2 và cụm lớn hơn ở cả lượt xem lẫn tỷ lệ có lượt mua", async () => {
+    const { clusterNames } = await import("../pages/KMeansPage");
+    const hot = { cluster: "0", mean_views: "1911.75", share_with_purchase: "0.985" };
+    const normal = { cluster: "1", mean_views: "93.96", share_with_purchase: "0.309" };
+    expect(clusterNames([hot, normal])).toEqual({ "0": "nhóm bán chạy (hot)", "1": "nhóm bình thường" });
+    expect(clusterNames([{ ...hot, share_with_purchase: "0.1" }, normal])).toEqual({});
+    expect(clusterNames([hot, normal, { ...normal, cluster: "2" }])).toEqual({});
+  });
+});

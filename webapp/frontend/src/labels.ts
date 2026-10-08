@@ -7,6 +7,7 @@ export const DATASET_NAMES: Record<string, string> = {
   d1: "Mẫu 1% tháng 10/2019",
   d2: "Mẫu 10% tháng 10/2019",
   d3: "Cả tháng 10/2019",
+  n1: "Mẫu 1% tháng 10/2019 (chạy lại trên máy, HDFS native)",
 };
 export const datasetName = (tag?: string) => (tag ? DATASET_NAMES[tag.toLowerCase()] ?? tag : "—");
 

@@ -1,0 +1,8 @@
+$ .\scripts\spark-local.ps1 submit revenue --input /data/ecommerce/raw/sample/2019-Oct-r0.1-s21.csv --tag d2
+SparkContext: Running Spark version 4.0.4
+SparkContext: Java version 21.0.12
+SparkContext: Submitted application: vn.edu.bigdata.revenue.spark.SparkTool
+JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+Utils: Successfully started service 'SparkUI' on port 4040.
+Executor: Java version 21.0.12
+A1 xong: 20261008-002203-aa12c3c-d2 groups=495 valid=74120 -> /data/ecommerce/agg/revenue_by_category/run_id=20261008-002203-aa12c3c-d2

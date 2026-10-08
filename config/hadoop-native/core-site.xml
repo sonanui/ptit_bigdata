@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HDFS chạy native trên Windows (không Docker). @NATIVE_ROOT@ được scripts/native/setup-native.ps1 thay bằng thư mục thật. -->
+<configuration>
+  <property>
+    <name>fs.defaultFS</name>
+    <value>hdfs://localhost:8020</value>
+  </property>
+  <property>
+    <name>hadoop.tmp.dir</name>
+    <value>@NATIVE_ROOT@/tmp</value>
+  </property>
+</configuration>

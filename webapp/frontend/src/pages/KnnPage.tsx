@@ -40,6 +40,11 @@ export default function KnnPage() {
     setError(null);
     post<any>("/api/ml/knn/predict", { runId, ...body }).then(setResult).catch((e) => { setResult(null); setError(String(e.message)); });
   };
+  // Link demo: /ml/knn?product=1000978 mở trang và dự đoán sẵn sản phẩm đó.
+  useEffect(() => {
+    const product = new URLSearchParams(window.location.search).get("product");
+    if (runId && product) predict({ productId: product });
+  }, [runId]);
   const meta = detail.data?.metadata;
   const metrics = detail.data?.metrics;
   const knnRow = metrics && Object.entries(metrics.test as Record<string, any>).find(([name]) => name.startsWith("KNN"));

@@ -1208,11 +1208,11 @@ Node.js chỉ cần lúc build; bản chạy là file tĩnh do FastAPI phục v�
 
 | ID | Việc | Ghi chú / tiêu chí nghiệm thu |
 |---|---|---|
-| U1 | Báo cáo PDF + slide (T5.4) | Theo cấu trúc §13.2; mọi số liệu trích từ `docs/evidence/` kèm `run_id`; nêu cả kết quả âm (KNN thua Logistic Regression, KNN hướng B không vượt baseline phổ biến, Spark CSV chậm hơn MR V1 trên D3) |
+| U1 | Báo cáo PDF + slide (T5.4) | **2026-10-08: báo cáo Word v5** (`reports/…_v5.docx`) cập nhật từ mẫu v4 của nhóm: Spark, HDFS, thực nghiệm thật, K-Means/KNN, web, 15 hình, 16 bảng. Còn lại: nhóm điền mã sinh viên, tên nhóm/lớp/GV, bảng phân công và điểm tự đánh giá; xuất PDF; làm slide. Theo cấu trúc §13.2; mọi số liệu trích từ `docs/evidence/` kèm `run_id`; nêu cả kết quả âm (KNN thua Logistic Regression, KNN hướng B không vượt baseline phổ biến, Spark CSV chậm hơn MR V1 trên D3) |
 | U2 | Phân công nhóm `docs/TEAM.md` (§11, §13.1) | Cần biết nhóm 4 hay 5 người (câu hỏi §15.2-2); mỗi thành viên tự chạy demo một lần và lưu log |
-| U3 | Tổng duyệt demo ≤ 10 phút (T5.5) theo `docs/END_TO_END.md` §3 | Gọi trước các endpoint ML (warm-up) để tránh 6–9 s ở lần gọi đầu |
+| U3 | Tổng duyệt demo ≤ 10 phút (T5.5) theo `docs/DEMO_CASES.md` (kịch bản 8 ca, viết 2026-10-08) | Gọi trước các endpoint ML (warm-up) để tránh 6–9 s ở lần gọi đầu |
 | U4 | Runbook được thử trên **máy khác** (T5.2, §3 dòng 19) | 2026-10-07: đã thử bản clone mới **trên cùng máy** cho mức 1 của `docs/HUONG_DAN_CHAY.md` (web chạy với serving commit sẵn, `docs/evidence/webapp/README.md`). Còn lại: thành viên khác chạy mức 1 và mức 3 trên máy của mình, ghi lỗi gặp phải |
-| U5 | Biểu đồ cho báo cáo (T5.1) | Chụp từ web hoặc notebook; mỗi hình ghi `run_id`. Lưu ý: chụp màn hình Chrome bị timeout khi tab ở nền |
+| U5 | ~~Biểu đồ cho báo cáo (T5.1)~~ | **XONG 2026-10-08**: `reports/images/` (HDFS, MR, Spark UI, đối chiếu, notebook, web, API), mô tả ở `reports/README.md`; mỗi hình ghi `run_id`. Lưu ý: chụp màn hình Chrome bị timeout khi tab ở nền |
 | U6 | ~~Lý thuyết Spark trong `docs/algorithms.md`~~ | **XONG 2026-10-07**: mục 10 (RDD lineage và physical plan DataFrame thật, ánh xạ Map/Combine/Shuffle/Reduce, số đo D3, phân biệt MR và Spark) |
 | U7 | Câu hỏi còn mở §15.2: hạn nộp, giảng viên có bắt buộc YARN/web không | Quyết định mức cắt và có làm U9 không |
 
