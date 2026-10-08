@@ -1,0 +1,2 @@
+﻿"label","mode","master","shufflePartitions","runs","wallMillisMedian","wallMillisMin","wallMillisMax","endToEndMillisMedian","endToEndMillisMin","endToEndMillisMax","computeMillisMedian","computeMillisMin","computeMillisMax","inputBytesReadMedian","inputRecordsReadMedian","shuffleReadBytesMedian","shuffleWriteBytesMedian","tasksMedian","groups","validPurchases","allMatchReference"
+"e4-d2-df-raw","df-raw","local[2]","8","3","53607","47258","54638","44473","36679","46111","40438","34011","41985","567263939","4246194","49820","49820","7","495","74120","True"

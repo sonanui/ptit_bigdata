@@ -1,0 +1,19 @@
+AdaptiveSparkPlan isFinalPlan=true
++- == Final Plan ==
+   ResultQueryStage 1
+   +- *(2) HashAggregate(keys=[category_id#3], functions=[sum(price_minor#8L), count(1)], output=[category_id#3, sum_minor#14L, purchase_count#15L])
+      +- AQEShuffleRead coalesced
+         +- ShuffleQueryStage 0
+            +- Exchange hashpartitioning(category_id#3, 8), ENSURE_REQUIREMENTS, [plan_id=37]
+               +- *(1) HashAggregate(keys=[category_id#3], functions=[partial_sum(price_minor#8L), partial_count(1)], output=[category_id#3, sum#33L, count#34L])
+                  +- *(1) Project [category_id#3, price_minor#8L]
+                     +- *(1) Filter ((isnotnull(event_type#1) AND (event_type#1 = purchase)) AND isnotnull(category_id#3))
+                        +- *(1) ColumnarToRow
+                           +- FileScan parquet [event_type#1,category_id#3,price_minor#8L,event_date#12] Batched: true, DataFilters: [isnotnull(event_type#1), (event_type#1 = purchase), isnotnull(category_id#3)], Format: Parquet, Location: InMemoryFileIndex(1 paths)[hdfs://localhost:8020/data/ecommerce/curated/events/run_id=20261006-04..., PartitionFilters: [], PushedFilters: [IsNotNull(event_type), EqualTo(event_type,purchase), IsNotNull(category_id)], ReadSchema: struct<event_type:string,category_id:string,price_minor:bigint>
++- == Initial Plan ==
+   HashAggregate(keys=[category_id#3], functions=[sum(price_minor#8L), count(1)], output=[category_id#3, sum_minor#14L, purchase_count#15L])
+   +- Exchange hashpartitioning(category_id#3, 8), ENSURE_REQUIREMENTS, [plan_id=15]
+      +- HashAggregate(keys=[category_id#3], functions=[partial_sum(price_minor#8L), partial_count(1)], output=[category_id#3, sum#33L, count#34L])
+         +- Project [category_id#3, price_minor#8L]
+            +- Filter ((isnotnull(event_type#1) AND (event_type#1 = purchase)) AND isnotnull(category_id#3))
+               +- FileScan parquet [event_type#1,category_id#3,price_minor#8L,event_date#12] Batched: true, DataFilters: [isnotnull(event_type#1), (event_type#1 = purchase), isnotnull(category_id#3)], Format: Parquet, Location: InMemoryFileIndex(1 paths)[hdfs://localhost:8020/data/ecommerce/curated/events/run_id=20261006-04..., PartitionFilters: [], PushedFilters: [IsNotNull(event_type), EqualTo(event_type,purchase), IsNotNull(category_id)], ReadSchema: struct<event_type:string,category_id:string,price_minor:bigint>

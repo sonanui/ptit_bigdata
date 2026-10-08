@@ -8,3 +8,21 @@ results/
 *.log
 __pycache__/
 .DS_Store
+.venv/
+config/spark-local.env
+spark-warehouse/
+metastore_db/
+derby.log
+.pytest_cache/
+# Serving run: chỉ commit run demo (đã chốt) để thành viên clone về chạy web ngay; run khác giữ cục bộ.
+/serving/*
+!/serving/20261007-015257-b0376ef-d3/
+!/serving/_LATEST
+node_modules/
+webapp/frontend/dist/
+*.tsbuildinfo
+# Ghi chú làm việc và chỉ dẫn agent cục bộ: không đưa lên repo.
+/CLAUDE.md
+/temp.md
+# Tài liệu học phần có bản quyền (slide, sách): chỉ giữ trên máy, không đưa lên repo.
+docs/*.pdf

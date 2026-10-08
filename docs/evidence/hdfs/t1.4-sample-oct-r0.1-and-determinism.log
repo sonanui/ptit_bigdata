@@ -1,0 +1,8 @@
+ Container ptit_bigdata-bigdata-run-f0d79893f6ae Creating 
+ Container ptit_bigdata-bigdata-run-f0d79893f6ae Created 
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Sample: hdfs://namenode:8020/data/ecommerce/raw/sample/2019-Oct-r0.1-s21.csv
+sample_r0.1_s21_ms=626587
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Sample: hdfs://namenode:8020/data/ecommerce/tmp/determinism/2019-Oct-r0.01-s21-rerun.csv
+determinism_rerun_ms=571973

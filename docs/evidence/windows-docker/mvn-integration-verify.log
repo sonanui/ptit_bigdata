@@ -1,0 +1,274 @@
+ Network ptit_bigdata_default Creating 
+ Network ptit_bigdata_default Creating 
+ Network ptit_bigdata_default Created 
+ Network ptit_bigdata_default Created 
+ Container ptit_bigdata-bigdata-run-2f3188bb7864 Creating 
+ Container ptit_bigdata-bigdata-run-2f3188bb7864 Created 
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< vn.edu.bigdata:revenue-aggregation >-----------------
+[INFO] Building revenue-aggregation 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-failsafe-plugin/3.5.3/maven-failsafe-plugin-3.5.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-failsafe-plugin/3.5.3/maven-failsafe-plugin-3.5.3.pom (11 kB at 11 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-failsafe-plugin/3.5.3/maven-failsafe-plugin-3.5.3.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-failsafe-plugin/3.5.3/maven-failsafe-plugin-3.5.3.jar (57 kB at 712 kB/s)
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (default) @ revenue-aggregation ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ revenue-aggregation ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ revenue-aggregation ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ revenue-aggregation ---
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ revenue-aggregation ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.3:test (default-test) @ revenue-aggregation ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.3/surefire-junit-platform-3.5.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.3/surefire-junit-platform-3.5.3.pom (5.2 kB at 86 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.3/surefire-providers-3.5.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.5.3/surefire-providers-3.5.3.pom (2.5 kB at 25 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.3/common-java5-3.5.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.3/common-java5-3.5.3.pom (3.1 kB at 36 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.1/junit-platform-engine-1.12.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.1/junit-platform-engine-1.12.1.pom (3.2 kB at 36 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.1/junit-platform-commons-1.12.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.1/junit-platform-commons-1.12.1.pom (2.8 kB at 33 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.1/junit-platform-launcher-1.12.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.1/junit-platform-launcher-1.12.1.pom (3.0 kB at 33 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.3/surefire-junit-platform-3.5.3.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.5.3/surefire-junit-platform-3.5.3.jar (27 kB at 255 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.3/common-java5-3.5.3.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.1/junit-platform-engine-1.12.1.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.1/junit-platform-commons-1.12.1.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.1/junit-platform-launcher-1.12.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.5.3/common-java5-3.5.3.jar (18 kB at 36 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.12.1/junit-platform-engine-1.12.1.jar (256 kB at 499 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.12.1/junit-platform-commons-1.12.1.jar (152 kB at 209 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.1/junit-platform-launcher-1.12.1.jar (208 kB at 262 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.pom (3.0 kB at 31 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.12.2/junit-platform-launcher-1.12.2.jar (208 kB at 121 kB/s)
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running vn.edu.bigdata.revenue.profile.GroupDictionaryTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.114 s -- in vn.edu.bigdata.revenue.profile.GroupDictionaryTest
+[INFO] Running vn.edu.bigdata.revenue.hadoop.BoundedAccumulatorTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in vn.edu.bigdata.revenue.hadoop.BoundedAccumulatorTest
+[INFO] Running vn.edu.bigdata.revenue.hadoop.WritableContractTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.190 s -- in vn.edu.bigdata.revenue.hadoop.WritableContractTest
+[INFO] Running vn.edu.bigdata.revenue.job.JobPlanFactoryTest
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.276 s -- in vn.edu.bigdata.revenue.job.JobPlanFactoryTest
+[INFO] Running vn.edu.bigdata.revenue.input.DatasetPreflightTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.152 s -- in vn.edu.bigdata.revenue.input.DatasetPreflightTest
+[INFO] Running vn.edu.bigdata.revenue.input.PurchasePreparationTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s -- in vn.edu.bigdata.revenue.input.PurchasePreparationTest
+[INFO] Running vn.edu.bigdata.revenue.input.ProjectedCsvEventParserTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in vn.edu.bigdata.revenue.input.ProjectedCsvEventParserTest
+[INFO] Running vn.edu.bigdata.revenue.output.ResultValidatorTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 s -- in vn.edu.bigdata.revenue.output.ResultValidatorTest
+[INFO] Running vn.edu.bigdata.revenue.domain.AggregateStateTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in vn.edu.bigdata.revenue.domain.AggregateStateTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ revenue-aggregation ---
+[INFO] 
+[INFO] --- shade:3.6.0:shade (default) @ revenue-aggregation ---
+[INFO] Including org.apache.commons:commons-csv:jar:1.14.1 in the shaded jar.
+[INFO] Including commons-io:commons-io:jar:2.20.0 in the shaded jar.
+[INFO] Including commons-codec:commons-codec:jar:1.19.0 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.core:jackson-databind:jar:2.18.3 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.core:jackson-annotations:jar:2.18.3 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.core:jackson-core:jar:2.18.3 in the shaded jar.
+[WARNING] commons-io-2.20.0.jar, revenue-aggregation.jar define 2 overlapping resources: 
+[WARNING]   - META-INF/maven/commons-io/commons-io/pom.properties
+[WARNING]   - META-INF/maven/commons-io/commons-io/pom.xml
+[WARNING] commons-codec-1.19.0.jar, commons-csv-1.14.1.jar, commons-io-2.20.0.jar, jackson-annotations-2.18.3.jar, jackson-core-2.18.3.jar, jackson-databind-2.18.3.jar, revenue-aggregation.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/MANIFEST.MF
+[WARNING] jackson-annotations-2.18.3.jar, jackson-core-2.18.3.jar, jackson-databind-2.18.3.jar, revenue-aggregation.jar define 2 overlapping resources: 
+[WARNING]   - META-INF/LICENSE
+[WARNING]   - META-INF/NOTICE
+[WARNING] commons-codec-1.19.0.jar, commons-csv-1.14.1.jar, commons-io-2.20.0.jar, revenue-aggregation.jar define 2 overlapping resources: 
+[WARNING]   - META-INF/LICENSE.txt
+[WARNING]   - META-INF/NOTICE.txt
+[WARNING] jackson-core-2.18.3.jar, revenue-aggregation.jar define 15 overlapping classes and resources: 
+[WARNING]   - META-INF.versions.11.com.fasterxml.jackson.core.internal.shaded.fdp.v2_18_3.BigSignificand
+[WARNING]   - META-INF.versions.11.com.fasterxml.jackson.core.internal.shaded.fdp.v2_18_3.FastDoubleSwar
+[WARNING]   - META-INF.versions.11.com.fasterxml.jackson.core.internal.shaded.fdp.v2_18_3.FastIntegerMath
+[WARNING]   - META-INF.versions.17.com.fasterxml.jackson.core.internal.shaded.fdp.v2_18_3.FastDoubleSwar
+[WARNING]   - META-INF.versions.17.com.fasterxml.jackson.core.internal.shaded.fdp.v2_18_3.FastIntegerMath
+[WARNING]   - META-INF.versions.21.com.fasterxml.jackson.core.internal.shaded.fdp.v2_18_3.FastDoubleSwar
+[WARNING]   - META-INF.versions.21.com.fasterxml.jackson.core.internal.shaded.fdp.v2_18_3.FastIntegerMath
+[WARNING]   - META-INF.versions.22.com.fasterxml.jackson.core.internal.shaded.fdp.v2_18_3.FastDoubleSwar
+[WARNING]   - META-INF.versions.22.com.fasterxml.jackson.core.internal.shaded.fdp.v2_18_3.FastIntegerMath
+[WARNING]   - META-INF/FastDoubleParser-LICENSE
+[WARNING]   - 5 more...
+[WARNING] commons-codec-1.19.0.jar, commons-csv-1.14.1.jar, commons-io-2.20.0.jar, jackson-core-2.18.3.jar, jackson-databind-2.18.3.jar, revenue-aggregation.jar define 1 overlapping classes: 
+[WARNING]   - META-INF.versions.9.module-info
+[WARNING] commons-csv-1.14.1.jar, revenue-aggregation.jar define 2 overlapping resources: 
+[WARNING]   - META-INF/maven/org.apache.commons/commons-csv/pom.properties
+[WARNING]   - META-INF/maven/org.apache.commons/commons-csv/pom.xml
+[WARNING] jackson-annotations-2.18.3.jar, revenue-aggregation.jar define 2 overlapping resources: 
+[WARNING]   - META-INF/maven/com.fasterxml.jackson.core/jackson-annotations/pom.properties
+[WARNING]   - META-INF/maven/com.fasterxml.jackson.core/jackson-annotations/pom.xml
+[WARNING] commons-codec-1.19.0.jar, revenue-aggregation.jar define 2 overlapping resources: 
+[WARNING]   - META-INF/maven/commons-codec/commons-codec/pom.properties
+[WARNING]   - META-INF/maven/commons-codec/commons-codec/pom.xml
+[WARNING] jackson-databind-2.18.3.jar, revenue-aggregation.jar define 3 overlapping resources: 
+[WARNING]   - META-INF/maven/com.fasterxml.jackson.core/jackson-databind/pom.properties
+[WARNING]   - META-INF/maven/com.fasterxml.jackson.core/jackson-databind/pom.xml
+[WARNING]   - META-INF/services/com.fasterxml.jackson.core.ObjectCodec
+[WARNING] maven-shade-plugin has detected that some files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the file is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See https://maven.apache.org/plugins/maven-shade-plugin/
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] Replacing /opt/bigdata/target/revenue-aggregation.jar with /opt/bigdata/target/revenue-aggregation-1.0.0-shaded.jar
+[INFO] 
+[INFO] --- failsafe:3.5.3:integration-test (default) @ revenue-aggregation ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running vn.edu.bigdata.revenue.integration.DatasetToolIT
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Preflight valid: 1 purchases, fingerprint=71a7b93752916844dfb36d78c11e32f2a36bab5a55b3795c3f62cd7f1524ca6b
+Sample: /tmp/junit-6856332524491106320/sample0.csv
+Sample: /tmp/junit-6856332524491106320/sample1.csv
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.513 s -- in vn.edu.bigdata.revenue.integration.DatasetToolIT
+[INFO] Running vn.edu.bigdata.revenue.integration.VariantsIT
+WARN JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: /tmp/junit-12569583305075469432/v1 (V1_DIRECT)
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: /tmp/junit-12569583305075469432/v2 (V2_COMBINER)
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+Run valid: /tmp/junit-12569583305075469432/v3 (V3_IN_MAPPER)
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: /tmp/junit-12569583305075469432/v4 (V4_DENSE)
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: /tmp/junit-12569583305075469432/v5 (V5_BATCH)
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: /tmp/junit-17235810845823077179/out (V5_BATCH)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 34.51 s -- in vn.edu.bigdata.revenue.integration.VariantsIT
+[INFO] Running vn.edu.bigdata.revenue.integration.RecordReductionIT
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: file:/tmp/junit-17814127728801764786/v1 (V1_DIRECT)
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+Run valid: file:/tmp/junit-17814127728801764786/v2 (V2_COMBINER)
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: file:/tmp/junit-17814127728801764786/v3 (V3_IN_MAPPER)
+WARN JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: file:/tmp/junit-17814127728801764786/v4 (V4_DENSE)
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: file:/tmp/junit-17814127728801764786/v5 (V5_BATCH)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.771 s -- in vn.edu.bigdata.revenue.integration.RecordReductionIT
+[INFO] Running vn.edu.bigdata.revenue.integration.JobFailureIT
+Input/config error: Output already exists
+Input/config error: Input changed or preflight invalid
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.245 s -- in vn.edu.bigdata.revenue.integration.JobFailureIT
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- spotless:2.43.0:check (default) @ revenue-aggregation ---
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/googlejavaformat/google-java-format/1.15.0/google-java-format-1.15.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/googlejavaformat/google-java-format/1.15.0/google-java-format-1.15.0.pom (10 kB at 162 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/googlejavaformat/google-java-format-parent/1.15.0/google-java-format-parent-1.15.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/googlejavaformat/google-java-format-parent/1.15.0/google-java-format-parent-1.15.0.pom (13 kB at 156 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre.pom (11 kB at 81 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/31.0.1-jre/guava-parent-31.0.1-jre.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-parent/31.0.1-jre/guava-parent-31.0.1-jre.pom (14 kB at 243 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.pom (2.1 kB at 20 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.7.1/error_prone_annotations-2.7.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.7.1/error_prone_annotations-2.7.1.pom (2.1 kB at 9.2 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.7.1/error_prone_parent-2.7.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_parent/2.7.1/error_prone_parent-2.7.1.pom (7.0 kB at 145 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.pom (2.8 kB at 40 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/googlejavaformat/google-java-format/1.15.0/google-java-format-1.15.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/googlejavaformat/google-java-format/1.15.0/google-java-format-1.15.0.jar (265 kB at 1.2 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.7.1/error_prone_annotations-2.7.1.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.7.1/error_prone_annotations-2.7.1.jar (15 kB at 107 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar (4.6 kB at 30 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar (8.8 kB at 9.6 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.jar (209 kB at 218 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre.jar (3.0 MB at 1.4 MB/s)
+[INFO] Index file does not exist. Fallback to an empty index
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.google.googlejavaformat.java.JavacTokens$CommentSavingTokenizer (file:/opt/bigdata/.build-cache/m2/com/google/googlejavaformat/google-java-format/1.15.0/google-java-format-1.15.0.jar) to field com.sun.tools.javac.parser.JavaTokenizer.reader
+WARNING: Please consider reporting this to the maintainers of com.google.googlejavaformat.java.JavacTokens$CommentSavingTokenizer
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[INFO] Spotless.Java is keeping 63 files clean - 0 needs changes to be clean, 63 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- failsafe:3.5.3:verify (default) @ revenue-aggregation ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:09 min
+[INFO] Finished at: 2026-10-05T19:47:42Z
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,68 @@
+{
+  "experiment": "E4",
+  "title": "Spark A1 (DataFrame trên CSV): spark.sql.shuffle.partitions (D2)",
+  "dataset": "D2: mẫu 10% tháng 10/2019 (seed 21)",
+  "scope": "một máy Windows 11 (i5-9300HF 4 nhân/8 luồng, RAM 7,9 GB); HDFS 1 NameNode + 1 DataNode trong Docker; MR = LocalJobRunner (không YARN), Spark = local[n] trên host",
+  "metric": "Thời gian tính",
+  "unit": "ms",
+  "rows": [
+    {
+      "label": "8 partitions",
+      "median": 40438,
+      "min": 34011,
+      "max": 41985,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "df-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 567263939,
+        "inputRecordsRead": 4246194,
+        "shuffleReadBytes": 49820,
+        "tasks": 7,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "64 partitions",
+      "median": 36156,
+      "min": 32588,
+      "max": 40704,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "df-raw",
+        "master": "local[2]",
+        "shufflePartitions": 64,
+        "inputBytesRead": 567263939,
+        "inputRecordsRead": 4246194,
+        "shuffleReadBytes": 75924,
+        "tasks": 7,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "200 partitions",
+      "median": 42866,
+      "min": 37625,
+      "max": 43425,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "df-raw",
+        "master": "local[2]",
+        "shufflePartitions": 200,
+        "inputBytesRead": 567263939,
+        "inputRecordsRead": 4246194,
+        "shuffleReadBytes": 111370,
+        "tasks": 7,
+        "matchesReference": true
+      }
+    }
+  ],
+  "notes": [
+    "Số nhóm sau aggregate chỉ vài trăm, nhiều partition chủ yếu thêm task rỗng."
+  ],
+  "source": "docs/evidence/bench/spark/e4-d2-df-raw*/runs.json"
+}

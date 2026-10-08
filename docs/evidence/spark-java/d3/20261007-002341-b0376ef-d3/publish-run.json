@@ -1,0 +1,60 @@
+{
+  "schemaVersion" : 1,
+  "job" : "publish",
+  "runId" : "20261007-002341-b0376ef-d3",
+  "params" : {
+    "revenue-run-id" : "20261006-223434-b0376ef-d3",
+    "mr-output" : "hdfs://localhost:8020/data/ecommerce/bench/mr/e2-d3/e9b35a9b6869-1-v1",
+    "etl-run-id" : "20261006-224118-b0376ef-d3",
+    "metrics-run-id" : "20261006-230505-b0376ef-d3",
+    "kmeans-run-id" : "20261006-235739-b0376ef-d3",
+    "knn-run-id" : "20261007-000421-b0376ef-d3",
+    "benchmarks-dir" : "docs\\evidence\\bench\\serving",
+    "output" : "/data/ecommerce/serving/20261007-002341-b0376ef-d3"
+  },
+  "startedAt" : "2026-10-06T17:23:41.075901500Z",
+  "gitSha" : "b0376ef",
+  "sparkVersion" : "4.0.4",
+  "javaVersion" : "21.0.12",
+  "hadoopClientVersion" : "3.4.1",
+  "master" : "local[2]",
+  "configuration" : {
+    "spark.driver.memory" : "1g",
+    "spark.sql.shuffle.partitions" : "8",
+    "spark.sql.ansi.enabled" : "true",
+    "spark.sql.session.timeZone" : "UTC",
+    "spark.hadoop.fs.defaultFS" : "hdfs://localhost:8020"
+  },
+  "stages" : [ {
+    "name" : "analytics",
+    "elapsedMillis" : 9981
+  }, {
+    "name" : "benchmarks",
+    "elapsedMillis" : 494
+  }, {
+    "name" : "kmeans",
+    "elapsedMillis" : 3876
+  }, {
+    "name" : "knn",
+    "elapsedMillis" : 6158
+  } ],
+  "metrics" : {
+    "parityMatched" : true,
+    "files" : 26
+  },
+  "status" : "succeeded",
+  "error" : null,
+  "endToEndMillis" : 21714,
+  "taskMetrics" : {
+    "tasks" : 42,
+    "inputBytesRead" : 12518643,
+    "inputRecordsRead" : 512218,
+    "shuffleReadBytes" : 13556711,
+    "shuffleReadRecords" : 223670,
+    "shuffleWriteBytes" : 13556711,
+    "shuffleWriteRecords" : 223670,
+    "executorRunTimeMillis" : 7104,
+    "jvmGcTimeMillis" : 93
+  },
+  "taskMetricsComplete" : true
+}

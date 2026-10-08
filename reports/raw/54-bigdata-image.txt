@@ -1,0 +1,13 @@
+$ java -version
+openjdk version "11.0.29" 2025-10-21
+$ ./mvnw -v | head -1
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+$ python3 --version
+Python 3.12.3
+$ grep hadoop.version bigdata/pom.xml
+<hadoop.version>3.4.2</hadoop.version>
+$ ls -la bigdata/target/*.jar
+90674 bigdata/target/original-revenue-aggregation.jar
+3445221 bigdata/target/revenue-aggregation.jar
+$ tr : "\n" < .build-cache/classpath.txt | grep -c jar   # số jar trên classpath
+135

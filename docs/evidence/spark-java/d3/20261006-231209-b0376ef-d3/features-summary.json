@@ -1,0 +1,57 @@
+{
+  "products" : 166794,
+  "minViews" : 20,
+  "kept" : 92592,
+  "excluded" : 74202,
+  "viewsQuantiles_p50_p75_p90_p95_p99" : [ 25.0, 90.0, 322.0, 714.0, 3091.0 ],
+  "keptWithCategoryCode" : 45441,
+  "keptWithPurchase" : 40355,
+  "features" : [ "log_views", "log_carts", "log_purchases", "cart_rate", "purchase_rate", "log_median_price", "log_distinct_users" ],
+  "describe" : {
+    "count" : {
+      "log_views" : "92592",
+      "log_carts" : "92592",
+      "log_purchases" : "92592",
+      "cart_rate" : "92592",
+      "purchase_rate" : "92592",
+      "log_median_price" : "92592",
+      "log_distinct_users" : "92592"
+    },
+    "mean" : {
+      "log_views" : "4.657137077796451",
+      "log_carts" : "0.2755384327041147",
+      "log_purchases" : "0.667644268686716",
+      "cart_rate" : "0.002970807935532769",
+      "purchase_rate" : "0.007506918588974359",
+      "log_median_price" : "4.447253035806677",
+      "log_distinct_users" : "4.20715608445311"
+    },
+    "stddev" : {
+      "log_views" : "1.293661059248481",
+      "log_carts" : "0.8977459825708493",
+      "log_purchases" : "1.0325129892173865",
+      "cart_rate" : "0.011354538589423788",
+      "purchase_rate" : "0.01325999604452388",
+      "log_median_price" : "1.3260781842743807",
+      "log_distinct_users" : "1.25872641474162"
+    },
+    "min" : {
+      "log_views" : "3.044522437723423",
+      "log_carts" : "0.0",
+      "log_purchases" : "0.0",
+      "cart_rate" : "0.0",
+      "purchase_rate" : "0.0",
+      "log_median_price" : "0.0",
+      "log_distinct_users" : "0.6931471805599453"
+    },
+    "max" : {
+      "log_views" : "12.946313313622202",
+      "log_carts" : "10.861380774264797",
+      "log_purchases" : "10.273152756513104",
+      "cart_rate" : "0.36363636363636365",
+      "purchase_rate" : "0.36666666666666664",
+      "log_median_price" : "7.853631997194365",
+      "log_distinct_users" : "12.195411011761056"
+    }
+  }
+}

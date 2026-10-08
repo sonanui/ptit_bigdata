@@ -1,0 +1,98 @@
+{
+  "experiment": "E3",
+  "title": "MapReduce: số map task chạy song song (D2)",
+  "dataset": "D2: mẫu 10% tháng 10/2019 (seed 21)",
+  "scope": "một máy Windows 11 (i5-9300HF 4 nhân/8 luồng, RAM 7,9 GB); HDFS 1 NameNode + 1 DataNode trong Docker; MR = LocalJobRunner (không YARN), Spark = local[n] trên host",
+  "metric": "Thời gian job MR",
+  "unit": "ms",
+  "rows": [
+    {
+      "label": "MR V1, 1 map song song",
+      "median": 29221,
+      "min": 21346,
+      "max": 37034,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V1_DIRECT",
+        "shuffleBytes": 2816620,
+        "mapOutputRecords": 74120,
+        "reduceInputRecords": 74120
+      }
+    },
+    {
+      "label": "MR V2, 1 map song song",
+      "median": 27161,
+      "min": 23890,
+      "max": 31702,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V2_COMBINER",
+        "shuffleBytes": 66864,
+        "mapOutputRecords": 74120,
+        "reduceInputRecords": 1758
+      }
+    },
+    {
+      "label": "MR V1, 2 map song song",
+      "median": 20128,
+      "min": 17244,
+      "max": 48759,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V1_DIRECT",
+        "shuffleBytes": 2816620,
+        "mapOutputRecords": 74120,
+        "reduceInputRecords": 74120
+      }
+    },
+    {
+      "label": "MR V2, 2 map song song",
+      "median": 18242,
+      "min": 17552,
+      "max": 24470,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V2_COMBINER",
+        "shuffleBytes": 66864,
+        "mapOutputRecords": 74120,
+        "reduceInputRecords": 1758
+      }
+    },
+    {
+      "label": "MR V1, 4 map song song",
+      "median": 29340,
+      "min": 21768,
+      "max": 31056,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V1_DIRECT",
+        "shuffleBytes": 2816620,
+        "mapOutputRecords": 74120,
+        "reduceInputRecords": 74120
+      }
+    },
+    {
+      "label": "MR V2, 4 map song song",
+      "median": 30842,
+      "min": 28642,
+      "max": 31661,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V2_COMBINER",
+        "shuffleBytes": 66864,
+        "mapOutputRecords": 74120,
+        "reduceInputRecords": 1758
+      }
+    }
+  ],
+  "notes": [
+    "LocalJobRunner chạy map trong một JVM; mapreduce.local.map.tasks.maximum = số luồng map."
+  ],
+  "source": "docs/evidence/bench/mr/mr-e3-d2-maps*/runs.json"
+}

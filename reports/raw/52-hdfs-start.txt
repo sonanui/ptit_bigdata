@@ -1,0 +1,11 @@
+$ docker compose up -d namenode datanode
+ Container ptit_bigdata-namenode-1 Running 
+ Container ptit_bigdata-datanode-1 Running 
+ Container ptit_bigdata-namenode-1 Waiting 
+ Container ptit_bigdata-namenode-1 Healthy 
+$ docker compose exec namenode hdfs dfsadmin -safemode wait
+Safe mode is OFF
+$ docker compose ps namenode datanode
+SERVICE    IMAGE                 STATUS                    PORTS
+datanode   apache/hadoop:3.4.2   Up 14 minutes             127.0.0.1:9864->9864/tcp, 127.0.0.1:9866->9866/tcp
+namenode   apache/hadoop:3.4.2   Up 14 minutes (healthy)   127.0.0.1:8020->8020/tcp, 127.0.0.1:9870->9870/tcp

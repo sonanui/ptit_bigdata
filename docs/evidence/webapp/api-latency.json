@@ -1,0 +1,101 @@
+{
+  "base": "http://127.0.0.1:8080",
+  "servingRun": "20261007-015257-b0376ef-d3",
+  "kmeansRun": "20261006-235739-b0376ef-d3",
+  "knnRun": "20261007-000421-b0376ef-d3",
+  "method": "tuần tự, 1 client, cùng máy; cold = lần gọi đầu sau khi khởi động backend",
+  "criterion": "p95 < 300 ms (plan T6.8)",
+  "allP95Below300": true,
+  "rows": [
+    {
+      "endpoint": "GET /api/runs",
+      "query": null,
+      "coldMillis": 21.4,
+      "n": 200,
+      "p50Millis": 18.47,
+      "p95Millis": 39.83,
+      "maxMillis": 93.75
+    },
+    {
+      "endpoint": "GET /api/analytics/20261007-015257-b0376ef-d3/tables/revenue_by_category",
+      "query": "sort=total_revenue&limit=20",
+      "coldMillis": 144.5,
+      "n": 200,
+      "p50Millis": 5.85,
+      "p95Millis": 30.22,
+      "maxMillis": 40.85
+    },
+    {
+      "endpoint": "GET /api/analytics/20261007-015257-b0376ef-d3/tables/funnel_by_brand",
+      "query": "q=sam&sort=purchases&limit=20",
+      "coldMillis": 63.5,
+      "n": 200,
+      "p50Millis": 4.6,
+      "p95Millis": 23.9,
+      "maxMillis": 36.7
+    },
+    {
+      "endpoint": "GET /api/analytics/20261007-015257-b0376ef-d3/benchmarks/e4-spark-modes",
+      "query": null,
+      "coldMillis": 16.3,
+      "n": 200,
+      "p50Millis": 4.34,
+      "p95Millis": 25.17,
+      "maxMillis": 92.71
+    },
+    {
+      "endpoint": "GET /api/ml/kmeans/20261006-235739-b0376ef-d3/clusters",
+      "query": null,
+      "coldMillis": 64.0,
+      "n": 200,
+      "p50Millis": 7.93,
+      "p95Millis": 30.35,
+      "maxMillis": 51.6
+    },
+    {
+      "endpoint": "GET /api/ml/kmeans/20261006-235739-b0376ef-d3/products",
+      "query": "q=samsung&limit=10",
+      "coldMillis": 6511.1,
+      "n": 200,
+      "p50Millis": 9.64,
+      "p95Millis": 30.24,
+      "maxMillis": 2696.93
+    },
+    {
+      "endpoint": "POST /api/ml/kmeans/predict (productId)",
+      "query": null,
+      "coldMillis": 193.9,
+      "n": 200,
+      "p50Millis": 8.57,
+      "p95Millis": 29.85,
+      "maxMillis": 39.36
+    },
+    {
+      "endpoint": "POST /api/ml/kmeans/predict (raw)",
+      "query": null,
+      "coldMillis": 52.7,
+      "n": 200,
+      "p50Millis": 8.59,
+      "p95Millis": 21.69,
+      "maxMillis": 57.54
+    },
+    {
+      "endpoint": "POST /api/ml/knn/predict (productId)",
+      "query": null,
+      "coldMillis": 9201.5,
+      "n": 200,
+      "p50Millis": 10.71,
+      "p95Millis": 30.24,
+      "maxMillis": 41.01
+    },
+    {
+      "endpoint": "POST /api/ml/knn/predict (raw)",
+      "query": null,
+      "coldMillis": 10.3,
+      "n": 200,
+      "p50Millis": 12.69,
+      "p95Millis": 31.37,
+      "maxMillis": 48.43
+    }
+  ]
+}

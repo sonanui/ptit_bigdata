@@ -1,0 +1,5 @@
+NAME                          IMAGE                                                                     COMMAND                  SERVICE        CREATED          STATUS                    PORTS
+ptit_bigdata-datanode-1       apache/hadoop:3.4.2                                                       "/usr/local/bin/dumb…"   datanode       41 seconds ago   Up 18 seconds             127.0.0.1:9864->9864/tcp, 127.0.0.1:9866->9866/tcp
+ptit_bigdata-namenode-1       apache/hadoop:3.4.2                                                       "/usr/local/bin/dumb…"   namenode       41 seconds ago   Up 39 seconds (healthy)   127.0.0.1:8020->8020/tcp, 127.0.0.1:9870->9870/tcp
+ptit_bigdata-web-backend-1    sha256:88430670e16338cf5514f5bef05b37def05d2afc92f1b5b6fa338eeec6f4db1d   "java -Xmx512m -jar …"   web-backend    2 hours ago      Up 2 hours (healthy)      127.0.0.1:8081->8080/tcp
+ptit_bigdata-web-frontend-1   ptit-bigdata-web-frontend:local                                           "/docker-entrypoint.…"   web-frontend   2 hours ago      Up 2 hours                127.0.0.1:8080->80/tcp

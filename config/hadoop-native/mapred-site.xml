@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Job MapReduce chạy bằng LocalJobRunner (map -> sort/spill -> shuffle -> reduce trong một JVM), đọc/ghi HDFS. Không có YARN. -->
+<configuration>
+  <property>
+    <name>mapreduce.framework.name</name>
+    <value>local</value>
+  </property>
+</configuration>

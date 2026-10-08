@@ -1,0 +1,30 @@
+$ curl -X POST localhost:8081/api/ml/kmeans/predict -d '{"productId": "1002099"}'
+HTTP 200
+{
+  "cluster": 0,
+  "squaredDistances": [
+    24.09275350986046,
+    60.736522908192
+  ],
+  "standardizedFeatures": [
+    3.9857479577240484,
+    -0.306922490385375,
+    4.231722389312106,
+    -0.261640568847062,
+    0.06524696020845609,
+    1.1085722963626448,
+    4.055701488120738
+  ],
+  "sparkCluster": 0,
+  "matchesSpark": true,
+  "features": {
+    "log_views": 9.813344002683163,
+    "log_carts": 0.0,
+    "log_purchases": 5.0369526024136295,
+    "cart_rate": 0.0,
+    "purchase_rate": 0.008372093023255815,
+    "log_median_price": 5.917306573704218,
+    "log_distinct_users": 9.31217467785745
+  },
+  "warnings": []
+}

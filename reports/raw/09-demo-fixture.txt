@@ -1,0 +1,29 @@
+$ cat bigdata/src/test/resources/fixtures/events.csv
+event_time,event_type,product_id,category_id,category_code,brand,price,user_id,user_session
+2019-10-01 00:00:00 UTC,purchase,1,1,electronics.smartphone,brand,10.00,test,session
+2019-10-01 00:00:01 UTC,purchase,1,1,electronics.smartphone,brand,20.00,test,session
+2019-10-01 00:00:02 UTC,purchase,1,1,electronics.smartphone,brand,30.00,test,session
+2019-10-01 00:00:03 UTC,view,1,1,electronics.smartphone,brand,99.00,test,session
+2019-10-01 00:00:04 UTC,purchase,2,2,,brand,0.00,test,session
+2019-10-01 00:00:05 UTC,purchase,2,2,,brand,0.01,test,session
+2019-10-01 00:00:06 UTC,purchase,2,2,,brand,0.02,test,session
+
+$ docker compose run --rm bigdata bash scripts/demo.sh results/report-demo-fixture
+Preflight valid: 6 purchases, fingerprint=009b04c7863ce126f3a4885450d678706c131b88b245020f076e62816197f54a
+Profile: 2 dictionary groups
+Run valid: results/report-demo-fixture/v1 (V1_DIRECT)
+Run valid: results/report-demo-fixture/v2 (V2_COMBINER)
+Run valid: results/report-demo-fixture/v3 (V3_IN_MAPPER)
+Run valid: results/report-demo-fixture/v4 (V4_DENSE)
+Run valid: results/report-demo-fixture/v5 (V5_BATCH)
+Results equal
+Results equal
+Results equal
+Results equal
+group_key,total_revenue,purchase_count,average_revenue
+1,60.00,3,20.00
+2,0.03,3,0.01
+
+$ cat bigdata/src/test/resources/fixtures/expected-category-id.tsv   # kết quả tính tay
+1	60.00	3	20.00
+2	0.03	3	0.01

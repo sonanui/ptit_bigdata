@@ -1,0 +1,82 @@
+{
+  "schemaVersion" : 1,
+  "job" : "etl",
+  "runId" : "20261006-224118-b0376ef-d3",
+  "params" : {
+    "input" : "/data/ecommerce/raw/2019-Oct.csv",
+    "duplicates" : false,
+    "output" : "/data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3"
+  },
+  "startedAt" : "2026-10-06T15:41:18.865497Z",
+  "gitSha" : "b0376ef",
+  "sparkVersion" : "4.0.4",
+  "javaVersion" : "21.0.12",
+  "hadoopClientVersion" : "3.4.1",
+  "master" : "local[2]",
+  "configuration" : {
+    "spark.driver.memory" : "1g",
+    "spark.sql.shuffle.partitions" : "8",
+    "spark.sql.ansi.enabled" : "true",
+    "spark.sql.session.timeZone" : "UTC",
+    "spark.hadoop.fs.defaultFS" : "hdfs://localhost:8020"
+  },
+  "stages" : [ {
+    "name" : "write_curated_parquet",
+    "elapsedMillis" : 778575
+  }, {
+    "name" : "count_reasons",
+    "elapsedMillis" : 383258
+  }, {
+    "name" : "verify_readback",
+    "elapsedMillis" : 2119
+  }, {
+    "name" : "quality",
+    "elapsedMillis" : 246242
+  } ],
+  "metrics" : {
+    "rowsIn" : 42448765,
+    "rowsValid" : 42448764,
+    "rejected" : {
+      "HEADER" : 1
+    },
+    "rowsWritten" : 42448764,
+    "quality" : {
+      "rows" : 42448764,
+      "min_event_time" : "2019-10-01T00:00:00Z",
+      "max_event_time" : "2019-10-31T23:59:59Z",
+      "null_category_id" : 0,
+      "null_category_code" : 13515609,
+      "null_brand" : 6113008,
+      "null_user_session" : 2,
+      "zero_price" : 68673,
+      "distinct_products" : 166794,
+      "distinct_category_id" : 624,
+      "distinct_category_code" : 126,
+      "distinct_brands" : 3445,
+      "distinct_users" : 3022290,
+      "distinct_sessions" : 9244421,
+      "eventTypes" : {
+        "cart" : 926516,
+        "purchase" : 742849,
+        "view" : 40779399
+      },
+      "purchasesWithZeroPrice" : 0,
+      "categoryIdsWithMultipleCodes" : 0
+    }
+  },
+  "status" : "succeeded",
+  "error" : null,
+  "endToEndMillis" : 1414028,
+  "taskMetrics" : {
+    "tasks" : 192,
+    "inputBytesRead" : 13062400377,
+    "inputRecordsRead" : 297024656,
+    "shuffleReadBytes" : 509993990,
+    "shuffleReadRecords" : 17316348,
+    "shuffleWriteBytes" : 509987142,
+    "shuffleWriteRecords" : 17316253,
+    "executorRunTimeMillis" : 2755219,
+    "jvmGcTimeMillis" : 70775
+  },
+  "taskMetricsComplete" : true
+}

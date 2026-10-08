@@ -1,5 +1,7 @@
 # Các thuật toán Group By Aggregation và độ phức tạp
 
+Mục 1–9: Hadoop MapReduce V1–V5 (module `bigdata`, package `hadoop/`). Mục 10: Spark (RDD, DataFrame) cho cùng bài toán và phân biệt với MapReduce.
+
 ## 1. Bài toán chung
 
 Từ CSV bán hàng, lọc các sự kiện `event_type=purchase`, phân nhóm theo danh mục rồi tính:
@@ -307,4 +309,87 @@ Nếu M,K,R cố định và cache đủ nhóm, V3–V5 có thể tiến gần c
 - V4/V5 phải cộng profile scan1085ms cho lần dùng đầu; CLI+profile hiện chưa thắng baselineCLI. Không bỏ preprocessing để tạo kết luận tốc độ sai.
 - Default local polling5000ms có thể che chênh lệch. So sánh cùng polling và resources, không chỉnh riêng từng variant.
 
-Xem [benchmark và raw evidence](benchmark-report.md), [function từng file](project-structure.md), [hướng dẫn chạy](runbook.md). Đo YARN/Kaggle thật, many-mapper và high-cardinality là điều kiện cần trước khi kết luận hiệu năng phân tán.
+Xem [benchmark và raw evidence](benchmark-report.md), [function từng file](project-structure.md), [hướng dẫn chạy](runbook.md). Kết quả trên dữ liệu Kaggle thật (D1, D2, cả tháng D3, MR trên HDFS) ở `docs/evidence/bench/SUMMARY.md`; YARN, nhiều nút và high-cardinality chưa đo.
+
+## 10. Spark: cùng bài toán A1
+
+Mã nguồn: `bigdata/src/main/java/vn/edu/bigdata/revenue/spark/RevenueJob.java`. Spark đọc **cùng file trên HDFS** và dùng **cùng**
+`CsvEventParser`, `PurchasePreparation`, `Money` với MapReduce, nên chính sách lọc và cách tính tiền giống hệt; kết quả được so khớp
+chính xác `(group, sum_minor, count, avg)` với MR V1 (D1, D2, D3) và với baseline Python độc lập.
+
+### 10.1 RDD (`--mode rdd-raw`, chế độ đối chứng MR)
+
+```text
+textFile(hdfs://.../2019-Oct.csv)                       HadoopRDD: 1 partition / 1 block HDFS (D3: 43 partition)
+  -> flatMapToPair(line -> [(category_id, (price_minor, 1))] nếu là purchase hợp lệ, [] nếu không)      ~ Map
+  -> reduceByKey(merge (sum, count), 2 partition)       ~ combine phía map + shuffle hash + reduce
+  -> collect, chia AVG ở driver (HALF_UP), ghi Parquet
+```
+
+Lineage thật trên D3 (`docs/evidence/spark-java/plans/a1-rdd-d3-lineage.txt`):
+
+```text
+(2) ShuffledRDD[3] at reduceByKey at RevenueJob.java:93
+ +-(43) MapPartitionsRDD[2] at flatMapToPair at RevenueJob.java:83
+    |   hdfs://localhost:8020/data/ecommerce/raw/2019-Oct.csv MapPartitionsRDD[1] at textFile at RevenueJob.java:81
+    |   hdfs://localhost:8020/data/ecommerce/raw/2019-Oct.csv HadoopRDD[0] at textFile at RevenueJob.java:81
+```
+
+Ánh xạ sang mô hình MapReduce (về **mô hình**, không phải cùng cơ chế thực thi):
+
+| Bước | Hadoop MapReduce (V2) | Spark RDD |
+|---|---|---|
+| Map | `DirectPurchaseMapper.map` phát `(category_id, (price, 1))` | hàm của `flatMapToPair` |
+| Gộp trước shuffle | `SumCountCombiner` (Hadoop có thể gọi 0..n lần) | `reduceByKey` luôn gộp phía map (map-side combine) với cùng hàm merge |
+| Shuffle | sort + partition `HashPartitioner`, ghi đĩa, reducer kéo về | shuffle hash theo key, ghi file shuffle, task sau đọc |
+| Reduce | `FinalRevenueReducer` merge rồi format | phần gộp cuối của `reduceByKey`; format ở driver |
+
+Hàm merge là phép cộng cặp `(sum, count)`: có tính kết hợp và giao hoán, nên gộp bao nhiêu lần, theo thứ tự nào cũng ra cùng kết quả.
+Đây là lý do combiner của MR và map-side combine của Spark đều đúng với AVG (không lấy trung bình của các trung bình).
+
+Số đo trên D3 (cả tháng, 42 448 765 dòng):
+
+| | MR V2 (combiner) | Spark RDD `reduceByKey` |
+|---|---:|---:|
+| Bản ghi phát ra từ map | 742 849 (`MAP_OUTPUT_RECORDS`) | — (gộp ngay trong task) |
+| Bản ghi trung gian qua shuffle | 15 511 (`COMBINE_OUTPUT_RECORDS` = `REDUCE_INPUT_RECORDS`) | 15 511 (`shuffleWriteRecords`) |
+| Byte shuffle | 589 934 (`REDUCE_SHUFFLE_BYTES`) | 362 451 (`shuffleWriteBytes`) |
+| Nhóm đầu ra | 567 | 567 |
+
+Nguồn: `docs/evidence/bench/mr/mr-e2-d3/runs.json`, `docs/evidence/spark-java/d3/20261006-223434-b0376ef-d3/revenue-run.json`.
+Nhận định (chưa kiểm chứng riêng): số bản ghi trung gian bằng nhau vì cả hai cùng gộp theo (split, nhóm) và cùng chia input theo block
+HDFS 128 MB; khác biệt byte do định dạng serialize (Writable của Hadoop so với serializer của Spark).
+
+### 10.2 DataFrame (`--mode df-raw`, `df-curated`)
+
+`filter(event_type = purchase AND category_id IS NOT NULL) -> groupBy(category_id) -> agg(sum(price_minor), count(*))`.
+Catalyst lập kế hoạch hai pha aggregate, thấy rõ trong physical plan thật trên D2 (`docs/evidence/spark-java/plans/a1-df-curated-d2.txt`, rút gọn):
+
+```text
+HashAggregate(keys=[category_id], functions=[sum(price_minor), count(1)])                  <- final aggregate (~ reduce)
++- AQEShuffleRead coalesced
+   +- Exchange hashpartitioning(category_id, 8)                                              <- shuffle
+      +- HashAggregate(keys=[category_id], functions=[partial_sum(price_minor), partial_count(1)])  <- partial aggregate (~ combiner)
+         +- Project [category_id, price_minor]
+            +- Filter (event_type = purchase AND isnotnull(category_id))
+               +- FileScan parquet [event_type, category_id, price_minor] PushedFilters: [EqualTo(event_type,purchase), ...]
+```
+
+- `partial_sum/partial_count` trước `Exchange` đóng vai trò combiner; `HashAggregate` sau `Exchange` là phép gộp cuối.
+- `Exchange hashpartitioning(category_id, 8)` là shuffle theo `spark.sql.shuffle.partitions` (E4 thử 8/64/200);
+  AQE gộp bớt partition rỗng khi chạy.
+- Với Parquet curated, Spark chỉ đọc 3 cột cần dùng và đẩy bộ lọc xuống lúc quét file (`PushedFilters`), nên trên D3 thời gian tính
+  giảm từ 227 s (RDD trên CSV) xuống 18 s. Con số này **không gồm** chi phí ETL một lần tạo Parquet (khoảng 23 phút trên D3).
+- `df-raw` phải parse toàn bộ CSV như ETL nên chậm hơn RDD trên cùng CSV (272 s so với 227 s trên D3).
+
+### 10.3 MapReduce và Spark: phân biệt khi trình bày
+
+- Code MapReduce của dự án là **Hadoop MapReduce thật** (Mapper/Combiner/Partitioner/Reducer, counters của Hadoop, LocalJobRunner).
+  Spark **không** chạy trên Hadoop MapReduce; Spark chỉ dùng HDFS để đọc/ghi. `reduceByKey` không phải Hadoop Reducer.
+- Spark tối ưu nhờ: gộp phía map luôn bật, DAG nhiều bước trong một job, Parquet dạng cột, Catalyst và AQE; MR tối ưu nhờ các biến thể
+  V2–V5 do nhóm tự cài (combiner, in-mapper, dictionary, batch).
+- Trên máy nhóm, MR V5 (61 s) nhanh hơn Spark RDD trên CSV (227 s) cho D3, nhưng hai bên chạy ở môi trường I/O khác nhau
+  (MR trong container cùng mạng Docker với DataNode, Spark trên host qua cổng chuyển tiếp WSL2). Không kết luận engine nào nhanh hơn
+  nói chung; xem E5 trong `docs/evidence/bench/SUMMARY.md`.
+- Thuật toán lặp (K-Means) thuộc về Spark: mỗi vòng lặp MR phải đọc lại dữ liệu từ HDFS, còn Spark giữ dữ liệu trong bộ nhớ.
+  E7 đo tác động của `cache()` trên D3 (fit 20 vòng: 4 849 ms có cache so với 5 770 ms không cache), xem `docs/ML.md`.

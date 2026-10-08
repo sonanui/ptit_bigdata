@@ -1,0 +1,60 @@
+{
+  "schemaVersion" : 1,
+  "job" : "metrics",
+  "runId" : "20261006-044959-24861e8-d1",
+  "params" : {
+    "curatedRunId" : "20261006-044917-24861e8-d1",
+    "revenueRunId" : "20261006-044859-24861e8-d1"
+  },
+  "startedAt" : "2026-10-05T21:49:59.310361900Z",
+  "gitSha" : "24861e8",
+  "sparkVersion" : "4.0.4",
+  "javaVersion" : "21.0.12",
+  "hadoopClientVersion" : "3.4.1",
+  "master" : "local[2]",
+  "configuration" : {
+    "spark.driver.memory" : "1g",
+    "spark.sql.shuffle.partitions" : "8",
+    "spark.sql.ansi.enabled" : "true",
+    "spark.sql.session.timeZone" : "UTC",
+    "spark.hadoop.fs.defaultFS" : "hdfs://localhost:8020"
+  },
+  "stages" : [ {
+    "name" : "funnel_by_category",
+    "elapsedMillis" : 6958
+  }, {
+    "name" : "trend_by_hour",
+    "elapsedMillis" : 4700
+  }, {
+    "name" : "funnel_by_brand",
+    "elapsedMillis" : 1654
+  } ],
+  "metrics" : {
+    "tables" : {
+      "funnel_by_category" : {
+        "rows" : 595,
+        "events" : 424609,
+        "purchases" : 7464
+      },
+      "trend_by_hour" : {
+        "rows" : 743,
+        "events" : 424609,
+        "purchases" : 7464
+      },
+      "funnel_by_brand" : {
+        "rows" : 2474,
+        "events" : 424609,
+        "purchases" : 7464
+      }
+    },
+    "checks" : {
+      "curatedRows" : 424609,
+      "a1PurchaseCount" : 7464,
+      "a2PurchasesValidCategory" : 7464,
+      "a1EqualsA2" : true
+    }
+  },
+  "status" : "succeeded",
+  "error" : null,
+  "endToEndMillis" : 28120
+}

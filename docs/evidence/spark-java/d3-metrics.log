@@ -1,0 +1,263 @@
+﻿spark-submit.cmd : WARNING: Using incubator modules: jdk.incubator.vector
+At E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\scripts\spark-local.ps1:47 char:1
++ & (Join-Path $root ".venv\Scripts\spark-submit.cmd") --master $master ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING: Using ...ncubator.vector:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/10/06 23:05:01 INFO SparkContext: Running Spark version 4.0.4
+26/10/06 23:05:01 INFO SparkContext: OS info Windows 11, 10.0, amd64
+26/10/06 23:05:01 INFO SparkContext: Java version 21.0.12
+26/10/06 23:05:01 INFO ResourceUtils: ==============================================================
+26/10/06 23:05:01 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/10/06 23:05:01 INFO ResourceUtils: ==============================================================
+26/10/06 23:05:01 INFO SparkContext: Submitted application: vn.edu.bigdata.revenue.spark.SparkTool
+26/10/06 23:05:01 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, 
+amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, 
+amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/10/06 23:05:01 INFO ResourceProfile: Limiting resource is cpu
+26/10/06 23:05:01 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/10/06 23:05:01 INFO SecurityManager: Changing view acls to: Hi,hadoop
+26/10/06 23:05:01 INFO SecurityManager: Changing modify acls to: Hi,hadoop
+26/10/06 23:05:01 INFO SecurityManager: Changing view acls groups to: Hi,hadoop
+26/10/06 23:05:01 INFO SecurityManager: Changing modify acls groups to: Hi,hadoop
+26/10/06 23:05:01 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view 
+permissions: Hi, hadoop groups with view permissions: EMPTY; users with modify permissions: Hi, hadoop; groups with 
+modify permissions: EMPTY; RPC SSL disabled
+26/10/06 23:05:02 INFO Utils: Successfully started service 'sparkDriver' on port 62159.
+26/10/06 23:05:02 INFO SparkEnv: Registering MapOutputTracker
+26/10/06 23:05:02 INFO SparkEnv: Registering BlockManagerMaster
+26/10/06 23:05:02 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting 
+topology information
+26/10/06 23:05:02 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/10/06 23:05:02 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/10/06 23:05:02 INFO DiskBlockManager: Created local directory at 
+C:\Users\Hi\AppData\Local\Temp\blockmgr-40f5e61f-92df-4a0d-95c0-7daf29962ab5
+26/10/06 23:05:02 INFO SparkEnv: Registering OutputCommitCoordinator
+26/10/06 23:05:02 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/10/06 23:05:03 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/10/06 23:05:03 INFO SparkContext: Added JAR 
+file:/E:/PTIT/PTIT%20Project%20Management/DLL/New/ptit_bigdata/target/revenue-aggregation-spark.jar at 
+spark://LAPTOP-DinhNguyen.mshome.net:62159/jars/revenue-aggregation-spark.jar with timestamp 1791302701389
+26/10/06 23:05:03 INFO SecurityManager: Changing view acls to: Hi,hadoop
+26/10/06 23:05:03 INFO SecurityManager: Changing modify acls to: Hi,hadoop
+26/10/06 23:05:03 INFO SecurityManager: Changing view acls groups to: Hi,hadoop
+26/10/06 23:05:03 INFO SecurityManager: Changing modify acls groups to: Hi,hadoop
+26/10/06 23:05:03 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view 
+permissions: Hi, hadoop groups with view permissions: EMPTY; users with modify permissions: Hi, hadoop; groups with 
+modify permissions: EMPTY; RPC SSL disabled
+26/10/06 23:05:03 INFO Executor: Starting executor ID driver on host LAPTOP-DinhNguyen.mshome.net
+26/10/06 23:05:03 INFO Executor: OS info Windows 11, 10.0, amd64
+26/10/06 23:05:03 INFO Executor: Java version 21.0.12
+26/10/06 23:05:03 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/06 23:05:03 INFO Executor: Created or updated repl class loader 
+org.apache.spark.util.MutableURLClassLoader@9c0d0bd for default.
+26/10/06 23:05:03 INFO Executor: Fetching 
+spark://LAPTOP-DinhNguyen.mshome.net:62159/jars/revenue-aggregation-spark.jar with timestamp 1791302701389
+26/10/06 23:05:03 INFO TransportClientFactory: Successfully created connection to 
+LAPTOP-DinhNguyen.mshome.net/172.24.144.1:62159 after 42 ms (0 ms spent in bootstraps)
+26/10/06 23:05:03 INFO Utils: Fetching spark://LAPTOP-DinhNguyen.mshome.net:62159/jars/revenue-aggregation-spark.jar 
+to C:\Users\Hi\AppData\Local\Temp\spark-3ae8ccbc-1efc-44c4-b373-d4f35fb9d5dc\userFiles-80762a91-c1e6-44f3-86c1-3d64b4cb
+a792\fetchFileTemp4662667716582158124.tmp
+26/10/06 23:05:03 INFO Executor: Adding file:/C:/Users/Hi/AppData/Local/Temp/spark-3ae8ccbc-1efc-44c4-b373-d4f35fb9d5dc
+/userFiles-80762a91-c1e6-44f3-86c1-3d64b4cba792/revenue-aggregation-spark.jar to class loader default
+26/10/06 23:05:03 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' 
+on port 62163.
+26/10/06 23:05:03 INFO NettyBlockTransferService: Server created on LAPTOP-DinhNguyen.mshome.net:62163
+26/10/06 23:05:03 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication 
+policy
+26/10/06 23:05:03 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 
+LAPTOP-DinhNguyen.mshome.net, 62163, None)
+26/10/06 23:05:03 INFO BlockManagerMasterEndpoint: Registering block manager LAPTOP-DinhNguyen.mshome.net:62163 with 
+434.4 MiB RAM, BlockManagerId(driver, LAPTOP-DinhNguyen.mshome.net, 62163, None)
+26/10/06 23:05:03 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 
+LAPTOP-DinhNguyen.mshome.net, 62163, None)
+26/10/06 23:05:03 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, LAPTOP-DinhNguyen.mshome.net, 
+62163, None)
+26/10/06 23:06:04 WARN MemoryStore: Not enough space to cache rdd_6_2 in memory! (computed 97.6 MiB so far)
+26/10/06 23:06:04 WARN BlockManager: Persisting block rdd_6_2 to disk instead.
+26/10/06 23:06:04 WARN MemoryStore: Not enough space to cache rdd_6_3 in memory! (computed 96.8 MiB so far)
+26/10/06 23:06:04 WARN BlockManager: Persisting block rdd_6_3 to disk instead.
+26/10/06 23:06:17 WARN MemoryStore: Not enough space to cache rdd_6_2 in memory! (computed 97.6 MiB so far)
+26/10/06 23:06:24 WARN MemoryStore: Not enough space to cache rdd_6_5 in memory! (computed 18.9 MiB so far)
+26/10/06 23:06:24 WARN BlockManager: Persisting block rdd_6_5 to disk instead.
+26/10/06 23:06:26 WARN MemoryStore: Not enough space to cache rdd_6_4 in memory! (computed 36.1 MiB so far)
+26/10/06 23:06:26 WARN BlockManager: Persisting block rdd_6_4 to disk instead.
+26/10/06 23:06:49 WARN MemoryStore: Not enough space to cache rdd_6_5 in memory! (computed 36.3 MiB so far)
+26/10/06 23:06:50 WARN MemoryStore: Not enough space to cache rdd_6_4 in memory! (computed 36.1 MiB so far)
+26/10/06 23:06:53 WARN MemoryStore: Not enough space to cache rdd_6_7 in memory! (computed 17.5 MiB so far)
+26/10/06 23:06:53 WARN BlockManager: Persisting block rdd_6_7 to disk instead.
+26/10/06 23:06:55 WARN MemoryStore: Not enough space to cache rdd_6_6 in memory! (computed 36.2 MiB so far)
+26/10/06 23:06:55 WARN BlockManager: Persisting block rdd_6_6 to disk instead.
+26/10/06 23:07:21 WARN MemoryStore: Not enough space to cache rdd_6_7 in memory! (computed 33.9 MiB so far)
+26/10/06 23:07:22 WARN MemoryStore: Not enough space to cache rdd_6_6 in memory! (computed 36.2 MiB so far)
+26/10/06 23:07:27 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 16.8 MiB so far)
+26/10/06 23:07:27 WARN BlockManager: Persisting block rdd_6_9 to disk instead.
+26/10/06 23:07:30 WARN MemoryStore: Not enough space to cache rdd_6_8 in memory! (computed 36.4 MiB so far)
+26/10/06 23:07:30 WARN BlockManager: Persisting block rdd_6_8 to disk instead.
+26/10/06 23:07:47 WARN MemoryStore: Not enough space to cache rdd_6_8 in memory! (computed 36.4 MiB so far)
+26/10/06 23:07:54 WARN MemoryStore: Not enough space to cache rdd_6_10 in memory! (computed 36.4 MiB so far)
+26/10/06 23:07:54 WARN BlockManager: Persisting block rdd_6_10 to disk instead.
+26/10/06 23:07:55 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 32.9 MiB so far)
+26/10/06 23:08:01 WARN MemoryStore: Not enough space to cache rdd_6_11 in memory! (computed 32.8 MiB so far)
+26/10/06 23:08:01 WARN BlockManager: Persisting block rdd_6_11 to disk instead.
+26/10/06 23:08:15 WARN MemoryStore: Not enough space to cache rdd_6_10 in memory! (computed 36.4 MiB so far)
+26/10/06 23:08:20 WARN MemoryStore: Not enough space to cache rdd_6_11 in memory! (computed 16.8 MiB so far)
+26/10/06 23:08:21 WARN MemoryStore: Not enough space to cache rdd_6_12 in memory! (computed 32.3 MiB so far)
+26/10/06 23:08:21 WARN BlockManager: Persisting block rdd_6_12 to disk instead.
+26/10/06 23:08:25 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 36.7 MiB so far)
+26/10/06 23:08:25 WARN BlockManager: Persisting block rdd_6_13 to disk instead.
+26/10/06 23:08:41 WARN MemoryStore: Not enough space to cache rdd_6_12 in memory! (computed 32.3 MiB so far)
+26/10/06 23:08:43 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 36.7 MiB so far)
+26/10/06 23:08:46 WARN MemoryStore: Not enough space to cache rdd_6_15 in memory! (computed 16.5 MiB so far)
+26/10/06 23:08:46 WARN BlockManager: Persisting block rdd_6_15 to disk instead.
+26/10/06 23:08:47 WARN MemoryStore: Not enough space to cache rdd_6_14 in memory! (computed 33.8 MiB so far)
+26/10/06 23:08:47 WARN BlockManager: Persisting block rdd_6_14 to disk instead.
+26/10/06 23:09:16 WARN MemoryStore: Not enough space to cache rdd_6_15 in memory! (computed 16.5 MiB so far)
+26/10/06 23:09:16 WARN MemoryStore: Not enough space to cache rdd_6_14 in memory! (computed 33.8 MiB so far)
+26/10/06 23:09:19 WARN MemoryStore: Not enough space to cache rdd_6_2 in memory! (computed 36.4 MiB so far)
+26/10/06 23:09:19 WARN MemoryStore: Not enough space to cache rdd_6_4 in memory! (computed 36.1 MiB so far)
+26/10/06 23:09:19 WARN MemoryStore: Not enough space to cache rdd_6_5 in memory! (computed 36.3 MiB so far)
+26/10/06 23:09:19 WARN MemoryStore: Not enough space to cache rdd_6_6 in memory! (computed 36.2 MiB so far)
+26/10/06 23:09:20 WARN MemoryStore: Not enough space to cache rdd_6_7 in memory! (computed 33.9 MiB so far)
+26/10/06 23:09:20 WARN MemoryStore: Not enough space to cache rdd_6_8 in memory! (computed 36.4 MiB so far)
+26/10/06 23:09:20 WARN MemoryStore: Not enough space to cache rdd_6_10 in memory! (computed 19.0 MiB so far)
+26/10/06 23:09:20 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 32.9 MiB so far)
+26/10/06 23:09:21 WARN MemoryStore: Not enough space to cache rdd_6_12 in memory! (computed 16.6 MiB so far)
+26/10/06 23:09:21 WARN MemoryStore: Not enough space to cache rdd_6_11 in memory! (computed 32.8 MiB so far)
+26/10/06 23:09:21 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 36.7 MiB so far)
+26/10/06 23:09:21 WARN MemoryStore: Not enough space to cache rdd_6_14 in memory! (computed 16.4 MiB so far)
+26/10/06 23:09:22 WARN MemoryStore: Not enough space to cache rdd_6_15 in memory! (computed 32.2 MiB so far)
+26/10/06 23:09:33 WARN MemoryStore: Not enough space to cache rdd_6_3 in memory! (computed 96.8 MiB so far)
+26/10/06 23:09:33 WARN MemoryStore: Not enough space to cache rdd_6_2 in memory! (computed 97.6 MiB so far)
+26/10/06 23:09:52 WARN MemoryStore: Not enough space to cache rdd_6_6 in memory! (computed 62.7 MiB so far)
+26/10/06 23:10:01 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 57.0 MiB so far)
+26/10/06 23:10:09 WARN MemoryStore: Not enough space to cache rdd_6_11 in memory! (computed 57.3 MiB so far)
+26/10/06 23:10:22 WARN MemoryStore: Not enough space to cache rdd_6_14 in memory! (computed 145.8 MiB so far)
+26/10/06 23:10:25 WARN MemoryStore: Not enough space to cache rdd_6_15 in memory! (computed 55.6 MiB so far)
+26/10/06 23:10:39 WARN MemoryStore: Not enough space to cache rdd_6_3 in memory! (computed 96.8 MiB so far)
+26/10/06 23:10:39 WARN MemoryStore: Not enough space to cache rdd_6_2 in memory! (computed 97.6 MiB so far)
+26/10/06 23:10:50 WARN MemoryStore: Not enough space to cache rdd_6_7 in memory! (computed 33.9 MiB so far)
+26/10/06 23:10:54 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 138.6 MiB so far)
+26/10/06 23:10:59 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 36.7 MiB so far)
+26/10/06 23:10:59 WARN MemoryStore: Not enough space to cache rdd_6_12 in memory! (computed 116.3 MiB so far)
+26/10/06 23:11:26 WARN MemoryStore: Not enough space to cache rdd_6_3 in memory! (computed 36.3 MiB so far)
+26/10/06 23:11:29 WARN MemoryStore: Not enough space to cache rdd_6_4 in memory! (computed 36.1 MiB so far)
+26/10/06 23:11:29 WARN MemoryStore: Failed to reserve initial memory threshold of 1024.0 KiB for computing block 
+rdd_6_5 in memory.
+26/10/06 23:11:29 WARN MemoryStore: Not enough space to cache rdd_6_5 in memory! (computed 504.0 B so far)
+26/10/06 23:11:32 WARN MemoryStore: Not enough space to cache rdd_6_7 in memory! (computed 58.9 MiB so far)
+26/10/06 23:11:35 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 32.9 MiB so far)
+26/10/06 23:11:38 WARN MemoryStore: Not enough space to cache rdd_6_11 in memory! (computed 32.8 MiB so far)
+26/10/06 23:11:39 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 36.7 MiB so far)
+26/10/06 23:11:40 WARN MemoryStore: Not enough space to cache rdd_6_12 in memory! (computed 116.3 MiB so far)
+26/10/06 23:11:47 WARN MemoryStore: Not enough space to cache rdd_6_1 in memory! (computed 63.4 MiB so far)
+26/10/06 23:11:47 WARN MemoryStore: Not enough space to cache rdd_6_0 in memory! (computed 99.9 MiB so far)
+26/10/06 23:11:49 WARN MemoryStore: Not enough space to cache rdd_6_3 in memory! (computed 61.8 MiB so far)
+26/10/06 23:11:49 WARN MemoryStore: Not enough space to cache rdd_6_2 in memory! (computed 97.6 MiB so far)
+26/10/06 23:11:50 WARN MemoryStore: Not enough space to cache rdd_6_5 in memory! (computed 62.1 MiB so far)
+26/10/06 23:11:50 WARN MemoryStore: Not enough space to cache rdd_6_4 in memory! (computed 95.5 MiB so far)
+26/10/06 23:11:52 WARN MemoryStore: Not enough space to cache rdd_6_7 in memory! (computed 58.9 MiB so far)
+26/10/06 23:11:52 WARN MemoryStore: Not enough space to cache rdd_6_6 in memory! (computed 97.2 MiB so far)
+26/10/06 23:11:53 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 57.0 MiB so far)
+26/10/06 23:11:53 WARN MemoryStore: Not enough space to cache rdd_6_8 in memory! (computed 96.0 MiB so far)
+26/10/06 23:11:54 WARN MemoryStore: Not enough space to cache rdd_6_11 in memory! (computed 57.3 MiB so far)
+26/10/06 23:11:54 WARN MemoryStore: Not enough space to cache rdd_6_10 in memory! (computed 96.8 MiB so far)
+26/10/06 23:11:54 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 62.7 MiB so far)
+26/10/06 23:11:54 WARN MemoryStore: Not enough space to cache rdd_6_12 in memory! (computed 74.3 MiB so far)
+A2-A5 xong: 20261006-230505-b0376ef-d3 {funnel_by_category={rows=624, events=42448764, purchases=742849}, trend_by_hour={rows=744, events=42448764, purchases=742849}, funnel_by_brand={rows=3446, events=42448764, purchases=742849}} {curatedRows=42448764, a1PurchaseCount=742849, a2PurchasesValidCategory=742849, a1EqualsA2=true}
+26/10/06 23:11:56 WARN SparkEnv: Exception while deleting Spark temp dir: C:\Users\Hi\AppData\Local\Temp\spark-3ae8ccbc
+-1efc-44c4-b373-d4f35fb9d5dc\userFiles-80762a91-c1e6-44f3-86c1-3d64b4cba792
+java.io.IOException: Failed to delete: C:\Users\Hi\AppData\Local\Temp\spark-3ae8ccbc-1efc-44c4-b373-d4f35fb9d5dc\userFi
+les-80762a91-c1e6-44f3-86c1-3d64b4cba792\revenue-aggregation-spark.jar
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:155)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:138)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:121)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:120)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1048)
+	at org.apache.spark.SparkEnv.stop(SparkEnv.scala:131)
+	at org.apache.spark.SparkContext.$anonfun$stop$25(SparkContext.scala:2395)
+	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1300)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:2395)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:2297)
+	at org.apache.spark.sql.classic.SparkSession.close(SparkSession.scala:660)
+	at org.apache.spark.sql.SparkSession.stop(SparkSession.scala:783)
+	at vn.edu.bigdata.revenue.spark.SparkTool.main(SparkTool.java:81)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:75)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:52)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.spark.deploy.JavaMainApplication.start(SparkApplication.scala:52)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:1027)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:204)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:227)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:96)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1132)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1141)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+26/10/06 23:11:56 ERROR ShutdownHookManager: Exception while deleting Spark temp dir: C:\Users\Hi\AppData\Local\Temp\sp
+ark-3ae8ccbc-1efc-44c4-b373-d4f35fb9d5dc\userFiles-80762a91-c1e6-44f3-86c1-3d64b4cba792
+java.io.IOException: Failed to delete: C:\Users\Hi\AppData\Local\Temp\spark-3ae8ccbc-1efc-44c4-b373-d4f35fb9d5dc\userFi
+les-80762a91-c1e6-44f3-86c1-3d64b4cba792\revenue-aggregation-spark.jar
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:155)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:138)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:121)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:120)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1048)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:70)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:67)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1324)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:67)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:231)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1937)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:205)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:184)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+26/10/06 23:11:56 ERROR ShutdownHookManager: Exception while deleting Spark temp dir: 
+C:\Users\Hi\AppData\Local\Temp\spark-3ae8ccbc-1efc-44c4-b373-d4f35fb9d5dc
+java.io.IOException: Failed to delete: C:\Users\Hi\AppData\Local\Temp\spark-3ae8ccbc-1efc-44c4-b373-d4f35fb9d5dc\userFi
+les-80762a91-c1e6-44f3-86c1-3d64b4cba792\revenue-aggregation-spark.jar
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:155)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:138)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:138)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:121)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:120)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1048)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:70)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:67)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1324)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:67)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:231)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1937)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:205)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:184)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)

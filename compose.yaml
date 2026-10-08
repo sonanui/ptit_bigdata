@@ -1,11 +1,97 @@
+# Profile: bigdata (MapReduce + HDFS) và web (backend + frontend). Gọi đích danh service thì profile tự bật,
+# ví dụ: docker compose up -d namenode datanode; docker compose run --rm bigdata ...
 services:
   bigdata:
+    profiles: ["bigdata"]
     build:
       context: .
       dockerfile: Dockerfile
     image: ptit-bigdata:local
     working_dir: /opt/bigdata
+    environment:
+      # Simple auth của HDFS lấy tên user client; ghi vào HDFS bằng user sở hữu cây /data.
+      HADOOP_USER_NAME: hadoop
     volumes:
       - ./data:/opt/bigdata/data
       - ./results:/opt/bigdata/results
     command: ["bash", "scripts/demo.sh", "results/docker-demo"]
+
+  # HDFS pseudo-distributed: docker compose up -d namenode datanode
+  # Không có depends_on từ bigdata, nên demo fixture vẫn chạy được khi HDFS tắt.
+  namenode:
+    profiles: ["bigdata"]
+    image: apache/hadoop:3.4.2
+    hostname: namenode
+    command: ["hdfs", "namenode"]
+    env_file: config/hadoop.env
+    environment:
+      ENSURE_NAMENODE_DIR: /data/namenode
+      HDFS_NAMENODE_OPTS: -Xmx512m
+    mem_limit: 1g
+    ports:
+      - "127.0.0.1:9870:9870"
+      # RPC cho client chạy trên host (Spark local): hdfs://localhost:8020
+      - "127.0.0.1:8020:8020"
+    volumes:
+      - hdfs-namenode:/data
+      # Nguồn cho scripts/hdfs-ingest.sh; chỉ đọc để không thể sửa file gốc.
+      - ./data/raw:/staging/raw:ro
+      - ./scripts:/opt/bigdata/scripts:ro
+    healthcheck:
+      test: ["CMD", "curl", "-fs", "-o", "/dev/null", "http://localhost:9870/"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  datanode:
+    profiles: ["bigdata"]
+    image: apache/hadoop:3.4.2
+    hostname: datanode
+    command: ["hdfs", "datanode"]
+    env_file: config/hadoop.env
+    environment:
+      HDFS_DATANODE_OPTS: -Xmx512m
+      # Client trên host bật dfs.client.use.datanode.hostname=true sẽ nối tới localhost:9866 (cổng publish bên dưới).
+      # Client trong mạng Compose vẫn dùng IP container như mặc định.
+      HDFS-SITE.XML_dfs.datanode.hostname: localhost
+    mem_limit: 1g
+    ports:
+      - "127.0.0.1:9864:9864"
+      - "127.0.0.1:9866:9866"
+    volumes:
+      - hdfs-datanode:/data
+    depends_on:
+      namenode:
+        condition: service_healthy
+
+  # Web app, 2 container (profile web), không cần HDFS/Spark khi chạy:
+  #   docker compose --profile web up -d --build   ->  http://localhost:8080 (React), API thử trực tiếp ở http://localhost:8081/api/health
+  # Backend Spring Boot: chỉ /api, đọc ./serving (serving run đã commit hoặc đồng bộ bằng scripts/serving-sync.ps1), chỉ đọc.
+  web-backend:
+    build:
+      context: webapp/backend
+    image: ptit-bigdata-web-backend:local
+    mem_limit: 768m
+    ports:
+      - "127.0.0.1:8081:8080"
+    volumes:
+      - ./serving:/serving:ro
+    profiles: ["web"]
+
+  # Frontend React build tĩnh trên Nginx; /api chuyển sang web-backend trong mạng compose.
+  web-frontend:
+    build:
+      context: webapp/frontend
+    image: ptit-bigdata-web-frontend:local
+    mem_limit: 128m
+    ports:
+      - "127.0.0.1:8080:80"
+    depends_on:
+      web-backend:
+        condition: service_healthy
+    profiles: ["web"]
+
+volumes:
+  hdfs-namenode:
+  hdfs-datanode:

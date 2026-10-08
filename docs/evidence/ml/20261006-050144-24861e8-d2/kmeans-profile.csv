@@ -1,0 +1,3 @@
+cluster,products,mean_views,mean_carts,mean_purchases,mean_distinct_users,mean_median_price,mean_cart_rate,mean_purchase_rate,share_with_purchase,top_category_roots
+0,21355,58.318,0.134,0.47,53.533,227.671,0.0028,0.0086,0.322,__UNKNOWN__:10001; appliances:2676; electronics:2481
+1,3729,628.118,23.713,16.272,572.438,247.852,0.0276,0.0208,0.961,__UNKNOWN__:1284; electronics:972; appliances:810

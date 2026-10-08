@@ -1,0 +1,56 @@
+﻿[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< vn.edu.bigdata:revenue-webapp >--------------------
+[INFO] Building revenue-webapp 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.4.1:clean (default-clean) @ revenue-webapp ---
+[INFO] Deleting E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\webapp\backend\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ revenue-webapp ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ revenue-webapp ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 13 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ revenue-webapp ---
+[INFO] skip non existing resourceDirectory E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\webapp\backend\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ revenue-webapp ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ revenue-webapp ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running vn.edu.bigdata.webapp.InferenceTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.325 s -- in vn.edu.bigdata.webapp.InferenceTest
+[INFO] Running vn.edu.bigdata.webapp.ServingParityTest
+KNN parity: 64254/64254 kh?p (run 20261007-000421-b0376ef-d3)
+Sai l?ch l?n nh?t ??c tr?ng t�nh l?i t? s? ??m th�: 0.0
+K-Means parity: 92592/92592 kh?p (run 20261006-235739-b0376ef-d3)
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 174.7 s -- in vn.edu.bigdata.webapp.ServingParityTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ revenue-webapp ---
+[INFO] Building jar: E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\webapp\backend\target\revenue-webapp.jar
+[INFO] 
+[INFO] --- spring-boot:3.5.16:repackage (repackage) @ revenue-webapp ---
+[INFO] Replacing main artifact E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\webapp\backend\target\revenue-webapp.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\webapp\backend\target\revenue-webapp.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  03:09 min
+[INFO] Finished at: 2026-10-07T08:05:30+07:00
+[INFO] ------------------------------------------------------------------------

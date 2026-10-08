@@ -1,0 +1,177 @@
+{
+  "experiment": "E4",
+  "title": "Spark A1: API và định dạng đầu vào (local[2], 8 partitions)",
+  "dataset": "D1, D2, D3",
+  "scope": "một máy Windows 11 (i5-9300HF 4 nhân/8 luồng, RAM 7,9 GB); HDFS 1 NameNode + 1 DataNode trong Docker; MR = LocalJobRunner (không YARN), Spark = local[n] trên host",
+  "metric": "Thời gian tính (không gồm ghi Parquet, khởi động)",
+  "unit": "ms",
+  "rows": [
+    {
+      "label": "D1 · RDD trên CSV",
+      "median": 4989,
+      "min": 4919,
+      "max": 6001,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "rdd-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 56725452,
+        "inputRecordsRead": 424610,
+        "shuffleReadBytes": 11404,
+        "tasks": 5,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "D1 · DataFrame trên CSV",
+      "median": 10519,
+      "min": 8791,
+      "max": 12286,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "df-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 56725452,
+        "inputRecordsRead": 424610,
+        "shuffleReadBytes": 13974,
+        "tasks": 4,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "D1 · DataFrame trên Parquet curated",
+      "median": 7512,
+      "min": 7012,
+      "max": 14054,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "df-curated",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 2036123,
+        "inputRecordsRead": 424609,
+        "shuffleReadBytes": 13922,
+        "tasks": 5,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "D2 · RDD trên CSV",
+      "median": 28345,
+      "min": 24462,
+      "max": 33987,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "rdd-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 567263939,
+        "inputRecordsRead": 4246194,
+        "shuffleReadBytes": 41065,
+        "tasks": 8,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "D2 · DataFrame trên CSV",
+      "median": 40438,
+      "min": 34011,
+      "max": 41985,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "df-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 567263939,
+        "inputRecordsRead": 4246194,
+        "shuffleReadBytes": 49820,
+        "tasks": 7,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "D2 · DataFrame trên Parquet curated",
+      "median": 10182,
+      "min": 9154,
+      "max": 14985,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "df-curated",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 14750495,
+        "inputRecordsRead": 4246193,
+        "shuffleReadBytes": 34789,
+        "tasks": 6,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "D3 · RDD trên CSV",
+      "median": 227302,
+      "min": 218846,
+      "max": 231547,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "rdd-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 5671365367,
+        "inputRecordsRead": 42448765,
+        "shuffleReadBytes": 362451,
+        "tasks": 46,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "D3 · DataFrame trên CSV",
+      "median": 272220,
+      "min": 271424,
+      "max": 273698,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "df-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 5671365367,
+        "inputRecordsRead": 42448765,
+        "shuffleReadBytes": 438996,
+        "tasks": 45,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "D3 · DataFrame trên Parquet curated",
+      "median": 18279,
+      "min": 15287,
+      "max": 18719,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "df-curated",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 136479144,
+        "inputRecordsRead": 42448741,
+        "shuffleReadBytes": 204650,
+        "tasks": 20,
+        "matchesReference": true
+      }
+    }
+  ],
+  "notes": [
+    "df-curated đọc Parquet đã qua ETL (chỉ 3 cột), nên không tính chi phí ETL một lần.",
+    "Mọi lần chạy được so khớp chính xác với kết quả tham chiếu (MR V1 hoặc baseline)."
+  ],
+  "source": "docs/evidence/bench/spark/e4-*/runs.json"
+}

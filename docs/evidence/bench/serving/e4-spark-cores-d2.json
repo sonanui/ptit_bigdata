@@ -1,0 +1,69 @@
+{
+  "experiment": "E4",
+  "title": "Spark A1 (RDD trên CSV): số core (D2)",
+  "dataset": "D2: mẫu 10% tháng 10/2019 (seed 21)",
+  "scope": "một máy Windows 11 (i5-9300HF 4 nhân/8 luồng, RAM 7,9 GB); HDFS 1 NameNode + 1 DataNode trong Docker; MR = LocalJobRunner (không YARN), Spark = local[n] trên host",
+  "metric": "Thời gian tính",
+  "unit": "ms",
+  "rows": [
+    {
+      "label": "local[1]",
+      "median": 31056,
+      "min": 27383,
+      "max": 33118,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "rdd-raw",
+        "master": "local[1]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 567263939,
+        "inputRecordsRead": 4246194,
+        "shuffleReadBytes": 41065,
+        "tasks": 8,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "local[2]",
+      "median": 28345,
+      "min": 24462,
+      "max": 33987,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "rdd-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 567263939,
+        "inputRecordsRead": 4246194,
+        "shuffleReadBytes": 41065,
+        "tasks": 8,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "local[4]",
+      "median": 36500,
+      "min": 25012,
+      "max": 37592,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "rdd-raw",
+        "master": "local[4]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 567263939,
+        "inputRecordsRead": 4246194,
+        "shuffleReadBytes": 41065,
+        "tasks": 8,
+        "matchesReference": true
+      }
+    }
+  ],
+  "notes": [
+    "Máy có 4 nhân vật lý/8 luồng; HDFS (Docker) chạy cùng máy và chia CPU/RAM với Spark.",
+    "Thêm core không giảm thời gian: nhiều khả năng bị giới hạn bởi đọc HDFS qua cổng chuyển tiếp WSL2 (chưa đo riêng)."
+  ],
+  "source": "docs/evidence/bench/spark/e4-d2-rdd-raw*/runs.json"
+}

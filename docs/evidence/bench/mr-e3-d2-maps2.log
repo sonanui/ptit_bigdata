@@ -1,0 +1,17 @@
+﻿docker :  Container ptit_bigdata-bigdata-run-44da5aadd999 Creating 
+At line:3 char:3
++   docker compose run --rm bigdata python3 scripts/benchmark.py --matr ...
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( Container ptit...dd999 Creating :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ Container ptit_bigdata-bigdata-run-44da5aadd999 Created 
+Round 0: v2
+Round 0: v1
+Round 1: v1
+Round 1: v2
+Round 2: v1
+Round 2: v2
+Round 3: v1
+Round 3: v2
+Report: results/benchmark-reports/ba2683f05ff6

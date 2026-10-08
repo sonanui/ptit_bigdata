@@ -1,0 +1,17 @@
+$ ls -l data/raw   # tải từ Kaggle, giữ nguyên
+9006762395 Sep 29 19:43 2019-Nov.csv
+5668612855 Sep 29 19:44 2019-Oct.csv
+$ sha256sum data/raw/2019-Oct.csv   # đo 2026-10-06, docs/DATASET.md
+fedd938409b5f836ec89b39c861b13dad99fc7cd9beb1fddd97a2d50488b5b80  data/raw/2019-Oct.csv
+
+# Lần nạp đầu (2026-10-05, docs/evidence/hdfs/t1.3-ingest-oct.log):
+$ docker compose exec namenode bash /opt/bigdata/scripts/hdfs-ingest.sh 2019-Oct.csv
+PUT /staging/raw/2019-Oct.csv -> /data/ecommerce/raw/2019-Oct.csv: 5668612855 bytes, 705s
+Found 1 items
+-rw-r--r--   1 hadoop supergroup      5.3 G 2026-10-05 20:08 /data/ecommerce/raw/2019-Oct.csv
+
+# Chạy lại hôm nay: không ghi đè
+$ docker compose exec namenode bash /opt/bigdata/scripts/hdfs-ingest.sh 2019-Oct.csv
+SKIP /data/ecommerce/raw/2019-Oct.csv đã tồn tại (5668612855 bytes)
+Found 2 items
+-rw-r--r--   1 hadoop supergroup      5.3 G 2026-10-05 20:08 /data/ecommerce/raw/2019-Oct.csv

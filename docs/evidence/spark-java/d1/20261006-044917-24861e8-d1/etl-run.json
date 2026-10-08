@@ -1,0 +1,72 @@
+{
+  "schemaVersion" : 1,
+  "job" : "etl",
+  "runId" : "20261006-044917-24861e8-d1",
+  "params" : {
+    "input" : "/data/ecommerce/raw/sample/2019-Oct-r0.01-s21.csv",
+    "duplicates" : true,
+    "output" : "/data/ecommerce/curated/events/run_id=20261006-044917-24861e8-d1"
+  },
+  "startedAt" : "2026-10-05T21:49:17.531804500Z",
+  "gitSha" : "24861e8",
+  "sparkVersion" : "4.0.4",
+  "javaVersion" : "21.0.12",
+  "hadoopClientVersion" : "3.4.1",
+  "master" : "local[2]",
+  "configuration" : {
+    "spark.driver.memory" : "1g",
+    "spark.sql.shuffle.partitions" : "8",
+    "spark.sql.ansi.enabled" : "true",
+    "spark.sql.session.timeZone" : "UTC",
+    "spark.hadoop.fs.defaultFS" : "hdfs://localhost:8020"
+  },
+  "stages" : [ {
+    "name" : "write_curated_parquet",
+    "elapsedMillis" : 11763
+  }, {
+    "name" : "count_reasons",
+    "elapsedMillis" : 5268
+  }, {
+    "name" : "verify_readback",
+    "elapsedMillis" : 1068
+  }, {
+    "name" : "quality",
+    "elapsedMillis" : 12568
+  } ],
+  "metrics" : {
+    "rowsIn" : 424610,
+    "rowsValid" : 424609,
+    "rejected" : {
+      "HEADER" : 1
+    },
+    "rowsWritten" : 424609,
+    "quality" : {
+      "rows" : 424609,
+      "min_event_time" : "2019-10-01T00:03:37Z",
+      "max_event_time" : "2019-10-31T23:59:26Z",
+      "null_category_id" : 0,
+      "null_category_code" : 135386,
+      "null_brand" : 61313,
+      "null_user_session" : 0,
+      "zero_price" : 686,
+      "distinct_products" : 59424,
+      "distinct_category_id" : 595,
+      "distinct_category_code" : 125,
+      "distinct_brands" : 2473,
+      "distinct_users" : 320360,
+      "distinct_sessions" : 399146,
+      "eventTypes" : {
+        "cart" : 9357,
+        "purchase" : 7464,
+        "view" : 407788
+      },
+      "purchasesWithZeroPrice" : 0,
+      "categoryIdsWithMultipleCodes" : 0,
+      "exactDuplicateExtraRows" : 10,
+      "exactDuplicateGroups" : 10
+    }
+  },
+  "status" : "succeeded",
+  "error" : null,
+  "endToEndMillis" : 33435
+}

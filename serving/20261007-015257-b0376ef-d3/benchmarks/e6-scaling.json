@@ -1,0 +1,232 @@
+{
+  "experiment": "E6",
+  "title": "Mở rộng theo kích thước dữ liệu (D1 → D2 → D3)",
+  "dataset": "D1, D2, D3",
+  "scope": "một máy Windows 11 (i5-9300HF 4 nhân/8 luồng, RAM 7,9 GB); HDFS 1 NameNode + 1 DataNode trong Docker; MR = LocalJobRunner (không YARN), Spark = local[n] trên host",
+  "metric": "Thời gian xử lý",
+  "unit": "ms",
+  "rows": [
+    {
+      "label": "D1 · MR V1",
+      "median": 4753,
+      "min": 4325,
+      "max": 6607,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V1_DIRECT",
+        "shuffleBytes": 283644,
+        "mapOutputRecords": 7464,
+        "reduceInputRecords": 7464,
+        "linesPerSecond": 89335,
+        "megabytesPerSecond": 11.9
+      }
+    },
+    {
+      "label": "D1 · MR V5",
+      "median": 3206,
+      "min": 2778,
+      "max": 4146,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V5_BATCH",
+        "shuffleBytes": 6196,
+        "mapOutputRecords": 2,
+        "reduceInputRecords": 2,
+        "linesPerSecond": 132442,
+        "megabytesPerSecond": 17.7
+      }
+    },
+    {
+      "label": "D1 · Spark RDD local[2]",
+      "median": 4989,
+      "min": 4919,
+      "max": 6001,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "rdd-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 56725452,
+        "inputRecordsRead": 424610,
+        "shuffleReadBytes": 11404,
+        "tasks": 5,
+        "matchesReference": true,
+        "linesPerSecond": 85109,
+        "megabytesPerSecond": 11.4
+      }
+    },
+    {
+      "label": "D1 · Spark DF Parquet local[2]",
+      "median": 7512,
+      "min": 7012,
+      "max": 14054,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "df-curated",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 2036123,
+        "inputRecordsRead": 424609,
+        "shuffleReadBytes": 13922,
+        "tasks": 5,
+        "matchesReference": true,
+        "linesPerSecond": 56524,
+        "megabytesPerSecond": 7.5
+      }
+    },
+    {
+      "label": "D2 · MR V1",
+      "median": 29221,
+      "min": 21346,
+      "max": 37034,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V1_DIRECT",
+        "shuffleBytes": 2816620,
+        "mapOutputRecords": 74120,
+        "reduceInputRecords": 74120,
+        "linesPerSecond": 145313,
+        "megabytesPerSecond": 19.4
+      }
+    },
+    {
+      "label": "D2 · MR V5",
+      "median": 10418,
+      "min": 9841,
+      "max": 19278,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V5_BATCH",
+        "shuffleBytes": 35340,
+        "mapOutputRecords": 10,
+        "reduceInputRecords": 10,
+        "linesPerSecond": 407582,
+        "megabytesPerSecond": 54.4
+      }
+    },
+    {
+      "label": "D2 · Spark RDD local[2]",
+      "median": 28345,
+      "min": 24462,
+      "max": 33987,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "rdd-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 567263939,
+        "inputRecordsRead": 4246194,
+        "shuffleReadBytes": 41065,
+        "tasks": 8,
+        "matchesReference": true,
+        "linesPerSecond": 149804,
+        "megabytesPerSecond": 20.0
+      }
+    },
+    {
+      "label": "D2 · Spark DF Parquet local[2]",
+      "median": 10182,
+      "min": 9154,
+      "max": 14985,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "df-curated",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 14750495,
+        "inputRecordsRead": 4246193,
+        "shuffleReadBytes": 34789,
+        "tasks": 6,
+        "matchesReference": true,
+        "linesPerSecond": 417029,
+        "megabytesPerSecond": 55.7
+      }
+    },
+    {
+      "label": "D3 · MR V1",
+      "median": 189970,
+      "min": 180149,
+      "max": 190204,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V1_DIRECT",
+        "shuffleBytes": 28228778,
+        "mapOutputRecords": 742849,
+        "reduceInputRecords": 742849,
+        "linesPerSecond": 223450,
+        "megabytesPerSecond": 29.8
+      }
+    },
+    {
+      "label": "D3 · MR V5",
+      "median": 61236,
+      "min": 59069,
+      "max": 74822,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V5_BATCH",
+        "shuffleBytes": 311768,
+        "mapOutputRecords": 86,
+        "reduceInputRecords": 86,
+        "linesPerSecond": 693200,
+        "megabytesPerSecond": 92.6
+      }
+    },
+    {
+      "label": "D3 · Spark RDD local[2]",
+      "median": 227302,
+      "min": 218846,
+      "max": 231547,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "rdd-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 5671365367,
+        "inputRecordsRead": 42448765,
+        "shuffleReadBytes": 362451,
+        "tasks": 46,
+        "matchesReference": true,
+        "linesPerSecond": 186751,
+        "megabytesPerSecond": 24.9
+      }
+    },
+    {
+      "label": "D3 · Spark DF Parquet local[2]",
+      "median": 18279,
+      "min": 15287,
+      "max": 18719,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "df-curated",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 136479144,
+        "inputRecordsRead": 42448741,
+        "shuffleReadBytes": 204650,
+        "tasks": 20,
+        "matchesReference": true,
+        "linesPerSecond": 2322270,
+        "megabytesPerSecond": 310.1
+      }
+    }
+  ],
+  "notes": [
+    "Đây là mở rộng theo kích thước dữ liệu trên một máy, không phải mở rộng cụm.",
+    "Throughput tính theo số dòng/byte CSV gốc, kể cả dòng không phải purchase.",
+    "Môi trường I/O khác nhau: MR chạy trong container Linux cùng mạng Docker với DataNode; Spark chạy trên host Windows, đọc HDFS qua cổng 127.0.0.1 do Docker/WSL2 chuyển tiếp. Chênh lệch thời gian không chỉ do engine."
+  ],
+  "source": "docs/evidence/bench/{mr,spark}"
+}

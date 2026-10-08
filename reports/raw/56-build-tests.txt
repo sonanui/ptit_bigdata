@@ -1,0 +1,23 @@
+﻿# Module bigdata (MapReduce) trong image bigdata, JDK 11 - docs/evidence/windows-docker/mvn-integration-verify-after-spark.log
+$ docker compose run --rm bigdata ./mvnw -B -pl bigdata -Pintegration verify
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  01:03 min
+   (18 unit test + 6 integration test: VariantsIT, RecordReductionIT, JobFailureIT, DatasetToolIT)
+
+# Profile spark trên máy, JDK 21 - chạy lại 2026-10-08
+PS> .\scripts\spark-local.ps1 build
+[INFO] Running vn.edu.bigdata.revenue.domain.AggregateStateTest
+[INFO] Running vn.edu.bigdata.revenue.hadoop.BoundedAccumulatorTest
+[INFO] Running vn.edu.bigdata.revenue.hadoop.WritableContractTest
+[INFO] Running vn.edu.bigdata.revenue.input.DatasetPreflightTest
+[INFO] Running vn.edu.bigdata.revenue.input.ProjectedCsvEventParserTest
+[INFO] Running vn.edu.bigdata.revenue.input.PurchasePreparationTest
+[INFO] Running vn.edu.bigdata.revenue.job.JobPlanFactoryTest
+[INFO] Running vn.edu.bigdata.revenue.output.ResultValidatorTest
+[INFO] Running vn.edu.bigdata.revenue.profile.GroupDictionaryTest
+[INFO] Running vn.edu.bigdata.revenue.spark.SparkJobsTest
+[INFO] Tests run: 25, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  52.044 s

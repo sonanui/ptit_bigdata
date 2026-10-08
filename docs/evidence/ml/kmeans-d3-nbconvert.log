@@ -1,0 +1,88 @@
+﻿jupyter-nbconvert.exe : [NbConvertApp] Converting notebook kmeans_product.ipynb to notebook
+At line:1 char:471
++ ... StartNew(); & ..\.venv\Scripts\jupyter-nbconvert.exe --to notebook -- ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([NbConvertApp] ...ynb to notebook:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\.venv\Lib\site-packages\zmq\_future.py:718: RuntimeWarning: 
+Proactor event loop does not implement add_reader family of methods required for zmq. Registering an additional 
+selector thread for add_reader support via tornado. Use 
+`asyncio.set_event_loop_policy(WindowsSelectorEventLoopPolicy())` to avoid this warning.
+  self._get_loop()
+'Project' is not recognized as an internal or external command,
+operable program or batch file.
+Missing Python executable 'E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\.venv\Scripts\python.exe', defaulting to 'E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\.venv\Lib\site-packages\pyspark\bin\..' for SPARK_HOME environment variable. Please install Python or specify the correct Python executable in PYSPARK_DRIVER_PYTHON or PYSPARK_PYTHON environment variable to detect SPARK_HOME safely.
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/06 23:57:57 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This 
+behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+26/10/06 23:58:12 WARN InstanceBuilder: Failed to load implementation from:dev.ludovic.netlib.blas.JNIBLAS
+26/10/07 00:01:25 WARN TaskSetManager: Stage 2793 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:28 WARN TaskSetManager: Stage 2794 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:28 WARN TaskSetManager: Stage 2797 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:28 WARN TaskSetManager: Stage 2798 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:28 WARN TaskSetManager: Stage 2799 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:29 WARN TaskSetManager: Stage 2800 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:29 WARN TaskSetManager: Stage 2801 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:29 WARN TaskSetManager: Stage 2802 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:29 WARN TaskSetManager: Stage 2803 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:29 WARN TaskSetManager: Stage 2805 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:29 WARN TaskSetManager: Stage 2807 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:29 WARN TaskSetManager: Stage 2809 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:30 WARN TaskSetManager: Stage 2811 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:30 WARN TaskSetManager: Stage 2813 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:30 WARN TaskSetManager: Stage 2815 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:30 WARN TaskSetManager: Stage 2817 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:30 WARN TaskSetManager: Stage 2820 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:31 WARN TaskSetManager: Stage 2821 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:31 WARN TaskSetManager: Stage 2823 contains a task of very large size (3431 KiB). The maximum 
+recommended task size is 1000 KiB.
+26/10/07 00:01:31 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+26/10/07 00:01:31 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+26/10/07 00:01:31 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+26/10/07 00:01:31 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+26/10/07 00:01:31 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+26/10/07 00:01:31 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+26/10/07 00:01:31 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+26/10/07 00:01:32 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+26/10/07 00:01:32 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+26/10/07 00:01:32 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+26/10/07 00:01:32 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+26/10/07 00:01:32 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+26/10/07 00:01:32 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, 
+this can cause serious performance degradation.
+ERROR: The process "20696" not found.
+[NbConvertApp] Writing 181947 bytes to kmeans_product.ipynb

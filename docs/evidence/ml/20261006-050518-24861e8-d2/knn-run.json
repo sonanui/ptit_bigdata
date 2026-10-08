@@ -1,0 +1,144 @@
+{
+  "job": "knn",
+  "runId": "20261006-050518-24861e8-d2",
+  "params": {
+    "featuresRunId": "20261006-045824-24861e8-d2",
+    "ks": [
+      5,
+      10,
+      20
+    ],
+    "queries": 1000,
+    "lshQueries": 50,
+    "seed": 21
+  },
+  "startedAt": "2026-10-05T22:05:27.766058+00:00",
+  "stages": [
+    {
+      "name": "collect",
+      "elapsedMillis": 1937
+    },
+    {
+      "name": "exact_knn",
+      "elapsedMillis": 1966
+    },
+    {
+      "name": "evaluate",
+      "elapsedMillis": 264
+    },
+    {
+      "name": "lsh",
+      "elapsedMillis": 10211
+    }
+  ],
+  "metrics": {
+    "products": 25084,
+    "productsWithCategoryCode": 13799,
+    "queries": 1000,
+    "distance": "euclidean on standardized A7 features",
+    "agreement": [
+      {
+        "k": 5,
+        "method": "KNN (m\u00f4 h\u00ecnh)",
+        "agreement": 0.0556,
+        "ci95": [
+          0.0472,
+          0.0646
+        ]
+      },
+      {
+        "k": 5,
+        "method": "Baseline ng\u1eabu nhi\u00ean",
+        "agreement": 0.0148,
+        "ci95": [
+          0.0114,
+          0.0188
+        ]
+      },
+      {
+        "k": 5,
+        "method": "Baseline ph\u1ed5 bi\u1ebfn",
+        "agreement": 0.076,
+        "ci95": [
+          0.06,
+          0.094
+        ]
+      },
+      {
+        "k": 10,
+        "method": "KNN (m\u00f4 h\u00ecnh)",
+        "agreement": 0.0538,
+        "ci95": [
+          0.047,
+          0.0605
+        ]
+      },
+      {
+        "k": 10,
+        "method": "Baseline ng\u1eabu nhi\u00ean",
+        "agreement": 0.0129,
+        "ci95": [
+          0.0108,
+          0.0152
+        ]
+      },
+      {
+        "k": 10,
+        "method": "Baseline ph\u1ed5 bi\u1ebfn",
+        "agreement": 0.0631,
+        "ci95": [
+          0.051,
+          0.0767
+        ]
+      },
+      {
+        "k": 20,
+        "method": "KNN (m\u00f4 h\u00ecnh)",
+        "agreement": 0.053,
+        "ci95": [
+          0.0467,
+          0.0597
+        ]
+      },
+      {
+        "k": 20,
+        "method": "Baseline ng\u1eabu nhi\u00ean",
+        "agreement": 0.0126,
+        "ci95": [
+          0.0109,
+          0.0145
+        ]
+      },
+      {
+        "k": 20,
+        "method": "Baseline ph\u1ed5 bi\u1ebfn",
+        "agreement": 0.0696,
+        "ci95": [
+          0.0553,
+          0.0854
+        ]
+      }
+    ],
+    "lsh": {
+      "k": 10,
+      "queries": 50,
+      "bucketLength": 1.0,
+      "numHashTables": 5,
+      "meanRecall": 0.998,
+      "ci95": [
+        0.994,
+        1.0
+      ]
+    }
+  },
+  "environment": {
+    "sparkVersion": "4.0.4",
+    "javaVersion": "21.0.12",
+    "hadoopClientVersion": "3.4.1",
+    "pythonVersion": "3.12.10",
+    "master": "local[2]",
+    "driverMemory": "1g",
+    "gitSha": "24861e8"
+  },
+  "endToEndMillis": 21829
+}

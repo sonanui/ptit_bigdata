@@ -1,0 +1,28 @@
+﻿jupyter-nbconvert.exe : [NbConvertApp] Converting notebook knn_classifier.ipynb to notebook
+At line:1 char:471
++ ... StartNew(); & ..\.venv\Scripts\jupyter-nbconvert.exe --to notebook -- ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([NbConvertApp] ...ynb to notebook:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\.venv\Lib\site-packages\zmq\_future.py:718: RuntimeWarning: 
+Proactor event loop does not implement add_reader family of methods required for zmq. Registering an additional 
+selector thread for add_reader support via tornado. Use 
+`asyncio.set_event_loop_policy(WindowsSelectorEventLoopPolicy())` to avoid this warning.
+  self._get_loop()
+'Project' is not recognized as an internal or external command,
+operable program or batch file.
+Missing Python executable 'E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\.venv\Scripts\python.exe', defaulting to 'E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\.venv\Lib\site-packages\pyspark\bin\..' for SPARK_HOME environment variable. Please install Python or specify the correct Python executable in PYSPARK_DRIVER_PYTHON or PYSPARK_PYTHON environment variable to detect SPARK_HOME safely.
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/07 00:09:48 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This 
+behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+26/10/07 00:09:51 WARN InstanceBuilder: Failed to load implementation from:dev.ludovic.netlib.blas.JNIBLAS
+26/10/07 00:16:59 WARN TaskSetManager: Stage 66 contains a task of very large size (5402 KiB). The maximum recommended 
+task size is 1000 KiB.
+26/10/07 00:17:05 WARN TaskSetManager: Stage 67 contains a task of very large size (1686 KiB). The maximum recommended 
+task size is 1000 KiB.
+ERROR: The process "25144" not found.
+[NbConvertApp] Writing 47725 bytes to knn_classifier.ipynb

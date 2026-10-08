@@ -1,0 +1,22 @@
+$ hadoop version | head -1
+Hadoop 3.4.2
+$ java -version   # JDK đi kèm image apache/hadoop
+openjdk version "1.8.0_212"
+$ ps -eo args | grep -o "org.apache.hadoop.hdfs.server[.a-zA-Z]*"
+org.apache.hadoop.hdfs.server.namenode.NameNode
+
+$ grep property $HADOOP_CONF_DIR/core-site.xml   # sinh từ config/hadoop.env
+<property><name>fs.defaultFS</name><value>hdfs://namenode:8020</value></property>
+
+$ grep property $HADOOP_CONF_DIR/hdfs-site.xml
+<property><name>dfs.namenode.datanode.registration.ip-hostname-check</name><value>false</value></property>
+<property><name>dfs.datanode.data.dir</name><value>file:///data/datanode</value></property>
+<property><name>dfs.namenode.http-bind-host</name><value>0.0.0.0</value></property>
+<property><name>dfs.blocksize</name><value>134217728</value></property>
+<property><name>dfs.namenode.name.dir</name><value>file:///data/namenode</value></property>
+<property><name>dfs.replication</name><value>1</value></property>
+<property><name>dfs.namenode.rpc-bind-host</name><value>0.0.0.0</value></property>
+
+--- container datanode ---
+$ ps -eo args | grep -o "org.apache.hadoop.hdfs.server[.a-zA-Z]*"
+org.apache.hadoop.hdfs.server.datanode.DataNode

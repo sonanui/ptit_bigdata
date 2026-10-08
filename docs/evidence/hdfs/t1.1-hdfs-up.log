@@ -1,0 +1,52 @@
+# 2026-10-05T19:56:06Z docker compose up -d namenode datanode
+NAME                      IMAGE                 COMMAND                  SERVICE    CREATED          STATUS                    PORTS
+ptit_bigdata-datanode-1   apache/hadoop:3.4.2   "/usr/local/bin/dumb…"   datanode   27 seconds ago   Up 20 seconds             127.0.0.1:9864->9864/tcp
+ptit_bigdata-namenode-1   apache/hadoop:3.4.2   "/usr/local/bin/dumb…"   namenode   27 seconds ago   Up 26 seconds (healthy)   127.0.0.1:9870->9870/tcp
+
+Hadoop 3.4.2
+dfs.replication=1
+dfs.blocksize=134217728
+fs.defaultFS=hdfs://namenode:8020
+Safe mode is OFF
+Configured Capacity: 1081101176832 (1006.85 GB)
+Present Capacity: 975253774336 (908.28 GB)
+DFS Remaining: 975253749760 (908.28 GB)
+DFS Used: 24576 (24 KB)
+DFS Used%: 0.00%
+Replicated Blocks:
+	Under replicated blocks: 0
+	Blocks with corrupt replicas: 0
+	Missing blocks: 0
+	Missing blocks (with replication factor 1): 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+Erasure Coded Block Groups: 
+	Low redundancy block groups: 0
+	Block groups with corrupt internal blocks: 0
+	Missing block groups: 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+
+-------------------------------------------------
+Live datanodes (1):
+
+Name: 172.23.0.3:9866 (ptit_bigdata-datanode-1.ptit_bigdata_default)
+Hostname: datanode
+Decommission Status : Normal
+Configured Capacity: 1081101176832 (1006.85 GB)
+DFS Used: 24576 (24 KB)
+Non DFS Used: 50855047168 (47.36 GB)
+DFS Remaining: 975253749760 (908.28 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 90.21%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Mon Oct 05 19:56:14 UTC 2026
+Last Block Report: Mon Oct 05 19:55:50 UTC 2026
+Num of Blocks: 0
+
+

@@ -1,0 +1,4 @@
+## Spark Java A1 vs MR V1 (D1)
+KHỚP: 308 nhóm, tổng purchase_count=7464
+## Spark Java A1 vs baseline Python stdlib (D1)
+KHỚP: 308 nhóm, tổng purchase_count=7464

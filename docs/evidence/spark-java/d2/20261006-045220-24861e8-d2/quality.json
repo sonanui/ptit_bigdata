@@ -1,0 +1,33 @@
+{
+  "rowsIn" : 4246194,
+  "rowsValid" : 4246193,
+  "rejected" : {
+    "HEADER" : 1
+  },
+  "rowsWritten" : 4246193,
+  "quality" : {
+    "rows" : 4246193,
+    "min_event_time" : "2019-10-01T00:00:00Z",
+    "max_event_time" : "2019-10-31T23:59:59Z",
+    "null_category_id" : 0,
+    "null_category_code" : 1353242,
+    "null_brand" : 612424,
+    "null_user_session" : 0,
+    "zero_price" : 6772,
+    "distinct_products" : 125128,
+    "distinct_category_id" : 614,
+    "distinct_category_code" : 126,
+    "distinct_brands" : 3138,
+    "distinct_users" : 1389778,
+    "distinct_sessions" : 2792528,
+    "eventTypes" : {
+      "cart" : 92299,
+      "purchase" : 74120,
+      "view" : 4079774
+    },
+    "purchasesWithZeroPrice" : 0,
+    "categoryIdsWithMultipleCodes" : 0,
+    "exactDuplicateExtraRows" : 586,
+    "exactDuplicateGroups" : 478
+  }
+}

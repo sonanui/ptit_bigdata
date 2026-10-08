@@ -1,0 +1,75 @@
+{
+  "job": "kmeans",
+  "runId": "20261006-050144-24861e8-d2",
+  "params": {
+    "featuresRunId": "20261006-045824-24861e8-d2",
+    "kRange": [
+      2,
+      10
+    ],
+    "seeds": [
+      1,
+      2,
+      3
+    ],
+    "maxIter": 50
+  },
+  "startedAt": "2026-10-05T22:01:55.055397+00:00",
+  "stages": [
+    {
+      "name": "sweep",
+      "elapsedMillis": 109101
+    },
+    {
+      "name": "final_model",
+      "elapsedMillis": 2413
+    },
+    {
+      "name": "baselines",
+      "elapsedMillis": 8472
+    },
+    {
+      "name": "write_outputs",
+      "elapsedMillis": 1910
+    },
+    {
+      "name": "e7",
+      "elapsedMillis": 55499
+    }
+  ],
+  "metrics": {
+    "products": 25084,
+    "selectionRule": "max mean silhouette over seeds, tie -> smaller K",
+    "bestK": 2,
+    "bestSeed": 1,
+    "finalSilhouette": 0.6805111944445876,
+    "finalInertia": 119778.11331831371,
+    "iterations": 27,
+    "baselineShuffledColumnsSilhouette": 0.1735335769243009,
+    "baselinePriceQuantileSilhouette": 0.18463958712069975,
+    "numpyParity": 1.0,
+    "e7": {
+      "cache": {
+        "median": 3458.0,
+        "min": 3417,
+        "max": 4203
+      },
+      "no_cache": {
+        "median": 4004.0,
+        "min": 3967,
+        "max": 5153
+      }
+    },
+    "e7Iterations": 20
+  },
+  "environment": {
+    "sparkVersion": "4.0.4",
+    "javaVersion": "21.0.12",
+    "hadoopClientVersion": "3.4.1",
+    "pythonVersion": "3.12.10",
+    "master": "local[2]",
+    "driverMemory": "1g",
+    "gitSha": "24861e8"
+  },
+  "endToEndMillis": 198867
+}

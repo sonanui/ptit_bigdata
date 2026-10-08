@@ -1,0 +1,123 @@
+﻿{
+    "meta":  {
+                 "label":  "e4-d2-rdd-raw",
+                 "mode":  "rdd-raw",
+                 "input":  "/data/ecommerce/raw/sample/2019-Oct-r0.1-s21.csv",
+                 "curatedRunId":  "",
+                 "master":  "local[2]",
+                 "shufflePartitions":  8,
+                 "driverMemory":  "1g",
+                 "warmups":  1,
+                 "repeats":  3,
+                 "reference":  "results\\mr\\20261006-034832-88fd989-d2\\revenue.csv",
+                 "gitSha":  "b0376ef",
+                 "host":  "LAPTOP-DINHNGUY",
+                 "startedRuns":  4
+             },
+    "runs":  [
+                 {
+                     "round":  0,
+                     "warmup":  true,
+                     "exitCode":  0,
+                     "wallMillis":  40977,
+                     "success":  true,
+                     "runId":  "20261007-003257-b0376ef-e4-d2-rdd-raw-0",
+                     "endToEndMillis":  32636,
+                     "computeMillis":  28660,
+                     "writeMillis":  3292,
+                     "groups":  495,
+                     "validPurchases":  74120,
+                     "taskMetrics":  {
+                                         "tasks":  8,
+                                         "inputBytesRead":  567263939,
+                                         "inputRecordsRead":  4246194,
+                                         "shuffleReadBytes":  41065,
+                                         "shuffleReadRecords":  1758,
+                                         "shuffleWriteBytes":  41065,
+                                         "shuffleWriteRecords":  1758,
+                                         "executorRunTimeMillis":  55090,
+                                         "jvmGcTimeMillis":  1028
+                                     },
+                     "matchesReference":  true,
+                     "compare":  "KHỚP: 495 nhóm, tổng purchase_count=74120"
+                 },
+                 {
+                     "round":  1,
+                     "warmup":  false,
+                     "exitCode":  0,
+                     "wallMillis":  55363,
+                     "success":  true,
+                     "runId":  "20261007-003344-b0376ef-e4-d2-rdd-raw-1",
+                     "endToEndMillis":  40847,
+                     "computeMillis":  33987,
+                     "writeMillis":  4158,
+                     "groups":  495,
+                     "validPurchases":  74120,
+                     "taskMetrics":  {
+                                         "tasks":  8,
+                                         "inputBytesRead":  567263939,
+                                         "inputRecordsRead":  4246194,
+                                         "shuffleReadBytes":  41065,
+                                         "shuffleReadRecords":  1758,
+                                         "shuffleWriteBytes":  41065,
+                                         "shuffleWriteRecords":  1758,
+                                         "executorRunTimeMillis":  64144,
+                                         "jvmGcTimeMillis":  1410
+                                     },
+                     "matchesReference":  true,
+                     "compare":  "KHỚP: 495 nhóm, tổng purchase_count=74120"
+                 },
+                 {
+                     "round":  2,
+                     "warmup":  false,
+                     "exitCode":  0,
+                     "wallMillis":  39361,
+                     "success":  true,
+                     "runId":  "20261007-003434-b0376ef-e4-d2-rdd-raw-2",
+                     "endToEndMillis":  30436,
+                     "computeMillis":  24462,
+                     "writeMillis":  5039,
+                     "groups":  495,
+                     "validPurchases":  74120,
+                     "taskMetrics":  {
+                                         "tasks":  8,
+                                         "inputBytesRead":  567263939,
+                                         "inputRecordsRead":  4246194,
+                                         "shuffleReadBytes":  41065,
+                                         "shuffleReadRecords":  1758,
+                                         "shuffleWriteBytes":  41065,
+                                         "shuffleWriteRecords":  1758,
+                                         "executorRunTimeMillis":  46490,
+                                         "jvmGcTimeMillis":  1253
+                                     },
+                     "matchesReference":  true,
+                     "compare":  "KHỚP: 495 nhóm, tổng purchase_count=74120"
+                 },
+                 {
+                     "round":  3,
+                     "warmup":  false,
+                     "exitCode":  0,
+                     "wallMillis":  49216,
+                     "success":  true,
+                     "runId":  "20261007-003519-b0376ef-e4-d2-rdd-raw-3",
+                     "endToEndMillis":  33885,
+                     "computeMillis":  28345,
+                     "writeMillis":  4710,
+                     "groups":  495,
+                     "validPurchases":  74120,
+                     "taskMetrics":  {
+                                         "tasks":  8,
+                                         "inputBytesRead":  567263939,
+                                         "inputRecordsRead":  4246194,
+                                         "shuffleReadBytes":  41065,
+                                         "shuffleReadRecords":  1758,
+                                         "shuffleWriteBytes":  41065,
+                                         "shuffleWriteRecords":  1758,
+                                         "executorRunTimeMillis":  54333,
+                                         "jvmGcTimeMillis":  1158
+                                     },
+                     "matchesReference":  true,
+                     "compare":  "KHỚP: 495 nhóm, tổng purchase_count=74120"
+                 }
+             ]
+}

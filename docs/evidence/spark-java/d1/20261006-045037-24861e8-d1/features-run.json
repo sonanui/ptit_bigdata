@@ -1,0 +1,90 @@
+{
+  "schemaVersion" : 1,
+  "job" : "features",
+  "runId" : "20261006-045037-24861e8-d1",
+  "params" : {
+    "curatedRunId" : "20261006-044917-24861e8-d1",
+    "minViews" : 20,
+    "output" : "/data/ecommerce/features/product/run_id=20261006-045037-24861e8-d1"
+  },
+  "startedAt" : "2026-10-05T21:50:37.396216300Z",
+  "gitSha" : "24861e8",
+  "sparkVersion" : "4.0.4",
+  "javaVersion" : "21.0.12",
+  "hadoopClientVersion" : "3.4.1",
+  "master" : "local[2]",
+  "configuration" : {
+    "spark.driver.memory" : "1g",
+    "spark.sql.shuffle.partitions" : "8",
+    "spark.sql.ansi.enabled" : "true",
+    "spark.sql.session.timeZone" : "UTC",
+    "spark.hadoop.fs.defaultFS" : "hdfs://localhost:8020"
+  },
+  "stages" : [ {
+    "name" : "product_stats",
+    "elapsedMillis" : 13823
+  }, {
+    "name" : "write_features",
+    "elapsedMillis" : 2011
+  } ],
+  "metrics" : {
+    "products" : 59424,
+    "minViews" : 20,
+    "kept" : 3148,
+    "excluded" : 56276,
+    "viewsQuantiles_p50_p75_p90_p95_p99" : [ 2.0, 4.0, 11.0, 20.0, 75.0 ],
+    "keptWithCategoryCode" : 2090,
+    "keptWithPurchase" : 1377,
+    "features" : [ "log_views", "log_carts", "log_purchases", "cart_rate", "purchase_rate", "log_median_price", "log_distinct_users" ],
+    "describe" : {
+      "count" : {
+        "log_views" : "3148",
+        "log_carts" : "3148",
+        "log_purchases" : "3148",
+        "cart_rate" : "3148",
+        "purchase_rate" : "3148",
+        "log_median_price" : "3148",
+        "log_distinct_users" : "3148"
+      },
+      "mean" : {
+        "log_views" : "3.83680368077925",
+        "log_carts" : "0.4752692682411883",
+        "log_purchases" : "0.5093320057126426",
+        "cart_rate" : "0.015246460935247036",
+        "purchase_rate" : "0.014971231959989503",
+        "log_median_price" : "5.0464231702906055",
+        "log_distinct_users" : "3.8498020386769656"
+      },
+      "stddev" : {
+        "log_views" : "0.7766916658848582",
+        "log_carts" : "0.8590352665020025",
+        "log_purchases" : "0.7429479270069111",
+        "cart_rate" : "0.02704441369617127",
+        "purchase_rate" : "0.02147803164665985",
+        "log_median_price" : "1.1453763959147016",
+        "log_distinct_users" : "0.7887467021338673"
+      },
+      "min" : {
+        "log_views" : "3.044522437723423",
+        "log_carts" : "0.0",
+        "log_purchases" : "0.0",
+        "cart_rate" : "0.0",
+        "purchase_rate" : "0.0",
+        "log_median_price" : "1.5260563034950494",
+        "log_distinct_users" : "2.833213344056216"
+      },
+      "max" : {
+        "log_views" : "8.333991247194975",
+        "log_carts" : "6.2878585601617845",
+        "log_purchases" : "5.69035945432406",
+        "cart_rate" : "0.1724137931034483",
+        "purchase_rate" : "0.15217391304347827",
+        "log_median_price" : "7.853523256374119",
+        "log_distinct_users" : "8.48446336679332"
+      }
+    }
+  },
+  "status" : "succeeded",
+  "error" : null,
+  "endToEndMillis" : 24815
+}

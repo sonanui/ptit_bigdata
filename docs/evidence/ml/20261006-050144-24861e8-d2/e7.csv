@@ -1,0 +1,9 @@
+repeat,warmup,mode,fit_ms,cache_count_ms
+0,True,no_cache,4670,
+0,True,cache,4642,7032.0
+1,False,no_cache,5153,
+1,False,cache,3458,4826.0
+2,False,no_cache,4004,
+2,False,cache,4203,4099.0
+3,False,no_cache,3967,
+3,False,cache,3417,4622.0

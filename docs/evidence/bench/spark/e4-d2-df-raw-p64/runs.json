@@ -1,0 +1,123 @@
+﻿{
+    "meta":  {
+                 "label":  "e4-d2-df-raw-p64",
+                 "mode":  "df-raw",
+                 "input":  "/data/ecommerce/raw/sample/2019-Oct-r0.1-s21.csv",
+                 "curatedRunId":  "",
+                 "master":  "local[2]",
+                 "shufflePartitions":  64,
+                 "driverMemory":  "1g",
+                 "warmups":  1,
+                 "repeats":  3,
+                 "reference":  "results\\mr\\20261006-034832-88fd989-d2\\revenue.csv",
+                 "gitSha":  "b0376ef",
+                 "host":  "LAPTOP-DINHNGUY",
+                 "startedRuns":  4
+             },
+    "runs":  [
+                 {
+                     "round":  0,
+                     "warmup":  true,
+                     "exitCode":  0,
+                     "wallMillis":  48513,
+                     "success":  true,
+                     "runId":  "20261007-012524-b0376ef-e4-d2-df-raw-p64-0",
+                     "endToEndMillis":  39688,
+                     "computeMillis":  36226,
+                     "writeMillis":  2661,
+                     "groups":  495,
+                     "validPurchases":  74120,
+                     "taskMetrics":  {
+                                         "tasks":  7,
+                                         "inputBytesRead":  567263939,
+                                         "inputRecordsRead":  4246194,
+                                         "shuffleReadBytes":  75924,
+                                         "shuffleReadRecords":  1758,
+                                         "shuffleWriteBytes":  75924,
+                                         "shuffleWriteRecords":  1758,
+                                         "executorRunTimeMillis":  61979,
+                                         "jvmGcTimeMillis":  1329
+                                     },
+                     "matchesReference":  true,
+                     "compare":  "KHỚP: 495 nhóm, tổng purchase_count=74120"
+                 },
+                 {
+                     "round":  1,
+                     "warmup":  false,
+                     "exitCode":  0,
+                     "wallMillis":  54557,
+                     "success":  true,
+                     "runId":  "20261007-012618-b0376ef-e4-d2-df-raw-p64-1",
+                     "endToEndMillis":  41999,
+                     "computeMillis":  36156,
+                     "writeMillis":  3064,
+                     "groups":  495,
+                     "validPurchases":  74120,
+                     "taskMetrics":  {
+                                         "tasks":  7,
+                                         "inputBytesRead":  567263939,
+                                         "inputRecordsRead":  4246194,
+                                         "shuffleReadBytes":  75924,
+                                         "shuffleReadRecords":  1758,
+                                         "shuffleWriteBytes":  75924,
+                                         "shuffleWriteRecords":  1758,
+                                         "executorRunTimeMillis":  59340,
+                                         "jvmGcTimeMillis":  1522
+                                     },
+                     "matchesReference":  true,
+                     "compare":  "KHỚP: 495 nhóm, tổng purchase_count=74120"
+                 },
+                 {
+                     "round":  2,
+                     "warmup":  false,
+                     "exitCode":  0,
+                     "wallMillis":  53281,
+                     "success":  true,
+                     "runId":  "20261007-012709-b0376ef-e4-d2-df-raw-p64-2",
+                     "endToEndMillis":  44352,
+                     "computeMillis":  40704,
+                     "writeMillis":  2293,
+                     "groups":  495,
+                     "validPurchases":  74120,
+                     "taskMetrics":  {
+                                         "tasks":  7,
+                                         "inputBytesRead":  567263939,
+                                         "inputRecordsRead":  4246194,
+                                         "shuffleReadBytes":  75924,
+                                         "shuffleReadRecords":  1758,
+                                         "shuffleWriteBytes":  75924,
+                                         "shuffleWriteRecords":  1758,
+                                         "executorRunTimeMillis":  69206,
+                                         "jvmGcTimeMillis":  1182
+                                     },
+                     "matchesReference":  true,
+                     "compare":  "KHỚP: 495 nhóm, tổng purchase_count=74120"
+                 },
+                 {
+                     "round":  3,
+                     "warmup":  false,
+                     "exitCode":  0,
+                     "wallMillis":  45946,
+                     "success":  true,
+                     "runId":  "20261007-012803-b0376ef-e4-d2-df-raw-p64-3",
+                     "endToEndMillis":  36130,
+                     "computeMillis":  32588,
+                     "writeMillis":  2200,
+                     "groups":  495,
+                     "validPurchases":  74120,
+                     "taskMetrics":  {
+                                         "tasks":  7,
+                                         "inputBytesRead":  567263939,
+                                         "inputRecordsRead":  4246194,
+                                         "shuffleReadBytes":  75924,
+                                         "shuffleReadRecords":  1758,
+                                         "shuffleWriteBytes":  75924,
+                                         "shuffleWriteRecords":  1758,
+                                         "executorRunTimeMillis":  53595,
+                                         "jvmGcTimeMillis":  1216
+                                     },
+                     "matchesReference":  true,
+                     "compare":  "KHỚP: 495 nhóm, tổng purchase_count=74120"
+                 }
+             ]
+}

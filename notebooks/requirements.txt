@@ -1,0 +1,10 @@
+# Môi trường Python local cho notebook K-Means/KNN (phần lõi Spark viết bằng Java, package vn.edu.bigdata.revenue.spark).
+# Cài: py -3.12 -m venv .venv ; .venv\Scripts\pip install -r notebooks\requirements.txt
+# pyspark cung cấp cả spark-submit dùng để chạy jar Java; phiên bản phải trùng spark.version trong pom.xml.
+pyspark==4.0.4
+numpy==2.2.6
+pandas==2.3.3
+matplotlib==3.10.7
+ipykernel==7.1.0
+nbconvert==7.16.6
+pytest==8.4.2

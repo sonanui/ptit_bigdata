@@ -1,0 +1,90 @@
+{
+  "schemaVersion" : 1,
+  "job" : "features",
+  "runId" : "20261006-045824-24861e8-d2",
+  "params" : {
+    "curatedRunId" : "20261006-045220-24861e8-d2",
+    "minViews" : 20,
+    "output" : "/data/ecommerce/features/product/run_id=20261006-045824-24861e8-d2"
+  },
+  "startedAt" : "2026-10-05T21:58:24.561861Z",
+  "gitSha" : "24861e8",
+  "sparkVersion" : "4.0.4",
+  "javaVersion" : "21.0.12",
+  "hadoopClientVersion" : "3.4.1",
+  "master" : "local[2]",
+  "configuration" : {
+    "spark.driver.memory" : "1g",
+    "spark.sql.shuffle.partitions" : "8",
+    "spark.sql.ansi.enabled" : "true",
+    "spark.sql.session.timeZone" : "UTC",
+    "spark.hadoop.fs.defaultFS" : "hdfs://localhost:8020"
+  },
+  "stages" : [ {
+    "name" : "product_stats",
+    "elapsedMillis" : 163005
+  }, {
+    "name" : "write_features",
+    "elapsedMillis" : 2846
+  } ],
+  "metrics" : {
+    "products" : 125128,
+    "minViews" : 20,
+    "kept" : 25084,
+    "excluded" : 100044,
+    "viewsQuantiles_p50_p75_p90_p95_p99" : [ 5.0, 14.0, 46.0, 97.0, 389.0 ],
+    "keptWithCategoryCode" : 13799,
+    "keptWithPurchase" : 10451,
+    "features" : [ "log_views", "log_carts", "log_purchases", "cart_rate", "purchase_rate", "log_median_price", "log_distinct_users" ],
+    "describe" : {
+      "count" : {
+        "log_views" : "25084",
+        "log_carts" : "25084",
+        "log_purchases" : "25084",
+        "cart_rate" : "25084",
+        "purchase_rate" : "25084",
+        "log_median_price" : "25084",
+        "log_distinct_users" : "25084"
+      },
+      "mean" : {
+        "log_views" : "4.123421832566159",
+        "log_carts" : "0.31662196478777277",
+        "log_purchases" : "0.5103516783916041",
+        "cart_rate" : "0.006454751643414401",
+        "purchase_rate" : "0.010459427947649919",
+        "log_median_price" : "4.699302162716389",
+        "log_distinct_users" : "4.036210445828537"
+      },
+      "stddev" : {
+        "log_views" : "0.9761393595461964",
+        "log_carts" : "0.8063185978625731",
+        "log_purchases" : "0.796423778648396",
+        "cart_rate" : "0.017211051680230675",
+        "purchase_rate" : "0.017000574961240703",
+        "log_median_price" : "1.2388320178288026",
+        "log_distinct_users" : "0.9762049765508584"
+      },
+      "min" : {
+        "log_views" : "3.044522437723423",
+        "log_carts" : "0.0",
+        "log_purchases" : "0.0",
+        "cart_rate" : "0.0",
+        "purchase_rate" : "0.0",
+        "log_median_price" : "0.0",
+        "log_distinct_users" : "2.302585092994046"
+      },
+      "max" : {
+        "log_views" : "10.645710570742667",
+        "log_carts" : "8.557374981049069",
+        "log_purchases" : "7.986164860332727",
+        "cart_rate" : "0.3888888888888889",
+        "purchase_rate" : "0.2727272727272727",
+        "log_median_price" : "7.853631997194365",
+        "log_distinct_users" : "10.603039180769068"
+      }
+    }
+  },
+  "status" : "succeeded",
+  "error" : null,
+  "endToEndMillis" : 179578
+}

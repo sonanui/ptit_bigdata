@@ -1,0 +1,9 @@
+{
+  "schemaVersion" : 1,
+  "policyHash" : "e8cfaa885aa0cabdc51d54c4ee15e5c7a82b70c3cb69406582ed58c47ed2e117",
+  "files" : [ {
+    "uri" : "hdfs://namenode:8020/data/ecommerce/raw/sample/2019-Oct-r0.1-s21.csv",
+    "sha256" : "49b67a6fc54584d8a6f8b5f3c5a3afc3649235978e9e73f2516b564902df44ee",
+    "bytes" : 567001795
+  } ]
+}

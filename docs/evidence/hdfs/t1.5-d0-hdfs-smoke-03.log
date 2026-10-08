@@ -1,0 +1,76 @@
+ Container ptit_bigdata-bigdata-run-2171755d7ed4 Creating 
+ Container ptit_bigdata-bigdata-run-2171755d7ed4 Created 
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Preflight valid: 6 purchases, fingerprint=c9638f9cdee1abf9e21553a8dafa249957032c261467a7a9283f2c73ac9d224e
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Profile: 2 dictionary groups
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v1 (V1_DIRECT)
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v2 (V2_COMBINER)
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v3 (V3_IN_MAPPER)
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v4 (V4_DENSE)
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v5 (V5_BATCH)
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Results equal
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Results equal
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Results equal
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Results equal
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+-rw-r--r--   1 hadoop supergroup         88 2026-10-05 20:09 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/revenue.csv
+drwxr-xr-x   - hadoop supergroup          0 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v1
+-rw-r--r--   1 hadoop supergroup          0 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v1/_SUCCESS
+-rw-r--r--   1 hadoop supergroup         16 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v1/part-r-00000
+-rw-r--r--   1 hadoop supergroup         14 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v1/part-r-00001
+-rw-r--r--   1 hadoop supergroup       3918 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v1/run-manifest.json
+drwxr-xr-x   - hadoop supergroup          0 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v2
+-rw-r--r--   1 hadoop supergroup          0 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v2/_SUCCESS
+-rw-r--r--   1 hadoop supergroup         16 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v2/part-r-00000
+-rw-r--r--   1 hadoop supergroup         14 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v2/part-r-00001
+-rw-r--r--   1 hadoop supergroup       3920 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v2/run-manifest.json
+drwxr-xr-x   - hadoop supergroup          0 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v3
+-rw-r--r--   1 hadoop supergroup          0 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v3/_SUCCESS
+-rw-r--r--   1 hadoop supergroup         16 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v3/part-r-00000
+-rw-r--r--   1 hadoop supergroup         14 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v3/part-r-00001
+-rw-r--r--   1 hadoop supergroup       4085 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v3/run-manifest.json
+drwxr-xr-x   - hadoop supergroup          0 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v4
+-rw-r--r--   1 hadoop supergroup          0 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v4/_SUCCESS
+-rw-r--r--   1 hadoop supergroup         16 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v4/part-r-00000
+-rw-r--r--   1 hadoop supergroup         14 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v4/part-r-00001
+-rw-r--r--   1 hadoop supergroup       3910 2026-10-05 20:08 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v4/run-manifest.json
+drwxr-xr-x   - hadoop supergroup          0 2026-10-05 20:09 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v5
+-rw-r--r--   1 hadoop supergroup          0 2026-10-05 20:09 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v5/_SUCCESS
+-rw-r--r--   1 hadoop supergroup         16 2026-10-05 20:09 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v5/part-r-00000
+-rw-r--r--   1 hadoop supergroup         14 2026-10-05 20:09 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v5/part-r-00001
+-rw-r--r--   1 hadoop supergroup       3910 2026-10-05 20:09 hdfs://namenode:8020/data/ecommerce/mr/d0-hdfs-smoke-03/v5/run-manifest.json
+preflight	2408
+profile	6235
+v1	15021
+v2	10014
+v3	8255
+v4	10305
+v5	8213

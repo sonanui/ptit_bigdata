@@ -1,0 +1,2 @@
+﻿"label","mode","master","shufflePartitions","runs","wallMillisMedian","wallMillisMin","wallMillisMax","endToEndMillisMedian","endToEndMillisMin","endToEndMillisMax","computeMillisMedian","computeMillisMin","computeMillisMax","inputBytesReadMedian","inputRecordsReadMedian","shuffleReadBytesMedian","shuffleWriteBytesMedian","tasksMedian","groups","validPurchases","allMatchReference"
+"e4-d2-rdd-raw-c4","rdd-raw","local[4]","8","3","55246","40907","56834","44989","29775","45465","36500","25012","37592","567263939","4246194","41065","41065","8","495","74120","True"

@@ -1,0 +1,4 @@
+(2) ShuffledRDD[3] at reduceByKey at RevenueJob.java:93 []
+ +-(43) MapPartitionsRDD[2] at flatMapToPair at RevenueJob.java:83 []
+    |   hdfs://localhost:8020/data/ecommerce/raw/2019-Oct.csv MapPartitionsRDD[1] at textFile at RevenueJob.java:81 []
+    |   hdfs://localhost:8020/data/ecommerce/raw/2019-Oct.csv HadoopRDD[0] at textFile at RevenueJob.java:81 []

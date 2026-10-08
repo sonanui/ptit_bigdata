@@ -1,0 +1,38 @@
+ Container ptit_bigdata-bigdata-run-f78f9b57b006 Creating 
+ Container ptit_bigdata-bigdata-run-f78f9b57b006 Created 
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Preflight valid: 6 purchases, fingerprint=41040e59e02f15e257fc51c3fddc6a76c7db978d64f862d0864dc94d877ad76a
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Profile: 2 dictionary groups
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: results/docker-demo/v1 (V1_DIRECT)
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: results/docker-demo/v2 (V2_COMBINER)
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: results/docker-demo/v3 (V3_IN_MAPPER)
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: results/docker-demo/v4 (V4_DENSE)
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+WARN MetricsSystemImpl: JobTracker metrics system already initialized!
+Run valid: results/docker-demo/v5 (V5_BATCH)
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Results equal
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Results equal
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Results equal
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Results equal
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+group_key,total_revenue,purchase_count,average_revenue
+1,60.00,3,20.00
+2,0.03,3,0.01

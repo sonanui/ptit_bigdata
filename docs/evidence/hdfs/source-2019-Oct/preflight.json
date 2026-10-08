@@ -1,0 +1,18 @@
+{
+  "schemaVersion" : 1,
+  "manifest" : {
+    "schemaVersion" : 1,
+    "policyHash" : "e8cfaa885aa0cabdc51d54c4ee15e5c7a82b70c3cb69406582ed58c47ed2e117",
+    "files" : [ {
+      "uri" : "hdfs://namenode:8020/data/ecommerce/raw/2019-Oct.csv",
+      "sha256" : "fedd938409b5f836ec89b39c861b13dad99fc7cd9beb1fddd97a2d50488b5b80",
+      "bytes" : 5668612855
+    } ]
+  },
+  "inputFingerprint" : "310259e9f9367ee64e58c2624e6f8cdb82c67205a0952758de708febb09e0a16",
+  "groupMode" : "CATEGORY_ID",
+  "validPurchaseCount" : 742849,
+  "lines" : 42448765,
+  "elapsedMillis" : 282283,
+  "errors" : [ ]
+}

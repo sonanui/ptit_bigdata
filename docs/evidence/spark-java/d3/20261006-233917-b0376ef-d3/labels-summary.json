@@ -1,0 +1,34 @@
+{
+  "features" : [ "log_views", "log_carts", "log_purchases", "cart_rate", "purchase_rate", "log_median_price", "log_distinct_users", "recent_view_share" ],
+  "label" : "future_purchases > 0 in [t0, t0 + labelDays)",
+  "splits" : {
+    "test" : {
+      "rows" : 64254,
+      "positives" : 16278,
+      "positiveRate" : 0.2533383135680269
+    },
+    "train" : {
+      "rows" : 60876,
+      "positives" : 17057,
+      "positiveRate" : 0.2801925225047638
+    }
+  },
+  "leakageChecks" : {
+    "train" : {
+      "t0" : "2019-10-15",
+      "historyMinEventTime" : "2019-10-01T00:00:00Z",
+      "historyMaxEventTime" : "2019-10-14T23:59:59Z",
+      "labelMinEventTime" : "2019-10-15T00:00:00Z",
+      "labelMaxEventTime" : "2019-10-21T23:59:59Z",
+      "historyBeforeT0" : true
+    },
+    "test" : {
+      "t0" : "2019-10-25",
+      "historyMinEventTime" : "2019-10-11T00:00:00Z",
+      "historyMaxEventTime" : "2019-10-24T23:59:59Z",
+      "labelMinEventTime" : "2019-10-25T00:00:00Z",
+      "labelMaxEventTime" : "2019-10-31T23:59:59Z",
+      "historyBeforeT0" : true
+    }
+  }
+}

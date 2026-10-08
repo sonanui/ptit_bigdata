@@ -1,0 +1,115 @@
+{
+  "experiment": "E2",
+  "title": "MapReduce V1–V5 trên D1",
+  "dataset": "D1: mẫu 1% tháng 10/2019 (seed 21)",
+  "scope": "một máy Windows 11 (i5-9300HF 4 nhân/8 luồng, RAM 7,9 GB); HDFS 1 NameNode + 1 DataNode trong Docker; MR = LocalJobRunner (không YARN), Spark = local[n] trên host",
+  "metric": "Thời gian job MR",
+  "unit": "ms",
+  "rows": [
+    {
+      "label": "MR V1",
+      "median": 4753,
+      "min": 4325,
+      "max": 6607,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V1_DIRECT",
+        "shuffleBytes": 283644,
+        "mapOutputRecords": 7464,
+        "reduceInputRecords": 7464,
+        "endToEnd": {
+          "median": 11576,
+          "min": 11165,
+          "max": 13611,
+          "runs": 3
+        }
+      }
+    },
+    {
+      "label": "MR V2",
+      "median": 4394,
+      "min": 4097,
+      "max": 8128,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V2_COMBINER",
+        "shuffleBytes": 11716,
+        "mapOutputRecords": 7464,
+        "reduceInputRecords": 308,
+        "endToEnd": {
+          "median": 14022,
+          "min": 10479,
+          "max": 14812,
+          "runs": 3
+        }
+      }
+    },
+    {
+      "label": "MR V3",
+      "median": 5906,
+      "min": 4411,
+      "max": 14352,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V3_IN_MAPPER",
+        "shuffleBytes": 11716,
+        "mapOutputRecords": 308,
+        "reduceInputRecords": 308,
+        "endToEnd": {
+          "median": 14382,
+          "min": 11403,
+          "max": 25096,
+          "runs": 3
+        }
+      }
+    },
+    {
+      "label": "MR V4",
+      "median": 7670,
+      "min": 6820,
+      "max": 7987,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V4_DENSE",
+        "shuffleBytes": 11716,
+        "mapOutputRecords": 308,
+        "reduceInputRecords": 308,
+        "endToEnd": {
+          "median": 14134,
+          "min": 13669,
+          "max": 17703,
+          "runs": 3
+        }
+      }
+    },
+    {
+      "label": "MR V5",
+      "median": 3206,
+      "min": 2778,
+      "max": 4146,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V5_BATCH",
+        "shuffleBytes": 6196,
+        "mapOutputRecords": 2,
+        "reduceInputRecords": 2,
+        "endToEnd": {
+          "median": 9878,
+          "min": 8628,
+          "max": 13960,
+          "runs": 3
+        }
+      }
+    }
+  ],
+  "notes": [
+    "Thời gian job = submit tới hoàn tất job MR, không gồm preflight/validate của RevenueTool (xem details.endToEnd).",
+    "1 map slot (mặc định LocalJobRunner), 2 reducer, poll 100 ms."
+  ],
+  "source": "docs/evidence/bench/mr/mr-e2-d1/runs.json"
+}

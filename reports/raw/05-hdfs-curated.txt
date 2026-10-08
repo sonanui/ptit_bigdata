@@ -1,0 +1,26 @@
+$ hdfs dfs -ls /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3 | head
+Found 33 items
+-rw-r--r--   1 hadoop supergroup          0 2026-10-06 15:54 /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3/_SUCCESS
+-rw-r--r--   1 hadoop supergroup       2351 2026-10-06 16:04 /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3/_run.json
+drwxr-xr-x   - hadoop supergroup          0 2026-10-06 15:54 /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3/event_date=2019-10-01
+drwxr-xr-x   - hadoop supergroup          0 2026-10-06 15:54 /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3/event_date=2019-10-02
+drwxr-xr-x   - hadoop supergroup          0 2026-10-06 15:54 /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3/event_date=2019-10-03
+drwxr-xr-x   - hadoop supergroup          0 2026-10-06 15:54 /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3/event_date=2019-10-04
+drwxr-xr-x   - hadoop supergroup          0 2026-10-06 15:54 /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3/event_date=2019-10-05
+...
+$ hdfs dfs -du -s -h /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3
+1.5 G  1.5 G  /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3
+$ hdfs dfs -ls /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3/event_date=2019-10-03
+Found 2 items
+-rw-r--r--   1 hadoop supergroup   22557166 2026-10-06 15:43 /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3/event_date=2019-10-03/part-00002-bd44cea6-e15f-4b79-8aa4-4226ba56cb65.c000.snappy.parquet
+-rw-r--r--   1 hadoop supergroup   19105701 2026-10-06 15:43 /data/ecommerce/curated/events/run_id=20261006-224118-b0376ef-d3/event_date=2019-10-03/part-00003-bd44cea6-e15f-4b79-8aa4-4226ba56cb65.c000.snappy.parquet
+
+$ hdfs dfs -ls /data/ecommerce/features/product
+Found 3 items
+drwxr-xr-x   - hadoop supergroup          0 2026-10-05 21:51 /data/ecommerce/features/product/run_id=20261006-045037-24861e8-d1
+drwxr-xr-x   - hadoop supergroup          0 2026-10-05 22:01 /data/ecommerce/features/product/run_id=20261006-045824-24861e8-d2
+drwxr-xr-x   - hadoop supergroup          0 2026-10-06 16:39 /data/ecommerce/features/product/run_id=20261006-231209-b0376ef-d3
+$ hdfs dfs -ls /data/ecommerce/ml/kmeans
+Found 2 items
+drwxr-xr-x   - hadoop supergroup          0 2026-10-05 22:05 /data/ecommerce/ml/kmeans/run_id=20261006-050144-24861e8-d2
+drwxr-xr-x   - hadoop supergroup          0 2026-10-06 17:02 /data/ecommerce/ml/kmeans/run_id=20261006-235739-b0376ef-d3

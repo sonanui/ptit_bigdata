@@ -1,0 +1,172 @@
+﻿spark-submit.cmd : WARNING: Using incubator modules: jdk.incubator.vector
+At E:\PTIT\PTIT Project Management\DLL\New\ptit_bigdata\scripts\spark-local.ps1:43 char:1
++ & (Join-Path $root ".venv\Scripts\spark-submit.cmd") --master $master ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING: Using ...ncubator.vector:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/10/06 04:56:23 INFO SparkContext: Running Spark version 4.0.4
+26/10/06 04:56:23 INFO SparkContext: OS info Windows 11, 10.0, amd64
+26/10/06 04:56:23 INFO SparkContext: Java version 21.0.12
+26/10/06 04:56:23 INFO ResourceUtils: ==============================================================
+26/10/06 04:56:23 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/10/06 04:56:23 INFO ResourceUtils: ==============================================================
+26/10/06 04:56:23 INFO SparkContext: Submitted application: vn.edu.bigdata.revenue.spark.SparkTool
+26/10/06 04:56:23 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, 
+amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, 
+amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/10/06 04:56:23 INFO ResourceProfile: Limiting resource is cpu
+26/10/06 04:56:23 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/10/06 04:56:23 INFO SecurityManager: Changing view acls to: Hi,hadoop
+26/10/06 04:56:23 INFO SecurityManager: Changing modify acls to: Hi,hadoop
+26/10/06 04:56:23 INFO SecurityManager: Changing view acls groups to: Hi,hadoop
+26/10/06 04:56:23 INFO SecurityManager: Changing modify acls groups to: Hi,hadoop
+26/10/06 04:56:23 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view 
+permissions: Hi, hadoop groups with view permissions: EMPTY; users with modify permissions: Hi, hadoop; groups with 
+modify permissions: EMPTY; RPC SSL disabled
+26/10/06 04:56:25 INFO Utils: Successfully started service 'sparkDriver' on port 51459.
+26/10/06 04:56:25 INFO SparkEnv: Registering MapOutputTracker
+26/10/06 04:56:25 INFO SparkEnv: Registering BlockManagerMaster
+26/10/06 04:56:25 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting 
+topology information
+26/10/06 04:56:25 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/10/06 04:56:25 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/10/06 04:56:25 INFO DiskBlockManager: Created local directory at 
+C:\Users\Hi\AppData\Local\Temp\blockmgr-5afc0055-20b8-4cd4-83da-5c9acf43083a
+26/10/06 04:56:25 INFO SparkEnv: Registering OutputCommitCoordinator
+26/10/06 04:56:25 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/10/06 04:56:25 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/10/06 04:56:25 INFO SparkContext: Added JAR 
+file:/E:/PTIT/PTIT%20Project%20Management/DLL/New/ptit_bigdata/target/revenue-aggregation-spark.jar at 
+spark://LAPTOP-DinhNguyen.mshome.net:51459/jars/revenue-aggregation-spark.jar with timestamp 1791237383014
+26/10/06 04:56:25 INFO SecurityManager: Changing view acls to: Hi,hadoop
+26/10/06 04:56:25 INFO SecurityManager: Changing modify acls to: Hi,hadoop
+26/10/06 04:56:25 INFO SecurityManager: Changing view acls groups to: Hi,hadoop
+26/10/06 04:56:25 INFO SecurityManager: Changing modify acls groups to: Hi,hadoop
+26/10/06 04:56:25 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view 
+permissions: Hi, hadoop groups with view permissions: EMPTY; users with modify permissions: Hi, hadoop; groups with 
+modify permissions: EMPTY; RPC SSL disabled
+26/10/06 04:56:26 INFO Executor: Starting executor ID driver on host LAPTOP-DinhNguyen.mshome.net
+26/10/06 04:56:26 INFO Executor: OS info Windows 11, 10.0, amd64
+26/10/06 04:56:26 INFO Executor: Java version 21.0.12
+26/10/06 04:56:26 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/06 04:56:26 INFO Executor: Created or updated repl class loader 
+org.apache.spark.util.MutableURLClassLoader@3313463c for default.
+26/10/06 04:56:26 INFO Executor: Fetching 
+spark://LAPTOP-DinhNguyen.mshome.net:51459/jars/revenue-aggregation-spark.jar with timestamp 1791237383014
+26/10/06 04:56:26 INFO TransportClientFactory: Successfully created connection to 
+LAPTOP-DinhNguyen.mshome.net/172.24.144.1:51459 after 51 ms (0 ms spent in bootstraps)
+26/10/06 04:56:26 INFO Utils: Fetching spark://LAPTOP-DinhNguyen.mshome.net:51459/jars/revenue-aggregation-spark.jar 
+to C:\Users\Hi\AppData\Local\Temp\spark-3d570837-2278-4d1a-bddb-7b1055b6ea4f\userFiles-49dcf965-c588-4459-aeb8-25f8a1da
+09be\fetchFileTemp3931420605495525300.tmp
+26/10/06 04:56:26 INFO Executor: Adding file:/C:/Users/Hi/AppData/Local/Temp/spark-3d570837-2278-4d1a-bddb-7b1055b6ea4f
+/userFiles-49dcf965-c588-4459-aeb8-25f8a1da09be/revenue-aggregation-spark.jar to class loader default
+26/10/06 04:56:26 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' 
+on port 51463.
+26/10/06 04:56:26 INFO NettyBlockTransferService: Server created on LAPTOP-DinhNguyen.mshome.net:51463
+26/10/06 04:56:26 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication 
+policy
+26/10/06 04:56:26 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 
+LAPTOP-DinhNguyen.mshome.net, 51463, None)
+26/10/06 04:56:26 INFO BlockManagerMasterEndpoint: Registering block manager LAPTOP-DinhNguyen.mshome.net:51463 with 
+434.4 MiB RAM, BlockManagerId(driver, LAPTOP-DinhNguyen.mshome.net, 51463, None)
+26/10/06 04:56:26 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 
+LAPTOP-DinhNguyen.mshome.net, 51463, None)
+26/10/06 04:56:26 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, LAPTOP-DinhNguyen.mshome.net, 
+51463, None)
+A2-A5 xong: 20261006-045630-24861e8-d2 {funnel_by_category={rows=614, events=4246193, purchases=74120}, trend_by_hour={rows=744, events=4246193, purchases=74120}, funnel_by_brand={rows=3139, events=4246193, purchases=74120}} {curatedRows=4246193, a1PurchaseCount=74120, a2PurchasesValidCategory=74120, a1EqualsA2=true}
+26/10/06 04:58:11 WARN SparkEnv: Exception while deleting Spark temp dir: C:\Users\Hi\AppData\Local\Temp\spark-3d570837
+-2278-4d1a-bddb-7b1055b6ea4f\userFiles-49dcf965-c588-4459-aeb8-25f8a1da09be
+java.io.IOException: Failed to delete: C:\Users\Hi\AppData\Local\Temp\spark-3d570837-2278-4d1a-bddb-7b1055b6ea4f\userFi
+les-49dcf965-c588-4459-aeb8-25f8a1da09be\revenue-aggregation-spark.jar
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:155)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:138)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:121)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:120)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1048)
+	at org.apache.spark.SparkEnv.stop(SparkEnv.scala:131)
+	at org.apache.spark.SparkContext.$anonfun$stop$25(SparkContext.scala:2395)
+	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1300)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:2395)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:2297)
+	at org.apache.spark.sql.classic.SparkSession.close(SparkSession.scala:660)
+	at org.apache.spark.sql.SparkSession.stop(SparkSession.scala:783)
+	at vn.edu.bigdata.revenue.spark.SparkTool.main(SparkTool.java:52)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:75)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:52)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.apache.spark.deploy.JavaMainApplication.start(SparkApplication.scala:52)
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:1027)
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:204)
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:227)
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:96)
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1132)
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1141)
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+26/10/06 04:58:11 ERROR ShutdownHookManager: Exception while deleting Spark temp dir: 
+C:\Users\Hi\AppData\Local\Temp\spark-3d570837-2278-4d1a-bddb-7b1055b6ea4f
+java.io.IOException: Failed to delete: C:\Users\Hi\AppData\Local\Temp\spark-3d570837-2278-4d1a-bddb-7b1055b6ea4f\userFi
+les-49dcf965-c588-4459-aeb8-25f8a1da09be\revenue-aggregation-spark.jar
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:155)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:138)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:138)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:121)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:120)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1048)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:70)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:67)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1324)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:67)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:231)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1937)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:205)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:184)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+26/10/06 04:58:11 ERROR ShutdownHookManager: Exception while deleting Spark temp dir: C:\Users\Hi\AppData\Local\Temp\sp
+ark-3d570837-2278-4d1a-bddb-7b1055b6ea4f\userFiles-49dcf965-c588-4459-aeb8-25f8a1da09be
+java.io.IOException: Failed to delete: C:\Users\Hi\AppData\Local\Temp\spark-3d570837-2278-4d1a-bddb-7b1055b6ea4f\userFi
+les-49dcf965-c588-4459-aeb8-25f8a1da09be\revenue-aggregation-spark.jar
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:155)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingJavaIO(JavaUtils.java:138)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:124)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:121)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:120)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1048)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:70)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:67)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1324)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:67)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:231)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1937)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:205)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:184)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)

@@ -1,0 +1,12 @@
+ Container ptit_bigdata-bigdata-run-82020dee53b9 Creating 
+ Container ptit_bigdata-bigdata-run-82020dee53b9 Created 
+test_failed_and_warmup_runs_never_improve_speedup (test_benchmark.BenchmarkTest.test_failed_and_warmup_runs_never_improve_speedup) ... ok
+test_medians_and_speedup_use_complete_runs (test_benchmark.BenchmarkTest.test_medians_and_speedup_use_complete_runs) ... ok
+test_missing_profile_measurement_is_not_reported_as_zero (test_benchmark.BenchmarkTest.test_missing_profile_measurement_is_not_reported_as_zero) ... ok
+test_profile_cost_requires_matching_provenance (test_benchmark.BenchmarkTest.test_profile_cost_requires_matching_provenance) ... ok
+test_skew_and_cardinality_are_explicit_and_deterministic (test_workload.WorkloadTest.test_skew_and_cardinality_are_explicit_and_deterministic) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.009s
+
+OK

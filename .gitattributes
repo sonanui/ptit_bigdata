@@ -1,0 +1,12 @@
+# LF everywhere (matches .editorconfig); scripts and sources run inside Linux containers.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.pdf binary
+*.jar binary
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Serving artifact: sha256 trong manifest.json tính trên đúng các byte publish ra (có CRLF); git phải giữ nguyên, không đổi xuống dòng.
+serving/** -text
