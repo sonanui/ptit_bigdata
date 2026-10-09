@@ -1,0 +1,2 @@
+label,mode,master,shufflePartitions,runs,wallMillisMedian,wallMillisMin,wallMillisMax,endToEndMillisMedian,endToEndMillisMin,endToEndMillisMax,computeMillisMedian,computeMillisMin,computeMillisMax,inputBytesReadMedian,inputRecordsReadMedian,shuffleReadBytesMedian,shuffleWriteBytesMedian,tasksMedian,groups,validPurchases,allMatchReference
+e5-d3-rdd-raw-c1,rdd-raw,local[1],8,3,258757,249646,267350,241854,236832,252875,232911,227706,243858,5671365367,42448765,362451,362451,46,567,742849,True

@@ -1,0 +1,10 @@
+# Bước 1 - công cụ trên máy (IntelliJ terminal, powershell.exe), 2026-10-08
+PS> docker version --format 'Docker Client {{.Client.Version}} / Server {{.Server.Version}} ({{.Server.Os}}/{{.Server.Arch}})'; docker compose version; docker info --format 'Docker VM: CPUs={{.NCPU}} RAM={{.MemTotal}} bytes ({{.OperatingSystem}})'; (wsl --version | Out-String) -replace "`0","" -split "`r?`n" | Select-Object -First 2; git --version; git log -1 --format='HEAD %h %s'; docker volume ls --filter name=ptit_bigdata
+Docker Client 29.8.1 / Server 29.8.1 (linux/amd64)
+Docker Compose version v5.5.1
+Docker VM: CPUs=8 RAM=6216351744 bytes (Docker Desktop (containerized))
+WSL version: 3.0.1.0
+
+git version 2.55.0.windows.5
+HEAD 97bb8c2 feat(bigdata): Add configuration files for HDFS and MapReduce, enhance KNN page with product prediction.
+DRIVER    VOLUME NAME

@@ -1,0 +1,10 @@
+{
+  "matched" : true,
+  "mrGroups" : 567,
+  "sparkGroups" : 567,
+  "mrPurchaseCount" : 742849,
+  "mismatchCount" : 0,
+  "mismatches" : [ ],
+  "mrOutput" : "hdfs://namenode:8020/data/ecommerce/mr/dk3/v1",
+  "sparkRevenueRunId" : "20261008-185303-97bb8c2-dk3"
+}

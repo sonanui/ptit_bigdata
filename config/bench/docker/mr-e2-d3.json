@@ -1,0 +1,35 @@
+{
+  "launcher": [
+    "scripts/run-local.sh",
+    "-Ddfs.replication=1",
+    "-Dmapreduce.client.completion.pollinterval=100"
+  ],
+  "datasetLauncher": [
+    "scripts/run-local.sh",
+    "--tool",
+    "DatasetTool",
+    "-Ddfs.replication=1"
+  ],
+  "manifestReader": [
+    "scripts/hdfs-fs.sh",
+    "-cat"
+  ],
+  "groupBy": "category_id",
+  "reducers": 2,
+  "maxKeys": 10000,
+  "seed": 21,
+  "repeats": 3,
+  "warmups": 1,
+  "reportRoot": "results/benchmark-reports",
+  "manifest": "results/mr/dk3/meta/input.json",
+  "preflight": "results/mr/dk3/meta/preflight.json",
+  "outputRoot": "hdfs://namenode:8020/data/ecommerce/bench/mr/e2-d3",
+  "variants": [
+    "v1",
+    "v2",
+    "v5"
+  ],
+  "workload": "kaggle-2019-Oct (D3, cả tháng), HDFS trong Docker, LocalJobRunner, poll100ms",
+  "dictionary": "results/mr/dk3/meta/groups.json",
+  "profileReport": "file:///opt/bigdata/results/mr/dk3/meta/profile.json"
+}

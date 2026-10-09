@@ -1,0 +1,14 @@
+# Bước 3 - build image bigdata và spark (IntelliJ terminal), 2026-10-08
+# Lần build đầu lỗi ở image spark: pom gốc tự bật profile webapp trên JDK 21 (module webapp/backend không có trong image).
+# Đã sửa docker/spark/Dockerfile (mvn -P '!webapp') rồi build lại; log đầy đủ của lần build thành công: results/d03-build.log (không commit).
+PS> cmd /c "docker compose --progress plain build bigdata spark > results\d03-build.log 2>&1"
+PS> Select-String -Path results\d03-build.log -Pattern 'spark\.SparkJobsTest|Tests run: \d+, Failures: \d+, Errors: \d+, Skipped: \d+$|BUILD SUCCESS|Image .* Built' | ...; docker images ...
+[INFO] Running vn.edu.bigdata.revenue.spark.SparkJobsTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 25.40 s -- in vn.edu.bigdata.revenue.spark.SparkJobsTest
+[INFO] Tests run: 25, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+Image ptit-bigdata:local Built
+Image ptit-bigdata-spark:local Built
+
+ptit-bigdata-spark:local  3.11GB
+ptit-bigdata:local  1.07GB

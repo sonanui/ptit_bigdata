@@ -10,6 +10,7 @@ results
 serving
 docs
 notebooks
+!notebooks/requirements.txt
 webapp
 __pycache__
 **/__pycache__

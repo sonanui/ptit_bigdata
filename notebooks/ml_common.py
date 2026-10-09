@@ -33,7 +33,10 @@ def param(name: str, default=None):
 
 
 def load_local_env() -> None:
-    """config/spark-local.env ghi đè biến môi trường (JAVA_HOME toàn máy có thể là JDK 23+, Spark 4.0 không hỗ trợ)."""
+    """config/spark-local.env ghi đè biến môi trường (JAVA_HOME toàn máy có thể là JDK 23+, Spark 4.0 không hỗ trợ).
+    Container spark (compose.yaml) đặt PTIT_SKIP_LOCAL_ENV=1: môi trường đã có sẵn trong image."""
+    if os.environ.get("PTIT_SKIP_LOCAL_ENV") == "1":
+        return
     for line in LOCAL_ENV.read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if line and not line.startswith("#") and "=" in line:
@@ -61,7 +64,7 @@ def session(app: str):
         .config("spark.sql.shuffle.partitions", os.environ.get("SPARK_SHUFFLE_PARTITIONS", "8"))
         .config("spark.ui.showConsoleProgress", "false")
         .config("spark.hadoop.fs.defaultFS", hdfs(""))
-        .config("spark.hadoop.dfs.client.use.datanode.hostname", "true")
+        .config("spark.hadoop.dfs.client.use.datanode.hostname", os.environ.get("HDFS_USE_DATANODE_HOSTNAME", "true"))
         .config("spark.hadoop.dfs.replication", "1")
         .getOrCreate()
     )

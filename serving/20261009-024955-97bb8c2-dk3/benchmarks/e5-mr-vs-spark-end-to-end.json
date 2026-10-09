@@ -1,0 +1,79 @@
+{
+  "experiment": "E5",
+  "title": "MR và Spark cùng A1: end-to-end",
+  "dataset": "D2, D3",
+  "scope": "một máy Windows 11 (i5-9300HF 4 nhân/8 luồng, RAM 7,9 GB); HDFS 1 NameNode + 1 DataNode trong Docker; MR = LocalJobRunner (không YARN), Spark = local[n] trên host",
+  "metric": "Thời gian end-to-end",
+  "unit": "ms",
+  "rows": [
+    {
+      "label": "D2 · MR V1",
+      "median": 75027,
+      "min": 70108,
+      "max": 77359,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V1_DIRECT",
+        "shuffleBytes": 2816620,
+        "mapOutputRecords": 74120,
+        "reduceInputRecords": 74120
+      }
+    },
+    {
+      "label": "D2 · Spark RDD local[2]",
+      "median": 37806,
+      "min": 33923,
+      "max": 53308,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "rdd-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 567263939,
+        "inputRecordsRead": 4246194,
+        "shuffleReadBytes": 41065,
+        "tasks": 8,
+        "matchesReference": true
+      }
+    },
+    {
+      "label": "D3 · MR V1",
+      "median": 615395,
+      "min": 612329,
+      "max": 667497,
+      "runs": 3,
+      "details": {
+        "source": "mapreduce",
+        "variant": "V1_DIRECT",
+        "shuffleBytes": 28228778,
+        "mapOutputRecords": 742849,
+        "reduceInputRecords": 742849
+      }
+    },
+    {
+      "label": "D3 · Spark RDD local[2]",
+      "median": 206653,
+      "min": 201451,
+      "max": 217017,
+      "runs": 3,
+      "details": {
+        "source": "spark",
+        "mode": "rdd-raw",
+        "master": "local[2]",
+        "shufflePartitions": 8,
+        "inputBytesRead": 5671365367,
+        "inputRecordsRead": 42448765,
+        "shuffleReadBytes": 362451,
+        "tasks": 46,
+        "matchesReference": true
+      }
+    }
+  ],
+  "notes": [
+    "MR end-to-end gồm quét preflight lại + SHA-256 trước/sau job (RevenueTool, F4) trong container.",
+    "Spark end-to-end = thời gian đồng hồ của spark-submit (khởi động JVM + SparkSession + ghi)."
+  ],
+  "source": "docs/evidence/docker/bench/{mr,spark}"
+}

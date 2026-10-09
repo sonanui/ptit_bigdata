@@ -9,8 +9,13 @@
 Đầu ra: docs/evidence/bench/serving/<experiment>.json (định dạng trang Benchmark của web, publish vào serving)
 và docs/evidence/bench/SUMMARY.md (bảng Markdown). Ô nào chưa đo thì bỏ qua và ghi vào danh sách "missing";
 không có số nào được điền tay.
+
+  py -3 scripts/bench_summary.py --campaign config/bench/docker/campaign.json
+Với --campaign: đọc evidence, mã báo cáo MR, preflight của D1-D3, e7.csv, phạm vi và ghi chú môi trường từ file campaign
+(đợt chạy toàn bộ trong Docker), ghi kết quả vào evidenceDir của campaign thay vì docs/evidence/bench.
 """
 
+import argparse
 import json
 import shutil
 import statistics
@@ -39,6 +44,11 @@ DATASETS = {
 }
 SCOPE_ONE_HOST = ("một máy Windows 11 (i5-9300HF 4 nhân/8 luồng, RAM 7,9 GB); HDFS 1 NameNode + 1 DataNode trong "
                   "Docker; MR = LocalJobRunner (không YARN), Spark = local[n] trên host")
+IO_NOTE = ("Môi trường I/O khác nhau: MR chạy trong container Linux cùng mạng Docker với DataNode; Spark chạy trên host "
+           "Windows, đọc HDFS qua cổng 127.0.0.1 do Docker/WSL2 chuyển tiếp. Chênh lệch thời gian không chỉ do engine.")
+CORES_NOTE = ("Thêm core không giảm thời gian: nhiều khả năng bị giới hạn bởi đọc HDFS qua cổng chuyển tiếp WSL2 "
+              "(chưa đo riêng).")
+E7_CSV = ROOT / "docs/evidence/ml/20261006-235739-b0376ef-d3/e7.csv"
 missing = []
 
 
@@ -109,7 +119,29 @@ def write(name, experiment, title, dataset, metric, rows, notes, source, scope=S
     return doc
 
 
+def rel(path):
+    return str(Path(path).relative_to(ROOT)).replace("\\", "/")
+
+
+def load_campaign(path):
+    """Ghi đè nguồn/đích bằng file campaign (đợt chạy trong Docker), xem docstring."""
+    global REPORTS, EVIDENCE, SPARK, OUT, MR_REPORTS, DATASETS, SCOPE_ONE_HOST, IO_NOTE, CORES_NOTE, E7_CSV
+    c = json.loads((ROOT / path).read_text(encoding="utf-8"))
+    EVIDENCE = ROOT / c["evidenceDir"]
+    SPARK, OUT = EVIDENCE / "spark", EVIDENCE / "serving"
+    REPORTS = ROOT / c.get("reportRoot", "results/benchmark-reports")
+    MR_REPORTS = c["mrReports"]
+    DATASETS = {code.upper(): (d["description"], ROOT / d["preflight"]) for code, d in c["datasets"].items()}
+    SCOPE_ONE_HOST, IO_NOTE, CORES_NOTE = c["scope"], c["ioNote"], c["coresNote"]
+    E7_CSV = ROOT / c["e7"]
+
+
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--campaign")
+    args = parser.parse_args()
+    if args.campaign:
+        load_campaign(args.campaign)
     docs = []
     sizes = {}
     for code, (desc, path) in DATASETS.items():
@@ -133,7 +165,7 @@ def main():
                           f"{code}: {sizes[code]['description']}", "Thời gian job MR", rows,
                           ["Thời gian job = submit tới hoàn tất job MR, không gồm preflight/validate của RevenueTool "
                            "(xem details.endToEnd).", "1 map slot (mặc định LocalJobRunner), 2 reducer, poll 100 ms."],
-                          f"docs/evidence/bench/mr/{label}/runs.json"))
+                          f"{rel(EVIDENCE)}/mr/{label}/runs.json"))
 
     # E3: số map chạy song song (mapreduce.local.map.tasks.maximum) trên D2.
     rows = []
@@ -145,7 +177,7 @@ def main():
     docs.append(write("e3-mr-maps-d2", "E3", "MapReduce: số map task chạy song song (D2)",
                       f"D2: {sizes['D2']['description']}", "Thời gian job MR", rows,
                       ["LocalJobRunner chạy map trong một JVM; mapreduce.local.map.tasks.maximum = số luồng map."],
-                      "docs/evidence/bench/mr/mr-e3-d2-maps*/runs.json"))
+                      f"{rel(EVIDENCE)}/mr/mr-e3-d2-maps*/runs.json"))
 
     # E4: Spark A1 theo API/định dạng, số core, shuffle partitions.
     rows = []
@@ -157,19 +189,19 @@ def main():
                       "D1, D2, D3", "Thời gian tính (không gồm ghi Parquet, khởi động)", rows,
                       ["df-curated đọc Parquet đã qua ETL (chỉ 3 cột), nên không tính chi phí ETL một lần.",
                        "Mọi lần chạy được so khớp chính xác với kết quả tham chiếu (MR V1 hoặc baseline)."],
-                      "docs/evidence/bench/spark/e4-*/runs.json"))
+                      f"{rel(EVIDENCE)}/spark/e4-*/runs.json"))
     rows = [spark_row("e4-d2-rdd-raw-c1", "local[1]"), spark_row("e4-d2-rdd-raw", "local[2]"),
             spark_row("e4-d2-rdd-raw-c4", "local[4]")]
     docs.append(write("e4-spark-cores-d2", "E4", "Spark A1 (RDD trên CSV): số core (D2)", f"D2: {sizes['D2']['description']}",
                       "Thời gian tính", rows, ["Máy có 4 nhân vật lý/8 luồng; HDFS (Docker) chạy cùng máy và chia CPU/RAM với Spark.",
-                       "Thêm core không giảm thời gian: nhiều khả năng bị giới hạn bởi đọc HDFS qua cổng chuyển tiếp WSL2 (chưa đo riêng)."],
-                      "docs/evidence/bench/spark/e4-d2-rdd-raw*/runs.json"))
+                       CORES_NOTE],
+                      f"{rel(EVIDENCE)}/spark/e4-d2-rdd-raw*/runs.json"))
     rows = [spark_row("e4-d2-df-raw", "8 partitions"), spark_row("e4-d2-df-raw-p64", "64 partitions"),
             spark_row("e4-d2-df-raw-p200", "200 partitions")]
     docs.append(write("e4-spark-partitions-d2", "E4", "Spark A1 (DataFrame trên CSV): spark.sql.shuffle.partitions (D2)",
                       f"D2: {sizes['D2']['description']}", "Thời gian tính", rows,
                       ["Số nhóm sau aggregate chỉ vài trăm, nhiều partition chủ yếu thêm task rỗng."],
-                      "docs/evidence/bench/spark/e4-d2-df-raw*/runs.json"))
+                      f"{rel(EVIDENCE)}/spark/e4-d2-df-raw*/runs.json"))
 
     # E5: cùng A1, cùng input HDFS. Hai phạm vi đo riêng.
     proc, e2e = [], []
@@ -188,13 +220,13 @@ def main():
                       "Job MR / action Spark", proc,
                       ["MR: thời gian job (map + shuffle + reduce). Spark: các stage tính, không gồm ghi Parquet.",
                        "So sánh local[1] với MR 1 map slot là cặp cùng mức song song.",
-                       "Môi trường I/O khác nhau: MR chạy trong container Linux cùng mạng Docker với DataNode; Spark chạy trên host Windows, đọc HDFS qua cổng 127.0.0.1 do Docker/WSL2 chuyển tiếp. Chênh lệch thời gian không chỉ do engine."],
-                      "docs/evidence/bench/{mr,spark}"))
+                       IO_NOTE],
+                      f"{rel(EVIDENCE)}/{{mr,spark}}"))
     docs.append(write("e5-mr-vs-spark-end-to-end", "E5", "MR và Spark cùng A1: end-to-end", "D2, D3",
                       "Thời gian end-to-end", e2e,
                       ["MR end-to-end gồm quét preflight lại + SHA-256 trước/sau job (RevenueTool, F4) trong container.",
                        "Spark end-to-end = thời gian đồng hồ của spark-submit (khởi động JVM + SparkSession + ghi)."],
-                      "docs/evidence/bench/{mr,spark}"))
+                      f"{rel(EVIDENCE)}/{{mr,spark}}"))
 
     # E6: theo kích thước dữ liệu; throughput = số dòng / thời gian.
     rows = []
@@ -211,11 +243,11 @@ def main():
                       "Thời gian xử lý", rows,
                       ["Đây là mở rộng theo kích thước dữ liệu trên một máy, không phải mở rộng cụm.",
                        "Throughput tính theo số dòng/byte CSV gốc, kể cả dòng không phải purchase.",
-                       "Môi trường I/O khác nhau: MR chạy trong container Linux cùng mạng Docker với DataNode; Spark chạy trên host Windows, đọc HDFS qua cổng 127.0.0.1 do Docker/WSL2 chuyển tiếp. Chênh lệch thời gian không chỉ do engine."],
-                      "docs/evidence/bench/{mr,spark}"))
+                       IO_NOTE],
+                      f"{rel(EVIDENCE)}/{{mr,spark}}"))
 
     # E7: K-Means lặp có/không cache (notebook K-Means trên D3, pyspark.mllib RDD, 20 vòng lặp cố định).
-    e7 = ROOT / "docs/evidence/ml/20261006-235739-b0376ef-d3/e7.csv"
+    e7 = E7_CSV
     if e7.exists():
         import csv
         measured = [r for r in csv.DictReader(e7.open(encoding="utf-8")) if r["warmup"] == "False"]
@@ -230,7 +262,7 @@ def main():
                           "A7 của D3 (Parquet trên HDFS)", "Thời gian fit (20 vòng lặp, K = 2)", rows,
                           ["Chi phí nạp cache (count) báo riêng trong details.cacheCountMillis; tính cả bước này thì cache "
                            "không có lợi ở quy mô và số vòng lặp này."],
-                          "docs/evidence/ml/20261006-235739-b0376ef-d3/e7.csv"))
+                          str(E7_CSV.relative_to(ROOT)).replace("\\", "/")))
     else:
         missing.append("E7 (e7.csv)")
 

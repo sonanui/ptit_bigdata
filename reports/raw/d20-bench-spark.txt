@@ -1,0 +1,33 @@
+# Bước 13 (tiếp) - benchmark Spark A1 trong container spark và tổng hợp (IntelliJ terminal), 2026-10-09 (giờ trong log là UTC của container)
+PS> cmd /c "docker compose run --rm --service-ports spark python scripts/spark_bench.py --campaign config/bench/docker/campaign.json > results\d21-bench-spark.log 2>&1"
+PS> docker compose run --rm spark grep -E '^===|median compute' results/d21-bench-spark.log; docker compose run --rm spark python scripts/bench_summary.py --campaign config/bench/docker/campaign.json
+=== e4-d1-rdd-raw 01:28:59
+  median compute 4764 ms, groups 308, khớp tham chiếu: True
+=== e4-d1-df-raw 01:30:30
+  median compute 7521 ms, groups 308, khớp tham chiếu: True
+=== e4-d1-df-curated 01:31:43
+  median compute 6525 ms, groups 308, khớp tham chiếu: True
+=== e4-d2-rdd-raw 01:32:55
+  median compute 20361 ms, groups 495, khớp tham chiếu: True
+=== e4-d2-df-raw 01:35:47
+  median compute 31457 ms, groups 495, khớp tham chiếu: True
+=== e4-d2-df-curated 01:39:09
+  median compute 14323 ms, groups 495, khớp tham chiếu: True
+=== e4-d3-rdd-raw 01:41:04
+  median compute 182556 ms, groups 567, khớp tham chiếu: True
+=== e4-d3-df-raw 01:56:05
+  median compute 229698 ms, groups 567, khớp tham chiếu: True
+=== e4-d3-df-curated 02:12:49
+  median compute 24942 ms, groups 567, khớp tham chiếu: True
+=== e4-d2-rdd-raw-c1 02:15:20
+  median compute 45775 ms, groups 495, khớp tham chiếu: True
+=== e4-d2-rdd-raw-c4 02:19:17
+  median compute 31231 ms, groups 495, khớp tham chiếu: True
+=== e4-d2-df-raw-p64 02:22:51
+  median compute 40220 ms, groups 495, khớp tham chiếu: True
+=== e4-d2-df-raw-p200 02:26:37
+  median compute 49843 ms, groups 495, khớp tham chiếu: True
+=== e5-d3-rdd-raw-c1 02:31:01
+  median compute 232911 ms, groups 567, khớp tham chiếu: True
+=== xong 02:48:13
+11 bảng -> /opt/project/docs/evidence/docker/bench/serving; chưa đo: không

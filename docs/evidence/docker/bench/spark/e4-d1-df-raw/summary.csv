@@ -1,0 +1,2 @@
+label,mode,master,shufflePartitions,runs,wallMillisMedian,wallMillisMin,wallMillisMax,endToEndMillisMedian,endToEndMillisMin,endToEndMillisMax,computeMillisMedian,computeMillisMin,computeMillisMax,inputBytesReadMedian,inputRecordsReadMedian,shuffleReadBytesMedian,shuffleWriteBytesMedian,tasksMedian,groups,validPurchases,allMatchReference
+e4-d1-df-raw,df-raw,local[2],8,3,16119,15439,21561,9088,8949,12074,7521,7435,9376,56725452,424610,13974,13974,4,308,7464,True

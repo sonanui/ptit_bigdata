@@ -1,0 +1,13 @@
+ Container ptit_bigdata-bigdata-run-09afabb753e5 Creating 
+ Container ptit_bigdata-bigdata-run-09afabb753e5 Created 
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Preflight valid: 742849 purchases, fingerprint=310259e9f9367ee64e58c2624e6f8cdb82c67205a0952758de708febb09e0a16
+preflight_ms=302044
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Sample: hdfs://namenode:8020/data/ecommerce/raw/sample/2019-Oct-r0.01-s21.csv
+sample_r0.01_s21_ms=574346
+ Container ptit_bigdata-bigdata-run-ed09ef70b147 Creating 
+ Container ptit_bigdata-bigdata-run-ed09ef70b147 Created 
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Sample: hdfs://namenode:8020/data/ecommerce/raw/sample/2019-Oct-r0.1-s21.csv
+sample_r0.1_s21_ms=597432

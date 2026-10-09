@@ -1,0 +1,23 @@
+# Bước 15 - build và chạy web bằng Docker (IntelliJ terminal), 2026-10-09
+PS> cmd /c "docker compose --profile web --progress plain build web-backend web-frontend > results\d23-web-build.log 2>&1 && docker compose --profile web up -d web-backend web-frontend >> results\d23-web-build.log 2>&1"
+#   (bước mvn package của backend dùng lại cache Docker cũ, nên build lại backend với --no-cache để test chạy lại:)
+PS> cmd /c "docker compose --profile web --progress plain build --no-cache web-backend > results\d23-web-backend-build.log 2>&1 && docker compose --profile web up -d web-backend web-frontend >> ..."
+#   trong image: InferenceTest 4 test đạt; ServingParityTest 3 test bị bỏ qua vì image không có thư mục serving (Tests run: 7, Skipped: 3)
+PS> cmd /c "docker run --rm -v ""%CD%\webapp\backend:/src"" -v ""%CD%\serving:/serving:ro"" -e SERVING_DIR=/serving -w /src maven:3.9.11-eclipse-temurin-21 mvn -B test > results\d23-web-backend-parity.log 2>&1"
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.461 s -- in vn.edu.bigdata.webapp.InferenceTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 136.5 s -- in vn.edu.bigdata.webapp.ServingParityTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+PS> (tóm tắt) test frontend, test backend, docker compose ps, /api/health, danh sách mô hình K-Means
+frontend (npm test trong image): #32 18.38       Tests  9 passed (9)
+backend (mvn test, SERVING_DIR=serving): [INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+SERVICE        STATUS                   PORTS
+datanode       Up 10 hours              127.0.0.1:9864->9864/tcp, 127.0.0.1:9866->9866/tcp
+namenode       Up 10 hours (healthy)    127.0.0.1:8020->8020/tcp, 127.0.0.1:9870->9870/tcp
+web-backend    Up 3 minutes (healthy)   127.0.0.1:8081->8080/tcp
+web-frontend   Up 5 minutes             127.0.0.1:8080->80/tcp
+{"servingDir":"/serving","runs":2,"defaultRun":"20261009-024955-97bb8c2-dk3","status":"UP"}
+kmeans 20261008-201313-97bb8c2-dk3 k=2 products=92592
+kmeans 20261006-235739-b0376ef-d3 k=2 products=92592
+# Sau đó sửa câu ghi chú cố định trên trang Benchmark (webapp/frontend/src/pages/Benchmarks.tsx, câu cũ nói Spark chạy trực tiếp trên máy),
+# build lại web-frontend: Tests 9 passed (9), container web-frontend khởi động lại (results/d23-web-frontend-rebuild.log).

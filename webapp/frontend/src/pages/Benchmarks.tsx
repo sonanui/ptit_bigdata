@@ -100,8 +100,8 @@ export default function Benchmarks() {
       <section>
         <p className="warn">
           Lưu ý khi đọc số: mọi phép đo chạy trên <b>một laptop</b> (Windows 11, 4 nhân, RAM 7,9 GB), không phải cụm nhiều máy.
-          MapReduce chạy trong Docker ở chế độ một máy, Spark chạy trực tiếp trên máy và đọc dữ liệu qua Docker, nên điều kiện đọc dữ liệu
-          của hai bên không hoàn toàn giống nhau. Các con số chỉ đúng cho máy này, không chứng minh công cụ nào nhanh hơn nói chung.
+          MapReduce và Spark chạy ở chế độ một máy, khác JVM, khác cách đọc CSV và mức song song; nơi chạy cụ thể của từng bộ kết quả
+          ghi trong phần ghi chú kỹ thuật dưới mỗi bảng. Các con số chỉ đúng cho máy này, không chứng minh công cụ nào nhanh hơn nói chung.
         </p>
         <p className="note">
           Cách đọc biểu đồ: mỗi thanh là thời gian trung vị của 3 lần đo (đã bỏ lần chạy khởi động đầu tiên); đoạn kẻ đen là khoảng từ lần

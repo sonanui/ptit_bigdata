@@ -1,0 +1,35 @@
+{
+  "schemaVersion" : 1,
+  "groupMode" : "CATEGORY_ID",
+  "inputFingerprint" : "c9638f9cdee1abf9e21553a8dafa249957032c261467a7a9283f2c73ac9d224e",
+  "policyHash" : "e8cfaa885aa0cabdc51d54c4ee15e5c7a82b70c3cb69406582ed58c47ed2e117",
+  "validPurchaseCount" : 6,
+  "elapsedMillis" : 225,
+  "countByGroup" : {
+    "1" : 3,
+    "2" : 3
+  },
+  "counters" : {
+    "HEADER" : 1,
+    "NON_PURCHASE" : 1,
+    "VALID_PURCHASE" : 6
+  },
+  "preflight" : {
+    "schemaVersion" : 1,
+    "manifest" : {
+      "schemaVersion" : 1,
+      "policyHash" : "e8cfaa885aa0cabdc51d54c4ee15e5c7a82b70c3cb69406582ed58c47ed2e117",
+      "files" : [ {
+        "uri" : "hdfs://namenode:8020/data/ecommerce/fixtures/events.csv",
+        "sha256" : "d3b20b3a79bbd70b96a8e1e5bcde6f471c486e300705ba7ea7982c82907a06a0",
+        "bytes" : 614
+      } ]
+    },
+    "inputFingerprint" : "c9638f9cdee1abf9e21553a8dafa249957032c261467a7a9283f2c73ac9d224e",
+    "groupMode" : "CATEGORY_ID",
+    "validPurchaseCount" : 6,
+    "lines" : 8,
+    "elapsedMillis" : 225,
+    "errors" : [ ]
+  }
+}

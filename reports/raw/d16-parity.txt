@@ -1,0 +1,11 @@
+# Bước 11 (tiếp) - đối chiếu Spark A1 với MapReduce V1 và baseline Python trên D1, D2, D3 (IntelliJ terminal), 2026-10-09
+PS> foreach ($d in 1,2,3) { $a1 = <run_id revenue trong docs\evidence\spark-java\dk$d-run-ids.tsv>; docker compose run --rm bigdata python3 scripts/compare_revenue.py results/spark/$a1/revenue.csv results/mr/dk$d/revenue.csv; docker compose run --rm bigdata python3 scripts/compare_revenue.py results/spark/$a1/revenue.csv results/baseline/d$d-revenue.csv }
+D1 - Spark A1 20261008-183010-97bb8c2-dk1 so voi MR V1 dk1 va baseline:
+KHỚP: 308 nhóm, tổng purchase_count=7464
+KHỚP: 308 nhóm, tổng purchase_count=7464
+D2 - Spark A1 20261008-184112-97bb8c2-dk2 so voi MR V1 dk2 va baseline:
+KHỚP: 495 nhóm, tổng purchase_count=74120
+KHỚP: 495 nhóm, tổng purchase_count=74120
+D3 - Spark A1 20261008-185303-97bb8c2-dk3 so voi MR V1 dk3 va baseline:
+KHỚP: 567 nhóm, tổng purchase_count=742849
+KHỚP: 567 nhóm, tổng purchase_count=742849

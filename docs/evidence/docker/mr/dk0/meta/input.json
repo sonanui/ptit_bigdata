@@ -1,0 +1,9 @@
+{
+  "schemaVersion" : 1,
+  "policyHash" : "e8cfaa885aa0cabdc51d54c4ee15e5c7a82b70c3cb69406582ed58c47ed2e117",
+  "files" : [ {
+    "uri" : "hdfs://namenode:8020/data/ecommerce/fixtures/events.csv",
+    "sha256" : "d3b20b3a79bbd70b96a8e1e5bcde6f471c486e300705ba7ea7982c82907a06a0",
+    "bytes" : 614
+  } ]
+}

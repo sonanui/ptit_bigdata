@@ -1,0 +1,40 @@
+{
+  "experiment": "E7",
+  "title": "K-Means lặp: có và không cache (D3, 92 592 sản phẩm)",
+  "dataset": "A7 của D3 (Parquet trên HDFS)",
+  "scope": "một máy Windows 11 (i5-9300HF 4 nhân/8 luồng, RAM 7,9 GB); HDFS 1 NameNode + 1 DataNode trong Docker; MR = LocalJobRunner (không YARN), Spark = local[n] trên host",
+  "metric": "Thời gian fit (20 vòng lặp, K = 2)",
+  "unit": "ms",
+  "rows": [
+    {
+      "label": "Không cache",
+      "median": 3532,
+      "min": 2846,
+      "max": 3785,
+      "runs": 3,
+      "details": {
+        "source": "spark-mllib"
+      }
+    },
+    {
+      "label": "cache() + count() trước khi fit",
+      "median": 1376,
+      "min": 1152,
+      "max": 1875,
+      "runs": 3,
+      "details": {
+        "source": "spark-mllib",
+        "cacheCountMillis": {
+          "median": 2546.0,
+          "min": 1986.0,
+          "max": 3525.0,
+          "runs": 3
+        }
+      }
+    }
+  ],
+  "notes": [
+    "Chi phí nạp cache (count) báo riêng trong details.cacheCountMillis; tính cả bước này thì cache không có lợi ở quy mô và số vòng lặp này."
+  ],
+  "source": "docs/evidence/docker/ml/20261008-201313-97bb8c2-dk3/e7.csv"
+}

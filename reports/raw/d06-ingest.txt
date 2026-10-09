@@ -1,0 +1,15 @@
+# Bước 5 - nạp 2019-Oct.csv vào HDFS (IntelliJ terminal), 2026-10-08/09
+PS> docker compose exec namenode bash /opt/bigdata/scripts/hdfs-ingest.sh 2019-Oct.csv > results\d06-ingest.log
+PS> Get-Content results\d06-ingest.log | Select-String 'PUT|^-rw|Total size|Total files|Total blocks|Default replication|Status:' | ...; docker compose exec namenode bash /opt/bigdata/scripts/hdfs-ingest.sh 2019-Oct.csv | Select-String 'SKIP'
+PUT /staging/raw/2019-Oct.csv -> /data/ecommerce/raw/2019-Oct.csv: 5668612855 bytes, 421s
+-rw-r--r--   1 hadoop supergroup      5.3 G 2026-10-08 16:58 /data/ecommerce/raw/2019-Oct.csv
+Status: HEALTHY
+Total size:	5668612855 B
+Total files:	1
+Total blocks (validated):	43 (avg. block size 131828205 B)
+Default replication factor:	1
+Total size:	0 B          <- phần "Erasure Coded Block Groups" của fsck (không dùng EC)
+Total files:	0
+
+SKIP /data/ecommerce/raw/2019-Oct.csv đã tồn tại (5668612855 bytes)
+Connecting to namenode via http://namenode:9870/fsck?ugi=hadoop&files=1&blocks=1&path=%2Fdata%2Fecommerce%2Fraw

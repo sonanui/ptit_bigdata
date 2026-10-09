@@ -1,0 +1,40 @@
+{
+  "_comment": "Đợt chạy toàn bộ trong Docker (HDFS, MapReduce, Spark, notebook, web). mrReports: mã báo cáo do scripts/benchmark.py in ra (results/benchmark-reports/<id>).",
+  "evidenceDir": "docs/evidence/docker/bench",
+  "reportRoot": "results/benchmark-reports",
+  "datasets": {
+    "d1": {
+      "description": "mẫu 1% tháng 10/2019 (seed 21)",
+      "raw": "/data/ecommerce/raw/sample/2019-Oct-r0.01-s21.csv",
+      "tag": "dk1",
+      "reference": "results/mr/dk1/revenue.csv",
+      "preflight": "results/mr/dk1/meta/preflight.json"
+    },
+    "d2": {
+      "description": "mẫu 10% tháng 10/2019 (seed 21)",
+      "raw": "/data/ecommerce/raw/sample/2019-Oct-r0.1-s21.csv",
+      "tag": "dk2",
+      "reference": "results/mr/dk2/revenue.csv",
+      "preflight": "results/mr/dk2/meta/preflight.json"
+    },
+    "d3": {
+      "description": "cả tháng 10/2019",
+      "raw": "/data/ecommerce/raw/2019-Oct.csv",
+      "tag": "dk3",
+      "reference": "results/mr/dk3/revenue.csv",
+      "preflight": "results/mr/dk3/meta/preflight.json"
+    }
+  },
+  "mrReports": {
+    "mr-e2-d1": "b541efb2309c",
+    "mr-e2-d2": "f56d6eabcec0",
+    "mr-e2-d3": "cd64cc609007",
+    "mr-e3-d2-maps2": "5976e9af7952",
+    "mr-e3-d2-maps4": "eace3ce15a1f"
+  },
+  "e7": "docs/evidence/docker/ml/20261008-201313-97bb8c2-dk3/e7.csv",
+  "scope": "một máy Windows 11 (i5-9300HF 4 nhân/8 luồng, RAM 7,9 GB); mọi thành phần chạy trong Docker Desktop (WSL2): HDFS 1 NameNode + 1 DataNode, MR = LocalJobRunner (không YARN) trong container bigdata, Spark = local[n] trong container spark",
+  "ioNote": "MR (container bigdata) và Spark (container spark) cùng đọc HDFS qua mạng Compose trong cùng máy ảo WSL2; hai engine vẫn khác JVM, khác cách đọc CSV và khác chi phí khởi động, nên chênh lệch không chỉ do mô hình MapReduce hay Spark.",
+  "coresNote": "Máy có 4 nhân vật lý/8 luồng; HDFS, MR và Spark cùng chia CPU/RAM của máy ảo Docker (8 CPU logic, khoảng 6,2 GB RAM).",
+  "syntheticReport": "2a4c08ba9b53"
+}

@@ -14,9 +14,10 @@ spark-warehouse/
 metastore_db/
 derby.log
 .pytest_cache/
-# Serving run: chỉ commit run demo (đã chốt) để thành viên clone về chạy web ngay; run khác giữ cục bộ.
+# Serving run: chỉ commit run demo (đã chốt; dk3 = đợt chạy toàn bộ bằng Docker, báo cáo v7) để thành viên clone về chạy web ngay; run khác giữ cục bộ.
 /serving/*
 !/serving/20261007-015257-b0376ef-d3/
+!/serving/20261009-024955-97bb8c2-dk3/
 !/serving/_LATEST
 node_modules/
 webapp/frontend/dist/

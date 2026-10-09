@@ -1,0 +1,143 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/10/08 19:11:27 INFO SparkContext: Running Spark version 4.0.4
+26/10/08 19:11:27 INFO SparkContext: OS info Linux, 6.18.40.1-microsoft-standard-WSL2, amd64
+26/10/08 19:11:27 INFO SparkContext: Java version 21.0.9
+26/10/08 19:11:27 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/08 19:11:27 INFO ResourceUtils: ==============================================================
+26/10/08 19:11:27 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/10/08 19:11:27 INFO ResourceUtils: ==============================================================
+26/10/08 19:11:27 INFO SparkContext: Submitted application: vn.edu.bigdata.revenue.spark.SparkTool
+26/10/08 19:11:27 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/10/08 19:11:27 INFO ResourceProfile: Limiting resource is cpu
+26/10/08 19:11:27 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/10/08 19:11:27 INFO SecurityManager: Changing view acls to: root,hadoop
+26/10/08 19:11:27 INFO SecurityManager: Changing modify acls to: root,hadoop
+26/10/08 19:11:27 INFO SecurityManager: Changing view acls groups to: root,hadoop
+26/10/08 19:11:27 INFO SecurityManager: Changing modify acls groups to: root,hadoop
+26/10/08 19:11:27 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root, hadoop groups with view permissions: EMPTY; users with modify permissions: root, hadoop; groups with modify permissions: EMPTY; RPC SSL disabled
+26/10/08 19:11:28 INFO Utils: Successfully started service 'sparkDriver' on port 42085.
+26/10/08 19:11:28 INFO SparkEnv: Registering MapOutputTracker
+26/10/08 19:11:28 INFO SparkEnv: Registering BlockManagerMaster
+26/10/08 19:11:28 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/10/08 19:11:28 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/10/08 19:11:28 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/10/08 19:11:28 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-64472255-4891-44f6-a5e7-42a41d9d2f9b
+26/10/08 19:11:28 INFO SparkEnv: Registering OutputCommitCoordinator
+26/10/08 19:11:28 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/10/08 19:11:28 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/10/08 19:11:28 INFO SparkContext: Added JAR file:/opt/app/revenue-aggregation-spark.jar at spark://731dcedc8688:42085/jars/revenue-aggregation-spark.jar with timestamp 1791486687528
+26/10/08 19:11:28 INFO SecurityManager: Changing view acls to: root,hadoop
+26/10/08 19:11:28 INFO SecurityManager: Changing modify acls to: root,hadoop
+26/10/08 19:11:28 INFO SecurityManager: Changing view acls groups to: root,hadoop
+26/10/08 19:11:28 INFO SecurityManager: Changing modify acls groups to: root,hadoop
+26/10/08 19:11:28 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root, hadoop groups with view permissions: EMPTY; users with modify permissions: root, hadoop; groups with modify permissions: EMPTY; RPC SSL disabled
+26/10/08 19:11:29 INFO Executor: Starting executor ID driver on host 731dcedc8688
+26/10/08 19:11:29 INFO Executor: OS info Linux, 6.18.40.1-microsoft-standard-WSL2, amd64
+26/10/08 19:11:29 INFO Executor: Java version 21.0.9
+26/10/08 19:11:29 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/08 19:11:29 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@12209826 for default.
+26/10/08 19:11:29 INFO Executor: Fetching spark://731dcedc8688:42085/jars/revenue-aggregation-spark.jar with timestamp 1791486687528
+26/10/08 19:11:29 INFO TransportClientFactory: Successfully created connection to 731dcedc8688/172.23.0.4:42085 after 99 ms (0 ms spent in bootstraps)
+26/10/08 19:11:29 INFO Utils: Fetching spark://731dcedc8688:42085/jars/revenue-aggregation-spark.jar to /tmp/spark-26e4b397-0a1a-4232-b426-86622baa44b6/userFiles-40ac5e32-317a-4109-a16b-61b46b0757ff/fetchFileTemp2552314717685803805.tmp
+26/10/08 19:11:29 INFO Executor: Adding file:/tmp/spark-26e4b397-0a1a-4232-b426-86622baa44b6/userFiles-40ac5e32-317a-4109-a16b-61b46b0757ff/revenue-aggregation-spark.jar to class loader default
+26/10/08 19:11:29 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 41521.
+26/10/08 19:11:29 INFO NettyBlockTransferService: Server created on 731dcedc8688:41521
+26/10/08 19:11:29 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/10/08 19:11:29 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 731dcedc8688, 41521, None)
+26/10/08 19:11:29 INFO BlockManagerMasterEndpoint: Registering block manager 731dcedc8688:41521 with 434.4 MiB RAM, BlockManagerId(driver, 731dcedc8688, 41521, None)
+26/10/08 19:11:29 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 731dcedc8688, 41521, None)
+26/10/08 19:11:29 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 731dcedc8688, 41521, None)
+26/10/08 19:12:29 WARN MemoryStore: Not enough space to cache rdd_6_2 in memory! (computed 97.6 MiB so far)
+26/10/08 19:12:29 WARN MemoryStore: Not enough space to cache rdd_6_3 in memory! (computed 96.8 MiB so far)
+26/10/08 19:12:29 WARN BlockManager: Persisting block rdd_6_3 to disk instead.
+26/10/08 19:12:29 WARN BlockManager: Persisting block rdd_6_2 to disk instead.
+26/10/08 19:12:44 WARN MemoryStore: Not enough space to cache rdd_6_3 in memory! (computed 96.8 MiB so far)
+26/10/08 19:12:48 WARN MemoryStore: Not enough space to cache rdd_6_5 in memory! (computed 18.9 MiB so far)
+26/10/08 19:12:48 WARN BlockManager: Persisting block rdd_6_5 to disk instead.
+26/10/08 19:12:49 WARN MemoryStore: Not enough space to cache rdd_6_4 in memory! (computed 36.1 MiB so far)
+26/10/08 19:12:49 WARN BlockManager: Persisting block rdd_6_4 to disk instead.
+26/10/08 19:13:22 WARN MemoryStore: Not enough space to cache rdd_6_5 in memory! (computed 36.3 MiB so far)
+26/10/08 19:13:23 WARN MemoryStore: Not enough space to cache rdd_6_4 in memory! (computed 36.1 MiB so far)
+26/10/08 19:13:29 WARN MemoryStore: Not enough space to cache rdd_6_7 in memory! (computed 17.5 MiB so far)
+26/10/08 19:13:29 WARN BlockManager: Persisting block rdd_6_7 to disk instead.
+26/10/08 19:13:32 WARN MemoryStore: Not enough space to cache rdd_6_6 in memory! (computed 36.2 MiB so far)
+26/10/08 19:13:32 WARN BlockManager: Persisting block rdd_6_6 to disk instead.
+26/10/08 19:13:53 WARN MemoryStore: Not enough space to cache rdd_6_7 in memory! (computed 33.9 MiB so far)
+26/10/08 19:13:54 WARN MemoryStore: Not enough space to cache rdd_6_6 in memory! (computed 36.2 MiB so far)
+26/10/08 19:13:58 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 16.8 MiB so far)
+26/10/08 19:13:58 WARN BlockManager: Persisting block rdd_6_9 to disk instead.
+26/10/08 19:13:59 WARN MemoryStore: Not enough space to cache rdd_6_8 in memory! (computed 36.4 MiB so far)
+26/10/08 19:13:59 WARN BlockManager: Persisting block rdd_6_8 to disk instead.
+26/10/08 19:14:16 WARN MemoryStore: Not enough space to cache rdd_6_8 in memory! (computed 36.4 MiB so far)
+26/10/08 19:14:24 WARN MemoryStore: Not enough space to cache rdd_6_10 in memory! (computed 36.4 MiB so far)
+26/10/08 19:14:24 WARN BlockManager: Persisting block rdd_6_10 to disk instead.
+26/10/08 19:14:32 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 32.9 MiB so far)
+26/10/08 19:14:45 WARN MemoryStore: Not enough space to cache rdd_6_11 in memory! (computed 32.8 MiB so far)
+26/10/08 19:14:45 WARN BlockManager: Persisting block rdd_6_11 to disk instead.
+26/10/08 19:15:03 WARN MemoryStore: Not enough space to cache rdd_6_10 in memory! (computed 36.4 MiB so far)
+26/10/08 19:15:06 WARN MemoryStore: Not enough space to cache rdd_6_11 in memory! (computed 16.8 MiB so far)
+26/10/08 19:15:09 WARN MemoryStore: Not enough space to cache rdd_6_12 in memory! (computed 32.3 MiB so far)
+26/10/08 19:15:09 WARN BlockManager: Persisting block rdd_6_12 to disk instead.
+26/10/08 19:15:09 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 18.5 MiB so far)
+26/10/08 19:15:09 WARN BlockManager: Persisting block rdd_6_13 to disk instead.
+26/10/08 19:15:34 WARN MemoryStore: Not enough space to cache rdd_6_12 in memory! (computed 32.3 MiB so far)
+26/10/08 19:15:35 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 36.7 MiB so far)
+26/10/08 19:15:38 WARN MemoryStore: Not enough space to cache rdd_6_15 in memory! (computed 16.5 MiB so far)
+26/10/08 19:15:38 WARN BlockManager: Persisting block rdd_6_15 to disk instead.
+26/10/08 19:15:39 WARN MemoryStore: Not enough space to cache rdd_6_14 in memory! (computed 33.8 MiB so far)
+26/10/08 19:15:39 WARN BlockManager: Persisting block rdd_6_14 to disk instead.
+26/10/08 19:16:00 WARN MemoryStore: Not enough space to cache rdd_6_15 in memory! (computed 32.2 MiB so far)
+26/10/08 19:16:01 WARN MemoryStore: Not enough space to cache rdd_6_14 in memory! (computed 33.8 MiB so far)
+26/10/08 19:16:06 WARN MemoryStore: Not enough space to cache rdd_6_3 in memory! (computed 19.0 MiB so far)
+26/10/08 19:16:06 WARN MemoryStore: Not enough space to cache rdd_6_4 in memory! (computed 36.1 MiB so far)
+26/10/08 19:16:12 WARN MemoryStore: Not enough space to cache rdd_6_6 in memory! (computed 18.8 MiB so far)
+26/10/08 19:16:13 WARN MemoryStore: Not enough space to cache rdd_6_5 in memory! (computed 36.3 MiB so far)
+26/10/08 19:16:17 WARN MemoryStore: Not enough space to cache rdd_6_8 in memory! (computed 19.0 MiB so far)
+26/10/08 19:16:18 WARN MemoryStore: Not enough space to cache rdd_6_7 in memory! (computed 33.9 MiB so far)
+26/10/08 19:16:22 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 16.8 MiB so far)
+26/10/08 19:16:23 WARN MemoryStore: Not enough space to cache rdd_6_10 in memory! (computed 36.4 MiB so far)
+26/10/08 19:16:32 WARN MemoryStore: Not enough space to cache rdd_6_11 in memory! (computed 16.8 MiB so far)
+26/10/08 19:16:32 WARN MemoryStore: Not enough space to cache rdd_6_12 in memory! (computed 32.3 MiB so far)
+26/10/08 19:16:41 WARN MemoryStore: Not enough space to cache rdd_6_14 in memory! (computed 16.4 MiB so far)
+26/10/08 19:16:42 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 36.7 MiB so far)
+26/10/08 19:16:48 WARN MemoryStore: Not enough space to cache rdd_6_15 in memory! (computed 32.2 MiB so far)
+26/10/08 19:17:16 WARN MemoryStore: Not enough space to cache rdd_6_2 in memory! (computed 97.6 MiB so far)
+26/10/08 19:17:38 WARN MemoryStore: Not enough space to cache rdd_6_5 in memory! (computed 95.3 MiB so far)
+26/10/08 19:17:38 WARN MemoryStore: Not enough space to cache rdd_6_4 in memory! (computed 161.1 MiB so far)
+26/10/08 19:17:50 WARN MemoryStore: Not enough space to cache rdd_6_7 in memory! (computed 33.9 MiB so far)
+26/10/08 19:18:21 WARN MemoryStore: Not enough space to cache rdd_6_10 in memory! (computed 36.4 MiB so far)
+26/10/08 19:18:29 WARN MemoryStore: Not enough space to cache rdd_6_11 in memory! (computed 57.3 MiB so far)
+26/10/08 19:18:32 WARN MemoryStore: Not enough space to cache rdd_6_12 in memory! (computed 32.3 MiB so far)
+26/10/08 19:18:41 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 62.7 MiB so far)
+26/10/08 19:18:51 WARN MemoryStore: Not enough space to cache rdd_6_15 in memory! (computed 55.6 MiB so far)
+26/10/08 19:19:36 WARN MemoryStore: Not enough space to cache rdd_6_2 in memory! (computed 97.6 MiB so far)
+26/10/08 19:19:36 WARN MemoryStore: Not enough space to cache rdd_6_3 in memory! (computed 96.8 MiB so far)
+26/10/08 19:19:51 WARN MemoryStore: Not enough space to cache rdd_6_7 in memory! (computed 58.9 MiB so far)
+26/10/08 19:20:04 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 138.6 MiB so far)
+26/10/08 19:20:32 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 62.7 MiB so far)
+26/10/08 19:20:33 WARN MemoryStore: Not enough space to cache rdd_6_12 in memory! (computed 74.3 MiB so far)
+26/10/08 19:21:07 WARN MemoryStore: Not enough space to cache rdd_6_2 in memory! (computed 36.4 MiB so far)
+26/10/08 19:21:07 WARN MemoryStore: Not enough space to cache rdd_6_3 in memory! (computed 19.0 MiB so far)
+26/10/08 19:21:22 WARN MemoryStore: Not enough space to cache rdd_6_5 in memory! (computed 62.1 MiB so far)
+26/10/08 19:21:33 WARN MemoryStore: Not enough space to cache rdd_6_6 in memory! (computed 97.2 MiB so far)
+26/10/08 19:21:40 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 32.9 MiB so far)
+26/10/08 19:21:41 WARN MemoryStore: Not enough space to cache rdd_6_8 in memory! (computed 96.0 MiB so far)
+26/10/08 19:21:47 WARN MemoryStore: Not enough space to cache rdd_6_10 in memory! (computed 96.8 MiB so far)
+26/10/08 19:21:51 WARN MemoryStore: Not enough space to cache rdd_6_11 in memory! (computed 91.3 MiB so far)
+26/10/08 19:21:53 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 36.7 MiB so far)
+26/10/08 19:21:59 WARN MemoryStore: Not enough space to cache rdd_6_14 in memory! (computed 82.8 MiB so far)
+26/10/08 19:22:08 WARN MemoryStore: Not enough space to cache rdd_6_1 in memory! (computed 19.8 MiB so far)
+26/10/08 19:22:08 WARN MemoryStore: Not enough space to cache rdd_6_0 in memory! (computed 19.9 MiB so far)
+26/10/08 19:22:12 WARN MemoryStore: Not enough space to cache rdd_6_2 in memory! (computed 19.4 MiB so far)
+26/10/08 19:22:13 WARN MemoryStore: Not enough space to cache rdd_6_3 in memory! (computed 36.3 MiB so far)
+26/10/08 19:22:15 WARN MemoryStore: Not enough space to cache rdd_6_5 in memory! (computed 9.7 MiB so far)
+26/10/08 19:22:15 WARN MemoryStore: Not enough space to cache rdd_6_4 in memory! (computed 36.1 MiB so far)
+26/10/08 19:22:17 WARN MemoryStore: Not enough space to cache rdd_6_6 in memory! (computed 36.2 MiB so far)
+26/10/08 19:22:19 WARN MemoryStore: Not enough space to cache rdd_6_9 in memory! (computed 8.7 MiB so far)
+26/10/08 19:22:19 WARN MemoryStore: Not enough space to cache rdd_6_8 in memory! (computed 36.4 MiB so far)
+26/10/08 19:22:31 WARN MemoryStore: Not enough space to cache rdd_6_10 in memory! (computed 36.4 MiB so far)
+26/10/08 19:22:39 WARN MemoryStore: Not enough space to cache rdd_6_11 in memory! (computed 32.8 MiB so far)
+26/10/08 19:22:44 WARN MemoryStore: Not enough space to cache rdd_6_13 in memory! (computed 18.5 MiB so far)
+26/10/08 19:22:44 WARN MemoryStore: Not enough space to cache rdd_6_14 in memory! (computed 33.8 MiB so far)
+A2-A5 xong: 20261008-191131-97bb8c2-dk3 {funnel_by_category={rows=624, events=42448764, purchases=742849}, trend_by_hour={rows=744, events=42448764, purchases=742849}, funnel_by_brand={rows=3446, events=42448764, purchases=742849}} {curatedRows=42448764, a1PurchaseCount=742849, a2PurchasesValidCategory=742849, a1EqualsA2=true}

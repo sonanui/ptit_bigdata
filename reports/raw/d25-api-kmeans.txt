@@ -1,0 +1,6 @@
+# Bước 15 (tiếp) - gọi API suy luận K-Means của web (Docker) cho sản phẩm 1002099, đối chiếu Bảng 6 (IntelliJ terminal), 2026-10-09
+PS> $b = @{ runId = '20261008-201313-97bb8c2-dk3'; productId = '1002099' } | ConvertTo-Json; $r = Invoke-RestMethod -Method Post -Uri http://localhost:8080/api/ml/kmeans/predict -ContentType 'application/json' -Body $b; ...
+cluster=0 sparkCluster=0 matchesSpark=True
+squaredDistances = 24.09, 60.74
+standardizedFeatures = 3.986, -0.307, 4.232, -0.262, 0.065, 1.109, 4.056
+2053013555631882655,electronics.smartphone,157049623.37,338018,464.62

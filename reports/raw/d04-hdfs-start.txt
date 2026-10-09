@@ -1,0 +1,23 @@
+# Bước 4 - khởi động HDFS bằng Docker Compose lần đầu (IntelliJ terminal), 2026-10-08
+# docker compose in tiến trình ra stderr nên IntelliJ hiển thị màu đỏ; đây không phải lỗi.
+PS> docker compose up -d namenode datanode; docker compose exec namenode hdfs dfsadmin -safemode wait; docker compose ps --format 'table {{.Service}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'
+ Volume ptit_bigdata_hdfs-datanode Creating
+ Volume ptit_bigdata_hdfs-namenode Creating
+ Network ptit_bigdata_default Creating
+ Volume ptit_bigdata_hdfs-datanode Created
+ Volume ptit_bigdata_hdfs-namenode Created
+ Network ptit_bigdata_default Created
+ Container ptit_bigdata-namenode-1 Creating
+ Container ptit_bigdata-namenode-1 Created
+ Container ptit_bigdata-datanode-1 Creating
+ Container ptit_bigdata-datanode-1 Created
+ Container ptit_bigdata-namenode-1 Starting
+ Container ptit_bigdata-namenode-1 Started
+ Container ptit_bigdata-namenode-1 Waiting
+ Container ptit_bigdata-namenode-1 Healthy
+ Container ptit_bigdata-datanode-1 Starting
+ Container ptit_bigdata-datanode-1 Started
+Safe mode is OFF
+SERVICE    IMAGE                 STATUS                    PORTS
+datanode   apache/hadoop:3.4.2   Up 7 seconds              127.0.0.1:9864->9864/tcp, 127.0.0.1:9866->9866/tcp
+namenode   apache/hadoop:3.4.2   Up 19 seconds (healthy)   127.0.0.1:8020->8020/tcp, 127.0.0.1:9870->9870/tcp

@@ -1,0 +1,51 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/10/08 18:44:38 INFO SparkContext: Running Spark version 4.0.4
+26/10/08 18:44:38 INFO SparkContext: OS info Linux, 6.18.40.1-microsoft-standard-WSL2, amd64
+26/10/08 18:44:38 INFO SparkContext: Java version 21.0.9
+26/10/08 18:44:38 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/08 18:44:38 INFO ResourceUtils: ==============================================================
+26/10/08 18:44:38 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/10/08 18:44:38 INFO ResourceUtils: ==============================================================
+26/10/08 18:44:38 INFO SparkContext: Submitted application: vn.edu.bigdata.revenue.spark.SparkTool
+26/10/08 18:44:38 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/10/08 18:44:38 INFO ResourceProfile: Limiting resource is cpu
+26/10/08 18:44:38 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/10/08 18:44:39 INFO SecurityManager: Changing view acls to: root,hadoop
+26/10/08 18:44:39 INFO SecurityManager: Changing modify acls to: root,hadoop
+26/10/08 18:44:39 INFO SecurityManager: Changing view acls groups to: root,hadoop
+26/10/08 18:44:39 INFO SecurityManager: Changing modify acls groups to: root,hadoop
+26/10/08 18:44:39 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root, hadoop groups with view permissions: EMPTY; users with modify permissions: root, hadoop; groups with modify permissions: EMPTY; RPC SSL disabled
+26/10/08 18:44:39 INFO Utils: Successfully started service 'sparkDriver' on port 33335.
+26/10/08 18:44:39 INFO SparkEnv: Registering MapOutputTracker
+26/10/08 18:44:39 INFO SparkEnv: Registering BlockManagerMaster
+26/10/08 18:44:39 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/10/08 18:44:39 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/10/08 18:44:39 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/10/08 18:44:39 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-5145296f-bb46-4493-9d95-05d12e8540ee
+26/10/08 18:44:40 INFO SparkEnv: Registering OutputCommitCoordinator
+26/10/08 18:44:40 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/10/08 18:44:40 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/10/08 18:44:40 INFO SparkContext: Added JAR file:/opt/app/revenue-aggregation-spark.jar at spark://2f901bbcd155:33335/jars/revenue-aggregation-spark.jar with timestamp 1791485078253
+26/10/08 18:44:40 INFO SecurityManager: Changing view acls to: root,hadoop
+26/10/08 18:44:40 INFO SecurityManager: Changing modify acls to: root,hadoop
+26/10/08 18:44:40 INFO SecurityManager: Changing view acls groups to: root,hadoop
+26/10/08 18:44:40 INFO SecurityManager: Changing modify acls groups to: root,hadoop
+26/10/08 18:44:40 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root, hadoop groups with view permissions: EMPTY; users with modify permissions: root, hadoop; groups with modify permissions: EMPTY; RPC SSL disabled
+26/10/08 18:44:41 INFO Executor: Starting executor ID driver on host 2f901bbcd155
+26/10/08 18:44:41 INFO Executor: OS info Linux, 6.18.40.1-microsoft-standard-WSL2, amd64
+26/10/08 18:44:41 INFO Executor: Java version 21.0.9
+26/10/08 18:44:41 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/08 18:44:41 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@12209826 for default.
+26/10/08 18:44:41 INFO Executor: Fetching spark://2f901bbcd155:33335/jars/revenue-aggregation-spark.jar with timestamp 1791485078253
+26/10/08 18:44:41 INFO TransportClientFactory: Successfully created connection to 2f901bbcd155/172.23.0.4:33335 after 54 ms (0 ms spent in bootstraps)
+26/10/08 18:44:41 INFO Utils: Fetching spark://2f901bbcd155:33335/jars/revenue-aggregation-spark.jar to /tmp/spark-85ad89d2-7fca-43de-9a27-cc0d555835f7/userFiles-bf9a4dab-02d3-41f6-9ebe-82881430407f/fetchFileTemp1945831305036369274.tmp
+26/10/08 18:44:41 INFO Executor: Adding file:/tmp/spark-85ad89d2-7fca-43de-9a27-cc0d555835f7/userFiles-bf9a4dab-02d3-41f6-9ebe-82881430407f/revenue-aggregation-spark.jar to class loader default
+26/10/08 18:44:41 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 42525.
+26/10/08 18:44:41 INFO NettyBlockTransferService: Server created on 2f901bbcd155:42525
+26/10/08 18:44:41 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/10/08 18:44:41 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 2f901bbcd155, 42525, None)
+26/10/08 18:44:41 INFO BlockManagerMasterEndpoint: Registering block manager 2f901bbcd155:42525 with 434.4 MiB RAM, BlockManagerId(driver, 2f901bbcd155, 42525, None)
+26/10/08 18:44:41 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 2f901bbcd155, 42525, None)
+26/10/08 18:44:41 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 2f901bbcd155, 42525, None)
+A2-A5 xong: 20261008-184443-97bb8c2-dk2 {funnel_by_category={rows=614, events=4246193, purchases=74120}, trend_by_hour={rows=744, events=4246193, purchases=74120}, funnel_by_brand={rows=3139, events=4246193, purchases=74120}} {curatedRows=4246193, a1PurchaseCount=74120, a2PurchasesValidCategory=74120, a1EqualsA2=true}

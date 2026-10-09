@@ -1,0 +1,13 @@
+# Bước 4 (tiếp) - kiểm tra cụm HDFS vừa tạo (IntelliJ terminal), 2026-10-08
+PS> cmd /c "docker compose logs namenode 2>&1" | Select-String 'has been successfully formatted|RPC up at|STARTUP_MSG:   version' | Select-Object -First 3 | ...; docker compose exec namenode hdfs dfsadmin -report | Select-String 'Configured Capacity|Live datanodes|^Name:|Missing blocks:' | Select-Object -First 4 | ...; foreach ($k in 'fs.defaultFS','dfs.replication','dfs.blocksize') { "$k = " + (docker compose exec namenode hdfs getconf -confKey $k) }
+STARTUP_MSG:   version = 3.4.2
+2026-10-08 16:50:09 INFO  Storage:595 - Storage directory /data/namenode has been successfully formatted.
+STARTUP_MSG:   version = 3.4.2
+Configured Capacity: 1081101176832 (1006.85 GB)
+	Missing blocks: 0
+Live datanodes (1):
+Name: 172.23.0.3:9866 (ptit_bigdata-datanode-1.ptit_bigdata_default)
+fs.defaultFS = hdfs://namenode:8020
+dfs.replication = 1
+dfs.blocksize = 134217728
+# (log container dùng giờ UTC: 16:50 UTC = 23:50 giờ Việt Nam)

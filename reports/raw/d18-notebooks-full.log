@@ -1,0 +1,132 @@
+ Container ptit_bigdata-spark-run-87d988a0bd49 Creating 
+ Container ptit_bigdata-spark-run-87d988a0bd49 Created 
+[NbConvertApp] Converting notebook kmeans_product.ipynb to notebook
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/08 20:13:23 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/08 20:13:42 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+26/10/08 20:14:00 WARN InstanceBuilder: Failed to load implementation from:dev.ludovic.netlib.blas.JNIBLAS
+26/10/08 20:17:23 WARN TaskSetManager: Stage 2793 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:25 WARN TaskSetManager: Stage 2794 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:26 WARN TaskSetManager: Stage 2797 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:26 WARN TaskSetManager: Stage 2798 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:26 WARN TaskSetManager: Stage 2799 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:26 WARN TaskSetManager: Stage 2800 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:26 WARN TaskSetManager: Stage 2801 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:26 WARN TaskSetManager: Stage 2802 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:26 WARN TaskSetManager: Stage 2803 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:27 WARN TaskSetManager: Stage 2805 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:27 WARN TaskSetManager: Stage 2807 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:27 WARN TaskSetManager: Stage 2809 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:27 WARN TaskSetManager: Stage 2811 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:27 WARN TaskSetManager: Stage 2813 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:28 WARN TaskSetManager: Stage 2815 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:28 WARN TaskSetManager: Stage 2817 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:28 WARN TaskSetManager: Stage 2820 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:28 WARN TaskSetManager: Stage 2821 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:29 WARN TaskSetManager: Stage 2823 contains a task of very large size (3431 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:17:29 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:17:29 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:17:29 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:17:29 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:17:29 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:17:29 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:17:29 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:17:30 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:17:30 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:17:30 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:17:30 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:17:30 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:17:30 WARN WindowExec: No Partition Defined for Window operation! Moving all data to a single partition, this can cause serious performance degradation.
+26/10/08 20:18:20 WARN JavaUtils: Attempt to delete using native Unix OS command failed for path = /tmp/spark-e780031e-9934-4730-a06b-7fed9772f0c4. Falling back to Java IO way
+java.io.IOException: Failed to delete: /tmp/spark-e780031e-9934-4730-a06b-7fed9772f0c4
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingUnixNative(JavaUtils.java:199)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:116)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:121)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:120)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1048)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:70)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:67)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1324)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:67)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:231)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1937)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:205)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:184)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+26/10/08 20:18:20 WARN JavaUtils: Attempt to delete using native Unix OS command failed for path = /tmp/spark-f0454209-34f5-4279-a2d7-3c42351409ce. Falling back to Java IO way
+java.io.IOException: Failed to delete: /tmp/spark-f0454209-34f5-4279-a2d7-3c42351409ce
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingUnixNative(JavaUtils.java:199)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:116)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:121)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:120)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1048)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:70)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:67)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1324)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:67)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:231)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1937)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:205)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:184)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[NbConvertApp] Writing 205694 bytes to kmeans_product.ipynb
+[NbConvertApp] Converting notebook knn_classifier.ipynb to notebook
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/10/08 20:18:35 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/08 20:23:16 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+26/10/08 20:23:26 WARN InstanceBuilder: Failed to load implementation from:dev.ludovic.netlib.blas.JNIBLAS
+26/10/08 20:29:13 WARN TaskSetManager: Stage 66 contains a task of very large size (5402 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:29:18 WARN TaskSetManager: Stage 67 contains a task of very large size (1686 KiB). The maximum recommended task size is 1000 KiB.
+26/10/08 20:33:33 WARN JavaUtils: Attempt to delete using native Unix OS command failed for path = /tmp/artifacts-2402006e-c4ce-4f2d-a333-536c93caab85. Falling back to Java IO way
+java.io.IOException: Failed to delete: /tmp/artifacts-2402006e-c4ce-4f2d-a333-536c93caab85
+	at org.apache.spark.network.util.JavaUtils.deleteRecursivelyUsingUnixNative(JavaUtils.java:199)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:116)
+	at org.apache.spark.network.util.JavaUtils.deleteRecursively(JavaUtils.java:94)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively(SparkFileUtils.scala:121)
+	at org.apache.spark.util.SparkFileUtils.deleteRecursively$(SparkFileUtils.scala:120)
+	at org.apache.spark.util.Utils$.deleteRecursively(Utils.scala:1048)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4(ShutdownHookManager.scala:70)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$4$adapted(ShutdownHookManager.scala:67)
+	at scala.collection.ArrayOps$.foreach$extension(ArrayOps.scala:1324)
+	at org.apache.spark.util.ShutdownHookManager$.$anonfun$new$2(ShutdownHookManager.scala:67)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:231)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$2(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1937)
+	at org.apache.spark.util.SparkShutdownHookManager.$anonfun$runAll$1(ShutdownHookManager.scala:205)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.util.Try$.apply(Try.scala:217)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:205)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:184)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[NbConvertApp] Writing 49380 bytes to knn_classifier.ipynb

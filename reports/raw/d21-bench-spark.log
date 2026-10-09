@@ -1,0 +1,87 @@
+ Container ptit_bigdata-spark-run-d266d2332c55 Creating 
+ Container ptit_bigdata-spark-run-d266d2332c55 Created 
+=== e4-d1-rdd-raw 01:28:59
+  round 0 exit=0 wall=28249ms success=True 20261009-012910-97bb8c2-e4-d1-rdd-raw-0
+  round 1 exit=0 wall=16693ms success=True 20261009-012936-97bb8c2-e4-d1-rdd-raw-1
+  round 2 exit=0 wall=22192ms success=True 20261009-012954-97bb8c2-e4-d1-rdd-raw-2
+  round 3 exit=0 wall=22609ms success=True 20261009-013018-97bb8c2-e4-d1-rdd-raw-3
+  median compute 4764 ms, groups 308, khớp tham chiếu: True
+=== e4-d1-df-raw 01:30:30
+  round 0 exit=0 wall=19677ms success=True 20261009-013036-97bb8c2-e4-d1-df-raw-0
+  round 1 exit=0 wall=16119ms success=True 20261009-013056-97bb8c2-e4-d1-df-raw-1
+  round 2 exit=0 wall=21561ms success=True 20261009-013115-97bb8c2-e4-d1-df-raw-2
+  round 3 exit=0 wall=15439ms success=True 20261009-013133-97bb8c2-e4-d1-df-raw-3
+  median compute 7521 ms, groups 308, khớp tham chiếu: True
+=== e4-d1-df-curated 01:31:43
+  round 0 exit=0 wall=15287ms success=True 20261009-013149-97bb8c2-e4-d1-df-curated-0
+  round 1 exit=0 wall=13838ms success=True 20261009-013204-97bb8c2-e4-d1-df-curated-1
+  round 2 exit=0 wall=12968ms success=True 20261009-013218-97bb8c2-e4-d1-df-curated-2
+  round 3 exit=0 wall=30084ms success=True 20261009-013235-97bb8c2-e4-d1-df-curated-3
+  median compute 6525 ms, groups 308, khớp tham chiếu: True
+=== e4-d2-rdd-raw 01:32:55
+  round 0 exit=0 wall=45612ms success=True 20261009-013304-97bb8c2-e4-d2-rdd-raw-0
+  round 1 exit=0 wall=33923ms success=True 20261009-013352-97bb8c2-e4-d2-rdd-raw-1
+  round 2 exit=0 wall=53308ms success=True 20261009-013425-97bb8c2-e4-d2-rdd-raw-2
+  round 3 exit=0 wall=37806ms success=True 20261009-013520-97bb8c2-e4-d2-rdd-raw-3
+  median compute 20361 ms, groups 495, khớp tham chiếu: True
+=== e4-d2-df-raw 01:35:47
+  round 0 exit=0 wall=40770ms success=True 20261009-013556-97bb8c2-e4-d2-df-raw-0
+  round 1 exit=0 wall=46186ms success=True 20261009-013638-97bb8c2-e4-d2-df-raw-1
+  round 2 exit=0 wall=33821ms success=True 20261009-013722-97bb8c2-e4-d2-df-raw-2
+  round 3 exit=0 wall=78458ms success=True 20261009-013755-97bb8c2-e4-d2-df-raw-3
+  median compute 31457 ms, groups 495, khớp tham chiếu: True
+=== e4-d2-df-curated 01:39:09
+  round 0 exit=0 wall=37812ms success=True 20261009-013927-97bb8c2-e4-d2-df-curated-0
+  round 1 exit=0 wall=26530ms success=True 20261009-013955-97bb8c2-e4-d2-df-curated-1
+  round 2 exit=0 wall=30817ms success=True 20261009-014027-97bb8c2-e4-d2-df-curated-2
+  round 3 exit=0 wall=19704ms success=True 20261009-014054-97bb8c2-e4-d2-df-curated-3
+  median compute 14323 ms, groups 495, khớp tham chiếu: True
+=== e4-d3-rdd-raw 01:41:04
+  round 0 exit=0 wall=274488ms success=True 20261009-014112-97bb8c2-e4-d3-rdd-raw-0
+  round 1 exit=0 wall=201451ms success=True 20261009-014552-97bb8c2-e4-d3-rdd-raw-1
+  round 2 exit=0 wall=217017ms success=True 20261009-014913-97bb8c2-e4-d3-rdd-raw-2
+  round 3 exit=0 wall=206653ms success=True 20261009-015253-97bb8c2-e4-d3-rdd-raw-3
+  median compute 182556 ms, groups 567, khớp tham chiếu: True
+=== e4-d3-df-raw 01:56:05
+  round 0 exit=0 wall=227710ms success=True 20261009-015618-97bb8c2-e4-d3-df-raw-0
+  round 1 exit=0 wall=255179ms success=True 20261009-020013-97bb8c2-e4-d3-df-raw-1
+  round 2 exit=0 wall=266997ms success=True 20261009-020424-97bb8c2-e4-d3-df-raw-2
+  round 3 exit=0 wall=251846ms success=True 20261009-020856-97bb8c2-e4-d3-df-raw-3
+  median compute 229698 ms, groups 567, khớp tham chiếu: True
+=== e4-d3-df-curated 02:12:49
+  round 0 exit=0 wall=32593ms success=True 20261009-021301-97bb8c2-e4-d3-df-curated-0
+  round 1 exit=0 wall=55331ms success=True 20261009-021338-97bb8c2-e4-d3-df-curated-1
+  round 2 exit=0 wall=40843ms success=True 20261009-021430-97bb8c2-e4-d3-df-curated-2
+  round 3 exit=0 wall=20757ms success=True 20261009-021506-97bb8c2-e4-d3-df-curated-3
+  median compute 24942 ms, groups 567, khớp tham chiếu: True
+=== e4-d2-rdd-raw-c1 02:15:20
+  round 0 exit=0 wall=51702ms success=True 20261009-021526-97bb8c2-e4-d2-rdd-raw-c1-0
+  round 1 exit=0 wall=51434ms success=True 20261009-021622-97bb8c2-e4-d2-rdd-raw-c1-1
+  round 2 exit=0 wall=65661ms success=True 20261009-021711-97bb8c2-e4-d2-rdd-raw-c1-2
+  round 3 exit=0 wall=67645ms success=True 20261009-021822-97bb8c2-e4-d2-rdd-raw-c1-3
+  median compute 45775 ms, groups 495, khớp tham chiếu: True
+=== e4-d2-rdd-raw-c4 02:19:17
+  round 0 exit=0 wall=61414ms success=True 20261009-021935-97bb8c2-e4-d2-rdd-raw-c4-0
+  round 1 exit=0 wall=50802ms success=True 20261009-022030-97bb8c2-e4-d2-rdd-raw-c4-1
+  round 2 exit=0 wall=44138ms success=True 20261009-022123-97bb8c2-e4-d2-rdd-raw-c4-2
+  round 3 exit=0 wall=55919ms success=True 20261009-022208-97bb8c2-e4-d2-rdd-raw-c4-3
+  median compute 31231 ms, groups 495, khớp tham chiếu: True
+=== e4-d2-df-raw-p64 02:22:51
+  round 0 exit=0 wall=53005ms success=True 20261009-022303-97bb8c2-e4-d2-df-raw-p64-0
+  round 1 exit=0 wall=56555ms success=True 20261009-022351-97bb8c2-e4-d2-df-raw-p64-1
+  round 2 exit=0 wall=59858ms success=True 20261009-022457-97bb8c2-e4-d2-df-raw-p64-2
+  round 3 exit=0 wall=56201ms success=True 20261009-022552-97bb8c2-e4-d2-df-raw-p64-3
+  median compute 40220 ms, groups 495, khớp tham chiếu: True
+=== e4-d2-df-raw-p200 02:26:37
+  round 0 exit=0 wall=67446ms success=True 20261009-022648-97bb8c2-e4-d2-df-raw-p200-0
+  round 1 exit=0 wall=65688ms success=True 20261009-022756-97bb8c2-e4-d2-df-raw-p200-1
+  round 2 exit=0 wall=77030ms success=True 20261009-022902-97bb8c2-e4-d2-df-raw-p200-2
+  round 3 exit=0 wall=52693ms success=True 20261009-023019-97bb8c2-e4-d2-df-raw-p200-3
+  median compute 49843 ms, groups 495, khớp tham chiếu: True
+=== e5-d3-rdd-raw-c1 02:31:01
+  round 0 exit=0 wall=254172ms success=True 20261009-023110-97bb8c2-e5-d3-rdd-raw-c1-0
+  round 1 exit=0 wall=258757ms success=True 20261009-023531-97bb8c2-e5-d3-rdd-raw-c1-1
+  round 2 exit=0 wall=267350ms success=True 20261009-023947-97bb8c2-e5-d3-rdd-raw-c1-2
+  round 3 exit=0 wall=249646ms success=True 20261009-024413-97bb8c2-e5-d3-rdd-raw-c1-3
+  median compute 232911 ms, groups 567, khớp tham chiếu: True
+=== xong 02:48:13

@@ -1,0 +1,11 @@
+# Bước 6 - test MapReduce trong container bigdata, JDK 11 (IntelliJ terminal), 2026-10-09
+PS> cmd /c "docker compose run --rm bigdata ./mvnw -B -pl bigdata -Pintegration verify > results\d07-mr-tests.log 2>&1"
+PS> Select-String -Path results\d07-mr-tests.log -Pattern 'Tests run: \d+, Failures: \d+, Errors: \d+, Skipped: \d+(, Time.*IT)?$|BUILD SUCCESS|Total time' | ForEach-Object { $_.Line }
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.498 s -- in vn.edu.bigdata.revenue.integration.DatasetToolIT
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 33.67 s -- in vn.edu.bigdata.revenue.integration.VariantsIT
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.304 s -- in vn.edu.bigdata.revenue.integration.RecordReductionIT
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.386 s -- in vn.edu.bigdata.revenue.integration.JobFailureIT
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  57.508 s

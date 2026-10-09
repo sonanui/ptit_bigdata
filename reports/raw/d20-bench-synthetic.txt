@@ -1,0 +1,16 @@
+# Bước 13 (tiếp) - benchmark synthetic 200 000 purchase / 32 category trong container bigdata, hệ tệp cục bộ (IntelliJ terminal), 2026-10-09
+# Lần chạy đầu: dữ liệu, preflight, profile thành công nhưng benchmark.py báo FileNotFoundError config/bench/docker/synthetic.json
+# (image bigdata chép config/ lúc build; tệp này tạo sau). Chạy lại riêng benchmark, mount config/ chỉ đọc:
+PS> cmd /c "docker compose run --rm bigdata bash -c ""python3 scripts/generate_workload.py --output results/synthetic/optimization-200k.csv --rows 200000 --groups 32 --purchase-rate 1 --seed 21 && scripts/prepare-input.sh results/synthetic/optimization-200k.csv results/synthetic-meta && scripts/run-local.sh --tool DatasetTool profile --manifest results/synthetic-meta/input.json --output results/synthetic-meta/profile.json --dictionary results/synthetic-meta/groups.json && ..."" > results\d20-bench-synthetic.log 2>&1"
+PS> cmd /c "docker compose run --rm -v ""%CD%\config:/opt/bigdata/config:ro"" bigdata python3 scripts/benchmark.py --matrix config/bench/docker/synthetic.json >> results\d20-bench-synthetic.log 2>&1"
+Preflight valid: 200000 purchases, fingerprint=1ef5b97f5d72859369d89e8fafc4b543e5e730743433eba814dceea62185b365
+Profile: 32 dictionary groups
+Report: results/benchmark-reports/2a4c08ba9b53
+
+variant runs jobMedianMs cliMedianMs cliWithProfileMs mapOutput shuffleBytes speedup
+------- ---- ----------- ----------- ---------------- --------- ------------ -------
+v1      3    5242        9265        9265             200000    4137536            1
+v2      3    5123        9523        9523             200000    674             1.02
+v3      3    4247        8929        8929             32        674             1.23
+v4      3    4439        9042        19763            32        674             1.18
+v5      3    4262        8735        19456            2         676             1.23

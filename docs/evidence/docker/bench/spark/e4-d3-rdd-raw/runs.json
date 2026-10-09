@@ -1,0 +1,123 @@
+{
+  "meta": {
+    "label": "e4-d3-rdd-raw",
+    "mode": "rdd-raw",
+    "input": "/data/ecommerce/raw/2019-Oct.csv",
+    "curatedRunId": null,
+    "master": "local[2]",
+    "shufflePartitions": 8,
+    "driverMemory": "1g",
+    "warmups": 1,
+    "repeats": 3,
+    "reference": "results/mr/dk3/revenue.csv",
+    "gitSha": "97bb8c2",
+    "host": "docker:spark",
+    "startedRuns": 4
+  },
+  "runs": [
+    {
+      "round": 0,
+      "warmup": true,
+      "exitCode": 0,
+      "wallMillis": 274488,
+      "success": true,
+      "runId": "20261009-014112-97bb8c2-e4-d3-rdd-raw-0",
+      "endToEndMillis": 265132,
+      "computeMillis": 249245,
+      "writeMillis": 15109,
+      "groups": 567,
+      "validPurchases": 742849,
+      "taskMetrics": {
+        "tasks": 46,
+        "inputBytesRead": 5671365367,
+        "inputRecordsRead": 42448765,
+        "shuffleReadBytes": 362451,
+        "shuffleReadRecords": 15511,
+        "shuffleWriteBytes": 362451,
+        "shuffleWriteRecords": 15511,
+        "executorRunTimeMillis": 494780,
+        "jvmGcTimeMillis": 18923
+      },
+      "matchesReference": true,
+      "compare": "KH\u1edaP: 567 nh\u00f3m, t\u1ed5ng purchase_count=742849"
+    },
+    {
+      "round": 1,
+      "warmup": false,
+      "exitCode": 0,
+      "wallMillis": 201451,
+      "success": true,
+      "runId": "20261009-014552-97bb8c2-e4-d3-rdd-raw-1",
+      "endToEndMillis": 187120,
+      "computeMillis": 179351,
+      "writeMillis": 6698,
+      "groups": 567,
+      "validPurchases": 742849,
+      "taskMetrics": {
+        "tasks": 46,
+        "inputBytesRead": 5671365367,
+        "inputRecordsRead": 42448765,
+        "shuffleReadBytes": 362451,
+        "shuffleReadRecords": 15511,
+        "shuffleWriteBytes": 362451,
+        "shuffleWriteRecords": 15511,
+        "executorRunTimeMillis": 353863,
+        "jvmGcTimeMillis": 14487
+      },
+      "matchesReference": true,
+      "compare": "KH\u1edaP: 567 nh\u00f3m, t\u1ed5ng purchase_count=742849"
+    },
+    {
+      "round": 2,
+      "warmup": false,
+      "exitCode": 0,
+      "wallMillis": 217017,
+      "success": true,
+      "runId": "20261009-014913-97bb8c2-e4-d3-rdd-raw-2",
+      "endToEndMillis": 202988,
+      "computeMillis": 189761,
+      "writeMillis": 10880,
+      "groups": 567,
+      "validPurchases": 742849,
+      "taskMetrics": {
+        "tasks": 46,
+        "inputBytesRead": 5671365367,
+        "inputRecordsRead": 42448765,
+        "shuffleReadBytes": 362451,
+        "shuffleReadRecords": 15511,
+        "shuffleWriteBytes": 362451,
+        "shuffleWriteRecords": 15511,
+        "executorRunTimeMillis": 376562,
+        "jvmGcTimeMillis": 13485
+      },
+      "matchesReference": true,
+      "compare": "KH\u1edaP: 567 nh\u00f3m, t\u1ed5ng purchase_count=742849"
+    },
+    {
+      "round": 3,
+      "warmup": false,
+      "exitCode": 0,
+      "wallMillis": 206653,
+      "success": true,
+      "runId": "20261009-015253-97bb8c2-e4-d3-rdd-raw-3",
+      "endToEndMillis": 190781,
+      "computeMillis": 182556,
+      "writeMillis": 6871,
+      "groups": 567,
+      "validPurchases": 742849,
+      "taskMetrics": {
+        "tasks": 46,
+        "inputBytesRead": 5671365367,
+        "inputRecordsRead": 42448765,
+        "shuffleReadBytes": 362451,
+        "shuffleReadRecords": 15511,
+        "shuffleWriteBytes": 362451,
+        "shuffleWriteRecords": 15511,
+        "executorRunTimeMillis": 361032,
+        "jvmGcTimeMillis": 14042
+      },
+      "matchesReference": true,
+      "compare": "KH\u1edaP: 567 nh\u00f3m, t\u1ed5ng purchase_count=742849"
+    }
+  ]
+}

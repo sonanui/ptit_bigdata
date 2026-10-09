@@ -1,0 +1,18 @@
+# Bước 7 - MapReduce V1–V5 trên fixture 7 dòng, input/output trên HDFS (IntelliJ terminal), 2026-10-09
+PS> docker compose run --rm bigdata scripts/hdfs-fs.sh -mkdir -p /data/ecommerce/fixtures
+PS> docker compose run --rm bigdata scripts/hdfs-fs.sh -put bigdata/src/test/resources/fixtures/events.csv /data/ecommerce/fixtures/events.csv
+PS> cmd /c "docker compose run --rm bigdata scripts/hdfs-mr.sh /data/ecommerce/fixtures/events.csv dk0 v1 v2 v3 v4 v5 > results\d08-mr-fixture.log 2>&1"
+PS> Select-String -CaseSensitive -Path results\d08-mr-fixture.log -Pattern 'Preflight|Profile|Run valid' | ...; 'So lan "Results equal" (V2..V5 so voi V1): ' + (...).Count; hdfs dfs -cat part-r-00000, part-r-00001
+Preflight valid: 6 purchases, fingerprint=c9638f9cdee1abf9e21553a8dafa249957032c261467a7a9283f2c73ac9d224e
+Profile: 2 dictionary groups
+Run valid: hdfs://namenode:8020/data/ecommerce/mr/dk0/v1 (V1_DIRECT)
+Run valid: hdfs://namenode:8020/data/ecommerce/mr/dk0/v2 (V2_COMBINER)
+Run valid: hdfs://namenode:8020/data/ecommerce/mr/dk0/v3 (V3_IN_MAPPER)
+Run valid: hdfs://namenode:8020/data/ecommerce/mr/dk0/v4 (V4_DENSE)
+Run valid: hdfs://namenode:8020/data/ecommerce/mr/dk0/v5 (V5_BATCH)
+So lan "Results equal" (V2..V5 so voi V1): 4
+part-r-00000:
+1	60.00	3	20.00
+part-r-00001:
+2	0.03	3	0.01
+# timings.tsv (ms): preflight 4075, profile 1697, v1 8709, v2 8189, v3 8880, v4 8642, v5 11311 (một lần chạy, gồm khởi động JVM)

@@ -1,0 +1,25 @@
+# Bước 13 - benchmark MapReduce trong container bigdata (IntelliJ terminal), 2026-10-09
+PS> foreach ($m in 'mr-e2-d1','mr-e2-d2','mr-e3-d2-maps2','mr-e3-d2-maps4','mr-e2-d3') { cmd /c "docker compose run --rm bigdata python3 scripts/benchmark.py --matrix config/bench/docker/$m.json > results\d19-bench-$m.log 2>&1" }
+PS> powershell -NoProfile -ExecutionPolicy Bypass -File results\bench-show.ps1 <các ma trận>
+mr-e2-d1 -> results/benchmark-reports/b541efb2309c  (lan chay thanh cong: 20/20)
+    v1: job median 6703 ms (min 3982, max 8828), shuffle 283644 byte
+    v2: job median 4322 ms (min 4275, max 5307), shuffle 11716 byte
+    v3: job median 4209 ms (min 3474, max 7813), shuffle 11716 byte
+    v4: job median 4847 ms (min 4842, max 5261), shuffle 11716 byte
+    v5: job median 3296 ms (min 2413, max 6247), shuffle 6196 byte
+mr-e2-d2 -> results/benchmark-reports/f56d6eabcec0  (lan chay thanh cong: 20/20)
+    v1: job median 28864 ms (min 26687, max 30630), shuffle 2816620 byte
+    v2: job median 22747 ms (min 21779, max 24076), shuffle 66864 byte
+    v3: job median 26741 ms (min 23188, max 41307), shuffle 66864 byte
+    v4: job median 25886 ms (min 22466, max 35785), shuffle 66864 byte
+    v5: job median 10268 ms (min 8257, max 16670), shuffle 35340 byte
+mr-e2-d3 -> results/benchmark-reports/cd64cc609007  (lan chay thanh cong: 12/12)
+    v1: job median 235790 ms (min 234198, max 258404), shuffle 28228778 byte
+    v2: job median 264119 ms (min 256242, max 286006), shuffle 589934 byte
+    v5: job median 90494 ms (min 78992, max 111137), shuffle 311768 byte
+mr-e3-d2-maps2 -> results/benchmark-reports/5976e9af7952  (lan chay thanh cong: 8/8)
+    v1: job median 18813 ms (min 17317, max 26440), shuffle 2816620 byte
+    v2: job median 20848 ms (min 19624, max 30435), shuffle 66864 byte
+mr-e3-d2-maps4 -> results/benchmark-reports/eace3ce15a1f  (lan chay thanh cong: 8/8)
+    v1: job median 22575 ms (min 18791, max 29123), shuffle 2816620 byte
+    v2: job median 25985 ms (min 23056, max 30305), shuffle 66864 byte

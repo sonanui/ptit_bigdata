@@ -1,0 +1,12 @@
+# Bước 10 - baseline Python (chỉ thư viện chuẩn) và đối chiếu với MapReduce V1 trên D1, D2, D3 (IntelliJ terminal), 2026-10-09
+PS> cmd /c "docker compose run --rm bigdata bash -c ""mkdir -p results/samples results/baseline && scripts/hdfs-fs.sh -get <D1> results/samples/ && scripts/hdfs-fs.sh -get <D2> results/samples/ && python3 scripts/baseline_revenue.py results/samples/2019-Oct-r0.01-s21.csv results/baseline/d1-revenue.csv && python3 scripts/baseline_revenue.py results/samples/2019-Oct-r0.1-s21.csv results/baseline/d2-revenue.csv && python3 scripts/baseline_revenue.py data/raw/2019-Oct.csv results/baseline/d3-revenue.csv"" > results\d12-baseline.log 2>&1"
+PS> docker compose run --rm bigdata grep '^Baseline' results/d12-baseline.log; foreach ($d in 1,2,3) { ...; docker compose run --rm bigdata python3 scripts/compare_revenue.py results/mr/dk$d/revenue.csv results/baseline/d$d-revenue.csv }
+Baseline: 308 nhóm, reasons={'HEADER': 1, 'NON_PURCHASE': 417145, 'VALID_PURCHASE': 7464}, 4.4s
+Baseline: 495 nhóm, reasons={'HEADER': 1, 'NON_PURCHASE': 4172073, 'VALID_PURCHASE': 74120}, 30.1s
+Baseline: 567 nhóm, reasons={'HEADER': 1, 'NON_PURCHASE': 41705915, 'VALID_PURCHASE': 742849}, 259.0s
+D1 - MR V1 (results/mr/dk1) so voi baseline Python:
+KHỚP: 308 nhóm, tổng purchase_count=7464
+D2 - MR V1 (results/mr/dk2) so voi baseline Python:
+KHỚP: 495 nhóm, tổng purchase_count=74120
+D3 - MR V1 (results/mr/dk3) so voi baseline Python:
+KHỚP: 567 nhóm, tổng purchase_count=742849

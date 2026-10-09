@@ -1,0 +1,3 @@
+variant,effectiveVariant,runs,jobMedianMillis,jobMinMillis,jobMaxMillis,endToEndMedianMillis,endToEndWithProfileMedianMillis,shuffleMedianBytes,mapOutputMedianRecords,reduceInputMedianRecords,speedupVsV1
+v1,V1_DIRECT,3,18813,17317,26440,60241,60241,2816620,74120,74120,1.0
+v2,V2_COMBINER,3,20848,19624,30435,70999,70999,66864,74120,1758,0.9023887183422871

@@ -1,0 +1,25 @@
+# Bước 12 - notebook K-Means và KNN chạy trong container spark trên đặc trưng/nhãn của D3 (IntelliJ terminal), 2026-10-09
+PS> cmd /c "docker compose run --rm --service-ports -e ML_TAG=dk3 spark bash -c ""cd notebooks && jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=7200 kmeans_product.ipynb && jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=7200 knn_classifier.ipynb"" > results\d18-notebooks.log 2>&1"
+PS> Select-String -Path results\d18-notebooks.log -Pattern 'NbConvertApp'; Get-Content results\ml\20261008-201313-97bb8c2-dk3\e7.csv; docker compose run --rm spark python -c "<in các chỉ số từ kmeans-run.json và knn-classifier-run.json>"
+[NbConvertApp] Converting notebook kmeans_product.ipynb to notebook
+[NbConvertApp] Writing 205694 bytes to kmeans_product.ipynb
+[NbConvertApp] Converting notebook knn_classifier.ipynb to notebook
+[NbConvertApp] Writing 49380 bytes to knn_classifier.ipynb
+repeat,warmup,mode,fit_ms,cache_count_ms
+0,True,no_cache,6848,
+0,True,cache,1596,3496.0
+1,False,no_cache,3532,
+1,False,cache,1376,2546.0
+2,False,no_cache,3785,
+2,False,cache,1875,1986.0
+3,False,no_cache,2846,
+3,False,cache,1152,3525.0
+K-Means: {'products': 92592, 'bestK': 2, 'finalSilhouette': 0.6493609062950365, 'baselineShuffledColumnsSilhouette': 0.31611670749910625, 'baselinePriceQuantileSilhouette': 0.18319825136387252, 'numpyParity': 1.0}
+KNN: {'bestK': 15, 'threshold': 0.4, 'trainRows': 60876, 'testRows': 64254, 'artifactParity': 1.0}
+   KNN (K=15, ngưỡng 0.400) F1=0.6214 PR-AUC=0.6708
+   Baseline lớp đa số F1=0.0000 PR-AUC=0.2533
+   Baseline luật lịch sử (purchases > 0) F1=0.5725 PR-AUC=0.4092
+   Logistic Regression (ngưỡng 0.3199) F1=0.6369 PR-AUC=0.7181
+  CI95 knn_minus_rule_f1 = [0.04370622053112827, 0.053832289840070394]
+# run_id: K-Means 20261008-201313-97bb8c2-dk3, KNN 20261008-201830-97bb8c2-dk3 (bản sao: docs/evidence/docker/ml/)
+# Môi trường trong notebook: Spark 4.0.4, Java 21.0.9, Hadoop client 3.4.1, Python 3.12.3, local[2], driver 1g.

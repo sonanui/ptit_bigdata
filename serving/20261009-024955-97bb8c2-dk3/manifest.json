@@ -1,0 +1,142 @@
+{
+  "schemaVersion" : 1,
+  "runId" : "20261009-024955-97bb8c2-dk3",
+  "createdAt" : "2026-10-09T02:49:57.146463595Z",
+  "gitSha" : "97bb8c2",
+  "sources" : {
+    "sparkRevenueRunId" : "20261008-185303-97bb8c2-dk3",
+    "etlRunId" : "20261008-185644-97bb8c2-dk3",
+    "metricsRunId" : "20261008-191131-97bb8c2-dk3",
+    "mrOutput" : "hdfs://namenode:8020/data/ecommerce/mr/dk3/v1"
+  },
+  "dataset" : {
+    "tag" : "dk3",
+    "input" : "/data/ecommerce/raw/2019-Oct.csv"
+  },
+  "files" : [ {
+    "path" : "analytics/revenue_parity.json",
+    "sha256" : "db77ed6c9422cf05fafb9cfd1944290429200c54bef93ed0cd501bc618debb0b",
+    "bytes" : 259
+  }, {
+    "path" : "analytics/revenue_by_category.csv",
+    "sha256" : "54c61ad3d93ecdbe698d1f53cdb5d75bf6f5df2ec7d03f21cd478cd21e63b02c",
+    "bytes" : 26851,
+    "rows" : 567
+  }, {
+    "path" : "analytics/funnel_by_category.csv",
+    "sha256" : "f0b73f9b521d86cb8f58ba1f8f4897c7d32fd27fb812ff05ab85a8ed03905691",
+    "bytes" : 43633,
+    "rows" : 624
+  }, {
+    "path" : "analytics/funnel_by_brand.csv",
+    "sha256" : "710f0aeda3d44793f2be22bc0e030b31e0bade7ff6431cb0620a78c35f41e5e1",
+    "bytes" : 123371,
+    "rows" : 3446
+  }, {
+    "path" : "analytics/trend_by_hour.csv",
+    "sha256" : "275ee54ba916406c9a579c5c8dd9a548cc6b63602113b0de508157e43f1554f5",
+    "bytes" : 37919,
+    "rows" : 744
+  }, {
+    "path" : "analytics/quality.json",
+    "sha256" : "b75745968e564f36d7469785a71c1070894151a96a69014a91322528313c8d69",
+    "bytes" : 780
+  }, {
+    "path" : "benchmarks/e2-mr-variants-d1.json",
+    "sha256" : "0eccea8b3909fb59bd375647cffc6e76fc679989124b1710026f2742fee3aeb0",
+    "bytes" : 2805
+  }, {
+    "path" : "benchmarks/e2-mr-variants-d2.json",
+    "sha256" : "d0934cad51c2aa693214a0618b027d5bcc47e8c803e6ba533a767a98dbc8cb90",
+    "bytes" : 2836
+  }, {
+    "path" : "benchmarks/e2-mr-variants-d3.json",
+    "sha256" : "f6524e03d08efd63c92a5605922de642cc558d416c7987d339f2a64d2cc8389b",
+    "bytes" : 1973
+  }, {
+    "path" : "benchmarks/e3-mr-maps-d2.json",
+    "sha256" : "206953fa8e31fc3306f9669628a7757c3cbcd04fa465fdd80921daf393af5472",
+    "bytes" : 2547
+  }, {
+    "path" : "benchmarks/e4-spark-cores-d2.json",
+    "sha256" : "a550a3ca39fd35bff68a652c3075913c9dcd25645e5609d74465085601f71c2f",
+    "bytes" : 1998
+  }, {
+    "path" : "benchmarks/e4-spark-modes.json",
+    "sha256" : "e3bb2295df6b04329eaddac968f03819db4c4da91617e57f79e9466bae7b798e",
+    "bytes" : 4730
+  }, {
+    "path" : "benchmarks/e4-spark-partitions-d2.json",
+    "sha256" : "92009989583c5d4788aa3412e306bb3a4374782e56abe4be1422c84d119ac5ca",
+    "bytes" : 1888
+  }, {
+    "path" : "benchmarks/e5-mr-vs-spark-end-to-end.json",
+    "sha256" : "5b38b6ea9eb5802d91f3eaefe1e39962ee0ae32e7b947351cc92a377adfda77a",
+    "bytes" : 2173
+  }, {
+    "path" : "benchmarks/e5-mr-vs-spark-processing.json",
+    "sha256" : "2319f984a0ed6c5bbed61a21401b1207f0a04b80258b3e241998551ab3e08a05",
+    "bytes" : 3979
+  }, {
+    "path" : "benchmarks/e6-scaling.json",
+    "sha256" : "c9e442358b88937f76e22b28b20a083813ef157019dc8863c12132cb6beb28db",
+    "bytes" : 6315
+  }, {
+    "path" : "benchmarks/e7-kmeans-cache.json",
+    "sha256" : "403fad1d7b9fa42a163bfa464aab461f9035c303a753e91f0436761680065516",
+    "bytes" : 1204
+  }, {
+    "path" : "ml/kmeans/model.json",
+    "sha256" : "5dc6eeef20f1a99d027264fb04f7317ee7b9c00d802058c44abe8f3234318513",
+    "bytes" : 914
+  }, {
+    "path" : "ml/kmeans/metrics.json",
+    "sha256" : "ea1454676cdc273c5414424845237cae3e69ed435066efa600c6e4bdd0a7de02",
+    "bytes" : 1804
+  }, {
+    "path" : "ml/kmeans/metadata.json",
+    "sha256" : "af1befc29ac11d601886d7c712be20ddaf99eaa0eb67777b9c0913bb9a0f6e19",
+    "bytes" : 838
+  }, {
+    "path" : "ml/kmeans/sweep.csv",
+    "sha256" : "e40fe1db5c26c27bd7797074b41a327d3ec82fd948afc5beebe20ada8fcb040f",
+    "bytes" : 1709,
+    "rows" : 27
+  }, {
+    "path" : "ml/kmeans/profile.csv",
+    "sha256" : "d4bae3f8de4bdc0aa4c482925e38b742743cc6582f22238fb26598739a8ac13b",
+    "bytes" : 395,
+    "rows" : 2
+  }, {
+    "path" : "ml/kmeans/assignments.csv",
+    "sha256" : "fac1413537eda0ad00cede6f7dc441b364418cd589f3b9ef77d597e7401c6ca5",
+    "bytes" : 12844649,
+    "rows" : 92592
+  }, {
+    "path" : "ml/knn/model.json",
+    "sha256" : "b69a81c9b1257591db054d49a07c42d885b6ec5339ad07a4ea5d068fdf6f8cd6",
+    "bytes" : 974
+  }, {
+    "path" : "ml/knn/metrics.json",
+    "sha256" : "e937bfadf76e70f053f0ad041081c2dc2b61e4f4ab2efa936d291d46677991b6",
+    "bytes" : 4044
+  }, {
+    "path" : "ml/knn/metadata.json",
+    "sha256" : "424085c46d7f0dd84d927818f6e8198916a3d4bb33a0fc81cc74b93c559c40f7",
+    "bytes" : 1164
+  }, {
+    "path" : "ml/knn/train_set.csv",
+    "sha256" : "9f5dbb9ce9775a519f5b272f1d9d73f7ef66178a64d5667a341cc4994b446dfa",
+    "bytes" : 10731808,
+    "rows" : 60876
+  }, {
+    "path" : "ml/knn/products.csv",
+    "sha256" : "c504cbde7869713450c941b189bd05f873edc7bcecc237cacdfaa0bea43f2772",
+    "bytes" : 11589010,
+    "rows" : 64254
+  }, {
+    "path" : "ml/models.json",
+    "sha256" : "efe82c46590f830447e52e2ea7bce7571428f064bbf9ef56c242ba5ba7107aa0",
+    "bytes" : 2008
+  } ]
+}

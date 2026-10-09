@@ -1,0 +1,15 @@
+{
+  "type" : "knn-classifier",
+  "runId" : "20261008-201830-97bb8c2-dk3",
+  "labelsRunId" : "20261008-195059-97bb8c2-dk3",
+  "k" : 15,
+  "threshold" : 0.4,
+  "features" : [ "log_views", "log_carts", "log_purchases", "cart_rate", "purchase_rate", "log_median_price", "log_distinct_users", "recent_view_share" ],
+  "scalerMean" : [ 4.457802640833238, 0.2241725626893222, 0.6118650784402935, 0.002625868289750449, 0.008698452341800627, 4.524364566040192, 3.9998504874041587, 0.5430183183891637 ],
+  "scalerStd" : [ 1.1902057633471503, 0.768548860401445, 0.9459707536922994, 0.011129182618864957, 0.015281782903680515, 1.3008384185320279, 1.1719769387876848, 0.19020885755145958 ],
+  "distance" : "squaredEuclidean (sum over features in order)",
+  "tieBreak" : "lower train row first",
+  "score" : "vote_share = positive neighbours / k (not a calibrated probability)",
+  "trainSet" : "/data/ecommerce/ml/knn/run_id=20261008-201830-97bb8c2-dk3/train_set",
+  "trainRows" : 60876
+}

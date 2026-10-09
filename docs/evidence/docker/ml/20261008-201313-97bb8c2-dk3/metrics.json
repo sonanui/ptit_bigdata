@@ -1,0 +1,76 @@
+{
+  "selectionRule": "max mean silhouette over seeds, tie -> smaller K",
+  "sweep": [
+    {
+      "k": 2,
+      "inertia_mean": 441696.45307290024,
+      "silhouette_mean": 0.6495646546488129,
+      "silhouette_std": 0.00017645125034958998,
+      "min_cluster": 17328
+    },
+    {
+      "k": 3,
+      "inertia_mean": 348895.2506241965,
+      "silhouette_mean": 0.5026704718251738,
+      "silhouette_std": 0.0,
+      "min_cluster": 5466
+    },
+    {
+      "k": 4,
+      "inertia_mean": 298541.8513661779,
+      "silhouette_mean": 0.46788583321880806,
+      "silhouette_std": 0.09796185934190471,
+      "min_cluster": 5283
+    },
+    {
+      "k": 5,
+      "inertia_mean": 260360.61016706665,
+      "silhouette_mean": 0.4375258734661563,
+      "silhouette_std": 0.08685171496670968,
+      "min_cluster": 3090
+    },
+    {
+      "k": 6,
+      "inertia_mean": 229899.665472394,
+      "silhouette_mean": 0.3955315163479128,
+      "silhouette_std": 0.01582747721124406,
+      "min_cluster": 3070
+    },
+    {
+      "k": 7,
+      "inertia_mean": 211706.53570406503,
+      "silhouette_mean": 0.3901585408667994,
+      "silhouette_std": 0.023155125887038913,
+      "min_cluster": 1228
+    },
+    {
+      "k": 8,
+      "inertia_mean": 191526.60348933793,
+      "silhouette_mean": 0.38939734551372623,
+      "silhouette_std": 0.005478616362082772,
+      "min_cluster": 2704
+    },
+    {
+      "k": 9,
+      "inertia_mean": 185237.03062993303,
+      "silhouette_mean": 0.37742498757569276,
+      "silhouette_std": 0.03578996516214335,
+      "min_cluster": 1205
+    },
+    {
+      "k": 10,
+      "inertia_mean": 164109.6257816466,
+      "silhouette_mean": 0.3988641046786528,
+      "silhouette_std": 0.02015194096243711,
+      "min_cluster": 447
+    }
+  ],
+  "k": 2,
+  "silhouette": 0.6493609062950365,
+  "inertia": 441696.4421249071,
+  "iterations": 28,
+  "clusterSizes": {
+    "1": 75236,
+    "0": 17356
+  }
+}

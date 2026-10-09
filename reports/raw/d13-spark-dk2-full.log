@@ -1,0 +1,12 @@
+ Container ptit_bigdata-spark-run-c6eaa88950cf Creating 
+ Container ptit_bigdata-spark-run-c6eaa88950cf Created 
+A1 xong: 20261008-184112-97bb8c2-dk2 groups=495 valid=74120 -> /data/ecommerce/agg/revenue_by_category/run_id=20261008-184112-97bb8c2-dk2 (54 s)
+ETL xong: 20261008-184159-97bb8c2-dk2 in=4246194 valid=4246193 rejected={HEADER=1} -> /data/ecommerce/curated/events/run_id=20261008-184159-97bb8c2-dk2 (159 s)
+A2-A5 xong: 20261008-184443-97bb8c2-dk2 {funnel_by_category={rows=614, events=4246193, purchases=74120}, trend_by_hour={rows=744, events=4246193, purchases=74120}, funnel_by_brand={rows=3139, events=4246193, purchases=74120}} {curatedRows=4246193, a1PurchaseCount=74120, a2PurchasesValidCategory=74120, a1EqualsA2=true} (105 s)
+Features xong: 20261008-184627-97bb8c2-dk2 products=125128 kept=25084 (views>=20) (244 s)
+Labels xong: 20261008-185029-97bb8c2-dk2 {test={rows=13894, positives=3328, positiveRate=0.23952785374982008}, train={rows=13250, positives=3558, positiveRate=0.26852830188679244}} (151 s)
+revenue	20261008-184112-97bb8c2-dk2
+etl	20261008-184159-97bb8c2-dk2
+metrics	20261008-184443-97bb8c2-dk2
+features	20261008-184627-97bb8c2-dk2
+labels	20261008-185029-97bb8c2-dk2

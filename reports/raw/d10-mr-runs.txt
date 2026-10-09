@@ -1,0 +1,10 @@
+# Bước 9 - MapReduce trên D1, D2 (V1–V5) và D3 cả tháng (V1, V2, V5), HDFS trong Docker (IntelliJ terminal), 2026-10-09
+PS> cmd /c "docker compose run --rm bigdata scripts/hdfs-mr.sh /data/ecommerce/raw/sample/2019-Oct-r0.01-s21.csv dk1 v1 v2 v3 v4 v5 > results\d10-mr-dk1.log 2>&1 && docker compose run --rm bigdata scripts/hdfs-mr.sh /data/ecommerce/raw/sample/2019-Oct-r0.1-s21.csv dk2 v1 v2 v3 v4 v5 > results\d10-mr-dk2.log 2>&1 && docker compose run --rm bigdata scripts/hdfs-mr.sh /data/ecommerce/raw/2019-Oct.csv dk3 v1 v2 v5 > results\d10-mr-dk3.log 2>&1"
+PS> foreach ($r in 'dk1','dk2','dk3') { ... tóm tắt Run valid, Results equal, preflight.json, revenue.csv, timings.tsv ... }
+dk1 : Run valid = V1_DIRECT, V2_COMBINER, V3_IN_MAPPER, V4_DENSE, V5_BATCH | Results equal = 4 | purchase = 7464 | nhom = 308
+     timings (ms): preflight	7891  profile	10885  v1	12196  v2	15841  v3	12721  v4	13031  v5	12769
+dk2 : Run valid = V1_DIRECT, V2_COMBINER, V3_IN_MAPPER, V4_DENSE, V5_BATCH | Results equal = 4 | purchase = 74120 | nhom = 495
+     timings (ms): preflight	53334  profile	53687  v1	76239  v2	75937  v3	76451  v4	68664  v5	51406
+dk3 : Run valid = V1_DIRECT, V2_COMBINER, V5_BATCH | Results equal = 2 | purchase = 742849 | nhom = 567
+     timings (ms): preflight	257438  profile	407894  v1	569712  v2	616286  v5	458694
+# timings.tsv đo cả lệnh RevenueTool (khởi động JVM, quét lại input kiểm tra fingerprint, job, đọc lại output), một lần chạy; không phải số benchmark.

@@ -2,7 +2,7 @@
 
 Image `ptit-bigdata:local` chứa Java 11, Maven 3.9.11, Python 3 và module `bigdata` đã build (jar `bigdata/target/revenue-aggregation.jar`). MapReduce chạy bằng LocalJobRunner trong container `bigdata`. HDFS là hai container riêng (`namenode`, `datanode`, image `apache/hadoop:3.4.2`), xem mục HDFS bên dưới. Không có YARN. Phân bổ Docker/host đầy đủ: `docs/PROJECT_AUDIT_AND_IMPLEMENTATION_PLAN.md` §7.6. Java/Maven không cần cài trên host.
 
-`compose.yaml` chia hai profile: `bigdata` (`bigdata`, `namenode`, `datanode`) và `web` (`web-backend`, `web-frontend`).
+`compose.yaml` chia ba profile: `bigdata` (`bigdata`, `namenode`, `datanode`), `spark` (`spark`: Spark 4.0.4 + notebook ML, xem mục Spark bên dưới) và `web` (`web-backend`, `web-frontend`).
 Gọi đích danh service thì profile tự bật (`docker compose up -d namenode datanode`, `docker compose run --rm bigdata ...`);
 `docker compose --profile web up -d` chỉ khởi động web, không bật HDFS. Cần Docker Engine/Desktop và Docker Compose plugin; build cần Internet để tải base image, apt packages và Maven dependencies.
 
@@ -87,6 +87,25 @@ docker compose run --rm bigdata scripts/hdfs-mr.sh /data/ecommerce/raw/sample/20
 Container `bigdata` không đọc `hdfs-site.xml` của cluster, nên các script truyền `-Ddfs.replication=1` từ phía client. Nếu gọi `scripts/run-local.sh` trực tiếp với URI `hdfs://`, phải tự thêm tùy chọn này, nếu không file ghi ra có replication 3 và bị under-replicated.
 
 Tắt HDFS: `docker compose stop namenode datanode` (giữ dữ liệu). `docker compose down -v` **xóa** volume HDFS. Chỉ dùng khi chắc chắn muốn nạp lại từ đầu.
+
+## Spark và notebook ML (container `spark`, profile `spark`)
+
+Image `ptit-bigdata-spark:local` (`docker/spark/Dockerfile`): JDK 21, PySpark 4.0.4 (cung cấp `spark-submit`), numpy, pandas,
+nbconvert; jar `revenue-aggregation-spark.jar` được build và chạy 25 test ngay khi build image. Repo bind-mount vào `/opt/project`,
+nên log, `results/` và `docs/evidence/` ghi thẳng ra máy. Spark đọc HDFS qua `hdfs://namenode:8020` trong mạng Compose
+(`HDFS_USE_DATANODE_HOSTNAME=false`). `--service-ports` mở Spark UI ở http://localhost:4040 khi job đang chạy.
+
+```bash
+docker compose build spark
+docker compose run --rm --service-ports spark bash scripts/spark-pipeline.sh /data/ecommerce/raw/2019-Oct.csv dk3   # A1, ETL, A2-A5, A7, A8
+docker compose run --rm -e ML_TAG=dk3 spark bash -c "cd notebooks && jupyter nbconvert --to notebook --execute --inplace kmeans_product.ipynb"
+docker compose run --rm --service-ports spark python scripts/spark_bench.py --campaign config/bench/docker/campaign.json
+docker compose run --rm spark python scripts/bench_summary.py --campaign config/bench/docker/campaign.json
+docker compose run --rm spark bash scripts/spark-submit.sh publish --tag dk3 ...   # tham số: báo cáo mục 3.2 bước 14
+```
+
+Image `bigdata` chép `config/` lúc build: ma trận benchmark tạo sau khi build thì mount thêm `-v <repo>/config:/opt/bigdata/config:ro`.
+Toàn bộ quy trình đã chạy ngày 2026-10-08/09 (báo cáo v7, `reports/raw/`, `docs/evidence/docker/`).
 
 ## Web app (2 container, profile `web`)
 

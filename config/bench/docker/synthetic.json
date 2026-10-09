@@ -1,0 +1,30 @@
+{
+  "launcher": [
+    "scripts/run-local.sh",
+    "-Dmapreduce.client.completion.pollinterval=100"
+  ],
+  "datasetLauncher": [
+    "scripts/run-local.sh",
+    "--tool",
+    "DatasetTool"
+  ],
+  "manifest": "results/synthetic-meta/input.json",
+  "preflight": "results/synthetic-meta/preflight.json",
+  "dictionary": "results/synthetic-meta/groups.json",
+  "profileReport": "results/synthetic-meta/profile.json",
+  "outputRoot": "results/synthetic-benchmark",
+  "groupBy": "category_id",
+  "variants": [
+    "v1",
+    "v2",
+    "v3",
+    "v4",
+    "v5"
+  ],
+  "reducers": 2,
+  "maxKeys": 10000,
+  "seed": 21,
+  "repeats": 3,
+  "warmups": 1,
+  "workload": "synthetic-200k-purchases-32-categories, container bigdata (Docker/WSL2), local FS, poll100ms"
+}

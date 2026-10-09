@@ -1,0 +1,18 @@
+# Bước 9 (tiếp) - counters của 5 phương án trên D1 (run dk1), đọc từ results/mr/dk1/meta/v*-run-manifest.json (IntelliJ terminal), 2026-10-09
+PS> docker compose run --rm bigdata python3 scripts/mr_counters.py results/mr/dk1/meta
+Counter                                   V1            V2            V3            V4            V5
+Map input records                    424,610       424,610       424,610       424,610       424,610
+Map output records                     7,464         7,464           308           308             2
+Combine input records                      0         7,464             0             0             0
+Combine output records                     0           308             0             0             0
+Reduce shuffle bytes                 283,644        11,716        11,716        11,716         6,196
+Reduce input groups                      308           308           308           308             2
+Reduce input records                   7,464           308           308           308             2
+Reduce output records                    308           308           308           308           308
+-- counter do chương trình đếm (RevenueCounters) --
+HEADERS                                    1             1             1             1             1
+NON_PURCHASE                         417,145       417,145       417,145       417,145       417,145
+VALID_PURCHASE                         7,464         7,464         7,464         7,464         7,464
+CACHE_FLUSHES                              0             0             1             0             0
+Thời gian job (ms)                     5,854         5,695         5,641         6,313         6,113
+validationStatus                       valid         valid         valid         valid         valid

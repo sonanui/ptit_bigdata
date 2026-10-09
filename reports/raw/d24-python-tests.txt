@@ -1,0 +1,9 @@
+# Bước 6 (tiếp) - test Python của công cụ benchmark trong container bigdata (IntelliJ terminal), 2026-10-09
+PS> cmd /c "docker compose run --rm bigdata python3 -m unittest discover -v -s scripts -p test_*.py 2>&1" | Select-String -NotMatch 'Container ptit'
+test_failed_and_warmup_runs_never_improve_speedup (test_benchmark.BenchmarkTest...) ... ok
+test_medians_and_speedup_use_complete_runs (test_benchmark.BenchmarkTest...) ... ok
+test_missing_profile_measurement_is_not_reported_as_zero (test_benchmark.BenchmarkTest...) ... ok
+test_profile_cost_requires_matching_provenance (test_benchmark.BenchmarkTest...) ... ok
+test_skew_and_cardinality_are_explicit_and_deterministic (test_workload.WorkloadTest...) ... ok
+Ran 5 tests in 0.011s
+OK

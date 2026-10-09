@@ -1,0 +1,45 @@
+ Container ptit_bigdata-bigdata-run-26be834e20cf Creating 
+ Container ptit_bigdata-bigdata-run-26be834e20cf Created 
+results/synthetic/optimization-200k.csv
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Preflight valid: 200000 purchases, fingerprint=1ef5b97f5d72859369d89e8fafc4b543e5e730743433eba814dceea62185b365
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Profile: 32 dictionary groups
+Traceback (most recent call last):
+  File "/opt/bigdata/scripts/benchmark.py", line 167, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/opt/bigdata/scripts/benchmark.py", line 125, in main
+    config = json.loads(Path(args.matrix).read_text())
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'config/bench/docker/synthetic.json'
+
+ Container ptit_bigdata-bigdata-run-52bbcf7f9a75 Creating 
+ Container ptit_bigdata-bigdata-run-52bbcf7f9a75 Created 
+Round 0: v1
+Round 0: v5
+Round 0: v3
+Round 0: v4
+Round 0: v2
+Round 1: v5
+Round 1: v2
+Round 1: v1
+Round 1: v4
+Round 1: v3
+Round 2: v4
+Round 2: v1
+Round 2: v3
+Round 2: v2
+Round 2: v5
+Round 3: v4
+Round 3: v3
+Round 3: v2
+Round 3: v5
+Round 3: v1
+Report: results/benchmark-reports/2a4c08ba9b53

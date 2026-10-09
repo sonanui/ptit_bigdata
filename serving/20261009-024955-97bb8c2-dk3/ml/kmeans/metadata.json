@@ -1,0 +1,25 @@
+{
+  "model_type" : "clustering",
+  "algorithm" : "k-means (Spark MLlib, k-means||)",
+  "run_id" : "20261008-201313-97bb8c2-dk3",
+  "training_time" : "2026-10-08T20:17:36.989837+00:00",
+  "dataset" : {
+    "tag" : "dk3",
+    "featuresRunId" : "20261008-192309-97bb8c2-dk3",
+    "products" : 92592
+  },
+  "features" : [ "log_views", "log_carts", "log_purchases", "cart_rate", "purchase_rate", "log_median_price", "log_distinct_users" ],
+  "feature_preprocessing" : "log1p (Java A7) + StandardScaler(withMean, withStd) (Spark MLlib)",
+  "hyperparameters" : {
+    "k" : 2,
+    "seed" : 1,
+    "maxIter" : 50,
+    "initMode" : "k-means||"
+  },
+  "metrics" : {
+    "silhouette" : 0.6493609062950365,
+    "inertia" : 441696.4421249071
+  },
+  "model_path" : "/data/ecommerce/ml/kmeans/run_id=20261008-201313-97bb8c2-dk3",
+  "status" : "trained"
+}

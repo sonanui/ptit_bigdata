@@ -1,0 +1,7 @@
+ Container ptit_bigdata-bigdata-run-e99d65fe7c0d Creating 
+ Container ptit_bigdata-bigdata-run-e99d65fe7c0d Created 
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Baseline: 308 nhóm, reasons={'HEADER': 1, 'NON_PURCHASE': 417145, 'VALID_PURCHASE': 7464}, 4.4s
+Baseline: 495 nhóm, reasons={'HEADER': 1, 'NON_PURCHASE': 4172073, 'VALID_PURCHASE': 74120}, 30.1s
+Baseline: 567 nhóm, reasons={'HEADER': 1, 'NON_PURCHASE': 41705915, 'VALID_PURCHASE': 742849}, 259.0s

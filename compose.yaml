@@ -1,4 +1,4 @@
-# Profile: bigdata (MapReduce + HDFS) và web (backend + frontend). Gọi đích danh service thì profile tự bật,
+# Profile: bigdata (MapReduce + HDFS), spark (Spark + notebook ML) và web (backend + frontend). Gọi đích danh service thì profile tự bật,
 # ví dụ: docker compose up -d namenode datanode; docker compose run --rm bigdata ...
 services:
   bigdata:
@@ -15,6 +15,33 @@ services:
       - ./data:/opt/bigdata/data
       - ./results:/opt/bigdata/results
     command: ["bash", "scripts/demo.sh", "results/docker-demo"]
+
+  # Spark 4.0.4 (local[2]) + Python cho notebook ML, đọc/ghi HDFS qua mạng Compose (hdfs://namenode:8020).
+  #   docker compose build spark
+  #   docker compose run --rm --service-ports spark bash scripts/spark-pipeline.sh INPUT TAG   (Spark UI: http://localhost:4040)
+  # Repo được bind-mount: log, results/ và docs/evidence/ ghi thẳng ra máy host.
+  spark:
+    profiles: ["spark"]
+    build:
+      context: .
+      dockerfile: docker/spark/Dockerfile
+    image: ptit-bigdata-spark:local
+    working_dir: /opt/project
+    environment:
+      HDFS_URI: hdfs://namenode:8020
+      HADOOP_USER_NAME: hadoop
+      SPARK_MASTER: local[2]
+      SPARK_DRIVER_MEMORY: 1g
+      SPARK_SHUFFLE_PARTITIONS: "8"
+      # Trong mạng Compose, client nối DataNode bằng IP container (DataNode khai báo hostname localhost cho client trên host).
+      HDFS_USE_DATANODE_HOSTNAME: "false"
+      # config/spark-local.env là cấu hình của Spark trên host Windows; trong container không dùng.
+      PTIT_SKIP_LOCAL_ENV: "1"
+    mem_limit: 3g
+    ports:
+      - "127.0.0.1:4040:4040"
+    volumes:
+      - .:/opt/project
 
   # HDFS pseudo-distributed: docker compose up -d namenode datanode
   # Không có depends_on từ bigdata, nên demo fixture vẫn chạy được khi HDFS tắt.

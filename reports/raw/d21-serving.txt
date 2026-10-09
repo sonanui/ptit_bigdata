@@ -1,0 +1,16 @@
+# Bước 14 - publish serving run (container spark) và đồng bộ về máy (IntelliJ terminal), 2026-10-09
+PS> cmd /c "docker compose run --rm spark bash scripts/spark-submit.sh publish --tag dk3 --revenue-run-id 20261008-185303-97bb8c2-dk3 --etl-run-id 20261008-185644-97bb8c2-dk3 --metrics-run-id 20261008-191131-97bb8c2-dk3 --mr-output hdfs://namenode:8020/data/ecommerce/mr/dk3/v1 --kmeans-run-id 20261008-201313-97bb8c2-dk3 --knn-run-id 20261008-201830-97bb8c2-dk3 --benchmarks-dir docs/evidence/docker/bench/serving > results\d22-publish.log 2>&1"
+Publish xong: 20261009-024955-97bb8c2-dk3 files=29 -> /data/ecommerce/serving/20261009-024955-97bb8c2-dk3
+PS> powershell -NoProfile -ExecutionPolicy Bypass -File scripts\serving-sync.ps1 -RunId 20261009-024955-97bb8c2-dk3 -SetLatest
+Đã đồng bộ 29 file, sha256 khớp: E:\...\ptit_bigdata\serving\20261009-024955-97bb8c2-dk3      (tiến trình con in sai dấu tiếng Việt trên terminal)
+_LATEST = 20261009-024955-97bb8c2-dk3
+PS> (kiểm tra lại trong cùng phiên) manifest.json + Get-FileHash, _LATEST, revenue_parity.json
+manifest.json: 29 tep, sha256 khop: 29/29
+_LATEST = 20261009-024955-97bb8c2-dk3
+20261007-015257-b0376ef-d3
+20261009-024955-97bb8c2-dk3
+  "matched" : true,
+  "mrGroups" : 567,
+  "sparkGroups" : 567,
+  "mrPurchaseCount" : 742849,
+  "mismatchCount" : 0,

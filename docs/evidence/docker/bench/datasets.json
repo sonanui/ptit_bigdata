@@ -1,0 +1,20 @@
+{
+  "D1": {
+    "description": "mẫu 1% tháng 10/2019 (seed 21)",
+    "bytes": 56696727,
+    "lines": 424610,
+    "validPurchases": 7464
+  },
+  "D2": {
+    "description": "mẫu 10% tháng 10/2019 (seed 21)",
+    "bytes": 567001795,
+    "lines": 4246194,
+    "validPurchases": 74120
+  },
+  "D3": {
+    "description": "cả tháng 10/2019",
+    "bytes": 5668612855,
+    "lines": 42448765,
+    "validPurchases": 742849
+  }
+}

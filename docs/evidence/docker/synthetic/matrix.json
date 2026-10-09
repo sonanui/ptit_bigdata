@@ -1,0 +1,96 @@
+{
+  "launcher": [
+    "scripts/run-local.sh",
+    "-Dmapreduce.client.completion.pollinterval=100"
+  ],
+  "datasetLauncher": [
+    "scripts/run-local.sh",
+    "--tool",
+    "DatasetTool"
+  ],
+  "manifest": "results/synthetic-meta/input.json",
+  "preflight": "results/synthetic-meta/preflight.json",
+  "dictionary": "results/synthetic-meta/groups.json",
+  "profileReport": "results/synthetic-meta/profile.json",
+  "outputRoot": "results/synthetic-benchmark",
+  "groupBy": "category_id",
+  "variants": [
+    "v1",
+    "v2",
+    "v3",
+    "v4",
+    "v5"
+  ],
+  "reducers": 2,
+  "maxKeys": 10000,
+  "seed": 21,
+  "repeats": 3,
+  "warmups": 1,
+  "workload": "synthetic-200k-purchases-32-categories, container bigdata (Docker/WSL2), local FS, poll100ms",
+  "measuredProfile": {
+    "schemaVersion": 1,
+    "groupMode": "CATEGORY_ID",
+    "inputFingerprint": "1ef5b97f5d72859369d89e8fafc4b543e5e730743433eba814dceea62185b365",
+    "policyHash": "e8cfaa885aa0cabdc51d54c4ee15e5c7a82b70c3cb69406582ed58c47ed2e117",
+    "validPurchaseCount": 200000,
+    "elapsedMillis": 10721,
+    "countByGroup": {
+      "0": 6132,
+      "1": 6252,
+      "10": 6266,
+      "11": 6237,
+      "12": 6260,
+      "13": 6283,
+      "14": 6120,
+      "15": 6326,
+      "16": 6276,
+      "17": 6170,
+      "18": 6402,
+      "19": 6207,
+      "2": 6322,
+      "20": 6224,
+      "21": 6136,
+      "22": 6152,
+      "23": 6361,
+      "24": 6424,
+      "25": 6336,
+      "26": 6255,
+      "27": 6373,
+      "28": 6157,
+      "29": 6122,
+      "3": 6196,
+      "30": 6286,
+      "31": 6151,
+      "4": 6243,
+      "5": 6416,
+      "6": 6250,
+      "7": 6187,
+      "8": 6200,
+      "9": 6278
+    },
+    "counters": {
+      "HEADER": 1,
+      "VALID_PURCHASE": 200000
+    },
+    "preflight": {
+      "schemaVersion": 1,
+      "manifest": {
+        "schemaVersion": 1,
+        "policyHash": "e8cfaa885aa0cabdc51d54c4ee15e5c7a82b70c3cb69406582ed58c47ed2e117",
+        "files": [
+          {
+            "uri": "file:/opt/bigdata/results/synthetic/optimization-200k.csv",
+            "sha256": "fd60e1c84555e3997eb0f33a2b40d9565d6465ac02c488639afbf790da50a086",
+            "bytes": 21812906
+          }
+        ]
+      },
+      "inputFingerprint": "1ef5b97f5d72859369d89e8fafc4b543e5e730743433eba814dceea62185b365",
+      "groupMode": "CATEGORY_ID",
+      "validPurchaseCount": 200000,
+      "lines": 200001,
+      "elapsedMillis": 10721,
+      "errors": []
+    }
+  }
+}

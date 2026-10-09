@@ -1,0 +1,14 @@
+# Bước 8 - tạo mẫu tất định D1 (1%) và D2 (10%) từ cả tháng trên HDFS (IntelliJ terminal), 2026-10-09
+PS> cmd /c "docker compose run --rm bigdata scripts/hdfs-sample.sh /data/ecommerce/raw/2019-Oct.csv 0.01 21 > results\d09-sample.log 2>&1 && docker compose run --rm bigdata scripts/hdfs-sample.sh /data/ecommerce/raw/2019-Oct.csv 0.1 21 >> results\d09-sample.log 2>&1"
+PS> Select-String -CaseSensitive -Path results\d09-sample.log -Pattern 'Preflight valid|_ms=|Sample:' | ...; docker compose exec namenode hdfs dfs -ls /data/ecommerce/raw/sample | Select-String '\.csv$'; Get-Content results\hdfs-meta\2019-Oct\preflight.json | Select-String '"lines"|validPurchaseCount'
+Preflight valid: 742849 purchases, fingerprint=310259e9f9367ee64e58c2624e6f8cdb82c67205a0952758de708febb09e0a16
+preflight_ms=302044
+Sample: hdfs://namenode:8020/data/ecommerce/raw/sample/2019-Oct-r0.01-s21.csv
+sample_r0.01_s21_ms=574346
+Sample: hdfs://namenode:8020/data/ecommerce/raw/sample/2019-Oct-r0.1-s21.csv
+sample_r0.1_s21_ms=597432
+
+-rw-r--r--   1 hadoop supergroup   56696727 2026-10-08 17:19 /data/ecommerce/raw/sample/2019-Oct-r0.01-s21.csv
+-rw-r--r--   1 hadoop supergroup  567001795 2026-10-08 17:29 /data/ecommerce/raw/sample/2019-Oct-r0.1-s21.csv
+  "validPurchaseCount" : 742849,
+  "lines" : 42448765,

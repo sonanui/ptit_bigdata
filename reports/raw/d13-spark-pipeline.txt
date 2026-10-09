@@ -1,0 +1,19 @@
+# Bước 11 - chuỗi Spark Java trong container spark (local[2], JDK 21, Spark 4.0.4), đọc/ghi HDFS qua mạng Compose (IntelliJ terminal), 2026-10-09
+PS> cmd /c "docker compose run --rm --service-ports spark bash scripts/spark-pipeline.sh /data/ecommerce/raw/sample/2019-Oct-r0.01-s21.csv dk1 > results\d13-spark-dk1.log 2>&1"
+PS> cmd /c "docker compose run --rm --service-ports spark bash scripts/spark-pipeline.sh /data/ecommerce/raw/sample/2019-Oct-r0.1-s21.csv dk2 > results\d13-spark-dk2.log 2>&1 && docker compose run --rm --service-ports spark bash scripts/spark-pipeline.sh /data/ecommerce/raw/2019-Oct.csv dk3 > results\d13-spark-dk3.log 2>&1"
+PS> docker compose run --rm spark grep -h ' xong: ' docs/evidence/spark-java/dk3-{revenue,etl,metrics,features,labels}.log; Get-Content docs\evidence\spark-java\dk3-run-ids.tsv
+A1 xong: 20261008-185303-97bb8c2-dk3 groups=567 valid=742849 -> /data/ecommerce/agg/revenue_by_category/run_id=20261008-185303-97bb8c2-dk3
+ETL xong: 20261008-185644-97bb8c2-dk3 in=42448765 valid=42448764 rejected={HEADER=1} -> /data/ecommerce/curated/events/run_id=20261008-185644-97bb8c2-dk3
+A2-A5 xong: 20261008-191131-97bb8c2-dk3 {funnel_by_category={rows=624, events=42448764, purchases=742849}, trend_by_hour={rows=744, events=42448764, purchases=742849}, funnel_by_brand={rows=3446, events=42448764, purchases=742849}} {curatedRows=42448764, a1PurchaseCount=742849, a2PurchasesValidCategory=742849, a1EqualsA2=true}
+Features xong: 20261008-192309-97bb8c2-dk3 products=166794 kept=92592 (views>=20)
+Labels xong: 20261008-195059-97bb8c2-dk3 {test={rows=64254, positives=16278, positiveRate=0.2533383135680269}, train={rows=60876, positives=17057, positiveRate=0.2801925225047638}}
+revenue	20261008-185303-97bb8c2-dk3
+etl	20261008-185644-97bb8c2-dk3
+metrics	20261008-191131-97bb8c2-dk3
+features	20261008-192309-97bb8c2-dk3
+labels	20261008-195059-97bb8c2-dk3
+# Thời gian từng job (spark-pipeline.sh, một lần chạy, gồm khởi động JVM/SparkSession):
+#  D1: A1 33 s, ETL 43 s, A2-A5 29 s, A7 36 s, A8 30 s
+#  D2: A1 54 s, ETL 159 s, A2-A5 105 s, A7 244 s, A8 151 s
+#  D3: A1 218 s, ETL 891 s, A2-A5 694 s, A7 1674 s, A8 1161 s
+# run_id dùng giờ UTC của container và git sha HEAD 97bb8c2 (các thay đổi hạ tầng Docker chưa commit tại thời điểm chạy).
